@@ -10,3 +10,4 @@ This is a fan-made tool and is not affiliated with Bethesda or Fallout Shelter.
 For questions, suggestions, or bug reports, open a
 [GitHub issue](https://github.com/erayerm/fs-save-editor/issues) or check the Reddit post:
 https://www.reddit.com/r/falloutshelter/s/VNKDBTTfof
+.
