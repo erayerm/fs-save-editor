@@ -7,29 +7,41 @@ import type { RenderableDweller } from '../lib/dwellerRender';
 
 export function DwellerControls({ dweller }: { dweller: RenderableDweller }) {
   const [index, setIndex] = useState<SpriteIndex | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const update = useSaveStore((s) => s.updateSelectedDweller);
 
   useEffect(() => {
-    loadSpriteIndex().then(setIndex).catch(() => setIndex(null));
+    loadSpriteIndex().then(setIndex).catch(() => setLoadError(true));
   }, []);
 
+  if (loadError) return <p className="text-xs text-red-400">Could not load pieces.</p>;
   if (!index) return null;
   const gender = dweller.gender === 2 ? 'male' : 'female';
 
   const hairs = piecesOfType(index, 'hair', { gender });
   const outfits = piecesOfType(index, 'outfit', { gender });
 
+  const hairOptions = hairs.map((p) => ({ name: p.name }));
+  if (dweller.hairName && !hairs.some((p) => p.name === dweller.hairName)) {
+    hairOptions.unshift({ name: dweller.hairName, label: `${dweller.hairName} (unknown)` });
+  }
+
+  const outfitOptions = outfits.map((p) => ({ name: p.name }));
+  if (dweller.outfitName && !outfits.some((p) => p.name === dweller.outfitName)) {
+    outfitOptions.unshift({ name: dweller.outfitName, label: `${dweller.outfitName} (unknown)` });
+  }
+
   return (
     <div className="space-y-2">
       <PiecePicker
         label="Hair"
-        options={hairs.map((p) => ({ name: p.name }))}
+        options={hairOptions}
         value={dweller.hairName}
         onChange={(name) => update({ hair: name })}
       />
       <PiecePicker
         label="Outfit"
-        options={outfits.map((p) => ({ name: p.name }))}
+        options={outfitOptions}
         value={dweller.outfitName}
         onChange={(name) => update({ outfitId: name })}
       />

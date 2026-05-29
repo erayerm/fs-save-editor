@@ -11,7 +11,8 @@ export function PiecePicker({ label, options, value, onChange }: PiecePickerProp
       <span className="w-16 text-zinc-400">{label}</span>
       <select
         className="flex-1 bg-zinc-800 border border-zinc-700 rounded px-2 py-1"
-        value={value ?? ''}
+        value={options.some((o) => o.name === value) ? value : (options[0]?.name ?? '')}
+        disabled={options.length === 0}
         onChange={(e) => onChange(e.target.value)}
       >
         {options.map((o) => (
