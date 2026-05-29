@@ -43,7 +43,7 @@ function compile(gl: WebGLRenderingContext, type: number, src: string): WebGLSha
 }
 
 export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRenderer {
-  const gl = canvas.getContext('webgl', { premultipliedAlpha: false, alpha: true });
+  const gl = canvas.getContext('webgl', { premultipliedAlpha: false, alpha: true }) as WebGLRenderingContext;
   if (!gl) throw new Error('WebGL not available');
 
   const prog = gl.createProgram()!;

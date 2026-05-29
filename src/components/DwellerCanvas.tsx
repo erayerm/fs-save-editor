@@ -1,70 +1,66 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadSpriteIndex } from '../lib/spriteIndex';
 import { loadAtlas } from '../lib/atlasLoader';
-import { buildDrawOps, type RenderableDweller, type DrawOp } from '../lib/dwellerRender';
+import { loadMeshSet } from '../lib/meshLoader';
+import { buildLayers } from '../lib/dwellerLayers';
+import { createDwellerRenderer, type DwellerRenderer, type RendererLayerInput } from '../lib/dwellerWebGL';
+import type { RenderableDweller } from '../lib/dwellerRender';
 import type { SpriteIndex } from '../types/pieces';
+import type { DwellerMeshSet } from '../types/mesh';
 
-const W = 320;
-const H = 320;
+const W = 512;
+const H = 512;
 
-async function drawDweller(
-  ctx: CanvasRenderingContext2D,
-  ops: DrawOp[],
-) {
-  ctx.clearRect(0, 0, W, H);
-  for (const op of ops) {
-    const img = await loadAtlas(op.atlas);
-    // Unity atlas Y is measured from the BOTTOM of the texture; canvas drawImage
-    // measures from the TOP. Flip the source Y before drawing.
-    const srcY = img.naturalHeight - op.src.y - op.src.h;
-    if (!op.tint) {
-      ctx.drawImage(img, op.src.x, srcY, op.src.w, op.src.h,
-                          op.dst.x, op.dst.y, op.dst.w, op.dst.h);
-      continue;
-    }
-    // Tint: draw to offscreen, fill with tint using multiply, restore alpha, then composite onto main canvas.
-    const off = document.createElement('canvas');
-    off.width = op.dst.w;
-    off.height = op.dst.h;
-    const offCtx = off.getContext('2d')!;
-    offCtx.drawImage(img, op.src.x, srcY, op.src.w, op.src.h, 0, 0, op.dst.w, op.dst.h);
-    offCtx.globalCompositeOperation = 'multiply';
-    offCtx.fillStyle = `rgba(${op.tint.r}, ${op.tint.g}, ${op.tint.b}, ${op.tint.a})`;
-    offCtx.fillRect(0, 0, op.dst.w, op.dst.h);
-    offCtx.globalCompositeOperation = 'destination-in';
-    offCtx.drawImage(img, op.src.x, srcY, op.src.w, op.src.h, 0, 0, op.dst.w, op.dst.h);
-    ctx.drawImage(off, op.dst.x, op.dst.y);
-  }
-}
-
-export function DwellerCanvas({ dweller }: { dweller: RenderableDweller | null }) {
+export function DwellerCanvas({ dweller, size = 320 }: { dweller: RenderableDweller | null; size?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rendererRef = useRef<DwellerRenderer | null>(null);
   const [index, setIndex] = useState<SpriteIndex | null>(null);
+  const [meshSet, setMeshSet] = useState<DwellerMeshSet | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadSpriteIndex().then(setIndex).catch((e) => setError(e.message));
+    Promise.all([loadSpriteIndex(), loadMeshSet()])
+      .then(([idx, ms]) => { setIndex(idx); setMeshSet(ms); })
+      .catch((e) => setError(e.message));
   }, []);
 
   useEffect(() => {
-    if (!index || !dweller) return;
-    setError(null);  // clear stale error from previous dweller
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    const ops = buildDrawOps(dweller, index, { canvasW: W, canvasH: H });
-    drawDweller(ctx, ops).catch((e) => setError(e.message));
-  }, [index, dweller]);
+    if (!canvas || !index || !meshSet || !dweller) return;
+    if (dweller.isChild) return;
+    setError(null);
+
+    let cancelled = false;
+    (async () => {
+      try {
+        if (!rendererRef.current) rendererRef.current = createDwellerRenderer(canvas);
+        const gender = dweller.gender === 2 ? 'male' : 'female';
+        const mesh = meshSet[gender].adult;
+        const layers = buildLayers(dweller, index);
+        const withImages: RendererLayerInput[] = await Promise.all(
+          layers.map(async (l) => ({ ...l, image: await loadAtlas(l.atlas) })),
+        );
+        if (cancelled) return;
+        rendererRef.current.draw(mesh, withImages);
+      } catch (e) {
+        if (!cancelled) setError((e as Error).message);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [index, meshSet, dweller]);
+
+  useEffect(() => () => { rendererRef.current?.dispose(); rendererRef.current = null; }, []);
 
   if (error) return <div className="text-red-400">Render error: {error}</div>;
   if (!dweller) return <div className="text-zinc-500 italic">No dweller selected.</div>;
+  if (dweller.isChild) return <div className="text-zinc-400 italic">Child dweller (not customizable).</div>;
 
   return (
     <canvas
       ref={canvasRef}
       width={W}
       height={H}
+      style={{ width: size, height: size }}
       className="bg-zinc-950 rounded border border-zinc-700"
     />
   );

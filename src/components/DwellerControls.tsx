@@ -22,12 +22,12 @@ export function DwellerControls({ dweller }: { dweller: RenderableDweller }) {
   const hairs = piecesOfType(index, 'hair', { gender });
   const outfits = piecesOfType(index, 'outfit', { gender });
 
-  const hairOptions = hairs.map((p) => ({ name: p.name }));
+  const hairOptions: { name: string; label?: string }[] = hairs.map((p) => ({ name: p.name }));
   if (dweller.hairName && !hairs.some((p) => p.name === dweller.hairName)) {
     hairOptions.unshift({ name: dweller.hairName, label: `${dweller.hairName} (unknown)` });
   }
 
-  const outfitOptions = outfits.map((p) => ({ name: p.name }));
+  const outfitOptions: { name: string; label?: string }[] = outfits.map((p) => ({ name: p.name }));
   if (dweller.outfitName && !outfits.some((p) => p.name === dweller.outfitName)) {
     outfitOptions.unshift({ name: dweller.outfitName, label: `${dweller.outfitName} (unknown)` });
   }
