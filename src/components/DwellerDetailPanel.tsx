@@ -1,5 +1,6 @@
 import { useSaveStore } from '../store/saveStore';
 import { DwellerCanvas } from './DwellerCanvas';
+import { DwellerControls } from './DwellerControls';
 import type { RenderableDweller } from '../lib/dwellerRender';
 import type { Dweller } from '../types/save';
 import { decodeArgb } from '../lib/colors';
@@ -32,6 +33,7 @@ export function DwellerDetailPanel() {
     <div className="space-y-3">
       <div className="text-lg font-medium">{dweller.name} {dweller.lastName}</div>
       <DwellerCanvas dweller={renderable} />
+      <DwellerControls dweller={renderable} />
       <details className="text-xs text-zinc-400">
         <summary className="cursor-pointer">Raw piece refs</summary>
         <pre className="overflow-auto max-h-48 bg-zinc-950 p-2 rounded">
