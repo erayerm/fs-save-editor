@@ -41,6 +41,17 @@ export function faceNameForHappiness(happiness: number | undefined): string {
   return 'smile';
 }
 
+const BODY_REF_W = 512;
+
+const POSITIONING = {
+  bodyFillFrac: 0.62,
+  bodyBottomMargin: 8,
+  bodyDx: 0,
+  headCenterYFrac: 0.30,
+  headDx: 0,
+  headDy: 0,
+};
+
 export function buildDrawOps(
   dweller: RenderableDweller,
   idx: SpriteIndex,
@@ -60,10 +71,27 @@ export function buildDrawOps(
     pieceByName(idx, 'body', wantBody, gender) ??
     pieceByName(idx, 'body', 'base_body', gender);
 
-  // Compute dst rect (centered, full canvas). Per-piece offset/scale is Plan 2b work.
-  function dstFor(_p: PieceRef): DrawOp['dst'] {
-    return { x: 0, y: 0, w: cfg.canvasW, h: cfg.canvasH };
+  const scale = (cfg.canvasW * POSITIONING.bodyFillFrac) / BODY_REF_W;
+
+  function bodyDst(p: PieceRef): DrawOp['dst'] {
+    const w = p.bounds.w * scale;
+    const h = p.bounds.h * scale;
+    return {
+      x: (cfg.canvasW - w) / 2 + POSITIONING.bodyDx,
+      y: cfg.canvasH - h - POSITIONING.bodyBottomMargin,
+      w,
+      h,
+    };
   }
+
+  function headDst(p: PieceRef): DrawOp['dst'] {
+    const w = p.bounds.w * scale;
+    const h = p.bounds.h * scale;
+    const cx = cfg.canvasW / 2 + POSITIONING.headDx;
+    const cy = cfg.canvasH * POSITIONING.headCenterYFrac + POSITIONING.headDy;
+    return { x: cx - w / 2, y: cy - h / 2, w, h };
+  }
+
   function srcFor(p: PieceRef): DrawOp['src'] {
     return { x: p.bounds.x, y: p.bounds.y, w: p.bounds.w, h: p.bounds.h };
   }
@@ -74,23 +102,23 @@ export function buildDrawOps(
   // 1. Body (tinted by skinColor via multiply)
   if (body) {
     ops.push({
-      atlas: body.atlas, src: srcFor(body), dst: dstFor(body),
+      atlas: body.atlas, src: srcFor(body), dst: bodyDst(body),
       tint: colorToTint(dweller.skinColor),
     });
   }
   // 2. Outfit
   if (outfit) {
-    ops.push({ atlas: outfit.atlas, src: srcFor(outfit), dst: dstFor(outfit),
+    ops.push({ atlas: outfit.atlas, src: srcFor(outfit), dst: bodyDst(outfit),
       tint: colorToTint(dweller.outfitColor) });
   }
   // 3. Face (derived from happiness)
   const face = pieceByName(idx, 'face', faceNameForHappiness(dweller.happinessValue), gender);
-  if (face) ops.push({ atlas: face.atlas, src: srcFor(face), dst: dstFor(face) });
+  if (face) ops.push({ atlas: face.atlas, src: srcFor(face), dst: headDst(face) });
   // 4. Hair (tinted by hairColor)
   const hair = dweller.hairName ? pieceByName(idx, 'hair', dweller.hairName, gender) : null;
   if (hair && !hair.flags.isBald) {
     ops.push({
-      atlas: hair.atlas, src: srcFor(hair), dst: dstFor(hair),
+      atlas: hair.atlas, src: srcFor(hair), dst: headDst(hair),
       tint: colorToTint(dweller.hairColor),
     });
   }

@@ -105,3 +105,67 @@ describe('buildDrawOps', () => {
     expect(faceNameForHappiness(undefined)).toBe('smile');
   });
 });
+
+function mkPiece(name: string, bounds: import('../types/pieces').PieceRef['bounds'], flags: import('../types/pieces').PieceRef['flags'] = {}): import('../types/pieces').PieceRef {
+  return { guid: name, name, atlas: 'atlas0.png', bounds, gender: 'female', flags };
+}
+function mkIndex2(): import('../types/pieces').SpriteIndex {
+  return {
+    version: 1,
+    byType: {
+      body: [mkPiece('base_body', { x: 144, y: 0, w: 512, h: 256 })],
+      outfit: [mkPiece('jumpsuit', { x: 512, y: 256, w: 512, h: 256 })],
+      face: [mkPiece('smile', { x: 0, y: 512, w: 136, h: 128 })],
+      hair: [mkPiece('21', { x: 840, y: 264, w: 140, h: 132 })],
+      outfitColoringMask: [], faceMask: [], helmet: [], helmetMask: [],
+      largeHeadgear: [], handPose: [], glovePose: [],
+    } as import('../types/pieces').SpriteIndex['byType'],
+  };
+}
+
+const CFG = { canvasW: 320, canvasH: 320 };
+const DW: import('./dwellerRender').RenderableDweller = {
+  gender: 1, hairName: '21', outfitName: 'jumpsuit', happinessValue: 100,
+};
+
+describe('buildDrawOps positioning', () => {
+  it('body and outfit share an identical dst rect (both 512x256)', () => {
+    const ops = buildDrawOps(DW, mkIndex2(), CFG);
+    expect(ops[0].dst).toEqual(ops[1].dst);
+  });
+
+  it('preserves each piece aspect ratio (uniform scale, no stretch)', () => {
+    const ops = buildDrawOps(DW, mkIndex2(), CFG);
+    for (const op of ops) {
+      const srcRatio = op.src.w / op.src.h;
+      const dstRatio = op.dst.w / op.dst.h;
+      expect(dstRatio).toBeCloseTo(srcRatio, 5);
+    }
+  });
+
+  it('head pieces (face, hair) render smaller than the body', () => {
+    const ops = buildDrawOps(DW, mkIndex2(), CFG);
+    const bodyW = ops[0].dst.w;
+    const faceW = ops[2].dst.w;
+    const hairW = ops[3].dst.w;
+    expect(faceW).toBeLessThan(bodyW);
+    expect(hairW).toBeLessThan(bodyW);
+  });
+
+  it('head pieces are horizontally centered on the canvas', () => {
+    const ops = buildDrawOps(DW, mkIndex2(), CFG);
+    const center = (op: { dst: { x: number; w: number } }) => op.dst.x + op.dst.w / 2;
+    expect(center(ops[2])).toBeCloseTo(CFG.canvasW / 2, 1);
+    expect(center(ops[3])).toBeCloseTo(CFG.canvasW / 2, 1);
+  });
+
+  it('every dst stays within the canvas bounds', () => {
+    const ops = buildDrawOps(DW, mkIndex2(), CFG);
+    for (const op of ops) {
+      expect(op.dst.x).toBeGreaterThanOrEqual(0);
+      expect(op.dst.y).toBeGreaterThanOrEqual(0);
+      expect(op.dst.x + op.dst.w).toBeLessThanOrEqual(CFG.canvasW + 0.01);
+      expect(op.dst.y + op.dst.h).toBeLessThanOrEqual(CFG.canvasH + 0.01);
+    }
+  });
+});
