@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSaveStore } from '../store/saveStore';
 import { loadSpriteIndex, piecesOfType } from '../lib/spriteIndex';
 import { PiecePicker } from './PiecePicker';
+import { ColorPicker } from './ColorPicker';
 import type { SpriteIndex } from '../types/pieces';
 import type { RenderableDweller } from '../lib/dwellerRender';
 
@@ -45,6 +46,12 @@ export function DwellerControls({ dweller }: { dweller: RenderableDweller }) {
         value={dweller.outfitName}
         onChange={(name) => update({ outfitId: name })}
       />
+      <ColorPicker label="Skin" value={dweller.skinColor}
+        onChange={(c) => update({ skinColor: c })} />
+      <ColorPicker label="Hair" value={dweller.hairColor}
+        onChange={(c) => update({ hairColor: c })} />
+      <ColorPicker label="Outfit" value={dweller.outfitColor}
+        onChange={(c) => update({ outfitColor: c })} />
     </div>
   );
 }
