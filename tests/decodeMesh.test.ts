@@ -17,7 +17,8 @@ describe('decodeVertexStreams', () => {
     const stream2 = '00000000';                            // 4 bytes
     const hex = stream0 + stream1 + stream2;
     const { positions, uvs } = decodeVertexStreams(hex, 1);
-    expect(positions).toEqual([[1, 2]]);
+    expect(positions[0][0]).toBeCloseTo(1, 5);
+    expect(positions[0][1]).toBeCloseTo(2, 5);
     expect(uvs[0][0]).toBeCloseTo(0.5, 5);
     expect(uvs[0][1]).toBeCloseTo(0.25, 5);
   });

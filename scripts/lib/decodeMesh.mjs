@@ -4,6 +4,8 @@
 /** uint16 LE index buffer -> number[]. count = index count (e.g. 102). */
 export function decodeIndexBuffer(hex, count) {
   const buf = Buffer.from(hex, 'hex');
+  const maxCount = buf.length >> 1;
+  if (count > maxCount) throw new RangeError(`decodeIndexBuffer: count ${count} exceeds buffer capacity ${maxCount}`);
   const out = [];
   for (let i = 0; i < count; i++) out.push(buf.readUInt16LE(i * 2));
   return out;
@@ -20,6 +22,8 @@ export function decodeVertexStreams(hex, vertexCount) {
   const buf = Buffer.from(hex, 'hex');
   const STREAM0 = 12, STREAM1 = 16;
   const stream1Base = vertexCount * STREAM0;
+  const expected = vertexCount * STREAM0 + vertexCount * STREAM1;
+  if (buf.length < expected) throw new RangeError(`decodeVertexStreams: buffer too short (${buf.length}B) for ${vertexCount} verts (need ${expected}B)`);
   const positions = [];
   const uvs = [];
   for (let i = 0; i < vertexCount; i++) {
