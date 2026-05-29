@@ -17,8 +17,8 @@ export function applyCustomization(d: Dweller, patch: DwellerCustomization): Dwe
     const cur = (next.equipedOutfit as Record<string, unknown>) ?? {};
     next.equipedOutfit = { ...cur, id: patch.outfitId };
   }
-  if (patch.skinColor) next.skinColor = encodeArgb(patch.skinColor);
-  if (patch.hairColor) next.hairColor = encodeArgb(patch.hairColor);
-  if (patch.outfitColor) next.outfitColor = encodeArgb(patch.outfitColor);
+  if (patch.skinColor !== undefined) next.skinColor = encodeArgb(patch.skinColor);
+  if (patch.hairColor !== undefined) next.hairColor = encodeArgb(patch.hairColor);
+  if (patch.outfitColor !== undefined) next.outfitColor = encodeArgb(patch.outfitColor);
   return next as unknown as Dweller;
 }

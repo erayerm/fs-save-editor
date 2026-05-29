@@ -6,19 +6,19 @@ import { decodeArgb } from '../lib/colors';
 
 // Adapter: map a Dweller from the save JSON to the shape DwellerCanvas needs.
 function toRenderable(d: Dweller): RenderableDweller {
-  const any = d as unknown as Record<string, any>;
+  const raw = d as unknown as Record<string, any>;
   return {
     gender: d.gender,
-    hairName: typeof any.hair === 'string' ? any.hair : undefined,
+    hairName: typeof raw.hair === 'string' ? raw.hair : undefined,
     outfitName:
-      typeof any.equipedOutfit?.id === 'string' ? any.equipedOutfit.id : undefined,
+      typeof raw.equipedOutfit?.id === 'string' ? raw.equipedOutfit.id : undefined,
     happinessValue:
-      typeof any.happiness?.happinessValue === 'number'
-        ? any.happiness.happinessValue
+      typeof raw.happiness?.happinessValue === 'number'
+        ? raw.happiness.happinessValue
         : undefined,
-    skinColor: decodeArgb(any.skinColor),
-    hairColor: decodeArgb(any.hairColor),
-    outfitColor: decodeArgb(any.outfitColor),
+    skinColor: decodeArgb(raw.skinColor),
+    hairColor: decodeArgb(raw.hairColor),
+    outfitColor: decodeArgb(raw.outfitColor),
   };
 }
 
