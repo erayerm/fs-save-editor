@@ -26,11 +26,13 @@ export function decodeVertexStreams(hex, vertexCount) {
   if (buf.length < expected) throw new RangeError(`decodeVertexStreams: buffer too short (${buf.length}B) for ${vertexCount} verts (need ${expected}B)`);
   const positions = [];
   const uvs = [];
+  const uvs1 = [];
   for (let i = 0; i < vertexCount; i++) {
     const p = i * STREAM0;
     positions.push([buf.readFloatLE(p), buf.readFloatLE(p + 4)]);
     const u = stream1Base + i * STREAM1;
-    uvs.push([buf.readFloatLE(u), buf.readFloatLE(u + 4)]);
+    uvs.push([buf.readFloatLE(u), buf.readFloatLE(u + 4)]);        // UV0
+    uvs1.push([buf.readFloatLE(u + 8), buf.readFloatLE(u + 12)]); // UV1
   }
-  return { positions, uvs };
+  return { positions, uvs, uvs1 };
 }

@@ -35,8 +35,8 @@ function decodeMeshAsset(path) {
   const indexHex = text.match(/m_IndexBuffer:\s*([0-9a-f]+)/)[1];
   const vertHex = text.match(/_typelessdata:\s*([0-9a-f]+)/)[1];
   const indices = decodeIndexBuffer(indexHex, indexCount);
-  const { positions, uvs } = decodeVertexStreams(vertHex, vertexCount);
-  return { positions, uvs, indices };
+  const { positions, uvs, uvs1 } = decodeVertexStreams(vertHex, vertexCount);
+  return { positions, uvs, uvs1, indices };
 }
 
 const out = {};
