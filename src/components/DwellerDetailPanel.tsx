@@ -1,18 +1,8 @@
 import { useSaveStore } from '../store/saveStore';
 import { DwellerCanvas } from './DwellerCanvas';
-import type { RenderableDweller, Rgb } from '../lib/dwellerRender';
+import type { RenderableDweller } from '../lib/dwellerRender';
 import type { Dweller } from '../types/save';
-
-// Decode a 32-bit ARGB integer into 0..255 byte channels.
-function decodeArgb(n: unknown): Rgb | undefined {
-  if (typeof n !== 'number' || !Number.isFinite(n)) return undefined;
-  return {
-    r: (n >>> 16) & 0xff,
-    g: (n >>> 8) & 0xff,
-    b: n & 0xff,
-    a: (n >>> 24) & 0xff,
-  };
-}
+import { decodeArgb } from '../lib/colors';
 
 // Adapter: map a Dweller from the save JSON to the shape DwellerCanvas needs.
 function toRenderable(d: Dweller): RenderableDweller {
