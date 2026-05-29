@@ -45,6 +45,7 @@ export function DwellerCanvas({ dweller }: { dweller: RenderableDweller | null }
 
   useEffect(() => {
     if (!index || !dweller) return;
+    setError(null);  // clear stale error from previous dweller
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');

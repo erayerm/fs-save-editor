@@ -36,9 +36,9 @@ export interface RenderConfig {
 // Face is not stored; derive it from happiness (from DwellerFace.cs thresholds).
 export function faceNameForHappiness(happiness: number | undefined): string {
   const h = happiness ?? 100;
-  if (h < 50) return 'Sad';
-  if (h <= 75) return 'Neutral';
-  return 'Smile';
+  if (h < 50) return 'sad';
+  if (h <= 75) return 'neutral';
+  return 'smile';
 }
 
 export function buildDrawOps(
