@@ -14,22 +14,25 @@ async function drawDweller(
   ctx.clearRect(0, 0, W, H);
   for (const op of ops) {
     const img = await loadAtlas(op.atlas);
+    // Unity atlas Y is measured from the BOTTOM of the texture; canvas drawImage
+    // measures from the TOP. Flip the source Y before drawing.
+    const srcY = img.naturalHeight - op.src.y - op.src.h;
     if (!op.tint) {
-      ctx.drawImage(img, op.src.x, op.src.y, op.src.w, op.src.h,
+      ctx.drawImage(img, op.src.x, srcY, op.src.w, op.src.h,
                           op.dst.x, op.dst.y, op.dst.w, op.dst.h);
       continue;
     }
-    // Tint: draw to offscreen, fill with tint using source-in to keep alpha shape, then draw onto main canvas.
+    // Tint: draw to offscreen, fill with tint using multiply, restore alpha, then composite onto main canvas.
     const off = document.createElement('canvas');
     off.width = op.dst.w;
     off.height = op.dst.h;
     const offCtx = off.getContext('2d')!;
-    offCtx.drawImage(img, op.src.x, op.src.y, op.src.w, op.src.h, 0, 0, op.dst.w, op.dst.h);
+    offCtx.drawImage(img, op.src.x, srcY, op.src.w, op.src.h, 0, 0, op.dst.w, op.dst.h);
     offCtx.globalCompositeOperation = 'multiply';
     offCtx.fillStyle = `rgba(${op.tint.r}, ${op.tint.g}, ${op.tint.b}, ${op.tint.a})`;
     offCtx.fillRect(0, 0, op.dst.w, op.dst.h);
     offCtx.globalCompositeOperation = 'destination-in';
-    offCtx.drawImage(img, op.src.x, op.src.y, op.src.w, op.src.h, 0, 0, op.dst.w, op.dst.h);
+    offCtx.drawImage(img, op.src.x, srcY, op.src.w, op.src.h, 0, 0, op.dst.w, op.dst.h);
     ctx.drawImage(off, op.dst.x, op.dst.y);
   }
 }
