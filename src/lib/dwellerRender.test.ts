@@ -12,10 +12,14 @@ function mkIndex(): SpriteIndex {
     guid: 'hairguid', name: '21', atlas: 'a.png',
     bounds: { x: 100, y: 100, w: 119, h: 115 }, gender: 'male', flags: {},
   } as const;
+  const outfit = {
+    guid: 'outfitguid', name: 'jumpsuit', atlas: 'a.png',
+    bounds: { x: 200, y: 200, w: 140, h: 140 }, gender: 'male', flags: {},
+  } as const;
   return {
     version: 1,
     byType: {
-      body: [body], outfit: [], outfitColoringMask: [], face: [], faceMask: [],
+      body: [body], outfit: [outfit], outfitColoringMask: [], face: [], faceMask: [],
       hair: [hair], helmet: [], helmetMask: [], largeHeadgear: [], handPose: [], glovePose: [],
     },
   };
@@ -58,5 +62,16 @@ describe('buildDrawOps', () => {
       { canvasW: 256, canvasH: 256 },
     );
     expect(ops[0].tint).toEqual({ r: 255, g: 128, b: 0, a: 1 });
+  });
+
+  it('applies outfitColor as tint to outfit layer', () => {
+    const idx = mkIndex();
+    const ops = buildDrawOps(
+      { gender: 2, outfitName: 'jumpsuit', outfitColor: { r: 100, g: 150, b: 200 } },
+      idx,
+      { canvasW: 256, canvasH: 256 },
+    );
+    const outfitOp = ops.find((o) => o.src.x === 200);
+    expect(outfitOp?.tint).toEqual({ r: 100, g: 150, b: 200, a: 1 });
   });
 });

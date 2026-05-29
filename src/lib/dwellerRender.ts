@@ -80,7 +80,8 @@ export function buildDrawOps(
   }
   // 2. Outfit
   if (outfit) {
-    ops.push({ atlas: outfit.atlas, src: srcFor(outfit), dst: dstFor(outfit) });
+    ops.push({ atlas: outfit.atlas, src: srcFor(outfit), dst: dstFor(outfit),
+      tint: colorToTint(dweller.outfitColor) });
   }
   // 3. Face (derived from happiness)
   const face = pieceByName(idx, 'face', faceNameForHappiness(dweller.happinessValue), gender);
