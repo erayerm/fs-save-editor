@@ -42,6 +42,16 @@ describe('buildLayers', () => {
     expect(hair.tint).toEqual({ r: 10, g: 20, b: 30, a: 1 });
   });
 
+  it('applies face uvOffset from gender offsets', () => {
+    const layers = buildLayers(
+      { gender: 2, happinessValue: 60 },
+      idx,
+      { hand: [0, -0.126], face: [-0.004, -0.005] },
+    );
+    const face = layers.find((l) => l.slot === 'face')!;
+    expect(face.uvOffset).toEqual([-0.004, -0.005]);
+  });
+
   it('omits hair when bald', () => {
     const baldIdx = { ...idx, byType: { ...idx.byType, hair: [piece({ name: 'bald', gender: 'male', flags: { isBald: true } })] } };
     const layers = buildLayers({ gender: 2, hairName: 'bald' }, baldIdx);

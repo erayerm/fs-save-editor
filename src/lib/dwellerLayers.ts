@@ -16,12 +16,17 @@ export interface RenderLayer {
 const toTint = (c?: Rgb): (Rgb & { a: number }) | undefined =>
   c ? { r: c.r, g: c.g, b: c.b, a: c.a == null ? 1 : c.a / 255 } : undefined;
 
+export interface GenderOffsets {
+  hand: [number, number];
+  face: [number, number];
+}
+
 /**
  * Build ordered render layers (back-to-front). Each layer maps the gender mesh's
  * UVs into its atlas region; the WebGL renderer converts pixel bounds -> UV using
  * the loaded texture size and applies uvOffset (gender hand/face offset).
  */
-export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex): RenderLayer[] {
+export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offsets?: GenderOffsets): RenderLayer[] {
   const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
   const layers: RenderLayer[] = [];
 
@@ -33,7 +38,7 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex): Rende
   if (outfit) layers.push({ slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(dweller.outfitColor) });
 
   const face = pieceByName(idx, 'face', faceNameForHappiness(dweller.happinessValue), gender);
-  if (face) layers.push({ slot: 'face', atlas: face.atlas, bounds: face.bounds, tint: toTint(dweller.skinColor) });
+  if (face) layers.push({ slot: 'face', atlas: face.atlas, bounds: face.bounds, tint: toTint(dweller.skinColor), uvOffset: offsets?.face });
 
   const hair = dweller.hairName ? pieceByName(idx, 'hair', dweller.hairName, gender) : null;
   if (hair && !hair.flags.isBald) {
