@@ -13,8 +13,10 @@ export async function loadSpriteIndex(): Promise<SpriteIndex> {
     })
     .then((idx) => {
       cached = idx;
-      pending = null;
       return idx;
+    })
+    .finally(() => {
+      pending = null;
     });
   return pending;
 }
@@ -48,6 +50,7 @@ export function piecesOfType(
   filter?: { gender?: 'male' | 'female'; defaultOnly?: boolean },
 ): PieceRef[] {
   let list = idx.byType[type];
+  if (!list) return [];
   if (filter?.gender) list = list.filter((p) => p.gender === filter.gender || p.gender === 'any');
   if (filter?.defaultOnly) list = list.filter((p) => p.flags.isUsedByDefault !== false);
   return list;
