@@ -1,7 +1,7 @@
 import { useSaveStore } from '../store/saveStore';
 import { DwellerCanvas } from './DwellerCanvas';
 import { DwellerControls } from './DwellerControls';
-import type { RenderableDweller } from '../lib/dwellerRender';
+import { isChildDweller, type RenderableDweller } from '../lib/dwellerRender';
 import type { Dweller } from '../types/save';
 import { decodeArgb } from '../lib/colors';
 
@@ -10,6 +10,7 @@ function toRenderable(d: Dweller): RenderableDweller {
   const raw = d as unknown as Record<string, any>;
   return {
     gender: d.gender,
+    isChild: isChildDweller(raw),
     hairName: typeof raw.hair === 'string' ? raw.hair : undefined,
     outfitName:
       typeof raw.equipedOutfit?.id === 'string' ? raw.equipedOutfit.id : undefined,
