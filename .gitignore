@@ -7,3 +7,4 @@ TEMPORARY-*
 tests/fixtures/*.sav
 tests/fixtures/*.json
 .DS_Store
+.superpowers/
