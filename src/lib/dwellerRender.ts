@@ -1,14 +1,3 @@
-import type { SpriteIndex, PieceRef } from '../types/pieces';
-import { pieceByName } from './spriteIndex';
-
-export interface DrawOp {
-  atlas: string;
-  src: { x: number; y: number; w: number; h: number };
-  dst: { x: number; y: number; w: number; h: number };
-  tint?: { r: number; g: number; b: number; a: number }; // rgb 0..255, a in 0..1
-  composite?: GlobalCompositeOperation;                   // default 'source-over'
-}
-
 // Colors come pre-decoded from ARGB ints into 0..255 byte channels (see adapter in Task 7).
 export interface Rgb {
   r: number; // 0..255
@@ -29,11 +18,6 @@ export interface RenderableDweller {
   outfitColor?: Rgb;
 }
 
-export interface RenderConfig {
-  canvasW: number;
-  canvasH: number;
-}
-
 // Children (experience.currentLevel === 0) are not customizable in-game; we leave
 // their appearance untouched and disable editing for them.
 export function isChildDweller(raw: { experience?: { currentLevel?: number } }): boolean {
@@ -46,89 +30,4 @@ export function faceNameForHappiness(happiness: number | undefined): string {
   if (h < 50) return 'sad';
   if (h <= 75) return 'neutral';
   return 'smile';
-}
-
-const BODY_REF_W = 512;
-
-const POSITIONING = {
-  bodyFillFrac: 0.62,
-  bodyBottomMargin: 8,
-  bodyDx: 0,
-  headCenterYFrac: 0.30,
-  headDx: 0,
-  headDy: 0,
-};
-
-export function buildDrawOps(
-  dweller: RenderableDweller,
-  idx: SpriteIndex,
-  cfg: RenderConfig,
-): DrawOp[] {
-  const ops: DrawOp[] = [];
-  const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
-
-  // Outfit (referenced by name).
-  const outfit = dweller.outfitName
-    ? pieceByName(idx, 'outfit', dweller.outfitName, gender)
-    : null;
-
-  // Body is not stored: default by gender + outfit skirt flag.
-  const wantBody = outfit?.flags.hasSkirt && gender === 'female' ? 'skirt_body' : 'base_body';
-  const body =
-    pieceByName(idx, 'body', wantBody, gender) ??
-    pieceByName(idx, 'body', 'base_body', gender);
-
-  const scale = (cfg.canvasW * POSITIONING.bodyFillFrac) / BODY_REF_W;
-
-  function bodyDst(p: PieceRef): DrawOp['dst'] {
-    const w = p.bounds.w * scale;
-    const h = p.bounds.h * scale;
-    return {
-      x: (cfg.canvasW - w) / 2 + POSITIONING.bodyDx,
-      y: cfg.canvasH - h - POSITIONING.bodyBottomMargin,
-      w,
-      h,
-    };
-  }
-
-  function headDst(p: PieceRef): DrawOp['dst'] {
-    const w = p.bounds.w * scale;
-    const h = p.bounds.h * scale;
-    const cx = cfg.canvasW / 2 + POSITIONING.headDx;
-    const cy = cfg.canvasH * POSITIONING.headCenterYFrac + POSITIONING.headDy;
-    return { x: cx - w / 2, y: cy - h / 2, w, h };
-  }
-
-  function srcFor(p: PieceRef): DrawOp['src'] {
-    return { x: p.bounds.x, y: p.bounds.y, w: p.bounds.w, h: p.bounds.h };
-  }
-  // Colors are already 0..255 ARGB-decoded bytes; alpha (0..255) → 0..1 for canvas.
-  const colorToTint = (c?: Rgb) =>
-    c ? { r: c.r, g: c.g, b: c.b, a: c.a == null ? 1 : c.a / 255 } : undefined;
-
-  // 1. Body (tinted by skinColor via multiply)
-  if (body) {
-    ops.push({
-      atlas: body.atlas, src: srcFor(body), dst: bodyDst(body),
-      tint: colorToTint(dweller.skinColor),
-    });
-  }
-  // 2. Outfit
-  if (outfit) {
-    ops.push({ atlas: outfit.atlas, src: srcFor(outfit), dst: bodyDst(outfit),
-      tint: colorToTint(dweller.outfitColor) });
-  }
-  // 3. Face (derived from happiness)
-  const face = pieceByName(idx, 'face', faceNameForHappiness(dweller.happinessValue), gender);
-  if (face) ops.push({ atlas: face.atlas, src: srcFor(face), dst: headDst(face) });
-  // 4. Hair (tinted by hairColor)
-  const hair = dweller.hairName ? pieceByName(idx, 'hair', dweller.hairName, gender) : null;
-  if (hair && !hair.flags.isBald) {
-    ops.push({
-      atlas: hair.atlas, src: srcFor(hair), dst: headDst(hair),
-      tint: colorToTint(dweller.hairColor),
-    });
-  }
-
-  return ops;
 }
