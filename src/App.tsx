@@ -1,5 +1,6 @@
 import { FileBar } from './components/FileBar';
 import { DwellerList } from './components/DwellerList';
+import { DwellerDetailPanel } from './components/DwellerDetailPanel';
 
 export default function App() {
   return (
@@ -8,8 +9,8 @@ export default function App() {
       <FileBar />
       <div className="grid grid-cols-[300px_1fr] gap-4">
         <DwellerList />
-        <div className="border border-zinc-700 rounded p-4 text-zinc-400">
-          Select a dweller to see details. (Editor coming in next plan.)
+        <div className="border border-zinc-700 rounded p-4">
+          <DwellerDetailPanel />
         </div>
       </div>
     </div>

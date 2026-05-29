@@ -28,7 +28,7 @@ export function DwellerList() {
               {d.name} {d.lastName}
             </div>
             <div className="text-xs text-zinc-400">
-              Lv {level} · {d.gender === 1 ? 'M' : 'F'} · #{d.serializeId}
+              Lv {level} · {d.gender === 2 ? 'M' : 'F'} · #{d.serializeId}
             </div>
           </button>
         );
