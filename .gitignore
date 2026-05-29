@@ -1,0 +1,9 @@
+node_modules
+dist
+.vite
+*.local
+.env*
+TEMPORARY-*
+tests/fixtures/*.sav
+tests/fixtures/*.json
+.DS_Store
