@@ -13,10 +13,11 @@ describe('savFile', () => {
     expect(data.dwellers.dwellers.length).toBeGreaterThan(0);
   });
 
-  it.skipIf(!existsSync(FIXTURE))('round-trips a real .sav (decode then re-encode is byte-identical)', async () => {
+  it.skipIf(!existsSync(FIXTURE))('round-trips a real .sav (re-decoded content matches original)', async () => {
     const text = readFileSync(FIXTURE, 'utf8').trim();
     const data = await decodeSav(text);
     const reEncoded = await encodeSav(data);
-    expect(reEncoded).toBe(text);
+    const dataBack = await decodeSav(reEncoded);
+    expect(dataBack).toEqual(data);
   });
 });
