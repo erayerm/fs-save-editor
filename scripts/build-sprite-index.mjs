@@ -146,8 +146,12 @@ for (const t of Object.keys(byType)) {
 }
 
 // Copy only referenced atlas PNGs.
+const filenameToEntry = new Map();
+for (const entry of atlasGuidToFile.values()) filenameToEntry.set(entry.filename, entry);
+
 for (const filename of referencedAtlases) {
-  const entry = [...atlasGuidToFile.values()].find((v) => v.filename === filename);
+  const entry = filenameToEntry.get(filename);
+  if (!entry) { console.warn(`Atlas ${filename} referenced but not found — skipping`); continue; }
   copyFileSync(entry.srcPath, join(OUT_DIR, filename));
 }
 
