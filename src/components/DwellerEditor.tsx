@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { DwellerCanvas } from './DwellerCanvas';
 import { EditorTabBar, type EditorTab } from './editor/EditorTabBar';
 import { HairTab } from './editor/HairTab';
+import { FacialHairTab } from './editor/FacialHairTab';
 import { OutfitTab } from './editor/OutfitTab';
 import { ColorPalette } from './editor/ColorPalette';
 import { loadSpriteIndex } from '../lib/spriteIndex';
@@ -10,11 +11,6 @@ import type { SpriteIndex } from '../types/pieces';
 import type { RenderableDweller } from '../lib/dwellerRender';
 import type { DwellerCustomization } from '../lib/dwellerEdit';
 import { SKIN_PRESETS } from '../lib/colorPresets';
-
-const TABS: EditorTab[] = [
-  { id: 'hair', label: 'Hair' },
-  { id: 'outfit', label: 'Outfit' },
-];
 
 export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
   const [active, setActive] = useState('hair');
@@ -37,6 +33,14 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
     );
   }
 
+  // Facial hair is male-only (and never for children, who are excluded above).
+  const isMale = dweller.gender === 2;
+  const tabs: EditorTab[] = [
+    { id: 'hair', label: 'Hair' },
+    ...(isMale ? [{ id: 'facialHair', label: 'Facial Hair' }] : []),
+    { id: 'outfit', label: 'Outfit' },
+  ];
+
   return (
     <div className="flex gap-6">
       {/* Left: portrait + skin color always visible */}
@@ -52,10 +56,11 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
 
       {/* Right: tab switcher + tab content */}
       <div className="flex gap-4 flex-1 min-w-0">
-        <EditorTabBar tabs={TABS} active={active} onSelect={setActive} />
+        <EditorTabBar tabs={tabs} active={active} onSelect={setActive} />
         <div className="flex-1 min-w-0">
           {error && <div className="text-red-400 text-sm">Could not load pieces: {error}</div>}
           {index && active === 'hair' && <HairTab index={index} dweller={dweller} onChange={onChange} />}
+          {index && active === 'facialHair' && isMale && <FacialHairTab index={index} dweller={dweller} onChange={onChange} />}
           {index && active === 'outfit' && <OutfitTab index={index} dweller={dweller} onChange={onChange} />}
         </div>
       </div>

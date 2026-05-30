@@ -1,9 +1,9 @@
 import type { SpriteIndex, AtlasRect } from '../types/pieces';
 import type { MeshGeometry } from '../types/mesh';
-import { pieceByName, pieceByGuid } from './spriteIndex';
+import { pieceByName, pieceByGuid, isFacialHairPiece } from './spriteIndex';
 import { faceNameForHappiness, type RenderableDweller, type Rgb } from './dwellerRender';
 
-export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair' | 'helmet' | 'hand' | 'headgear';
+export type LayerSlot = 'body' | 'outfit' | 'face' | 'faceMask' | 'hair' | 'helmet' | 'hand' | 'headgear';
 
 /**
  * Port of DwellerOutfit.ValidateColor: snap a desired RGB (0..255) to the
@@ -189,6 +189,20 @@ export function buildLayers(
     // head region maps onto the (packed) sprite, then bias by the gender face offset.
     layers.push({
       slot: 'face', atlas: face.atlas, bounds: face.bounds, tint: toTint(dweller.skinColor),
+      uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
+    });
+  }
+
+  // Facial hair (beard/mustache) — male-only head overlay. Same UV transform as the
+  // face layer (bodyScale + faceOffset). These pieces use hair color (m_useHairColor),
+  // so tint with hairColor, mirroring the hair layer. Drawn over the face, under hair.
+  const faceMask = (gender === 'male' && dweller.facialHair && isFacialHairPiece(dweller.facialHair))
+    ? pieceByName(idx, 'faceMask', dweller.facialHair, gender)
+    : null;
+  if (faceMask) {
+    const o = ownOffset(faceMask.bounds);
+    layers.push({
+      slot: 'faceMask', atlas: faceMask.atlas, bounds: faceMask.bounds, tint: toTint(dweller.hairColor),
       uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
     });
   }

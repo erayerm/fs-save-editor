@@ -11,6 +11,7 @@ export interface RenderableDweller {
   gender: number;            // 1 = female, 2 = male
   isChild?: boolean;         // experience.currentLevel === 0 — not customizable
   hairName?: string;         // d.hair  (e.g. "21", "hair_CooperHoward")
+  facialHair?: string;       // d.faceMask  (male beard/mustache piece name, e.g. "f_hair_11")
   outfitName?: string;       // d.equipedOutfit.id  (e.g. "jumpsuit")
   happinessValue?: number;   // 0..100 — face is derived from this
   skinColor?: Rgb;

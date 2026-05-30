@@ -54,6 +54,25 @@ export function pieceByGuid(
   return list.find((p) => p.guid === guid) ?? null;
 }
 
+// Male facial-hair (beard/mustache) pieces live in the `faceMask` type alongside
+// decorations like glasses, makeup, scars and masks. The game distinguishes beards
+// via DwellerFaceMask.m_useHairColor (the catalog's m_beards array), which the sprite
+// index doesn't carry, so we identify them by name pattern instead:
+//   - "f_hair_NN" : the generic male facial-hair set (save sample uses "f_hair_11")
+//   - any name containing "beard" or "mustache"
+// These are the hair-colored pieces shown in the male facial-hair customization UI.
+export function isFacialHairPiece(name: string): boolean {
+  const n = name.toLowerCase();
+  return /^f_hair_\d+$/.test(name) || n.includes('beard') || n.includes('mustache');
+}
+
+// Male facial-hair faceMask pieces (see isFacialHairPiece).
+export function facialHairPieces(idx: SpriteIndex): PieceRef[] {
+  const list = idx.byType.faceMask;
+  if (!list) return [];
+  return list.filter((p) => (p.gender === 'male' || p.gender === 'any') && isFacialHairPiece(p.name));
+}
+
 export function piecesOfType(
   idx: SpriteIndex,
   type: PieceType,

@@ -10,6 +10,7 @@ function toRenderable(d: Dweller): RenderableDweller {
     gender: d.gender,
     isChild: isChildDweller(raw as { experience?: { currentLevel?: number } }),
     hairName: typeof raw.hair === 'string' ? raw.hair : undefined,
+    facialHair: typeof raw.faceMask === 'string' ? raw.faceMask : undefined,
     outfitName: typeof raw.equipedOutfit?.id === 'string' ? raw.equipedOutfit.id : undefined,
     happinessValue: typeof raw.happiness?.happinessValue === 'number' ? raw.happiness.happinessValue : undefined,
     skinColor: decodeArgb(raw.skinColor),
