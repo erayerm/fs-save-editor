@@ -8,6 +8,7 @@ import {
 import { join, basename } from 'node:path';
 import { parseHeadgearPlacement } from './lib/parseHeadgear.mjs';
 import { decodeIndexBuffer, decodeVertexStreams } from './lib/decodeMesh.mjs';
+import { WEAPON_DATA } from './lib/weaponData.mjs';
 
 const ROOT = 'TEMPORARY-game-files/export-3/ExportedProject/Assets';
 const SCRIPTS_DIR = join(ROOT, 'Scripts/Assembly-CSharp');
@@ -290,6 +291,18 @@ for (const filename of referencedAtlases) {
 
 const index = { version: 1, byType };
 writeFileSync(join(OUT_DIR, 'index.json'), JSON.stringify(index, null, 2));
+
+// Emit weapons.json from curated WEAPON_DATA table.
+const weaponsOutput = {
+  version: 1,
+  weapons: Object.fromEntries(
+    Object.entries(WEAPON_DATA).map(([id, { name, damageMin, damageMax }]) => [
+      id,
+      { name, damageMin, damageMax, icon: '' },
+    ])
+  ),
+};
+writeFileSync(join(OUT_DIR, 'weapons.json'), JSON.stringify(weaponsOutput, null, 2));
 
 console.log(
   `Wrote ${OUT_DIR}/index.json` +
