@@ -10,6 +10,8 @@ interface SaveState {
   selectDweller: (id: number | null) => void;
   getSelectedDweller: () => Dweller | null;
   updateSelectedDweller: (patch: DwellerCustomization) => void;
+  updateSelectedDwellerRaw: (fn: (d: Dweller) => Dweller) => void;
+  setVault: (fn: (s: SaveJson) => SaveJson) => void;
   clear: () => void;
 }
 
@@ -32,5 +34,14 @@ export const useSaveStore = create<SaveState>((set, get) => ({
     );
     return { save: { ...save, dwellers: { ...save.dwellers, dwellers } } };
   }),
+  updateSelectedDwellerRaw: (fn) => set((state) => {
+    const { save, selectedDwellerId } = state;
+    if (!save || selectedDwellerId === null) return {};
+    const dwellers = save.dwellers.dwellers.map((d) =>
+      d.serializeId === selectedDwellerId ? fn(d) : d,
+    );
+    return { save: { ...save, dwellers: { ...save.dwellers, dwellers } } };
+  }),
+  setVault: (fn) => set((state) => (state.save ? { save: fn(state.save) } : {})),
   clear: () => set({ save: null, selectedDwellerId: null, fileName: null }),
 }));
