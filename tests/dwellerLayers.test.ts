@@ -28,7 +28,7 @@ describe('buildLayers', () => {
       { gender: 2, outfitName: 'jumpsuit', hairName: '16', happinessValue: 60 },
       idx,
     );
-    expect(layers.map((l: RenderLayer) => l.slot)).toEqual(['body', 'outfit', 'face', 'hair']);
+    expect(layers.map((l: RenderLayer) => l.slot)).toEqual(["body", "outfit", "body", "face", "hair"]);
   });
 
   it('applies skin tint to body and hair tint to hair', () => {

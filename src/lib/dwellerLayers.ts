@@ -65,7 +65,17 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offset
     });
   }
 
+  // Re-render the head skin AFTER the outfit so it sits above the collar.
+  // bounds is set to the face piece's rect (populated below) so triangle masking
+  // confines this draw to the same head quad as face/hair. UV transform stays as
+  // the body's own scale/offset → samples the correct skin from the body atlas.
   const face = pieceByName(idx, 'face', faceNameForHappiness(dweller.happinessValue), gender);
+  if (body && face) {
+    layers.push({
+      slot: 'body', atlas: body.atlas, bounds: face.bounds, tint: toTint(dweller.skinColor),
+      uvScale: ownScale(body.bounds), uvOffset: ownOffset(body.bounds),
+    });
+  }
   if (face) {
     const o = ownOffset(face.bounds);
     // Face, like hair, is a head overlay: reuse the body's reference scale so the
