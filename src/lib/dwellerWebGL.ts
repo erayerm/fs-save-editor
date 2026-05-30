@@ -219,6 +219,9 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
         gl.bufferData(gl.ARRAY_BUFFER, uvs, gl.STATIC_DRAW);
         gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
+        // Note: idxBuf is NOT restored here because every regular-layer draw call
+        // re-uploads its own index data via gl.bufferData before gl.drawElements.
+        // If a future refactor reads idxBuf without re-uploading, restore it here too.
       }
     },
     dispose() {
