@@ -3,23 +3,27 @@ import { DwellerCanvas } from './DwellerCanvas';
 import { EditorTabBar, type EditorTab } from './editor/EditorTabBar';
 import { HairTab } from './editor/HairTab';
 import { OutfitTab } from './editor/OutfitTab';
+import { ColorPalette } from './editor/ColorPalette';
 import { loadSpriteIndex } from '../lib/spriteIndex';
 import { useSaveStore } from '../store/saveStore';
 import type { SpriteIndex } from '../types/pieces';
-import type { RenderableDweller } from '../lib/dwellerRender';
+import type { RenderableDweller, Rgb } from '../lib/dwellerRender';
 import type { DwellerCustomization } from '../lib/dwellerEdit';
 
 const TABS: EditorTab[] = [
   { id: 'hair', label: 'Hair' },
   { id: 'outfit', label: 'Outfit' },
-  // Future: { id: 'stats', label: 'Stats' },
+];
+
+const SKIN_COLORS: Rgb[] = [
+  { r: 255, g: 224, b: 196 }, { r: 240, g: 200, b: 160 }, { r: 200, g: 150, b: 110 },
+  { r: 150, g: 100, b: 70 }, { r: 100, g: 65, b: 45 }, { r: 70, g: 45, b: 30 },
 ];
 
 export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
   const [active, setActive] = useState('hair');
   const [index, setIndex] = useState<SpriteIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [unknownOutfit, setUnknownOutfit] = useState<string | undefined>(undefined);
   const update = useSaveStore((s) => s.updateSelectedDweller);
 
   useEffect(() => { loadSpriteIndex().then(setIndex).catch((e) => setError(e.message)); }, []);
@@ -29,7 +33,7 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
   if (dweller.isChild) {
     return (
       <div className="flex gap-6">
-        <DwellerCanvas dweller={dweller} size={360} onUnknownOutfit={setUnknownOutfit} />
+        <DwellerCanvas dweller={dweller} size={360} />
         <div className="text-zinc-400 italic self-center">
           Child dwellers cannot be customized.
         </div>
@@ -39,14 +43,18 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
 
   return (
     <div className="flex gap-6">
-      <div className="flex-shrink-0">
-        <DwellerCanvas dweller={dweller} size={360} onUnknownOutfit={setUnknownOutfit} />
-        {unknownOutfit && (
-          <p className="text-xs text-amber-600 mt-1">
-            Bu karakterin kıyafeti ("{unknownOutfit}") veritabanımızda yok; önizlemede jumpsuit gösteriliyor. Kayıt dosyası değiştirilmedi.
-          </p>
-        )}
+      {/* Left: portrait + skin color always visible */}
+      <div className="flex-shrink-0 space-y-3">
+        <DwellerCanvas dweller={dweller} size={300} />
+        <ColorPalette
+          label="Skin color"
+          value={dweller.skinColor ?? { r: 255, g: 224, b: 196 }}
+          swatches={SKIN_COLORS}
+          onChange={(c) => onChange({ skinColor: c })}
+        />
       </div>
+
+      {/* Right: tab switcher + tab content */}
       <div className="flex gap-4 flex-1 min-w-0">
         <EditorTabBar tabs={TABS} active={active} onSelect={setActive} />
         <div className="flex-1 min-w-0">

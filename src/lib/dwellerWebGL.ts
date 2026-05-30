@@ -27,8 +27,14 @@ export interface RendererLayerInput extends RenderLayer {
   image: HTMLImageElement;
 }
 
+export interface ModelBounds {
+  minX: number; maxX: number;
+  minY: number; maxY: number;
+}
+
 export interface DwellerRenderer {
-  draw(mesh: MeshGeometry, layers: RendererLayerInput[]): void;
+  /** @param bounds Override which region of model space fills the viewport. */
+  draw(mesh: MeshGeometry, layers: RendererLayerInput[], bounds?: ModelBounds): void;
   dispose(): void;
 }
 
@@ -57,6 +63,35 @@ function filterTriangles(
     }
   }
   return out;
+}
+
+// Bone groups for z-ordering.
+// Character faces viewer: R_Arm (bones 6,7,8) is on screen-left → behind chest.
+// L_Arm (bones 3,4,5) is on screen-right → in front of chest.
+const L_ARM_BONES = new Set([3, 4, 5]); // screen-right → front
+const R_ARM_BONES = new Set([6, 7, 8]); // screen-left → back
+
+// Split a filtered index list into back (L_Arm), body, and front (R_Arm) groups.
+// A triangle belongs to a group only if ALL 3 vertices share that bone group.
+function splitByBoneGroup(
+  idx: number[], boneIndices: number[] | undefined,
+): { back: number[]; body: number[]; front: number[] } {
+  if (!boneIndices || boneIndices.length === 0) {
+    return { back: [], body: idx, front: [] };
+  }
+  const back: number[] = [], body: number[] = [], front: number[] = [];
+  for (let i = 0; i + 2 < idx.length; i += 3) {
+    const a = idx[i], b = idx[i + 1], c = idx[i + 2];
+    const ba = boneIndices[a], bb = boneIndices[b], bc = boneIndices[c];
+    if (L_ARM_BONES.has(ba) && L_ARM_BONES.has(bb) && L_ARM_BONES.has(bc)) {
+      back.push(a, b, c);
+    } else if (R_ARM_BONES.has(ba) && R_ARM_BONES.has(bb) && R_ARM_BONES.has(bc)) {
+      front.push(a, b, c);
+    } else {
+      body.push(a, b, c);
+    }
+  }
+  return { back, body, front };
 }
 
 function compile(gl: WebGLRenderingContext, type: number, src: string): WebGLShader {
@@ -111,22 +146,24 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
     return t;
   }
 
-  // Model space: fill viewport with margin. Calibrated in Task 14.
-  const MODEL = { minX: -1.0, maxX: 1.0, minY: -0.1, maxY: 2.0 };
-  function viewUniform(): [number, number, number, number] {
-    const w = MODEL.maxX - MODEL.minX, h = MODEL.maxY - MODEL.minY;
-    const cx = (MODEL.minX + MODEL.maxX) / 2, cy = (MODEL.minY + MODEL.maxY) / 2;
+  // Default model space bounds. Calibrated in Task 14.
+  const DEFAULT_BOUNDS: ModelBounds = { minX: -1.0, maxX: 1.0, minY: -0.1, maxY: 2.0 };
+  function viewUniform(b: ModelBounds): [number, number, number, number] {
+    const w = b.maxX - b.minX, h = b.maxY - b.minY;
+    const cx = (b.minX + b.maxX) / 2, cy = (b.minY + b.maxY) / 2;
     const margin = 0.9;
     return [(2 / w) * margin, (2 / h) * margin, (-2 * cx / w) * margin, (-2 * cy / h) * margin];
   }
 
   return {
-    draw(mesh, layers) {
+    draw(mesh, layers, bounds) {
+      const b = bounds ?? DEFAULT_BOUNDS;
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
-      const positions = new Float32Array(mesh.positions.flat());
+      // posedPositions: pre-baked posed skeleton positions (T-pose fix).
+      const positions = new Float32Array((mesh.posedPositions ?? mesh.positions).flat());
       const uvs = new Float32Array(mesh.uvs.flat());
 
       gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
@@ -139,7 +176,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
       gl.enableVertexAttribArray(aUv);
       gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
 
-      gl.uniform4fv(uView, viewUniform());
+      gl.uniform4fv(uView, viewUniform(b));
 
       // Separate mesh-override layers (e.g. largeHeadgear hat quad) from regular layers.
       const overrideLayers: RendererLayerInput[] = [];
@@ -149,42 +186,56 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         else regularLayers.push(layer);
       }
 
+      // 3-pass painter's algorithm: collect all regular layers' split index groups,
+      // then draw back (R_Arm) for all layers, then body for all, then front (L_Arm).
+      type LayerPass = {
+        img: HTMLImageElement; sx: number; sy: number; ox: number; oy: number;
+        t: { r: number; g: number; b: number; a: number };
+        back: number[]; body: number[]; front: number[];
+      };
+      const passes: LayerPass[] = [];
+
       for (const layer of regularLayers) {
-        const img = layer.image;
         const [sx, sy] = layer.uvScale;
         const [ox, oy] = layer.uvOffset;
-        // Texture transform precomputed per Dressup.UpdateTexture (see dwellerLayers).
-        gl.uniform4f(uUvXform, sx, sy, ox, oy);
-
-        // The whole mesh shares one UV set, so every texture would otherwise smear
-        // across the body. The game confines each texture with shader masks; we instead
-        // draw only the triangles whose sampled UV lands inside this piece's sprite rect.
-        // Body/outfit map uv0->their full sprite, so all triangles pass; face/hair are
-        // confined to the head region. If triMask is set, use its transform for
-        // triangle selection (e.g. head-skin layer masks by face-layer UV, not body UV).
         const m = layer.triMask;
         const rect = spriteRect(m ? m.bounds : layer.bounds);
         const [msx, msy] = m ? m.uvScale : [sx, sy];
         const [mox, moy] = m ? m.uvOffset : [ox, oy];
         const idx = filterTriangles(mesh, msx, msy, mox, moy, rect);
         if (idx.length === 0) continue;
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
-        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
-
+        const { back, body, front } = splitByBoneGroup(idx, mesh.boneIndices);
         const t = layer.tint ?? { r: 255, g: 255, b: 255, a: 1 };
-        gl.uniform4f(uTint, t.r / 255, t.g / 255, t.b / 255, t.a);
-
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, texFor(img));
-        gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+        passes.push({ img: layer.image, sx, sy, ox, oy, t, back, body, front });
       }
 
+      function drawPass(group: 'back' | 'body' | 'front') {
+        for (const p of passes) {
+          const idx = p[group];
+          if (idx.length === 0) continue;
+          gl.uniform4f(uUvXform, p.sx, p.sy, p.ox, p.oy);
+          gl.uniform4f(uTint, p.t.r / 255, p.t.g / 255, p.t.b / 255, p.t.a);
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, texFor(p.img));
+          gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
+          gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
+          gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+        }
+      }
+
+      // Character faces the viewer: their L_Arm appears on screen-right (front),
+      // their R_Arm appears on screen-left (back/behind chest).
+      drawPass('front');  // R_Arm group — draw first (behind)
+      drawPass('body');
+      drawPass('back');   // L_Arm group — draw last (in front)
+
       // Draw mesh-override layers on top (painter's order, after all regular layers).
+      // Used for largeHeadgear (bishop mitre etc.) which have their own hat mesh.
       for (const ol of overrideLayers) {
         const m = ol.meshOverride!;
         const sub = ol.meshSubmesh;
 
-        // Upload this override mesh's positions.
+        // Upload this override mesh's positions (posed if available).
         gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array((m.posedPositions ?? m.positions).flat()), gl.STATIC_DRAW);
         gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
@@ -211,7 +262,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         gl.drawElements(gl.TRIANGLES, allIdx.length, gl.UNSIGNED_SHORT, 0);
       }
 
-      // Restore shared body mesh buffers for any subsequent draw() calls.
+      // Restore shared body mesh buffers if override drew over them.
       if (overrideLayers.length > 0) {
         gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
         gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
@@ -219,9 +270,6 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
         gl.bufferData(gl.ARRAY_BUFFER, uvs, gl.STATIC_DRAW);
         gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
-        // Note: idxBuf is NOT restored here because every regular-layer draw call
-        // re-uploads its own index data via gl.bufferData before gl.drawElements.
-        // If a future refactor reads idxBuf without re-uploading, restore it here too.
       }
     },
     dispose() {

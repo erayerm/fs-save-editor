@@ -3,6 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { HairTab } from '../src/components/editor/HairTab';
 import type { SpriteIndex } from '../src/types/pieces';
 
+vi.mock('../src/lib/meshLoader', () => ({
+  loadMeshSet: () => new Promise(() => {}), // never resolves — thumbnails stay empty
+  _resetMeshCache: vi.fn(),
+}));
+
 const idx: SpriteIndex = {
   version: 1,
   byType: {
@@ -25,8 +30,8 @@ describe('HairTab', () => {
         onChange={onChange}
       />,
     );
-    expect(screen.queryByText('21')).toBeNull(); // female hair hidden for male
-    fireEvent.click(screen.getByText('16'));
+    expect(screen.queryByTitle('21')).toBeNull(); // female hair hidden for male
+    fireEvent.click(screen.getByTitle('16'));
     expect(onChange).toHaveBeenCalledWith({ hair: '16' });
   });
 });

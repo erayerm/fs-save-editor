@@ -4,9 +4,11 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { decodeIndexBuffer, decodeVertexStreams } from './lib/decodeMesh.mjs';
+import { parseBindPose, parseIdleRotations, applySkinning } from './lib/applySkinning.mjs';
 
 const ROOT = 'TEMPORARY-game-files/export-3/ExportedProject/Assets';
 const MESH_DIR = join(ROOT, 'Mesh');
+const ANIM_DIR = join(ROOT, 'AnimationClip');
 const OUT_DIR = 'public/atlas';
 mkdirSync(OUT_DIR, { recursive: true });
 
@@ -18,6 +20,12 @@ const GENDER_MESH_GUID = {
 const GENDER_OFFSETS = {
   male:   { hand: [0, -0.126],          face: [-0.004, -0.005] },
   female: { hand: [-0.1056719, -0.1547891], face: [-0.0025, -0.005] },
+};
+
+// Idle animation files for each gender (adult only; children share same mesh skeleton).
+const IDLE_ANIM = {
+  male:   join(ANIM_DIR, 'ANI_Dweller_Man_Idle.anim'),
+  female: join(ANIM_DIR, 'ANI_Dweller_Woman_Idle.anim'),
 };
 
 // Build mesh GUID -> .asset path via .meta files.
@@ -35,17 +43,34 @@ function decodeMeshAsset(path) {
   const indexHex = text.match(/m_IndexBuffer:\s*([0-9a-f]+)/)[1];
   const vertHex = text.match(/_typelessdata:\s*([0-9a-f]+)/)[1];
   const indices = decodeIndexBuffer(indexHex, indexCount);
-  const { positions, uvs, uvs1 } = decodeVertexStreams(vertHex, vertexCount);
-  return { positions, uvs, uvs1, indices };
+  const { positions, uvs, uvs1, boneIndices } = decodeVertexStreams(vertHex, vertexCount);
+  const bindPose = parseBindPose(text);
+  return { positions, uvs, uvs1, indices, boneIndices, bindPose };
 }
 
 const out = {};
 for (const [gender, guids] of Object.entries(GENDER_MESH_GUID)) {
   out[gender] = { offsets: GENDER_OFFSETS[gender] };
+
+  // Parse idle rotations once per gender.
+  const animText = readFileSync(IDLE_ANIM[gender], 'utf8');
+  const idleRotations = parseIdleRotations(animText);
+
   for (const [age, guid] of Object.entries(guids)) {
     const path = guidToAssetPath.get(guid);
     if (!path) throw new Error(`Mesh GUID ${guid} (${gender}/${age}) not found`);
-    out[gender][age] = decodeMeshAsset(path);
+    const { positions, uvs, uvs1, indices, boneIndices, bindPose } = decodeMeshAsset(path);
+
+    let posedPositions;
+    if (age === 'adult') {
+      try {
+        posedPositions = applySkinning(positions, boneIndices, bindPose, idleRotations);
+      } catch (e) {
+        console.warn(`Warning: applySkinning failed for ${gender}/adult: ${e.message}`);
+      }
+    }
+
+    out[gender][age] = { positions, uvs, uvs1, indices, boneIndices, ...(posedPositions ? { posedPositions } : {}) };
   }
 }
 
@@ -54,6 +79,7 @@ writeFileSync(join(OUT_DIR, 'meshes.json'), JSON.stringify(meshes));
 console.log(
   `Wrote ${OUT_DIR}/meshes.json — ` +
   Object.entries(out).map(([g, d]) =>
-    `${g}: adult=${d.adult.positions.length}v/${d.adult.indices.length}i child=${d.child.positions.length}v`
+    `${g}: adult=${d.adult.positions.length}v/${d.adult.indices.length}i child=${d.child.positions.length}v` +
+    (d.adult.posedPositions ? ' [posed]' : ' [NO POSE]')
   ).join('  ')
 );

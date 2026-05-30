@@ -1,7 +1,13 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeAll } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { OutfitTab } from '../src/components/editor/OutfitTab';
 import type { SpriteIndex } from '../src/types/pieces';
+
+// Prevent loadMeshSet from hitting the network in jsdom
+vi.mock('../src/lib/meshLoader', () => ({
+  loadMeshSet: () => new Promise(() => {}), // never resolves — thumbnails stay empty
+  _resetMeshCache: vi.fn(),
+}));
 
 const idx: SpriteIndex = {
   version: 1,
@@ -20,11 +26,11 @@ describe('OutfitTab', () => {
     render(
       <OutfitTab
         index={idx}
-        dweller={{ gender: 2, outfitName: 'jumpsuit', outfitColor: { r: 0, g: 0, b: 0 }, skinColor: { r: 0, g: 0, b: 0 } }}
+        dweller={{ gender: 2, outfitName: 'jumpsuit', skinColor: { r: 0, g: 0, b: 0 } }}
         onChange={onChange}
       />,
     );
-    fireEvent.click(screen.getByText('jumpsuit'));
+    fireEvent.click(screen.getByTitle('jumpsuit'));
     expect(onChange).toHaveBeenCalledWith({ outfitId: 'jumpsuit' });
   });
 });

@@ -3,7 +3,7 @@ import type { MeshGeometry } from '../types/mesh';
 import { pieceByName, pieceByGuid } from './spriteIndex';
 import { faceNameForHappiness, type RenderableDweller, type Rgb } from './dwellerRender';
 
-export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair' | 'helmet' | 'headgear';
+export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair' | 'helmet' | 'hand' | 'headgear';
 
 /**
  * Port of DwellerOutfit.ValidateColor: snap a desired RGB (0..255) to the
@@ -85,6 +85,7 @@ export function buildLayers(
   const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
   const layers: RenderLayer[] = [];
   const faceOff = offsets?.face ?? [0, 0];
+  const handOff = offsets?.hand ?? [0, 0];
 
   // AtlasScale / AtlasOffset for a piece: bounds normalized by atlas size.
   const ownScale = (b: AtlasRect): [number, number] => [b.w / ATLAS, b.h / ATLAS];
@@ -94,9 +95,37 @@ export function buildLayers(
   const wantBody = outfit?.flags.hasSkirt && gender === 'female' ? 'skirt_body' : 'base_body';
   const body = pieceByName(idx, 'body', wantBody, gender) ?? pieceByName(idx, 'body', 'base_body', gender);
 
-  // Body's scale is the reference scale reused by head-overlay pieces (hair).
+  // Body's scale is the reference scale reused by head-overlay pieces (hair/face/helmet).
   const bodyScale: [number, number] = body ? ownScale(body.bounds) : [1, 1];
 
+  // Resolve outfit helmet (largeHeadgear uses a completely different mesh in the game
+  // and cannot be rendered on the body mesh — skip it for helmet slot).
+  const helmetGuid = outfit?.helmetGuid;
+  const helmet = helmetGuid ? pieceByGuid(idx, 'helmet', helmetGuid) : null;
+
+  // Outfit tint: snap to nearest allowed color (port of DwellerOutfit.ValidateColor).
+  // Fall back to the outfit's first color for single-color "Special" outfits.
+  const desiredOutfitRgb: Rgb = dweller.outfitColor ?? { r: 255, g: 255, b: 255 };
+  const outfitTintRgb = nearestOutfitColor(desiredOutfitRgb, outfit?.colors);
+
+  // --- Hands/gloves go FIRST so arms/outfit render on top of them (z-order). ---
+  // Pick the gender-matching glovePose from the outfit; fall back to bare handPose/fists.
+  const gloveGuid = outfit?.glovePoseGuids?.find((g) =>
+    pieceByGuid(idx, 'glovePose', g)?.gender === gender || pieceByGuid(idx, 'glovePose', g)?.gender === 'any',
+  );
+  const handPiece = gloveGuid
+    ? pieceByGuid(idx, 'glovePose', gloveGuid)
+    : pieceByName(idx, 'handPose', 'fists', gender);
+  if (handPiece) {
+    const o = ownOffset(handPiece.bounds);
+    layers.push({
+      slot: 'hand', atlas: handPiece.atlas, bounds: handPiece.bounds,
+      tint: gloveGuid ? toTint(outfitTintRgb) : toTint(dweller.skinColor),
+      uvScale: bodyScale, uvOffset: [o[0] + handOff[0], o[1] + handOff[1]],
+    });
+  }
+
+  // --- Body and outfit ---
   if (body) {
     layers.push({
       slot: 'body', atlas: body.atlas, bounds: body.bounds, tint: toTint(dweller.skinColor),
@@ -104,10 +133,6 @@ export function buildLayers(
     });
   }
   if (outfit) {
-    // Game snaps the stored color to the outfit's nearest allowed color (ValidateColor).
-    // For single-color "Special" outfits (SportsfanSpecial=red) this forces the game color.
-    const desiredOutfitRgb: Rgb = dweller.outfitColor ?? { r: 255, g: 255, b: 255 };
-    const outfitTintRgb = nearestOutfitColor(desiredOutfitRgb, outfit.colors);
     layers.push({
       slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(outfitTintRgb),
       uvScale: ownScale(outfit.bounds), uvOffset: ownOffset(outfit.bounds),
@@ -135,15 +160,17 @@ export function buildLayers(
     const o = ownOffset(face.bounds);
     // Face, like hair, is a head overlay: reuse the body's reference scale so the
     // head region maps onto the (packed) sprite, then bias by the gender face offset.
-    // (The game uses (2,2) because its source face texture is full-resolution; our
-    // atlas sprites are cropped, so the body-scale analog is the correct mapping.)
     layers.push({
       slot: 'face', atlas: face.atlas, bounds: face.bounds, tint: toTint(dweller.skinColor),
       uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
     });
   }
 
-  const hair = dweller.hairName ? pieceByName(idx, 'hair', dweller.hairName, gender) : null;
+  // Hair — hidden when the outfit's helmet is exclusive (m_isExclusive).
+  const hairExcluded = helmet?.flags.isExclusive === true;
+  const hair = (!hairExcluded && dweller.hairName)
+    ? pieceByName(idx, 'hair', dweller.hairName, gender)
+    : null;
   if (hair && !hair.flags.isBald) {
     const o = ownOffset(hair.bounds);
     layers.push({
@@ -152,8 +179,7 @@ export function buildLayers(
     });
   }
 
-  // Normal helmet (helmetGuid) — keeps the existing body-scale + faceOffset UV.
-  const helmet = outfit?.helmetGuid ? pieceByGuid(idx, 'helmet', outfit.helmetGuid) : null;
+  // Helmet — head overlay, same UV transform as hair/face (bodyScale + faceOffset).
   if (helmet) {
     const o = ownOffset(helmet.bounds);
     layers.push({
