@@ -3,15 +3,12 @@ import type { RenderLayer } from './dwellerLayers';
 
 const VERT = `
 attribute vec2 a_pos;
-attribute vec2 a_uv;   // UV0
-attribute vec2 a_uv1;  // UV1
+attribute vec2 a_uv;    // mesh UV (UV0; UV1 is identical in these meshes)
 uniform vec4 u_view;    // (scaleX, scaleY, offsetX, offsetY) model->clip
-uniform vec4 u_uvXform; // (scaleU, scaleV, offsetU, offsetV)
-uniform float u_useUV1; // 1.0 = use UV1, 0.0 = use UV0
+uniform vec4 u_uvXform; // (scaleU, scaleV, offsetU, offsetV) per-layer texture transform
 varying vec2 v_uv;
 void main() {
-  vec2 baseUV = mix(a_uv, a_uv1, u_useUV1);
-  v_uv = baseUV * u_uvXform.xy + u_uvXform.zw;
+  v_uv = a_uv * u_uvXform.xy + u_uvXform.zw;
   vec2 clip = a_pos * u_view.xy + u_view.zw;
   gl_Position = vec4(clip, 0.0, 1.0);
 }`;
@@ -33,6 +30,33 @@ export interface RendererLayerInput extends RenderLayer {
 export interface DwellerRenderer {
   draw(mesh: MeshGeometry, layers: RendererLayerInput[]): void;
   dispose(): void;
+}
+
+const ATLAS = 1024; // all dweller atlases are 1024x1024
+
+type Rect = { u0: number; u1: number; v0: number; v1: number };
+
+function spriteRect(b: { x: number; y: number; w: number; h: number }): Rect {
+  return { u0: b.x / ATLAS, u1: (b.x + b.w) / ATLAS, v0: b.y / ATLAS, v1: (b.y + b.h) / ATLAS };
+}
+
+// Return the indices of triangles whose sampled-UV centroid lies inside `rect`.
+// Confines head overlays (face/hair) to the head; body/outfit pass entirely.
+function filterTriangles(
+  mesh: MeshGeometry, sx: number, sy: number, ox: number, oy: number, rect: Rect,
+): number[] {
+  const eps = 1e-3;
+  const out: number[] = [];
+  const { indices, uvs } = mesh;
+  for (let i = 0; i + 2 < indices.length; i += 3) {
+    const a = indices[i], b = indices[i + 1], c = indices[i + 2];
+    const cu = ((uvs[a][0] + uvs[b][0] + uvs[c][0]) / 3) * sx + ox;
+    const cv = ((uvs[a][1] + uvs[b][1] + uvs[c][1]) / 3) * sy + oy;
+    if (cu >= rect.u0 - eps && cu <= rect.u1 + eps && cv >= rect.v0 - eps && cv <= rect.v1 + eps) {
+      out.push(a, b, c);
+    }
+  }
+  return out;
 }
 
 function compile(gl: WebGLRenderingContext, type: number, src: string): WebGLShader {
@@ -60,15 +84,12 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
 
   const aPos = gl.getAttribLocation(prog, 'a_pos');
   const aUv = gl.getAttribLocation(prog, 'a_uv');
-  const aUv1 = gl.getAttribLocation(prog, 'a_uv1');
   const uView = gl.getUniformLocation(prog, 'u_view');
   const uUvXform = gl.getUniformLocation(prog, 'u_uvXform');
   const uTint = gl.getUniformLocation(prog, 'u_tint');
-  const uUseUV1 = gl.getUniformLocation(prog, 'u_useUV1');
 
   const posBuf = gl.createBuffer()!;
   const uvBuf = gl.createBuffer()!;
-  const uv1Buf = gl.createBuffer()!;
   const idxBuf = gl.createBuffer()!;
   const texCache = new WeakMap<HTMLImageElement, WebGLTexture>();
 
@@ -107,8 +128,6 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
 
       const positions = new Float32Array(mesh.positions.flat());
       const uvs = new Float32Array(mesh.uvs.flat());
-      const uvs1 = new Float32Array(mesh.uvs1.flat());
-      const indices = new Uint16Array(mesh.indices);
 
       gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
       gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
@@ -120,39 +139,37 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
       gl.enableVertexAttribArray(aUv);
       gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
 
-      gl.bindBuffer(gl.ARRAY_BUFFER, uv1Buf);
-      gl.bufferData(gl.ARRAY_BUFFER, uvs1, gl.STATIC_DRAW);
-      gl.enableVertexAttribArray(aUv1);
-      gl.vertexAttribPointer(aUv1, 2, gl.FLOAT, false, 0, 0);
-
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
-      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
-
       gl.uniform4fv(uView, viewUniform());
 
       for (const layer of layers) {
         const img = layer.image;
-        const texW = img.naturalWidth, texH = img.naturalHeight;
-        const su = layer.bounds.w / texW;
-        const sv = layer.bounds.h / texH;
-        const ou = layer.bounds.x / texW + (layer.uvOffset?.[0] ?? 0);
-        const ov = layer.bounds.y / texH + (layer.uvOffset?.[1] ?? 0);
-        gl.uniform4f(uUvXform, su, sv, ou, ov);
-        const useUV1 = (layer.slot === 'face' || layer.slot === 'hair') ? 1.0 : 0.0;
-        gl.uniform1f(uUseUV1, useUV1);
+        const [sx, sy] = layer.uvScale;
+        const [ox, oy] = layer.uvOffset;
+        // Texture transform precomputed per Dressup.UpdateTexture (see dwellerLayers).
+        gl.uniform4f(uUvXform, sx, sy, ox, oy);
+
+        // The whole mesh shares one UV set, so every texture would otherwise smear
+        // across the body. The game confines each texture with shader masks; we instead
+        // draw only the triangles whose sampled UV lands inside this piece's sprite rect.
+        // Body/outfit map uv0->their full sprite, so all triangles pass; face/hair are
+        // confined to the head region.
+        const rect = spriteRect(layer.bounds);
+        const idx = filterTriangles(mesh, sx, sy, ox, oy, rect);
+        if (idx.length === 0) continue;
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
 
         const t = layer.tint ?? { r: 255, g: 255, b: 255, a: 1 };
         gl.uniform4f(uTint, t.r / 255, t.g / 255, t.b / 255, t.a);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, texFor(img));
-        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+        gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
       }
     },
     dispose() {
       gl.deleteBuffer(posBuf);
       gl.deleteBuffer(uvBuf);
-      gl.deleteBuffer(uv1Buf);
       gl.deleteBuffer(idxBuf);
       gl.deleteProgram(prog);
     },
