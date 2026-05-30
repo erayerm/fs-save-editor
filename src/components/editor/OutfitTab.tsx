@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { piecesOfType } from '../../lib/spriteIndex';
+import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
 import { buildLayers } from '../../lib/dwellerLayers';
@@ -26,6 +27,9 @@ function useOutfitThumbnails(
   const skinColor = dweller.skinColor;
   // Stable stringify for skinColor dep comparison
   const skinKey = skinColor ? `${skinColor.r},${skinColor.g},${skinColor.b}` : 'default';
+
+  // Debounce so the thumbnail grid only rebuilds after the color picker settles.
+  const debouncedSkinKey = useDebouncedValue(skinKey, 250);
 
   useEffect(() => {
     if (!meshSet) return;
@@ -77,7 +81,7 @@ function useOutfitThumbnails(
 
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, meshSet, gender, skinKey]);
+  }, [index, meshSet, gender, debouncedSkinKey]);
 
   // Dispose renderer on unmount
   useEffect(() => () => {

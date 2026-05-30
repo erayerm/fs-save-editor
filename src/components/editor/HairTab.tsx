@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { ColorPalette } from './ColorPalette';
 import { piecesOfType } from '../../lib/spriteIndex';
+import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
 import { buildLayers } from '../../lib/dwellerLayers';
@@ -37,6 +38,11 @@ function useHairThumbnails(
   const hair = dweller.hairColor;
   const skinKey = skin ? `${skin.r},${skin.g},${skin.b}` : 'default';
   const hairKey = hair ? `${hair.r},${hair.g},${hair.b}` : 'default';
+
+  // Debounce color-driven keys so the thumbnail grid only rebuilds after the
+  // color picker settles. The main avatar preview path is unaffected.
+  const debouncedSkinKey = useDebouncedValue(skinKey, 250);
+  const debouncedHairKey = useDebouncedValue(hairKey, 250);
 
   useEffect(() => {
     if (!meshSet) return;
@@ -84,7 +90,7 @@ function useHairThumbnails(
 
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, meshSet, gender, skinKey, hairKey]);
+  }, [index, meshSet, gender, debouncedSkinKey, debouncedHairKey]);
 
   useEffect(() => () => {
     rendererRef.current?.dispose();
