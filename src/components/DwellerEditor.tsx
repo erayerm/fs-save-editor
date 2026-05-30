@@ -5,6 +5,7 @@ import { HairTab } from './editor/HairTab';
 import { FacialHairTab } from './editor/FacialHairTab';
 import { OutfitTab } from './editor/OutfitTab';
 import { WeaponTab } from './editor/WeaponTab';
+import { StatsTab } from './editor/StatsTab';
 import { ColorPalette } from './editor/ColorPalette';
 import { loadSpriteIndex } from '../lib/spriteIndex';
 import { useSaveStore } from '../store/saveStore';
@@ -41,6 +42,7 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
     ...(isMale ? [{ id: 'facialHair', label: 'Facial Hair' }] : []),
     { id: 'outfit', label: 'Outfit' },
     { id: 'weapon', label: 'Weapon' },
+    { id: 'stats', label: 'SPECIAL' },
   ];
 
   return (
@@ -65,6 +67,7 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
           {index && active === 'facialHair' && isMale && <FacialHairTab index={index} dweller={dweller} onChange={onChange} />}
           {index && active === 'outfit' && <OutfitTab index={index} dweller={dweller} onChange={onChange} />}
           {active === 'weapon' && <WeaponTab dweller={dweller} />}
+          {active === 'stats' && <StatsTab dweller={dweller} />}
         </div>
       </div>
     </div>
