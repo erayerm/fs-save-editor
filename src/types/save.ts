@@ -16,6 +16,7 @@ export interface SaveJson {
     dwellers: Dweller[];
     [k: string]: unknown;
   };
+  vault?: { [k: string]: unknown };
   [k: string]: unknown;
 }
 
