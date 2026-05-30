@@ -6,9 +6,10 @@ import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
 import { buildLayers } from '../../lib/dwellerLayers';
+import { HAIR_PRESETS } from '../../lib/colorPresets';
 import { createDwellerRenderer, type DwellerRenderer, type ModelBounds } from '../../lib/dwellerWebGL';
 import type { SpriteIndex } from '../../types/pieces';
-import type { RenderableDweller, Rgb } from '../../lib/dwellerRender';
+import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
 
@@ -18,11 +19,6 @@ const CELL = 170;       // display cell px (square)
 // Zoom into head region. Square 1.0×1.0 → no distortion on square canvas.
 // Head visual centre ≈ y 1.6. ±0.5 shows hair above and a sliver of neck below.
 const HEAD_BOUNDS: ModelBounds = { minX: -0.5, maxX: 0.5, minY: 1.1, maxY: 2.1 };
-
-const HAIR_COLORS: Rgb[] = [
-  { r: 30, g: 22, b: 18 }, { r: 80, g: 50, b: 30 }, { r: 150, g: 95, b: 45 },
-  { r: 200, g: 160, b: 90 }, { r: 120, g: 30, b: 20 }, { r: 220, g: 220, b: 220 },
-];
 
 function useHairThumbnails(
   index: SpriteIndex,
@@ -133,7 +129,7 @@ export function HairTab({
       <ColorPalette
         label="Hair color"
         value={hairColor}
-        swatches={HAIR_COLORS}
+        swatches={HAIR_PRESETS}
         onChange={(c) => onChange({ hairColor: c })}
       />
     </div>

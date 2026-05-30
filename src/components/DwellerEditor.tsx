@@ -7,17 +7,13 @@ import { ColorPalette } from './editor/ColorPalette';
 import { loadSpriteIndex } from '../lib/spriteIndex';
 import { useSaveStore } from '../store/saveStore';
 import type { SpriteIndex } from '../types/pieces';
-import type { RenderableDweller, Rgb } from '../lib/dwellerRender';
+import type { RenderableDweller } from '../lib/dwellerRender';
 import type { DwellerCustomization } from '../lib/dwellerEdit';
+import { SKIN_PRESETS } from '../lib/colorPresets';
 
 const TABS: EditorTab[] = [
   { id: 'hair', label: 'Hair' },
   { id: 'outfit', label: 'Outfit' },
-];
-
-const SKIN_COLORS: Rgb[] = [
-  { r: 255, g: 224, b: 196 }, { r: 240, g: 200, b: 160 }, { r: 200, g: 150, b: 110 },
-  { r: 150, g: 100, b: 70 }, { r: 100, g: 65, b: 45 }, { r: 70, g: 45, b: 30 },
 ];
 
 export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
@@ -49,7 +45,7 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
         <ColorPalette
           label="Skin color"
           value={dweller.skinColor ?? { r: 255, g: 224, b: 196 }}
-          swatches={SKIN_COLORS}
+          swatches={SKIN_PRESETS}
           onChange={(c) => onChange({ skinColor: c })}
         />
       </div>
