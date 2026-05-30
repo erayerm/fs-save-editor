@@ -15,10 +15,14 @@ const idx: SpriteIndex = {
   version: 1,
   byType: {
     body: [piece({ name: 'base_body', gender: 'male' })],
-    outfit: [piece({ name: 'jumpsuit', gender: 'male' })],
+    outfit: [
+      piece({ name: 'jumpsuit', gender: 'male' }),
+      piece({ name: 'three_dog_outfit', gender: 'male', helmetGuid: 'helmet-three-dog' }),
+    ],
     face: [piece({ name: 'neutral', gender: 'male' })],
     hair: [piece({ name: '16', gender: 'male' })],
-    outfitColoringMask: [], faceMask: [], helmet: [], helmetMask: [],
+    helmet: [piece({ name: 'three_dog_hat', guid: 'helmet-three-dog', gender: 'male', flags: { isExclusive: false } })],
+    outfitColoringMask: [], faceMask: [], helmetMask: [],
     largeHeadgear: [], handPose: [], glovePose: [],
   },
 };
@@ -57,6 +61,17 @@ describe('buildLayers', () => {
     const baldIdx = { ...idx, byType: { ...idx.byType, hair: [piece({ name: 'bald', gender: 'male', flags: { isBald: true } })] } };
     const layers = buildLayers({ gender: 2, hairName: 'bald' }, baldIdx);
     expect(layers.find((l) => l.slot === 'hair')).toBeUndefined();
+  });
+
+  it('orders hat layers after hair (hat draws over hair)', () => {
+    const layers = buildLayers(
+      { gender: 2, outfitName: 'three_dog_outfit', hairName: '16', happinessValue: 60 },
+      idx,
+    );
+    const hairIdx = layers.findIndex((l) => l.slot === 'hair');
+    const hatIdx = layers.findIndex((l) => l.slot === 'helmet' || l.slot === 'headgear');
+    expect(hairIdx).toBeGreaterThanOrEqual(0);
+    expect(hatIdx).toBeGreaterThan(hairIdx);
   });
 });
 
