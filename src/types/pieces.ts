@@ -33,6 +33,9 @@ export interface PieceRef {
     isUsedByDefault?: boolean;
   };
   colors?: [number, number, number, number][]; // DwellerOutfit m_colors (rgba 0..1)
+  // outfit only: guid of associated helmet/largeHeadgear piece
+  helmetGuid?: string;
+  largeHeadgearGuid?: string;
   // largeHeadgear only: placement vectors (Unity units) for the prebaked hat mesh.
   headgear?: {
     grabPoint?: [number, number];

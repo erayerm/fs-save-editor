@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { buildLayers, type RenderLayer, nearestOutfitColor } from '../src/lib/dwellerLayers';
 import type { SpriteIndex } from '../src/types/pieces';
+import type { MeshGeometry } from '../src/types/mesh';
 
 function piece(over: Partial<any> = {}) {
   return {
@@ -56,6 +57,69 @@ describe('buildLayers', () => {
     const baldIdx = { ...idx, byType: { ...idx.byType, hair: [piece({ name: 'bald', gender: 'male', flags: { isBald: true } })] } };
     const layers = buildLayers({ gender: 2, hairName: 'bald' }, baldIdx);
     expect(layers.find((l) => l.slot === 'hair')).toBeUndefined();
+  });
+});
+
+describe('buildLayers largeHeadgear', () => {
+  const mitrePiece = piece({
+    guid: 'mitre-guid',
+    name: 'mitre',
+    atlas: 'outfit_atlas_34.png',
+    bounds: { x: 0, y: 0, w: 115, h: 111 },
+    gender: 'any',
+    headgear: { grabPoint: [0.42, 0.009], offset: [0, 0], scale: [0.11, 0.11] },
+  });
+  const outfitWithMitre = piece({
+    name: 'bishop_outfit',
+    gender: 'male',
+    largeHeadgearGuid: 'mitre-guid',
+  });
+  const idxWithMitre: SpriteIndex = {
+    version: 1,
+    byType: {
+      ...idx.byType,
+      outfit: [outfitWithMitre],
+      largeHeadgear: [mitrePiece],
+    },
+  };
+
+  const fakeMesh: MeshGeometry = {
+    positions: Array(72).fill([0, 0]) as [number, number][],
+    uvs: Array(72).fill([0, 0]) as [number, number][],
+    uvs1: Array(72).fill([0, 0]) as [number, number][],
+    indices: Array(108).fill(0),
+    indexCounts: [102, 6],
+  };
+
+  const meshes = {
+    largeHeadgear: {
+      'mitre-guid': { male: fakeMesh, female: null },
+    },
+  };
+
+  it('emits a headgear layer with correct slot, meshOverride, and uvScale', () => {
+    const layers = buildLayers(
+      { gender: 2, outfitName: 'bishop_outfit', happinessValue: 60 },
+      idxWithMitre,
+      undefined,
+      meshes,
+    );
+    const hgLayer = layers.find((l: RenderLayer) => l.slot === 'headgear');
+    expect(hgLayer).toBeDefined();
+    expect(hgLayer!.meshOverride).toBe(fakeMesh);
+    // uvScale should be the headgear's own bounds / ATLAS (115/1024, 111/1024)
+    expect(hgLayer!.uvScale[0]).toBeCloseTo(115 / 1024, 6);
+    expect(hgLayer!.uvScale[1]).toBeCloseTo(111 / 1024, 6);
+    // meshSubmesh should point to the hat quad (submesh 1: start=102, count=6)
+    expect(hgLayer!.meshSubmesh).toEqual({ start: 102, count: 6 });
+  });
+
+  it('does not emit headgear layer when meshes arg is omitted', () => {
+    const layers = buildLayers(
+      { gender: 2, outfitName: 'bishop_outfit', happinessValue: 60 },
+      idxWithMitre,
+    );
+    expect(layers.find((l: RenderLayer) => l.slot === 'headgear')).toBeUndefined();
   });
 });
 

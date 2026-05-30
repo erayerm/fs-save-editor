@@ -37,7 +37,9 @@ export function DwellerCanvas({ dweller, size = 320 }: { dweller: RenderableDwel
         const gender = dweller.gender === 2 ? 'male' : 'female';
         const mesh = meshSet[gender].adult;
         const offsets = meshSet[gender].offsets;
-        const layers = buildLayers(dweller, index, offsets);
+        const layers = buildLayers(dweller, index, offsets, {
+          largeHeadgear: meshSet.largeHeadgear,
+        });
         const withImages: RendererLayerInput[] = await Promise.all(
           layers.map(async (l) => ({ ...l, image: await loadAtlas(l.atlas) })),
         );

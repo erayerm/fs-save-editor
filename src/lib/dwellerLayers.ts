@@ -1,8 +1,9 @@
 import type { SpriteIndex, AtlasRect } from '../types/pieces';
-import { pieceByName } from './spriteIndex';
+import type { MeshGeometry } from '../types/mesh';
+import { pieceByName, pieceByGuid } from './spriteIndex';
 import { faceNameForHappiness, type RenderableDweller, type Rgb } from './dwellerRender';
 
-export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair';
+export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair' | 'helmet' | 'headgear';
 
 /**
  * Port of DwellerOutfit.ValidateColor: snap a desired RGB (0..255) to the
@@ -56,6 +57,10 @@ export interface RenderLayer {
    * sampling the body texture.
    */
   triMask?: TriMask;
+  /** When set, draw this mesh instead of the body mesh for this layer. */
+  meshOverride?: MeshGeometry;
+  /** When set, only draw this submesh range of meshOverride (hat quad only). */
+  meshSubmesh?: { start: number; count: number };
 }
 
 const toTint = (c?: Rgb): (Rgb & { a: number }) | undefined =>
@@ -71,7 +76,12 @@ export interface GenderOffsets {
  * UVs into its atlas region; the WebGL renderer converts pixel bounds -> UV using
  * the loaded texture size and applies uvOffset (gender hand/face offset).
  */
-export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offsets?: GenderOffsets): RenderLayer[] {
+export function buildLayers(
+  dweller: RenderableDweller,
+  idx: SpriteIndex,
+  offsets?: GenderOffsets,
+  meshes?: { largeHeadgear?: Record<string, { male: MeshGeometry | null; female: MeshGeometry | null }> },
+): RenderLayer[] {
   const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
   const layers: RenderLayer[] = [];
   const faceOff = offsets?.face ?? [0, 0];
@@ -139,6 +149,41 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offset
     layers.push({
       slot: 'hair', atlas: hair.atlas, bounds: hair.bounds, tint: toTint(dweller.hairColor),
       uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
+    });
+  }
+
+  // Normal helmet (helmetGuid) — keeps the existing body-scale + faceOffset UV.
+  const helmet = outfit?.helmetGuid ? pieceByGuid(idx, 'helmet', outfit.helmetGuid) : null;
+  if (helmet) {
+    const o = ownOffset(helmet.bounds);
+    layers.push({
+      slot: 'helmet', atlas: helmet.atlas, bounds: helmet.bounds,
+      uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
+    });
+  }
+
+  // largeHeadgear (e.g. Bishop mitre) — has its own prebaked hat mesh; draw only the hat quad.
+  const largeHeadgearPiece = outfit?.largeHeadgearGuid
+    ? pieceByGuid(idx, 'largeHeadgear', outfit.largeHeadgearGuid)
+    : null;
+  const largeHeadgearMesh = largeHeadgearPiece && meshes?.largeHeadgear?.[largeHeadgearPiece.guid]
+    ? (gender === 'male'
+        ? meshes.largeHeadgear[largeHeadgearPiece.guid].male
+        : (meshes.largeHeadgear[largeHeadgearPiece.guid].female
+            ?? meshes.largeHeadgear[largeHeadgearPiece.guid].male))
+    : null;
+
+  if (largeHeadgearPiece && largeHeadgearMesh) {
+    layers.push({
+      slot: 'headgear',
+      atlas: largeHeadgearPiece.atlas,
+      bounds: largeHeadgearPiece.bounds,
+      uvScale: ownScale(largeHeadgearPiece.bounds),
+      uvOffset: ownOffset(largeHeadgearPiece.bounds),
+      meshOverride: largeHeadgearMesh,
+      meshSubmesh: largeHeadgearMesh.indexCounts && largeHeadgearMesh.indexCounts.length > 1
+        ? { start: largeHeadgearMesh.indexCounts[0], count: largeHeadgearMesh.indexCounts[1] }
+        : undefined,
     });
   }
 
