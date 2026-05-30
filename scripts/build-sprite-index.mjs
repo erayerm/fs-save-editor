@@ -6,6 +6,8 @@ import {
   readFileSync, readdirSync, writeFileSync, mkdirSync, statSync, copyFileSync,
 } from 'node:fs';
 import { join, basename } from 'node:path';
+import { parseHeadgearPlacement } from './lib/parseHeadgear.mjs';
+import { decodeIndexBuffer, decodeVertexStreams } from './lib/decodeMesh.mjs';
 
 const ROOT = 'TEMPORARY-game-files/export-3/ExportedProject/Assets';
 const SCRIPTS_DIR = join(ROOT, 'Scripts/Assembly-CSharp');
@@ -107,7 +109,15 @@ function parsePiece(text) {
     ? colorMatches.map((m) => [+m[1], +m[2], +m[3], +m[4]])
     : undefined;
 
-  return { type, m_Name, m_guid, m_atlasGuid, bounds, gender, flags, colors };
+  let headgearPlacement, maleMeshMetaGuid, femaleMeshMetaGuid;
+  if (type === 'largeHeadgear') {
+    headgearPlacement = parseHeadgearPlacement(text);
+    maleMeshMetaGuid = grab(/m_maleMesh:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
+    femaleMeshMetaGuid = grab(/m_femaleMesh:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
+  }
+
+  return { type, m_Name, m_guid, m_atlasGuid, bounds, gender, flags, colors,
+    headgearPlacement, maleMeshMetaGuid, femaleMeshMetaGuid };
 }
 
 const referencedAtlases = new Set();
@@ -134,6 +144,11 @@ for (const f of files) {
     flags: p.flags,
     ...(p.colors ? { colors: p.colors } : {}),
   };
+  if (p.type === 'largeHeadgear') {
+    if (p.headgearPlacement) ref.headgear = p.headgearPlacement;
+    if (p.maleMeshMetaGuid) ref._maleMeshMetaGuid = p.maleMeshMetaGuid;
+    if (p.femaleMeshMetaGuid) ref._femaleMeshMetaGuid = p.femaleMeshMetaGuid;
+  }
   byType[p.type].push(ref);
 }
 
@@ -144,6 +159,46 @@ for (const f of files) {
 for (const t of Object.keys(byType)) {
   byType[t].sort((a, b) => a.name.localeCompare(b.name) || a.guid.localeCompare(b.guid));
 }
+
+// Resolve largeHeadgear mesh GUIDs and decode mesh geometry.
+const MESH_DIR = join(ROOT, 'Mesh');
+const meshMetaGuidToPath = new Map();
+for (const f of walk(MESH_DIR)) {
+  if (!f.endsWith('.asset.meta')) continue;
+  const guid = readFileSync(f, 'utf8').match(/^guid:\s*([0-9a-f]+)/m)?.[1];
+  if (guid) meshMetaGuidToPath.set(guid, f.replace(/\.meta$/, ''));
+}
+
+function decodeMeshAsset(path) {
+  const text = readFileSync(path, 'utf8');
+  const vertexCount = +text.match(/m_VertexCount:\s*(\d+)/)[1];
+  const indexCount = +text.match(/indexCount:\s*(\d+)/)[1];
+  const indexHex = text.match(/m_IndexBuffer:\s*([0-9a-f]+)/)[1];
+  const vertHex = text.match(/_typelessdata:\s*([0-9a-f]+)/)[1];
+  const indices = decodeIndexBuffer(indexHex, indexCount);
+  const { positions, uvs, uvs1 } = decodeVertexStreams(vertHex, vertexCount);
+  return { positions, uvs, uvs1, indices };
+}
+
+const largeHeadgearMeshes = {};
+for (const ref of byType.largeHeadgear) {
+  const malePath = ref._maleMeshMetaGuid ? meshMetaGuidToPath.get(ref._maleMeshMetaGuid) : null;
+  const femalePath = ref._femaleMeshMetaGuid ? meshMetaGuidToPath.get(ref._femaleMeshMetaGuid) : null;
+  const male = malePath ? decodeMeshAsset(malePath) : null;
+  const female = femalePath ? decodeMeshAsset(femalePath) : null;
+  if (male || female) {
+    largeHeadgearMeshes[ref.guid] = { male, female };
+  }
+  delete ref._maleMeshMetaGuid;
+  delete ref._femaleMeshMetaGuid;
+}
+
+// Update meshes.json with largeHeadgear key.
+const meshesPath = join(OUT_DIR, 'meshes.json');
+let meshesOutput = {};
+try { meshesOutput = JSON.parse(readFileSync(meshesPath, 'utf8')); } catch { /* first run */ }
+meshesOutput.largeHeadgear = largeHeadgearMeshes;
+writeFileSync(meshesPath, JSON.stringify(meshesOutput));
 
 // Copy only referenced atlas PNGs.
 const filenameToEntry = new Map();
