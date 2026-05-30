@@ -1,3 +1,4 @@
+import React from 'react';
 import { SpriteCanvas, type SpriteLayer } from './SpriteCanvas';
 
 export interface GridOption {
@@ -7,6 +8,8 @@ export interface GridOption {
   thumbnailUrl?: string;
   /** Sprite layer(s) composited on a canvas (with optional tint). */
   layers?: SpriteLayer[];
+  /** Optional badge node rendered as an overlay at the bottom of the cell. */
+  badge?: React.ReactNode;
 }
 
 export function OptionGrid({
@@ -48,7 +51,7 @@ export function OptionGrid({
               ? 'border-emerald-400 bg-emerald-950/40 ring-1 ring-emerald-400'
               : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500')
           }
-          style={cellStyle}
+          style={{ ...cellStyle, position: 'relative' }}
         >
           {o.thumbnailUrl ? (
             <img
@@ -60,6 +63,11 @@ export function OptionGrid({
             <SpriteCanvas layers={o.layers} size={72} />
           ) : (
             <span className="text-xs text-zinc-300 text-center px-1 leading-tight">{o.label}</span>
+          )}
+          {o.badge && (
+            <div style={{ position: 'absolute', bottom: 2, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+              {o.badge}
+            </div>
           )}
         </button>
       ))}

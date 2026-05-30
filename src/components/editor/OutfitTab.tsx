@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { OptionGrid } from './OptionGrid';
+import { SpecialBadges } from './SpecialBadges';
+import { specialBonusFor } from '../../lib/outfitStats';
 import { piecesOfType } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
@@ -110,6 +112,7 @@ export function OutfitTab({
     value: p.name,
     label: p.name,
     thumbnailUrl: thumbnails.get(p.name),
+    badge: <SpecialBadges bonus={specialBonusFor(p.name)} />,
   }));
 
   return (
