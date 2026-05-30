@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildLayers, type RenderLayer } from '../src/lib/dwellerLayers';
+import { buildLayers, type RenderLayer, nearestOutfitColor } from '../src/lib/dwellerLayers';
 import type { SpriteIndex } from '../src/types/pieces';
 
 function piece(over: Partial<any> = {}) {
@@ -56,5 +56,23 @@ describe('buildLayers', () => {
     const baldIdx = { ...idx, byType: { ...idx.byType, hair: [piece({ name: 'bald', gender: 'male', flags: { isBald: true } })] } };
     const layers = buildLayers({ gender: 2, hairName: 'bald' }, baldIdx);
     expect(layers.find((l) => l.slot === 'hair')).toBeUndefined();
+  });
+});
+
+describe('nearestOutfitColor', () => {
+  it('returns desired unchanged when outfit has no colors', () => {
+    expect(nearestOutfitColor({ r: 10, g: 20, b: 30 }, undefined))
+      .toEqual({ r: 10, g: 20, b: 30 });
+  });
+  it('snaps any desired color to the single allowed color (SportsfanSpecial-style)', () => {
+    const red: [number, number, number, number] = [1, 0, 0, 1];
+    expect(nearestOutfitColor({ r: 255, g: 255, b: 255 }, [red]))
+      .toEqual({ r: 255, g: 0, b: 0 });
+  });
+  it('picks the nearest of several allowed colors', () => {
+    const red: [number, number, number, number] = [1, 0, 0, 1];
+    const blue: [number, number, number, number] = [0, 0, 1, 1];
+    expect(nearestOutfitColor({ r: 10, g: 10, b: 200 }, [red, blue]))
+      .toEqual({ r: 0, g: 0, b: 255 });
   });
 });

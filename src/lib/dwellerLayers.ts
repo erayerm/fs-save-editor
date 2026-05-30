@@ -4,6 +4,29 @@ import { faceNameForHappiness, type RenderableDweller, type Rgb } from './dwelle
 
 export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair';
 
+/**
+ * Port of DwellerOutfit.ValidateColor: snap a desired RGB (0..255) to the
+ * nearest entry of the outfit's m_colors (rgba 0..1). Returns desired unchanged
+ * when the outfit defines no colors.
+ */
+export function nearestOutfitColor(
+  desired: Rgb,
+  colors?: [number, number, number, number][],
+): Rgb {
+  if (!colors || colors.length === 0) return { r: desired.r, g: desired.g, b: desired.b };
+  const dr = desired.r / 255, dg = desired.g / 255, db = desired.b / 255;
+  let best = colors[0], bestD = Infinity;
+  for (const c of colors) {
+    const d = (c[0] - dr) ** 2 + (c[1] - dg) ** 2 + (c[2] - db) ** 2;
+    if (d < bestD) { bestD = d; best = c; }
+  }
+  return {
+    r: Math.round(best[0] * 255),
+    g: Math.round(best[1] * 255),
+    b: Math.round(best[2] * 255),
+  };
+}
+
 // All dweller atlases are 1024x1024; the game normalizes AtlasOffset/AtlasScale by
 // this size (see DwellerPiece.SetAtlasRef + Dressup.UpdateTexture).
 const ATLAS = 1024;
@@ -71,8 +94,12 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offset
     });
   }
   if (outfit) {
+    // Game snaps the stored color to the outfit's nearest allowed color (ValidateColor).
+    // For single-color "Special" outfits (SportsfanSpecial=red) this forces the game color.
+    const desiredOutfitRgb: Rgb = dweller.outfitColor ?? { r: 255, g: 255, b: 255 };
+    const outfitTintRgb = nearestOutfitColor(desiredOutfitRgb, outfit.colors);
     layers.push({
-      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(dweller.outfitColor),
+      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(outfitTintRgb),
       uvScale: ownScale(outfit.bounds), uvOffset: ownOffset(outfit.bounds),
     });
   }
