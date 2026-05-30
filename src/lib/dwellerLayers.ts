@@ -8,19 +8,31 @@ export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair';
 // this size (see DwellerPiece.SetAtlasRef + Dressup.UpdateTexture).
 const ATLAS = 1024;
 
+/** Override used only for triangle masking (filterTriangles); texture UV uses uvScale/uvOffset. */
+export interface TriMask {
+  uvScale: [number, number];
+  uvOffset: [number, number];
+  bounds: AtlasRect;
+}
+
 export interface RenderLayer {
   slot: LayerSlot;
   atlas: string;            // atlas image filename
-  bounds: AtlasRect;        // pixel rect inside that atlas (Unity bottom-up Y)
+  bounds: AtlasRect;        // pixel rect inside that atlas
   tint?: Rgb & { a: number };
   /**
-   * Final UV transform applied as: sampledUV = meshUV * uvScale + uvOffset
-   * (normalized 0..1 atlas units). Mirrors Dressup.UpdateTexture: body/outfit use
-   * their own AtlasScale; hair uses the BODY's scale; face uses (2,2). The relevant
-   * gender face offset is folded into uvOffset for face/hair.
+   * Final UV transform: sampledUV = meshUV * uvScale + uvOffset (normalized 0..1).
+   * See Dressup.UpdateTexture: body/outfit use own AtlasScale; hair/face use body scale.
    */
   uvScale: [number, number];
   uvOffset: [number, number];
+  /**
+   * When set, triangle masking uses this transform instead of the layer's own
+   * uvScale/uvOffset/bounds. Used by the head-skin re-render layer so it masks
+   * by the face layer's UV (guaranteed to select only head triangles) while
+   * sampling the body texture.
+   */
+  triMask?: TriMask;
 }
 
 const toTint = (c?: Rgb): (Rgb & { a: number }) | undefined =>
@@ -66,14 +78,20 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offset
   }
 
   // Re-render the head skin AFTER the outfit so it sits above the collar.
-  // bounds is set to the face piece's rect (populated below) so triangle masking
-  // confines this draw to the same head quad as face/hair. UV transform stays as
-  // the body's own scale/offset → samples the correct skin from the body atlas.
+  // triMask reuses the face layer's UV transform (bodyScale + faceOffset) which is
+  // guaranteed to select the correct head triangles; the texture UV stays as the
+  // body's own scale/offset so it samples the correct skin from the body atlas.
   const face = pieceByName(idx, 'face', faceNameForHappiness(dweller.happinessValue), gender);
   if (body && face) {
+    const faceO = ownOffset(face.bounds);
     layers.push({
-      slot: 'body', atlas: body.atlas, bounds: face.bounds, tint: toTint(dweller.skinColor),
+      slot: 'body', atlas: body.atlas, bounds: body.bounds, tint: toTint(dweller.skinColor),
       uvScale: ownScale(body.bounds), uvOffset: ownOffset(body.bounds),
+      triMask: {
+        uvScale: bodyScale,
+        uvOffset: [faceO[0] + faceOff[0], faceO[1] + faceOff[1]],
+        bounds: face.bounds,
+      },
     });
   }
   if (face) {

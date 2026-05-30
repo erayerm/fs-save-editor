@@ -152,9 +152,13 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         // across the body. The game confines each texture with shader masks; we instead
         // draw only the triangles whose sampled UV lands inside this piece's sprite rect.
         // Body/outfit map uv0->their full sprite, so all triangles pass; face/hair are
-        // confined to the head region.
-        const rect = spriteRect(layer.bounds);
-        const idx = filterTriangles(mesh, sx, sy, ox, oy, rect);
+        // confined to the head region. If triMask is set, use its transform for
+        // triangle selection (e.g. head-skin layer masks by face-layer UV, not body UV).
+        const m = layer.triMask;
+        const rect = spriteRect(m ? m.bounds : layer.bounds);
+        const [msx, msy] = m ? m.uvScale : [sx, sy];
+        const [mox, moy] = m ? m.uvOffset : [ox, oy];
+        const idx = filterTriangles(mesh, msx, msy, mox, moy, rect);
         if (idx.length === 0) continue;
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
