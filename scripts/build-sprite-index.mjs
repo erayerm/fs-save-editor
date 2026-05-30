@@ -116,8 +116,27 @@ function parsePiece(text) {
     femaleMeshMetaGuid = grab(/m_femaleMesh:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
   }
 
+  // Outfit: capture helmet, largeHeadgear, coloring mask, and glove pose meta-GUIDs.
+  let helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, glovePoseMetaGuids;
+  if (type === 'outfit') {
+    helmetMetaGuid = grab(/m_helmet:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
+    largeHeadgearMetaGuid = grab(/m_largeHeadgear:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
+    coloringMaskMetaGuid = grab(/m_coloringMask:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
+    const glovePoseBlock = text.match(/m_glovePoses:([\s\S]*?)(?=\n\s*m_[a-zA-Z])/m)?.[1] ?? '';
+    glovePoseMetaGuids = [...glovePoseBlock.matchAll(/guid:\s*([0-9a-f]+)/g)].map(m => m[1]);
+  }
+
+  // Helmet / largeHeadgear: capture mask ref and isExclusive flag.
+  let maskMetaGuid;
+  if (type === 'helmet' || type === 'largeHeadgear') {
+    maskMetaGuid = grab(/m_mask:\s*\{[^}]*guid:\s*([0-9a-f]+)/);
+    const excl = flag(/^\s*m_isExclusive:\s*(\d)/m);
+    if (excl !== undefined) flags.isExclusive = excl;
+  }
+
   return { type, m_Name, m_guid, m_atlasGuid, bounds, gender, flags, colors,
-    headgearPlacement, maleMeshMetaGuid, femaleMeshMetaGuid };
+    headgearPlacement, maleMeshMetaGuid, femaleMeshMetaGuid,
+    helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, glovePoseMetaGuids, maskMetaGuid };
 }
 
 const referencedAtlases = new Set();
@@ -126,8 +145,24 @@ const byType = {
   hair: [], helmet: [], helmetMask: [], largeHeadgear: [], handPose: [], glovePose: [],
 };
 
+// assetMetaGuid → m_guid map (built during parse loop for cross-reference resolution).
+const assetMetaGuidToMGuid = new Map();
+// Pending cross-references to resolve after all pieces are parsed.
+const pendingRefs = [];
+
 const files = readdirSync(MB_DIR).filter((f) => f.endsWith('.asset')).sort();
 for (const f of files) {
+  // Build meta GUID → m_guid map on the fly (read .meta sidecar).
+  const metaPath = join(MB_DIR, f + '.meta');
+  try {
+    const metaGuid = readFileSync(metaPath, 'utf8').match(/^guid:\s*([0-9a-f]+)/m)?.[1];
+    if (metaGuid) {
+      const t2 = readFileSync(join(MB_DIR, f), 'utf8');
+      const mGuid = t2.match(/^\s*m_guid:\s*([0-9a-f]+)/m)?.[1];
+      if (mGuid) assetMetaGuidToMGuid.set(metaGuid, mGuid);
+    }
+  } catch { /* meta file missing — skip */ }
+
   const text = readFileSync(join(MB_DIR, f), 'utf8');
   if (!/m_atlasBounds/.test(text)) continue;
   const p = parsePiece(text);
@@ -150,6 +185,44 @@ for (const f of files) {
     if (p.femaleMeshMetaGuid) ref._femaleMeshMetaGuid = p.femaleMeshMetaGuid;
   }
   byType[p.type].push(ref);
+
+  // Queue cross-ref resolution for outfits and helmets.
+  if (p.type === 'outfit') {
+    pendingRefs.push({
+      ref,
+      helmetMetaGuid: p.helmetMetaGuid,
+      largeHeadgearMetaGuid: p.largeHeadgearMetaGuid,
+      coloringMaskMetaGuid: p.coloringMaskMetaGuid,
+      glovePoseMetaGuids: p.glovePoseMetaGuids ?? [],
+    });
+  }
+  if ((p.type === 'helmet' || p.type === 'largeHeadgear') && p.maskMetaGuid) {
+    pendingRefs.push({ ref, maskMetaGuid: p.maskMetaGuid });
+  }
+}
+
+// Resolve meta-GUIDs → m_GUIDs for all cross-references.
+for (const { ref, helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, glovePoseMetaGuids, maskMetaGuid } of pendingRefs) {
+  if (helmetMetaGuid) {
+    const g = assetMetaGuidToMGuid.get(helmetMetaGuid);
+    if (g) ref.helmetGuid = g;
+  }
+  if (largeHeadgearMetaGuid) {
+    const g = assetMetaGuidToMGuid.get(largeHeadgearMetaGuid);
+    if (g) ref.largeHeadgearGuid = g;
+  }
+  if (coloringMaskMetaGuid) {
+    const g = assetMetaGuidToMGuid.get(coloringMaskMetaGuid);
+    if (g) ref.coloringMaskGuid = g;
+  }
+  if (glovePoseMetaGuids?.length > 0) {
+    const resolved = glovePoseMetaGuids.map(g => assetMetaGuidToMGuid.get(g)).filter(Boolean);
+    if (resolved.length > 0) ref.glovePoseGuids = resolved;
+  }
+  if (maskMetaGuid) {
+    const g = assetMetaGuidToMGuid.get(maskMetaGuid);
+    if (g) ref.maskGuid = g;
+  }
 }
 
 // Sort each type by name for deterministic output.

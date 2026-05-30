@@ -101,7 +101,8 @@
             0.8117647,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359"
       },
       {
         "guid": "b2a56a67051a7e448a5118e72b219208",
@@ -133,7 +134,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "1a4442ede378feb4d9199c2afe007453",
+        "glovePoseGuids": [
+          "c39737cdf7c011d4db05de35418f181b",
+          "a5658efd82cae7e43bc6666bbb32ff51"
+        ]
       },
       {
         "guid": "4a5e3972f9d324a4d9b4129f4cf783c1",
@@ -149,7 +155,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "411617a07cf5c704eaa7f82c875b7588",
+        "glovePoseGuids": [
+          "bb1beef1a907d0e42bce413e36236ca4",
+          "4f176c21108f5f942bbbc719db9c37eb"
+        ]
       },
       {
         "guid": "00cd0167a14273c43b527eca892bea40",
@@ -165,7 +176,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "897a067d3e4e0a94b9ffd928a9afff6b",
+        "glovePoseGuids": [
+          "a3e6783b5b72a9e41b8261bb59a87041",
+          "3503c305b0006d049806120812804605"
+        ]
       },
       {
         "guid": "c6a3271374bd64e419576471061b2d13",
@@ -251,7 +267,8 @@
             0.96862745,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "9e0f62793734c724aaeb523122084513"
       },
       {
         "guid": "2e876c6683509144382e3b8072644d94",
@@ -275,7 +292,8 @@
             0.3529412,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663"
       },
       {
         "guid": "81d34a5721c91b94abd0066f014efe08",
@@ -291,7 +309,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "86ce843e905924e40a440a85a38e2123"
       },
       {
         "guid": "b89304eeea7be5448b0599ace4ec79ca",
@@ -307,7 +326,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "20addd276f6700f4e9be281662f5039b"
       },
       {
         "guid": "6521bcc7f25df84448ae55cd6b6550fb",
@@ -355,7 +375,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "largeHeadgearGuid": "ccbd08d70e5ba934c95f28a750dcca2f"
       },
       {
         "guid": "d025a14a3ef964b4cb2eedc1d9a578fb",
@@ -387,7 +408,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "4544301c6674c8149af485202c3073a4",
+          "071b554e3025a3b44982740e92a5faea"
+        ]
       },
       {
         "guid": "fe7846b9217a11947a99d3f30d2dcca0",
@@ -403,7 +428,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "bbbefa5f085c7b048a3636c8f2a268c3",
+          "717b7fbad0908c044a1b04a203b6e714"
+        ]
       },
       {
         "guid": "e75bb923a659f834383115ee24d49c86",
@@ -419,7 +448,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "02390fd41a268cc43a81fc2d72688595",
+          "0d7eb7dafc045ba4a9ba58b850130288"
+        ]
       },
       {
         "guid": "fa322f8e5b269334cb38c4a371f78b73",
@@ -435,7 +468,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "0dbca13865f1d58448bd79bfcbff56ba",
+          "b6d09d9629071ba4388226726ece0b1a"
+        ]
       },
       {
         "guid": "5b0a0a4d270bebd41920feeb553ac48b",
@@ -451,7 +488,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "0dbca13865f1d58448bd79bfcbff56ba",
+          "b6d09d9629071ba4388226726ece0b1a"
+        ]
       },
       {
         "guid": "fba6d7f19b2181b459ce24cb24316b11",
@@ -467,7 +508,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "02390fd41a268cc43a81fc2d72688595",
+          "0d7eb7dafc045ba4a9ba58b850130288"
+        ]
       },
       {
         "guid": "5c696b834d66979468a36a6aeb4c416c",
@@ -483,7 +528,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "0dbca13865f1d58448bd79bfcbff56ba",
+          "b6d09d9629071ba4388226726ece0b1a"
+        ]
       },
       {
         "guid": "c0403bf85a728e849b04bead30de141e",
@@ -499,7 +548,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "02390fd41a268cc43a81fc2d72688595",
+          "0d7eb7dafc045ba4a9ba58b850130288"
+        ]
       },
       {
         "guid": "37b4baa206ee15943ada06a7288a52c7",
@@ -555,7 +608,8 @@
             0.16862746,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8"
       },
       {
         "guid": "542ba237d8bb572439070f0219740a41",
@@ -579,7 +633,8 @@
             0.54509807,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "d2a0afc5bc457b7409be6701dfe3f47e"
       },
       {
         "guid": "dadd20511f9cd124ea5cd5a17b9d6991",
@@ -603,7 +658,8 @@
             0.58431375,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
       },
       {
         "guid": "33cfd63b91fbe374c99f406c0a3d4fcc",
@@ -659,7 +715,8 @@
             0.4,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f"
       },
       {
         "guid": "022ab973af5947c42a35078e47f7978d",
@@ -707,7 +764,8 @@
             0.62515205,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "a52cdcf1858a4704a87cb260f9e861f4"
       },
       {
         "guid": "6bc3f38e668aed14fafc35470ec5f1f2",
@@ -755,7 +813,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "c3db0f5f986c71e4da4bc28623018da1"
       },
       {
         "guid": "6225a2707ef160e44b2e62f843010bdd",
@@ -803,7 +862,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "c0d734dc8088e854789627e4a319ce3d"
       },
       {
         "guid": "d2690628dfaaa134d9b3fdcdfa33d49d",
@@ -819,7 +879,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "e3b87cf99e81e8e4482901552f3793de"
       },
       {
         "guid": "04eed77d14a1f604a9052ae4f229a28d",
@@ -843,7 +904,9 @@
             0.38431373,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "136f991850ea07548b40161956f1cf88",
+        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f"
       },
       {
         "guid": "adff52be985586e428739101ff4c210b",
@@ -897,7 +960,8 @@
             0.99607843,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "c03ebae0386138d4ebede97a1ed45db8"
       },
       {
         "guid": "d816a02cf5d1e7643ac7fe0cacdcb892",
@@ -951,7 +1015,8 @@
             0.7921569,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359"
       },
       {
         "guid": "04eed77d14a1f604a9052ae4f229a28d",
@@ -1005,7 +1070,8 @@
             0.5882353,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f"
       },
       {
         "guid": "4f7a22cde6f875942920e4be611b08f2",
@@ -1059,7 +1125,8 @@
             0.3372549,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "1e064c6580937d6428c92769dddc569f"
       },
       {
         "guid": "2e876c6683509144382e3b8072644d94",
@@ -1113,7 +1180,8 @@
             0.27058825,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663"
       },
       {
         "guid": "ffe135b4677643f47b130f8eed934b7e",
@@ -1179,7 +1247,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c"
       },
       {
         "guid": "6d34226a9250b0c4c8f2db537fc8c1d8",
@@ -1233,7 +1302,8 @@
             0.7764706,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "88d6776e579b7144da79d340727e5974"
       },
       {
         "guid": "81980bcf33600ff4c88f1af1837ee3a6",
@@ -1281,7 +1351,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "7a20c28f03cdc614cacd093ef861a1a3"
       },
       {
         "guid": "0b33aed07468374498020fda21dac5c4",
@@ -1335,7 +1406,8 @@
             0.972549,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8"
       },
       {
         "guid": "966a4c4d24ada6a4dbef0131d4d04110",
@@ -1389,7 +1461,8 @@
             0.26666668,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "59b63ba73e140d2478580d645116c473"
       },
       {
         "guid": "867ad77d0c43b304ba8029eb4e90c871",
@@ -1437,7 +1510,8 @@
             0.8392157,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0bf001ba05a1ada468c5758a6f366434"
       },
       {
         "guid": "edaa8c6264235b448bcb8b005d86b06e",
@@ -1491,7 +1565,8 @@
             0.36078432,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "35390ff0df518a5438f92858ddc22afc"
       },
       {
         "guid": "085219b31a5903f4e8f85215e0b10263",
@@ -1539,7 +1614,8 @@
             0.43529412,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "8369c7fcecc42e645885514560c87480"
       },
       {
         "guid": "cfab24dfc94fe624bb20044a504bb5c8",
@@ -1593,7 +1669,8 @@
             0.4117647,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "d8355e200936795419e486d1d434fd98"
       },
       {
         "guid": "35b706e96e643db43ab18f1224578d3d",
@@ -1641,7 +1718,8 @@
             0.2,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af"
       },
       {
         "guid": "c10d9320ccca4704197e2db18571823a",
@@ -1695,7 +1773,8 @@
             0.99607843,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "9d9191e6928b1364c927bae968339f78"
       },
       {
         "guid": "97121c7a40ba1c340886c532f5ab57ab",
@@ -1749,7 +1828,8 @@
             0.19215687,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae"
       },
       {
         "guid": "dadd20511f9cd124ea5cd5a17b9d6991",
@@ -1797,7 +1877,8 @@
             0.7607843,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
       },
       {
         "guid": "542ba237d8bb572439070f0219740a41",
@@ -1845,7 +1926,8 @@
             0.69803923,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "d2a0afc5bc457b7409be6701dfe3f47e"
       },
       {
         "guid": "b44a6c7ba67b39043877a9b613b9dde2",
@@ -1893,7 +1975,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3"
       },
       {
         "guid": "3518df10f505d874caa8cdeb9cf6a0e5",
@@ -1909,7 +1992,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "6bd20cd63cd6b004a81b80745537f6d2",
+          "073476cd6e0ffc941bd05058c9c9edb7"
+        ]
       },
       {
         "guid": "8935f5a87e6c4c446a967e79f6257d7f",
@@ -1925,7 +2012,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "72a92f8770ff5c5448709d20a90ff471",
+          "7a427303f429f894790f41c17ece9b9f"
+        ]
       },
       {
         "guid": "b90bea0120cdf174f8dd33652227809f",
@@ -1965,7 +2056,8 @@
             0.95686275,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae"
       },
       {
         "guid": "b7bcd209436bd914497201a1c436a103",
@@ -1997,7 +2089,8 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "8394b137d34fd2e42bd9c58c58a05fa8"
       },
       {
         "guid": "ceffd011236104e49b6fa1e275d627c0",
@@ -2013,7 +2106,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "a35256bc2c48eab4a94f73d5d3e6d0d6"
       },
       {
         "guid": "c5c9bede9b5443f4ca7a075090b39e89",
@@ -2029,7 +2123,8 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "718b837101fd11a4d92154430ebcb30b"
       },
       {
         "guid": "c506491b4aa01ef4eb13af9c96da26aa",
@@ -2045,7 +2140,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "dc1bf223d256ba14bb5991eb3eae0e0e",
+        "glovePoseGuids": [
+          "430c8d0e5910cdd4fbc9d4774d4f2b9e",
+          "8c0520347621fb34dbaaa87774df78c2"
+        ]
       },
       {
         "guid": "e1fff6915d8795b42a36246376b2f73f",
@@ -2061,7 +2161,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "f85966bacc59d784c8b98932278b7e7e",
+        "glovePoseGuids": [
+          "5ec0acd8d67893a498d51504b58d0301",
+          "88d8492e970f7444f9ffe624d1ab167e"
+        ]
       },
       {
         "guid": "c506491b4aa01ef4eb13af9c96da26aa",
@@ -2077,7 +2182,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "430c8d0e5910cdd4fbc9d4774d4f2b9e",
+          "8c0520347621fb34dbaaa87774df78c2"
+        ]
       },
       {
         "guid": "e1fff6915d8795b42a36246376b2f73f",
@@ -2093,7 +2202,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "5ec0acd8d67893a498d51504b58d0301",
+          "88d8492e970f7444f9ffe624d1ab167e"
+        ]
       },
       {
         "guid": "01d3545af6109ba469bb2d3595dd2a0d",
@@ -2109,7 +2222,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "12f77527464e37548b056006aa4899ba",
+        "glovePoseGuids": [
+          "8e1e8cf86fdb4c34da9470af11cc6981",
+          "1c61b919324843d419287ef39b4ab2c0"
+        ]
       },
       {
         "guid": "d578d27dc7a88414c8d084c903395209",
@@ -2125,7 +2243,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "efbe27ed4f052ef418550de50cca125c",
+        "glovePoseGuids": [
+          "53c7aabe143b4354aaf8978ec0bf3c4f",
+          "10244dfcd7a4c684b8bfdcdba7b4e113"
+        ]
       },
       {
         "guid": "01766acbadf051a468c9323908dcf022",
@@ -2141,7 +2264,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "9878c8932c93ac044813c4dde9e8ba81"
       },
       {
         "guid": "2d56306bf9955e949bf02852a496f10d",
@@ -2157,7 +2281,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "c174ea251cb2b7d4a937bb19488e5345"
       },
       {
         "guid": "01766acbadf051a468c9323908dcf022",
@@ -2213,7 +2338,9 @@
             0,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "8236683858d73d642adbacff67d34dca",
+        "coloringMaskGuid": "938419825c596004db371b29e194558d"
       },
       {
         "guid": "3c873a06ded8cd544a11723aaa571840",
@@ -2229,7 +2356,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "96d74e8e56f8f5847bebb9b5e50ea7e5"
       },
       {
         "guid": "90af88f5adc626941b423f7f09a04d67",
@@ -2325,7 +2453,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "d94369fd65ec2ea42b120c2a0ddce47c",
+        "glovePoseGuids": [
+          "1ee13769407e078438c592b815744ee0",
+          "efa9891e8d8b86441a7926c62980ebbc"
+        ]
       },
       {
         "guid": "f2eb3e61b3c4d0442b9b2a77aeefe782",
@@ -2341,7 +2474,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "5bc067b5153fce94fb15a3dadc8bb83c",
+        "glovePoseGuids": [
+          "1ee13769407e078438c592b815744ee0",
+          "efa9891e8d8b86441a7926c62980ebbc"
+        ]
       },
       {
         "guid": "4e4ba23c4c6f2ca4a84b3062914297cc",
@@ -2381,7 +2519,8 @@
             0.1882353,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af"
       },
       {
         "guid": "4a8721904d8bcde48a1d080459d7d348",
@@ -2429,7 +2568,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "708b3f6b67f104740862f42570908f36",
+          "0b4a0fc1c034b9142b843d8da76e1a8f"
+        ]
       },
       {
         "guid": "1acea201454a89b4ba9c631fb8f2c971",
@@ -2445,7 +2588,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "c66e2e8d20eabbe41a78440d74d00a7e",
+        "glovePoseGuids": [
+          "eaaf26a0adaf7394fb341370fba0d752",
+          "6383fc6747c29084bb4b5d113c466fde"
+        ]
       },
       {
         "guid": "408d288515c8ae049bb7ee0e60781cdd",
@@ -2461,7 +2609,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "f61cbc08ccefbb7439c76cb2f5a9394e",
+        "glovePoseGuids": [
+          "45924bfc560685f459f4eb459ecfbbf5",
+          "d3f7364376d29b741b385b1bd5a140b5"
+        ]
       },
       {
         "guid": "110676bd430748149ab342db7d24218e",
@@ -2581,7 +2734,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af"
       },
       {
         "guid": "966a4c4d24ada6a4dbef0131d4d04110",
@@ -2605,7 +2759,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "59b63ba73e140d2478580d645116c473"
       },
       {
         "guid": "7eeb2e43a35ab6f4aa64468975dbf298",
@@ -2653,7 +2808,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "e349a89e7f4c70d4fa2b2d0f716a04d2",
+          "36da6ce9fffcfe148951c6d7dafffd5c"
+        ]
       },
       {
         "guid": "5ce77c6aa82e5d44689d101f19f2b3ec",
@@ -2677,7 +2836,9 @@
             0.25735295,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "8fcf87e4a3981904aa264f5b37333ddc",
+        "coloringMaskGuid": "0de64ea0052c88e40800423eade2876d"
       },
       {
         "guid": "d6a835e5c1e0e2c4f83b77aeb4ccfdf1",
@@ -2701,7 +2862,9 @@
             0.7019608,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "68dadbabfd11e7e468a388be904efc61",
+        "coloringMaskGuid": "44d0f741bb4abe542b72b2a2d4f49f7f"
       },
       {
         "guid": "8c82a9316353f9d45b95fa15c5c1038c",
@@ -2749,7 +2912,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "3855892508128784ea098260eaba7689"
       },
       {
         "guid": "ffe135b4677643f47b130f8eed934b7e",
@@ -2773,7 +2937,9 @@
             0.34901962,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "db90249d33470e849954d97b36692293",
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c"
       },
       {
         "guid": "d0e5f9bbc2ab35244aff319f246a64e2",
@@ -2789,7 +2955,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "0b361929de7b979429dbacc9b08dccdc"
       },
       {
         "guid": "dbd1b591d562bc846b35424b49d330b2",
@@ -2805,7 +2972,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "182e4feb95e8e1d49bd34395484ce497"
       },
       {
         "guid": "edaa8c6264235b448bcb8b005d86b06e",
@@ -2829,7 +2997,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "35390ff0df518a5438f92858ddc22afc"
       },
       {
         "guid": "bb121801f9128b64ab3d6e50bb8fc1f6",
@@ -2845,7 +3014,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "7c40b111e060884469d21d67b28fbedb"
       },
       {
         "guid": "6f9389021b54d454fa1026b0b627bdc7",
@@ -2925,7 +3095,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "d48d476af47c8f84caefd6d84a8f6806"
       },
       {
         "guid": "d41dbd3ad02d0f64b94eaab036a48181",
@@ -2941,7 +3112,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "e03b0db805d4ac6478eec86f0d0ce96b"
       },
       {
         "guid": "cd5be587741522c44969b51a67558986",
@@ -2981,7 +3153,10 @@
             0.4044118,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "a0167850054ce9743871e8444bd1155c",
+        "largeHeadgearGuid": "aba6aa626df9ce34a8ae48b05adc7fd4",
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
       },
       {
         "guid": "b44a6c7ba67b39043877a9b613b9dde2",
@@ -3005,7 +3180,8 @@
             0.36862746,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3"
       },
       {
         "guid": "3d6698bbbe8498c4a9006d19bd563928",
@@ -3021,7 +3197,13 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "8d295863a1ec13d439ea354fab827603",
+        "coloringMaskGuid": "65c24a26d398da040bfd8be81b40fdf6",
+        "glovePoseGuids": [
+          "53e65eab36e822842a44e77ed0d5e0e9",
+          "822085115c2e7254b885cb68f48ac5e3"
+        ]
       },
       {
         "guid": "4b3565d0e6feb014992cad55f3d687fe",
@@ -3037,7 +3219,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "a920c07962a39b84cba1282ae6b72576",
+        "glovePoseGuids": [
+          "8a9634575f81b2444958f3d1c7297ee0",
+          "697d2a85493ade1498f82d5f561d35e5"
+        ]
       },
       {
         "guid": "3d6698bbbe8498c4a9006d19bd563928",
@@ -3061,6 +3248,11 @@
             0.09019608,
             1
           ]
+        ],
+        "coloringMaskGuid": "c8fb9dd25b81f0e4da763d6155a14269",
+        "glovePoseGuids": [
+          "53e65eab36e822842a44e77ed0d5e0e9",
+          "822085115c2e7254b885cb68f48ac5e3"
         ]
       },
       {
@@ -3085,6 +3277,11 @@
             0.09019608,
             1
           ]
+        ],
+        "coloringMaskGuid": "f3fdbd0ecf249c84babf843f97525449",
+        "glovePoseGuids": [
+          "8a9634575f81b2444958f3d1c7297ee0",
+          "697d2a85493ade1498f82d5f561d35e5"
         ]
       },
       {
@@ -3101,7 +3298,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "5ba68b772170e1546a4ba70339caf6a4"
       },
       {
         "guid": "d2f51d7b49f53b1498bd6c9fa1623bbf",
@@ -3117,7 +3315,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "0e35897232ea91448b8f8c2616075e0a"
       },
       {
         "guid": "1a73c40bfe142d14c8ddc242e871e7cf",
@@ -3141,7 +3340,8 @@
             0.99607843,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "e6c775d34512c17409a77649a15ca3fb"
       },
       {
         "guid": "5bdb96d1e13b2db43bc9908f880d1acb",
@@ -3189,7 +3389,9 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "1ac15746a347def40b42c9c3297d2740",
+        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae"
       },
       {
         "guid": "ba3c9f4fc7c9dda448da309242b94a52",
@@ -3229,42 +3431,55 @@
             0.40392157,
             1
           ]
+        ],
+        "helmetGuid": "2c8fd06853afcde4d9ff721d83cb68c3",
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
+      },
+      {
+        "guid": "05a1a5f664a2f9c418518d417a0bf3a1",
+        "name": "ncr_ranger",
+        "atlas": "outfit_atlas_23.png",
+        "bounds": {
+          "x": 512,
+          "y": 768,
+          "w": 512,
+          "h": 256
+        },
+        "gender": "female",
+        "flags": {
+          "hasSkirt": true,
+          "isUsedByDefault": true
+        },
+        "helmetGuid": "c6f0e83eec7c4b84baffdf620b9a9d84",
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c",
+        "glovePoseGuids": [
+          "1e5069bf69287b240bcb198385961e05",
+          "6c52a8d54937b9043a575e0d36a1190f"
+        ]
+      },
+      {
+        "guid": "3f63ef65501061540bb519b0588f4431",
+        "name": "ncr_ranger",
+        "atlas": "outfit_atlas_12.png",
+        "bounds": {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 256
+        },
+        "gender": "male",
+        "flags": {
+          "hasSkirt": false,
+          "isUsedByDefault": true
+        },
+        "helmetGuid": "896d473f20b6b564caddbe6927cf8bcd",
+        "glovePoseGuids": [
+          "4ba05a54d45d4224a9792b7ef46c0764",
+          "914b3205d35b95a4fb63afb912d3455e"
         ]
       },
       {
         "guid": "05a1a5f664a2f9c418518d417a0bf3a1",
-        "name": "ncr_ranger",
-        "atlas": "outfit_atlas_23.png",
-        "bounds": {
-          "x": 512,
-          "y": 768,
-          "w": 512,
-          "h": 256
-        },
-        "gender": "female",
-        "flags": {
-          "hasSkirt": true,
-          "isUsedByDefault": true
-        }
-      },
-      {
-        "guid": "3f63ef65501061540bb519b0588f4431",
-        "name": "ncr_ranger",
-        "atlas": "outfit_atlas_12.png",
-        "bounds": {
-          "x": 512,
-          "y": 0,
-          "w": 512,
-          "h": 256
-        },
-        "gender": "male",
-        "flags": {
-          "hasSkirt": false,
-          "isUsedByDefault": true
-        }
-      },
-      {
-        "guid": "05a1a5f664a2f9c418518d417a0bf3a1",
         "name": "ncr_ranger_Helmetless",
         "atlas": "outfit_atlas_23.png",
         "bounds": {
@@ -3277,7 +3492,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c",
+        "glovePoseGuids": [
+          "1e5069bf69287b240bcb198385961e05",
+          "6c52a8d54937b9043a575e0d36a1190f"
+        ]
       },
       {
         "guid": "3f63ef65501061540bb519b0588f4431",
@@ -3293,7 +3513,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "4ba05a54d45d4224a9792b7ef46c0764",
+          "914b3205d35b95a4fb63afb912d3455e"
+        ]
       },
       {
         "guid": "8cb353d38f5a6314a919db83ebac57e3",
@@ -3309,7 +3533,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "10554025c68c3404c82d127ec1917773",
+        "glovePoseGuids": [
+          "4d8fbc92aa5ecf048ac6bd525022abc3",
+          "af23d74790386b744970f43607156b21"
+        ]
       },
       {
         "guid": "ff13e09d979e5e14ba4880927d5569d9",
@@ -3325,7 +3554,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "0f657d7ddb61ff742a58c9028899d373",
+        "glovePoseGuids": [
+          "2bfe125ccfbf09842a29645985392f04",
+          "bc4bdd619f400fd45821f5b340a541c2"
+        ]
       },
       {
         "guid": "b9f19fac380001b4aa3cc0dbdc22f5f5",
@@ -3341,7 +3575,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "79bd9179b30950d489deb2b941612ba3"
       },
       {
         "guid": "41dd9a6429722814190645bd29791a39",
@@ -3365,7 +3600,9 @@
             0.42745098,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "5f7b7768706d05241bb3a5745975098c",
+        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb"
       },
       {
         "guid": "98ae5ad099f1888448b47badad60cc8b",
@@ -3381,7 +3618,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "6f06d2b5e047a404a8e2570bb4e519b8",
+          "e1ae7eaadfdf7214aa8d4a22fc4fe6b9"
+        ]
       },
       {
         "guid": "d79e00fe2310d5c47aa76eb8df99e0f4",
@@ -3397,7 +3638,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "832ed94fcdfb6854ea784673867f87a6",
+        "glovePoseGuids": [
+          "04de534ff1d181a449fcd41618e59834",
+          "ba2582e0799ec9e4e886200daf7d1ae5"
+        ]
       },
       {
         "guid": "d79e00fe2310d5c47aa76eb8df99e0f4",
@@ -3413,7 +3659,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "bc590d26f6295964594c2cae8493033e",
+        "glovePoseGuids": [
+          "04de534ff1d181a449fcd41618e59834",
+          "ba2582e0799ec9e4e886200daf7d1ae5"
+        ]
       },
       {
         "guid": "9554efbac474de744abae6c935968c9e",
@@ -3429,7 +3680,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "42fbc03cb78455941ae278d37b2ce3fc",
+        "glovePoseGuids": [
+          "0bd6fb57fc87ae34299c5a7240bfd96a",
+          "34af207b06d25c14ab2fbee88d0a4078"
+        ]
       },
       {
         "guid": "adff52be985586e428739101ff4c210b",
@@ -3453,7 +3709,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "c03ebae0386138d4ebede97a1ed45db8"
       },
       {
         "guid": "316acfb991077da49a121720bfef511a",
@@ -3469,7 +3726,13 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "428793b3fb06c0144bf256d42b9a8af4",
+        "coloringMaskGuid": "1b50d4d3f01b5ef4ca80258d9e91a1b4",
+        "glovePoseGuids": [
+          "708b3f6b67f104740862f42570908f36",
+          "0b4a0fc1c034b9142b843d8da76e1a8f"
+        ]
       },
       {
         "guid": "a0a7e527889387b4c879b8d1a3fa1af8",
@@ -3485,7 +3748,13 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "2285b32ec925dfe48b7c73c477760eb9",
+        "coloringMaskGuid": "65c24a26d398da040bfd8be81b40fdf6",
+        "glovePoseGuids": [
+          "04b1f43811b97ec4e8b6389aa4b0ca0c",
+          "af7b5f52db218a146828e1c5a3cae252"
+        ]
       },
       {
         "guid": "4126bfd493ddaf249abfc1b7e26feaf3",
@@ -3501,7 +3770,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "852c4761b702cef4baf4bb3aa5009b7e",
+        "glovePoseGuids": [
+          "708b3f6b67f104740862f42570908f36",
+          "0b4a0fc1c034b9142b843d8da76e1a8f"
+        ]
       },
       {
         "guid": "79a110f14562b1d4a8b4a067d7ca44fb",
@@ -3517,7 +3791,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "d44815bd9d58bf145b39eff31f3ebd60",
+        "glovePoseGuids": [
+          "04b1f43811b97ec4e8b6389aa4b0ca0c",
+          "af7b5f52db218a146828e1c5a3cae252"
+        ]
       },
       {
         "guid": "e1f384edd9190374b9013bf34b86e8cd",
@@ -3533,7 +3812,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "2958e01c33bbca84da381ab22801d9cc",
+        "glovePoseGuids": [
+          "708b3f6b67f104740862f42570908f36",
+          "0b4a0fc1c034b9142b843d8da76e1a8f"
+        ]
       },
       {
         "guid": "ea73d9d4524bcb04c8163a808ca0a5b4",
@@ -3549,7 +3833,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "ec585de5c6cacb1468cfca470855e653",
+        "glovePoseGuids": [
+          "04b1f43811b97ec4e8b6389aa4b0ca0c",
+          "af7b5f52db218a146828e1c5a3cae252"
+        ]
       },
       {
         "guid": "0c751c862b9263543ac4cab794eff129",
@@ -3565,7 +3854,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "6208c1f6119ca5644be3368fc159b92d",
+        "glovePoseGuids": [
+          "708b3f6b67f104740862f42570908f36",
+          "0b4a0fc1c034b9142b843d8da76e1a8f"
+        ]
       },
       {
         "guid": "3551eb9f6e5a79a46aa701c1183d741c",
@@ -3581,7 +3875,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "4204d06af71416141941080821c20698",
+        "glovePoseGuids": [
+          "04b1f43811b97ec4e8b6389aa4b0ca0c",
+          "af7b5f52db218a146828e1c5a3cae252"
+        ]
       },
       {
         "guid": "a0a7e527889387b4c879b8d1a3fa1af8",
@@ -3597,7 +3896,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "coloringMaskGuid": "65c24a26d398da040bfd8be81b40fdf6",
+        "glovePoseGuids": [
+          "04b1f43811b97ec4e8b6389aa4b0ca0c",
+          "af7b5f52db218a146828e1c5a3cae252"
+        ]
       },
       {
         "guid": "8ccf9e8306a4eb048acd7516a6890437",
@@ -3629,7 +3933,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "e5fa81705cf6cfe418681fab84f2b100",
+        "glovePoseGuids": [
+          "45924bfc560685f459f4eb459ecfbbf5",
+          "d3f7364376d29b741b385b1bd5a140b5"
+        ]
       },
       {
         "guid": "2be5a04882ba6e942932da311c11060c",
@@ -3645,7 +3954,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "12d4436061d531345b5d291a6ded0149"
       },
       {
         "guid": "8f3616132d1f89247a7b6e583648771c",
@@ -3661,7 +3971,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "c2ba34bdb6e9fbd41938bab3c4d6e554"
       },
       {
         "guid": "5ce77c6aa82e5d44689d101f19f2b3ec",
@@ -3685,7 +3996,9 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "a8e2b88f9f7c35b48adb83e5a1946b86",
+        "coloringMaskGuid": "0de64ea0052c88e40800423eade2876d"
       },
       {
         "guid": "2e876c6683509144382e3b8072644d94",
@@ -3709,7 +4022,9 @@
             0.88235295,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "81fea4935247b634f8ade6407bdf0ab8",
+        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663"
       },
       {
         "guid": "3e963fb00a004d24c88716ca069039ad",
@@ -3725,7 +4040,12 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "5eba7745717af264187dd95967ff01f0",
+        "glovePoseGuids": [
+          "eaaf26a0adaf7394fb341370fba0d752",
+          "6383fc6747c29084bb4b5d113c466fde"
+        ]
       },
       {
         "guid": "ae4dd03266072644a97e866ebf4436f3",
@@ -3741,7 +4061,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "dc845f611ffc1584e8f21dcba444e0bc",
+        "glovePoseGuids": [
+          "45924bfc560685f459f4eb459ecfbbf5",
+          "d3f7364376d29b741b385b1bd5a140b5"
+        ]
       },
       {
         "guid": "41dd9a6429722814190645bd29791a39",
@@ -3819,7 +4144,8 @@
             0.56165135,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb"
       },
       {
         "guid": "a5467a45ea7a678478a60ab2ac2a3200",
@@ -3897,7 +4223,8 @@
             0.55821496,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "b5a79614e36f2b240823f0cda4e3392d"
       },
       {
         "guid": "1c52e4d8956aee3468a922ddd947dbc9",
@@ -3977,7 +4304,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "fa778648b2941414e8462398037d9ee9",
+        "glovePoseGuids": [
+          "bbbf136065a43664ba7ac1e0f9b717d2",
+          "22aa94aa228143c41bf9661e25ccbe02"
+        ]
       },
       {
         "guid": "7082144784fba6e4db2777d6621c3289",
@@ -3993,7 +4325,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "c0b117c7973699c4cb46515339b25f12",
+        "glovePoseGuids": [
+          "75466004225f1ce48beab61964be36fb",
+          "1f18201f893f83b478eb45e0b6340cfe"
+        ]
       },
       {
         "guid": "22187ce4fc138ee4b85d947904050d19",
@@ -4009,7 +4346,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "bbbf136065a43664ba7ac1e0f9b717d2",
+          "22aa94aa228143c41bf9661e25ccbe02"
+        ]
       },
       {
         "guid": "7082144784fba6e4db2777d6621c3289",
@@ -4025,7 +4366,11 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "glovePoseGuids": [
+          "75466004225f1ce48beab61964be36fb",
+          "1f18201f893f83b478eb45e0b6340cfe"
+        ]
       },
       {
         "guid": "2646ad4e947ca8449a50f5ddf1eccf36",
@@ -4041,7 +4386,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "ac8520eefa0bfbd4dabaea49ff56218b"
       },
       {
         "guid": "a74b677a1accee04298a954d892d14e4",
@@ -4057,7 +4403,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "7e3db28f129a9b0479863b971eee5e99"
       },
       {
         "guid": "83772b1eef63ef14abc24ee9691f4809",
@@ -4073,7 +4420,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "42fe48cde5a09df44b3db91d135c7ba7",
+        "glovePoseGuids": [
+          "7f64f998b57f7674280032d2d799eec4",
+          "1debd8adee7b4204595c3c6c1ecf4781"
+        ]
       },
       {
         "guid": "e220b569723dfe24b8ec6abcdc560983",
@@ -4089,7 +4441,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "1162bbc17d1073042bcc46bd6a14f997",
+        "glovePoseGuids": [
+          "d2952060bb43876489ddfcde80ecbe49",
+          "0550b079d434d6c4e8c0496a21498540"
+        ]
       },
       {
         "guid": "531e136eca2e147489e936b61086c0b5",
@@ -4105,7 +4462,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "0404052a79250ab4aa732e66a13b14bb",
+        "glovePoseGuids": [
+          "29e5fd7589c79c14ca3569c06adc5465",
+          "1fb64c7e3046e86468d3f8a2f9f42bae"
+        ]
       },
       {
         "guid": "a12bbb97520b54b4584265f31ad06027",
@@ -4121,7 +4483,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "f35992132ead4fc41a37f74d740e7cc5",
+        "glovePoseGuids": [
+          "7427dfb0758017a488afa405c3553399",
+          "e23610aecfb7022408a4ba57445dae94"
+        ]
       },
       {
         "guid": "cf5f36e1527b14a4db43c0028cd898c1",
@@ -4169,7 +4536,9 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "45844c3599eb1a444a20b6dd9d909b27",
+        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8"
       },
       {
         "guid": "529266da23095e14fb09a66caff8986e",
@@ -4185,7 +4554,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "0bd78bf7fa7a00a4aba79dcd22f7f34c",
+        "glovePoseGuids": [
+          "e2d863d60f770424cbf228192208e30e",
+          "e2d863d60f770424cbf228192208e30e"
+        ]
       },
       {
         "guid": "b596d07da02e14f40b9394ae824b3b3a",
@@ -4201,7 +4575,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "6003d96d858174e48b78b827896400c2",
+        "glovePoseGuids": [
+          "81003ab0552da2f40bd9c48a00162ac5",
+          "4591d0b12ece18040bb38e45369ebb39"
+        ]
       },
       {
         "guid": "a477b817fe96bad4981cfe7e8a596e13",
@@ -4217,7 +4596,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "b0b5563b734aa8e47a2739e176f076a6",
+        "glovePoseGuids": [
+          "ed973d03f336f9f4b8b50e47de38e26e",
+          "e7ecd19a2e880cd489568fac705fb79d"
+        ]
       },
       {
         "guid": "1a87f82a0a9611c4498488f13014a9b7",
@@ -4241,7 +4625,8 @@
             0.25490198,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "4aa734bdc9e9da746b3a158f60e55b54"
       },
       {
         "guid": "858f0864732007c4e8e8384988e8d2a3",
@@ -4265,7 +4650,8 @@
             0.25490198,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "ca37a1e0d67668f499b2cfea5d5e6b17"
       },
       {
         "guid": "1a87f82a0a9611c4498488f13014a9b7",
@@ -4289,7 +4675,8 @@
             0.972549,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "4aa734bdc9e9da746b3a158f60e55b54"
       },
       {
         "guid": "858f0864732007c4e8e8384988e8d2a3",
@@ -4313,7 +4700,8 @@
             0.8509804,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "ca37a1e0d67668f499b2cfea5d5e6b17"
       },
       {
         "guid": "4f7a22cde6f875942920e4be611b08f2",
@@ -4337,7 +4725,8 @@
             0.07058824,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "1e064c6580937d6428c92769dddc569f"
       },
       {
         "guid": "443417d2b3e167746a890d47c7f28c9a",
@@ -4353,7 +4742,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "55cacbf2ba96a7447bea3761bcba04e3",
+        "glovePoseGuids": [
+          "77bd012ba2c986040acbe723391ffbf2",
+          "42edc0dffdea74543a8c27cddc58c58c"
+        ]
       },
       {
         "guid": "c75a65ec3cb0a9b40a83993ad9b5e346",
@@ -4369,7 +4763,12 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "e6a0500b8af184b448917d9d7378b5e5",
+        "glovePoseGuids": [
+          "9afac1e96261ed94aa31d7df1ad96b8a",
+          "f9d03e9435fe1494588252c8a2c546e0"
+        ]
       },
       {
         "guid": "4a8721904d8bcde48a1d080459d7d348",
@@ -4393,7 +4792,9 @@
             0.35121107,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "0d63e99fc9e480a4cb3d5f9875ab28e9",
+        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3"
       },
       {
         "guid": "af5967a703b06bd4da668dbd451dbc04",
@@ -4409,7 +4810,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "e0ebfd47e4b586344b6408b04bf34ea7"
       },
       {
         "guid": "c92e8bb1c6342e84c8ab8b87ad8b8244",
@@ -4425,7 +4827,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "b764475a4ba2bee48854319a7ebf001c"
       },
       {
         "guid": "4d1e750179b8b8d48ae7aaa9ac1a61b1",
@@ -4481,7 +4884,8 @@
             0.9607843,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0bf001ba05a1ada468c5758a6f366434"
       },
       {
         "guid": "7e4e47819b63b0149b030b31dcb6549a",
@@ -4505,7 +4909,9 @@
             0.32115054,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "31a17a66aefa9e44dbb45516d1956971",
+        "coloringMaskGuid": "fa11c3e9af263504d8eec320b27cd6b9"
       },
       {
         "guid": "93f8a4f888a1e314d8320669893fd889",
@@ -4529,7 +4935,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "c9f04a89c02bdf3419eae53d38fbf49a"
       },
       {
         "guid": "47f53c557fb6ac94689935b309c796d0",
@@ -4553,7 +4960,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "0035da10721d3fc4b9890ee562f00f97"
       },
       {
         "guid": "718551631cfebe44b82c34d2701b34c3",
@@ -4577,7 +4985,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "d3002ae5a53f38f4396cf49f1b6140ab"
       },
       {
         "guid": "054b61e31a86b7c40b6b9993949dd734",
@@ -4601,7 +5010,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "e6bb08444cad68b45891ff99328d4cda"
       },
       {
         "guid": "f53a7dd4f4ec985429f49ddedf50d7a1",
@@ -4625,7 +5035,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "322a37017479446418ed8d17a4e8bb59"
       },
       {
         "guid": "e597eb3bdf9877c469aa12e2119e62c2",
@@ -4649,7 +5060,8 @@
             1,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "412a4e9c0bc15674b93f66e8d41b2c83"
       },
       {
         "guid": "6521bcc7f25df84448ae55cd6b6550fb",
@@ -4673,7 +5085,9 @@
             0.30882353,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "bdeacd4a6b6a3734e8052d2fbf397198",
+        "coloringMaskGuid": "d8e4509a5d49b6d4f806a86f75df6eb9"
       },
       {
         "guid": "1a73c40bfe142d14c8ddc242e871e7cf",
@@ -4697,7 +5111,9 @@
             0.99607843,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "71ce3bf52838a044f9a6828beb411a48",
+        "coloringMaskGuid": "e6c775d34512c17409a77649a15ca3fb"
       },
       {
         "guid": "d6a835e5c1e0e2c4f83b77aeb4ccfdf1",
@@ -4721,7 +5137,9 @@
             0.48438123,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "1a2b3caf78a8c0a47bd0afabe33d4350",
+        "coloringMaskGuid": "44d0f741bb4abe542b72b2a2d4f49f7f"
       },
       {
         "guid": "085219b31a5903f4e8f85215e0b10263",
@@ -4745,7 +5163,8 @@
             0.7490196,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "8369c7fcecc42e645885514560c87480"
       },
       {
         "guid": "d816a02cf5d1e7643ac7fe0cacdcb892",
@@ -4769,7 +5188,8 @@
             0.627451,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359"
       },
       {
         "guid": "bf0c10ab70d374c4bab4eb7bf9c2044d",
@@ -4785,7 +5205,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "11549c7e8a378d347ba66d2e8a4b6f4d"
       },
       {
         "guid": "f63572d89be858d49883f27deb0041c0",
@@ -4801,7 +5222,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "0619c39046e9b8245a6c23fd638f1761"
       },
       {
         "guid": "cfab24dfc94fe624bb20044a504bb5c8",
@@ -4825,7 +5247,8 @@
             0.7921569,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "d8355e200936795419e486d1d434fd98"
       },
       {
         "guid": "41a9886f7c5761743bb1b456414c3d31",
@@ -4841,7 +5264,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "00d05edd9db1c4045803d6314887e24c"
       },
       {
         "guid": "f70c7fc9451f71740ae31054d385102e",
@@ -4857,7 +5281,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "3546880d0f55ee3418b69fdc8a5ddbf5"
       },
       {
         "guid": "ee9375336f043c843987a2d45e3b8ef3",
@@ -4873,7 +5298,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "53e9b5056f2e8254d80df97fa4da91f3"
       },
       {
         "guid": "6d34226a9250b0c4c8f2db537fc8c1d8",
@@ -4897,7 +5323,8 @@
             0.627451,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "88d6776e579b7144da79d340727e5974"
       },
       {
         "guid": "2c115822faca309409fcae7f36bf3d4d",
@@ -4977,7 +5404,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "c45e41a5c3b7b854481d49e4b8afdbf4"
       },
       {
         "guid": "d93cbb3220b63924fb54deb79f9b1acb",
@@ -4993,7 +5421,8 @@
         "flags": {
           "hasSkirt": false,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "2bd3f9a2bffa876429ae52620f3faa2d"
       },
       {
         "guid": "81980bcf33600ff4c88f1af1837ee3a6",
@@ -5017,7 +5446,8 @@
             0.23137255,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "7a20c28f03cdc614cacd093ef861a1a3"
       },
       {
         "guid": "c10d9320ccca4704197e2db18571823a",
@@ -5041,7 +5471,8 @@
             0.88235295,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "9d9191e6928b1364c927bae968339f78"
       },
       {
         "guid": "2ef5b66eeabd3c54c83de84e2e826320",
@@ -5121,7 +5552,8 @@
         "flags": {
           "hasSkirt": true,
           "isUsedByDefault": true
-        }
+        },
+        "helmetGuid": "f3cddf80630210548846bca6720536c0"
       },
       {
         "guid": "93188b295b3195f4bad673a79a96be74",
@@ -5177,7 +5609,8 @@
             0,
             1
           ]
-        ]
+        ],
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c"
       },
       {
         "guid": "41dd9a6429722814190645bd29791a39",
@@ -5201,7 +5634,9 @@
             0.9372549,
             1
           ]
-        ]
+        ],
+        "helmetGuid": "3cf945d553e700e44b4e0f5e03e51939",
+        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb"
       },
       {
         "guid": "fdf4762d945d63547b41d20c960a73ca",
@@ -8340,8 +8775,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
-        }
+          "isUsedByDefault": false,
+          "isExclusive": true
+        },
+        "maskGuid": "13cce6f1988437f499cc77a736de5e9b"
       },
       {
         "guid": "1a4442ede378feb4d9199c2afe007453",
@@ -8355,8 +8792,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "b7a90c9d61a368e49858768d7fb79abd"
       },
       {
         "guid": "897a067d3e4e0a94b9ffd928a9afff6b",
@@ -8370,8 +8809,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "58b74f6792864c1418875d8f9f0e65c5"
       },
       {
         "guid": "d76fef1e6ee78214e90f6e18853ac9ba",
@@ -8385,7 +8826,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": true
         }
       },
       {
@@ -8400,7 +8842,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": true
         }
       },
       {
@@ -8415,7 +8858,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8430,7 +8874,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8445,8 +8890,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "c9af33def1ab2b643a1e112e72f9e5aa"
       },
       {
         "guid": "a4a112e65caa70a4285f5313d7b500b8",
@@ -8460,8 +8907,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "55b44967639fd6c4386f40f063739690"
       },
       {
         "guid": "20addd276f6700f4e9be281662f5039b",
@@ -8475,8 +8924,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "71643134a6b4e224484b27da0544305c"
       },
       {
         "guid": "86ce843e905924e40a440a85a38e2123",
@@ -8490,8 +8941,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "8f36530f943154341996554165fa8c47"
       },
       {
         "guid": "4b20c428b94f9c04eadcc0f7030224e6",
@@ -8505,8 +8958,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "9e07d665b5399b54daea1f7c49779c31"
       },
       {
         "guid": "ab522a186061ea54db6dd3c70daf893c",
@@ -8520,8 +8975,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "91dbe331e84307849949d3daa1a8c5cf"
       },
       {
         "guid": "63d516b1643fe274eb49018b82ce3728",
@@ -8535,8 +8992,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "b37cd19b4841139438c7e07bc4ba1812"
       },
       {
         "guid": "2c8fd06853afcde4d9ff721d83cb68c3",
@@ -8550,8 +9009,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "ea3e5e7bbc88a4649a3f89e15416ef4e"
       },
       {
         "guid": "15c8aa2e43c1f004b8b842fa324d8383",
@@ -8565,7 +9026,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": true
         }
       },
       {
@@ -8580,7 +9042,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": true
         }
       },
       {
@@ -8595,8 +9058,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "2988b35f17ab2ca4bab97189a4362bbb"
       },
       {
         "guid": "6b5fe112ed4b73741a9b15f7434096cf",
@@ -8610,7 +9075,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8625,7 +9091,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8640,7 +9107,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8655,8 +9123,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "a3e88acd4ea818845a020ea6eda9885e"
       },
       {
         "guid": "e3b87cf99e81e8e4482901552f3793de",
@@ -8670,8 +9140,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "0e953df9b8e97934b9066691c06f1841"
       },
       {
         "guid": "390e04782ac724147916a0aba6ba7fb8",
@@ -8685,7 +9157,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8700,8 +9173,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "0d3852948659ca643b57bf9b4b8a3526"
       },
       {
         "guid": "01bbe878c479383418afda1267a3689a",
@@ -8715,7 +9190,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8730,8 +9206,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "cefded31e614eef4eaf43b8e99871d4d"
       },
       {
         "guid": "8394b137d34fd2e42bd9c58c58a05fa8",
@@ -8745,7 +9223,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8760,7 +9239,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8775,8 +9255,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "6377bcec783b42947980a7951d89b0af"
       },
       {
         "guid": "f85966bacc59d784c8b98932278b7e7e",
@@ -8790,8 +9272,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "f27bbd244dd26934a9d9a432f6a59c09"
       },
       {
         "guid": "12f77527464e37548b056006aa4899ba",
@@ -8805,8 +9289,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "0b36cb8c7058ce549987426360beeb01"
       },
       {
         "guid": "efbe27ed4f052ef418550de50cca125c",
@@ -8820,8 +9306,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "4eaff2dc0e2f30849b9fc7440ae1d370"
       },
       {
         "guid": "c174ea251cb2b7d4a937bb19488e5345",
@@ -8835,8 +9323,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "f531a5e7b80831849912d104451dff62"
       },
       {
         "guid": "9878c8932c93ac044813c4dde9e8ba81",
@@ -8850,8 +9340,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "a468417f073f9fb4fb4333d76eb03cfa"
       },
       {
         "guid": "5eba7745717af264187dd95967ff01f0",
@@ -8865,8 +9357,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "6e8a737c626ff094cbce5eee6f45a09d"
       },
       {
         "guid": "dc845f611ffc1584e8f21dcba444e0bc",
@@ -8880,8 +9374,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "ea7e95c65e006134a89d15ac7fa49632"
       },
       {
         "guid": "bdeacd4a6b6a3734e8052d2fbf397198",
@@ -8895,8 +9391,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "c23df458ba717874ca9acf60937afbcc"
       },
       {
         "guid": "d94369fd65ec2ea42b120c2a0ddce47c",
@@ -8910,8 +9408,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "7f7346d7d4f41da44bf83e632d09cfab"
       },
       {
         "guid": "5bc067b5153fce94fb15a3dadc8bb83c",
@@ -8925,8 +9425,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "7f7346d7d4f41da44bf83e632d09cfab"
       },
       {
         "guid": "c9f04a89c02bdf3419eae53d38fbf49a",
@@ -8940,7 +9442,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -8955,7 +9458,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -8970,7 +9474,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -8985,8 +9490,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "5326ea78ac070814fa78a877ccc702fd"
       },
       {
         "guid": "c66e2e8d20eabbe41a78440d74d00a7e",
@@ -9000,7 +9507,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9015,7 +9523,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9030,7 +9539,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9045,7 +9555,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9060,7 +9571,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9075,7 +9587,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9090,7 +9603,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9105,7 +9619,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9120,7 +9635,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9135,7 +9651,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9150,7 +9667,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9165,7 +9683,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9180,7 +9699,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9195,7 +9715,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9210,7 +9731,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9225,8 +9747,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "2b06b6c9d861c434ba3b31c573d9290d"
       },
       {
         "guid": "db90249d33470e849954d97b36692293",
@@ -9240,7 +9764,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9255,8 +9780,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "6a86293f92f9d884cb80e0cdae4da465"
       },
       {
         "guid": "182e4feb95e8e1d49bd34395484ce497",
@@ -9270,8 +9797,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "5326ea78ac070814fa78a877ccc702fd"
       },
       {
         "guid": "8392b5202ccfa5a4787b753b5fb82165",
@@ -9285,8 +9814,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "4bc4aa4071fc40e4589f09e83ea6cc3e"
       },
       {
         "guid": "3cf945d553e700e44b4e0f5e03e51939",
@@ -9300,7 +9831,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9315,8 +9847,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": true
+        },
+        "maskGuid": "5822c8250a0be934d8637f25de4da8e5"
       },
       {
         "guid": "d48d476af47c8f84caefd6d84a8f6806",
@@ -9330,8 +9864,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": true
+        },
+        "maskGuid": "b7c4eb74089a3cb4cb6c46354ef93d23"
       },
       {
         "guid": "e03b0db805d4ac6478eec86f0d0ce96b",
@@ -9345,8 +9881,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": true
+        },
+        "maskGuid": "5822c8250a0be934d8637f25de4da8e5"
       },
       {
         "guid": "7163eba2bac2815498d96484ff086ba8",
@@ -9360,7 +9898,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": true
         }
       },
       {
@@ -9375,7 +9914,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": true
         }
       },
       {
@@ -9390,8 +9930,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": true
+        },
+        "maskGuid": "8fbc54d5e0952a84f90d8026cc2deb4c"
       },
       {
         "guid": "a920c07962a39b84cba1282ae6b72576",
@@ -9405,8 +9947,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "d088766855e90c24cb28bdb8048dcbdf"
       },
       {
         "guid": "0e35897232ea91448b8f8c2616075e0a",
@@ -9420,8 +9964,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "15ddf2f9152000c4582770bb1475a7d5"
       },
       {
         "guid": "5ba68b772170e1546a4ba70339caf6a4",
@@ -9435,8 +9981,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "089b0e9bd26be7a4898cfd582d0b0a7d"
       },
       {
         "guid": "31a17a66aefa9e44dbb45516d1956971",
@@ -9450,8 +9998,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "1ced7c6ebbd829d418aaa5402668fe9c"
       },
       {
         "guid": "de8cf0c7a86cdc344bdb6a3565d647a1",
@@ -9465,7 +10015,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9480,7 +10031,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9495,7 +10047,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9510,7 +10063,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9525,8 +10079,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "6423259b445f33840ae937ac7e5e3619"
       },
       {
         "guid": "6936dceb3a5a54d4f9f8c4e53f075f1b",
@@ -9540,8 +10096,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "05e222e65ca34774ca4fbe4da484990e"
       },
       {
         "guid": "896d473f20b6b564caddbe6927cf8bcd",
@@ -9555,8 +10113,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "2a6683d716ccac644bab4e2725268f34"
       },
       {
         "guid": "c6f0e83eec7c4b84baffdf620b9a9d84",
@@ -9570,8 +10130,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "ead4428441783d54092fc6bf9f3e57d0"
       },
       {
         "guid": "0f657d7ddb61ff742a58c9028899d373",
@@ -9585,8 +10147,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "e762238181c44a644b529259dc266def"
       },
       {
         "guid": "10554025c68c3404c82d127ec1917773",
@@ -9600,8 +10164,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "926653cae17e8ee4ba2e45a039747efa"
       },
       {
         "guid": "79bd9179b30950d489deb2b941612ba3",
@@ -9615,8 +10181,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "439d8528bf053d74084806adb41818c9"
       },
       {
         "guid": "5f7b7768706d05241bb3a5745975098c",
@@ -9630,7 +10198,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9645,7 +10214,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9660,7 +10230,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9675,7 +10246,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": false
         }
       },
       {
@@ -9690,7 +10262,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9705,8 +10278,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "91272aa33f26ea34394b52203d2d453e"
       },
       {
         "guid": "1ac15746a347def40b42c9c3297d2740",
@@ -9720,7 +10295,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9735,8 +10311,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "c8a8c92832ad36f4cb4f67fd299184ce"
       },
       {
         "guid": "832ed94fcdfb6854ea784673867f87a6",
@@ -9750,8 +10328,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "8fc9e9730ae9b3746ad8c74795e7d032"
       },
       {
         "guid": "1beb530ff2f15c24aae210da616ed897",
@@ -9765,7 +10345,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": false
         }
       },
       {
@@ -9780,7 +10361,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "isExclusive": false
         }
       },
       {
@@ -9795,8 +10377,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "fc3ddb9817da66542ad597cf631538fd"
       },
       {
         "guid": "e6bb08444cad68b45891ff99328d4cda",
@@ -9810,8 +10394,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "2f83609e1f3420c419f932690d33b32b"
       },
       {
         "guid": "42fbc03cb78455941ae278d37b2ce3fc",
@@ -9825,8 +10411,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "47cc923dffd0bde4dbded22261bbf98b"
       },
       {
         "guid": "8bac2c3a800daa0418ac503abb0ff655",
@@ -9840,8 +10428,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
-        }
+          "isUsedByDefault": false,
+          "isExclusive": false
+        },
+        "maskGuid": "7b2a248b99d9b0a48a8af00ac45e6fd4"
       },
       {
         "guid": "ccc561d39293e384493b886a3e37b751",
@@ -9855,8 +10445,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
-        }
+          "isUsedByDefault": false,
+          "isExclusive": false
+        },
+        "maskGuid": "b44cfa611d924504fa15aa48930829fd"
       },
       {
         "guid": "45844c3599eb1a444a20b6dd9d909b27",
@@ -9870,7 +10462,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9885,7 +10478,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -9900,8 +10494,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "84d199e80e56f4e41a22a4191306e4e6"
       },
       {
         "guid": "96d74e8e56f8f5847bebb9b5e50ea7e5",
@@ -9915,8 +10511,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "8ba423968493a76459c1a1adf64869c6"
       },
       {
         "guid": "2285b32ec925dfe48b7c73c477760eb9",
@@ -9930,7 +10528,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9945,7 +10544,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9960,7 +10560,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9975,7 +10576,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -9990,7 +10592,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10005,7 +10608,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10020,7 +10624,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10035,7 +10640,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10050,8 +10656,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "764fba064c0b37543a05335439bbd5ba"
       },
       {
         "guid": "12d4436061d531345b5d291a6ded0149",
@@ -10065,8 +10673,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "f054f11b0d5803b4980224b97233ca13"
       },
       {
         "guid": "c2ba34bdb6e9fbd41938bab3c4d6e554",
@@ -10080,8 +10690,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "d1bb05e497a67984283d611d1da186e5"
       },
       {
         "guid": "c0b117c7973699c4cb46515339b25f12",
@@ -10095,8 +10707,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "80cb6b19ed68883438420ac11fbde73a"
       },
       {
         "guid": "fa778648b2941414e8462398037d9ee9",
@@ -10110,8 +10724,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "dbc99dd41774c2348ac0cf4003ba74e1"
       },
       {
         "guid": "7e3db28f129a9b0479863b971eee5e99",
@@ -10125,8 +10741,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": true
+        },
+        "maskGuid": "470fc001b74023c4e8ad998decec1e49"
       },
       {
         "guid": "ac8520eefa0bfbd4dabaea49ff56218b",
@@ -10140,8 +10758,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": true
+        },
+        "maskGuid": "83d669cccf3a36d4fab712cca15ec2cd"
       },
       {
         "guid": "1162bbc17d1073042bcc46bd6a14f997",
@@ -10155,8 +10775,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "d1bb05e497a67984283d611d1da186e5"
       },
       {
         "guid": "42fe48cde5a09df44b3db91d135c7ba7",
@@ -10170,8 +10792,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "f054f11b0d5803b4980224b97233ca13"
       },
       {
         "guid": "322a37017479446418ed8d17a4e8bb59",
@@ -10185,7 +10809,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -10200,7 +10825,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -10215,8 +10841,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "b03362325dc0240459869830fdfe1aa8"
       },
       {
         "guid": "f35992132ead4fc41a37f74d740e7cc5",
@@ -10230,8 +10858,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "69f9c7074bfae544bab2e8001ab3df9c"
       },
       {
         "guid": "0bd78bf7fa7a00a4aba79dcd22f7f34c",
@@ -10245,8 +10875,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "64bda76bf85a74641ba9148a7182ca02"
       },
       {
         "guid": "6003d96d858174e48b78b827896400c2",
@@ -10260,8 +10892,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "594e49a629db4974d8e54031217d6ee8"
       },
       {
         "guid": "b0b5563b734aa8e47a2739e176f076a6",
@@ -10275,8 +10909,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "cec86df64706fec4492952280d1a2f7f"
       },
       {
         "guid": "435ed31252b30b94da89d27523b07e2c",
@@ -10290,8 +10926,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": false
-        }
+          "isUsedByDefault": false,
+          "isExclusive": false
+        },
+        "maskGuid": "d1213584de5257c4c9252edd4ce7190f"
       },
       {
         "guid": "9f1fca7c1d77f4542839e9da872df5bb",
@@ -10305,8 +10943,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": false
-        }
+          "isUsedByDefault": false,
+          "isExclusive": false
+        },
+        "maskGuid": "f81fc5514a3c05a429b3527581e00a5c"
       },
       {
         "guid": "55cacbf2ba96a7447bea3761bcba04e3",
@@ -10320,7 +10960,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10335,7 +10976,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10350,8 +10992,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "d42b2b6a7180d1a4da7f1a25c7b1dfc2"
       },
       {
         "guid": "e0ebfd47e4b586344b6408b04bf34ea7",
@@ -10365,8 +11009,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "40c53c02409f24842b7d109dac500ebd"
       },
       {
         "guid": "71ce3bf52838a044f9a6828beb411a48",
@@ -10380,7 +11026,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": false
         }
       },
       {
@@ -10395,7 +11042,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10410,7 +11058,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10425,7 +11074,8 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10440,7 +11090,8 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "isExclusive": true
         }
       },
       {
@@ -10455,8 +11106,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "a6687a9b6cd209b409eb2a1513e3376d"
       },
       {
         "guid": "c45e41a5c3b7b854481d49e4b8afdbf4",
@@ -10470,8 +11123,10 @@
         },
         "gender": "female",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "df6a55c635493eb4aaad23943017e447"
       },
       {
         "guid": "2bd3f9a2bffa876429ae52620f3faa2d",
@@ -10485,8 +11140,10 @@
         },
         "gender": "male",
         "flags": {
-          "isUsedByDefault": true
-        }
+          "isUsedByDefault": true,
+          "isExclusive": false
+        },
+        "maskGuid": "ba3119d06ef856a41b12db2dc163411d"
       }
     ],
     "helmetMask": [

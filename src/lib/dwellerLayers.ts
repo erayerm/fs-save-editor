@@ -133,10 +133,25 @@ export function buildLayers(
     });
   }
   if (outfit) {
+    // Draw the outfit sprite WITHOUT color tint (preserves base colors: pants, belt, shoes).
     layers.push({
-      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(outfitTintRgb),
+      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds,
       uvScale: ownScale(outfit.bounds), uvOffset: ownOffset(outfit.bounds),
     });
+    // If the outfit has a coloring mask, draw it WITH the outfit color tint on top.
+    // The mask PNG is opaque only where the color should be applied (cloak, shoulder pads, etc).
+    // This replicates DwellerOutfit.ValidateColor + the shader's color-mask blending.
+    const colorMask = outfit.coloringMaskGuid
+      ? pieceByGuid(idx, 'outfitColoringMask', outfit.coloringMaskGuid)
+      : null;
+    if (colorMask && outfitTintRgb) {
+      // Use the mask's own atlas position for UV sampling (colorMask is in a separate mask atlas).
+      // The mask has the same dimensions as the outfit so triangle selection is identical.
+      layers.push({
+        slot: 'outfit', atlas: colorMask.atlas, bounds: colorMask.bounds, tint: toTint(outfitTintRgb),
+        uvScale: ownScale(colorMask.bounds), uvOffset: ownOffset(colorMask.bounds),
+      });
+    }
   }
 
   // Re-render the head skin AFTER the outfit so it sits above the collar.

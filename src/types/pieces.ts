@@ -31,11 +31,16 @@ export interface PieceRef {
     type?: number;        // DwellerHair: 0=Normal, 1=Raider
     hasSkirt?: boolean;   // DwellerOutfit
     isUsedByDefault?: boolean;
+    isExclusive?: boolean;   // DwellerHelmet: when true the hair is hidden
   };
   colors?: [number, number, number, number][]; // DwellerOutfit m_colors (rgba 0..1)
-  // outfit only: guid of associated helmet/largeHeadgear piece
+  // Outfit only: guids of associated pieces.
   helmetGuid?: string;
   largeHeadgearGuid?: string;
+  coloringMaskGuid?: string;  // outfitColoringMask piece — determines which pixels get tinted
+  glovePoseGuids?: string[];  // glovePose piece guids (gender-matching one selected at runtime)
+  // Helmet / largeHeadgear only: associated mask piece guid.
+  maskGuid?: string;
   // largeHeadgear only: placement vectors (Unity units) for the prebaked hat mesh.
   headgear?: {
     grabPoint?: [number, number];
