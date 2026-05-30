@@ -2,6 +2,7 @@ import { useSaveStore } from './store/saveStore';
 import { ImportLanding } from './components/ImportLanding';
 import { Header } from './components/Header';
 import { DwellerDetailPanel } from './components/DwellerDetailPanel';
+import { CharacterFooter } from './components/CharacterFooter';
 
 export default function App() {
   const save = useSaveStore((s) => s.save);
@@ -12,8 +13,7 @@ export default function App() {
       <main className="flex-1 overflow-auto p-4">
         <DwellerDetailPanel />
       </main>
-      {/* CharacterFooter added in a later task */}
-      <div className="shrink-0 h-2" />
+      <CharacterFooter />
     </div>
   );
 }
