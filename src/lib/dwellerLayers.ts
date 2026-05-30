@@ -57,6 +57,11 @@ export interface RenderLayer {
    * sampling the body texture.
    */
   triMask?: TriMask;
+  /**
+   * When true, the layer's texture is an alpha-only mask (black pixels, alpha = coverage).
+   * The renderer outputs `tint.rgb` directly, gated by `texture.a`, instead of `texture.rgb * tint`.
+   */
+  useAlphaMask?: boolean;
   /** When set, draw this mesh instead of the body mesh for this layer. */
   meshOverride?: MeshGeometry;
   /** When set, only draw this submesh range of meshOverride (hat quad only). */
@@ -150,6 +155,7 @@ export function buildLayers(
       layers.push({
         slot: 'outfit', atlas: colorMask.atlas, bounds: colorMask.bounds, tint: toTint(outfitTintRgb),
         uvScale: ownScale(colorMask.bounds), uvOffset: ownOffset(colorMask.bounds),
+        useAlphaMask: true,
       });
     }
   }

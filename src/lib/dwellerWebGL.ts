@@ -18,9 +18,11 @@ precision mediump float;
 varying vec2 v_uv;
 uniform sampler2D u_tex;
 uniform vec4 u_tint;
+uniform float u_alphaMask; // 1.0 = use tint.rgb directly (mask is alpha-only); 0.0 = multiply
 void main() {
   vec4 c = texture2D(u_tex, v_uv);
-  gl_FragColor = vec4(c.rgb * u_tint.rgb, c.a * u_tint.a);
+  vec3 rgb = mix(c.rgb * u_tint.rgb, u_tint.rgb, u_alphaMask);
+  gl_FragColor = vec4(rgb, c.a * u_tint.a);
 }`;
 
 export interface RendererLayerInput extends RenderLayer {
@@ -122,6 +124,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
   const uView = gl.getUniformLocation(prog, 'u_view');
   const uUvXform = gl.getUniformLocation(prog, 'u_uvXform');
   const uTint = gl.getUniformLocation(prog, 'u_tint');
+  const uAlphaMask = gl.getUniformLocation(prog, 'u_alphaMask');
 
   const posBuf = gl.createBuffer()!;
   const uvBuf = gl.createBuffer()!;
@@ -191,6 +194,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
       type LayerPass = {
         img: HTMLImageElement; sx: number; sy: number; ox: number; oy: number;
         t: { r: number; g: number; b: number; a: number };
+        alphaMask: boolean;
         back: number[]; body: number[]; front: number[];
       };
       const passes: LayerPass[] = [];
@@ -206,7 +210,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         if (idx.length === 0) continue;
         const { back, body, front } = splitByBoneGroup(idx, mesh.boneIndices);
         const t = layer.tint ?? { r: 255, g: 255, b: 255, a: 1 };
-        passes.push({ img: layer.image, sx, sy, ox, oy, t, back, body, front });
+        passes.push({ img: layer.image, sx, sy, ox, oy, t, alphaMask: layer.useAlphaMask ?? false, back, body, front });
       }
 
       function drawPass(group: 'back' | 'body' | 'front') {
@@ -215,6 +219,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
           if (idx.length === 0) continue;
           gl.uniform4f(uUvXform, p.sx, p.sy, p.ox, p.oy);
           gl.uniform4f(uTint, p.t.r / 255, p.t.g / 255, p.t.b / 255, p.t.a);
+          gl.uniform1f(uAlphaMask, p.alphaMask ? 1.0 : 0.0);
           gl.activeTexture(gl.TEXTURE0);
           gl.bindTexture(gl.TEXTURE_2D, texFor(p.img));
           gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
@@ -256,6 +261,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         gl.uniform4f(uUvXform, ol.uvScale[0], ol.uvScale[1], ol.uvOffset[0], ol.uvOffset[1]);
         const t = ol.tint ?? { r: 255, g: 255, b: 255, a: 1 };
         gl.uniform4f(uTint, t.r / 255, t.g / 255, t.b / 255, t.a);
+        gl.uniform1f(uAlphaMask, 0.0);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, texFor(ol.image));
