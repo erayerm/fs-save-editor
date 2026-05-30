@@ -3,30 +3,44 @@ import type { RenderLayer } from './dwellerLayers';
 
 const VERT = `
 attribute vec2 a_pos;
-attribute vec2 a_uv;    // mesh UV (UV0; UV1 is identical in these meshes)
-uniform vec4 u_view;    // (scaleX, scaleY, offsetX, offsetY) model->clip
-uniform vec4 u_uvXform; // (scaleU, scaleV, offsetU, offsetV) per-layer texture transform
+attribute vec2 a_uv;     // mesh UV (UV0; UV1 is identical in these meshes)
+uniform vec4 u_view;     // (scaleX, scaleY, offsetX, offsetY) model->clip
+uniform vec4 u_uvXform;  // (scaleU, scaleV, offsetU, offsetV) base texture transform
+uniform vec4 u_maskXform;// per-layer coloring-mask texture transform
 varying vec2 v_uv;
+varying vec2 v_maskUv;
 void main() {
   v_uv = a_uv * u_uvXform.xy + u_uvXform.zw;
+  v_maskUv = a_uv * u_maskXform.xy + u_maskXform.zw;
   vec2 clip = a_pos * u_view.xy + u_view.zw;
   gl_Position = vec4(clip, 0.0, 1.0);
 }`;
 
+// Port of the game's Dressup material blend. The outfit color is MULTIPLIED into the
+// base art, localized by the coloring mask's alpha:
+//   factor = mix(white, tint.rgb, mask.a)   (when a mask is bound)
+//   factor = tint.rgb                        (normal tinted layers: skin/hair/etc.)
+//   outRGB = baseTex.rgb * factor
+// This preserves the base art's shading (folds, shadows) instead of writing a flat color.
 const FRAG = `
 precision mediump float;
 varying vec2 v_uv;
+varying vec2 v_maskUv;
 uniform sampler2D u_tex;
+uniform sampler2D u_mask;
 uniform vec4 u_tint;
-uniform float u_alphaMask; // 1.0 = use tint.rgb directly (mask is alpha-only); 0.0 = multiply
+uniform float u_useMask; // 1.0 = gate tint by mask.a; 0.0 = full multiply by tint
 void main() {
   vec4 c = texture2D(u_tex, v_uv);
-  vec3 rgb = mix(c.rgb * u_tint.rgb, u_tint.rgb, u_alphaMask);
-  gl_FragColor = vec4(rgb, c.a * u_tint.a);
+  float m = texture2D(u_mask, v_maskUv).a;
+  vec3 factor = (u_useMask > 0.5) ? mix(vec3(1.0), u_tint.rgb, m) : u_tint.rgb;
+  gl_FragColor = vec4(c.rgb * factor, c.a * u_tint.a);
 }`;
 
 export interface RendererLayerInput extends RenderLayer {
   image: HTMLImageElement;
+  /** Loaded image for `coloringMask.atlas`, when the layer has a coloring mask. */
+  maskImage?: HTMLImageElement;
 }
 
 export interface ModelBounds {
@@ -124,12 +138,24 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
   const uView = gl.getUniformLocation(prog, 'u_view');
   const uUvXform = gl.getUniformLocation(prog, 'u_uvXform');
   const uTint = gl.getUniformLocation(prog, 'u_tint');
-  const uAlphaMask = gl.getUniformLocation(prog, 'u_alphaMask');
+  const uMaskXform = gl.getUniformLocation(prog, 'u_maskXform');
+  const uTex = gl.getUniformLocation(prog, 'u_tex');
+  const uMask = gl.getUniformLocation(prog, 'u_mask');
+  const uUseMask = gl.getUniformLocation(prog, 'u_useMask');
+  gl.uniform1i(uTex, 0);
+  gl.uniform1i(uMask, 1);
 
   const posBuf = gl.createBuffer()!;
   const uvBuf = gl.createBuffer()!;
   const idxBuf = gl.createBuffer()!;
   const texCache = new WeakMap<HTMLImageElement, WebGLTexture>();
+
+  // 1x1 white texture bound to unit 1 whenever a layer has no coloring mask, so the
+  // fragment shader's u_mask sample is always valid (its result is ignored when u_useMask=0).
+  const blankTex = gl.createTexture()!;
+  gl.bindTexture(gl.TEXTURE_2D, blankTex);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
+    new Uint8Array([255, 255, 255, 255]));
 
   gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
   gl.enable(gl.BLEND);
@@ -194,7 +220,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
       type LayerPass = {
         img: HTMLImageElement; sx: number; sy: number; ox: number; oy: number;
         t: { r: number; g: number; b: number; a: number };
-        alphaMask: boolean;
+        maskImg?: HTMLImageElement; msx: number; msy: number; mox: number; moy: number;
         back: number[]; body: number[]; front: number[];
       };
       const passes: LayerPass[] = [];
@@ -204,13 +230,20 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         const [ox, oy] = layer.uvOffset;
         const m = layer.triMask;
         const rect = spriteRect(m ? m.bounds : layer.bounds);
-        const [msx, msy] = m ? m.uvScale : [sx, sy];
-        const [mox, moy] = m ? m.uvOffset : [ox, oy];
-        const idx = filterTriangles(mesh, msx, msy, mox, moy, rect);
+        const [tmsx, tmsy] = m ? m.uvScale : [sx, sy];
+        const [tmox, tmoy] = m ? m.uvOffset : [ox, oy];
+        const idx = filterTriangles(mesh, tmsx, tmsy, tmox, tmoy, rect);
         if (idx.length === 0) continue;
         const { back, body, front } = splitByBoneGroup(idx, mesh.boneIndices);
         const t = layer.tint ?? { r: 255, g: 255, b: 255, a: 1 };
-        passes.push({ img: layer.image, sx, sy, ox, oy, t, alphaMask: layer.useAlphaMask ?? false, back, body, front });
+        const cm = layer.coloringMask;
+        passes.push({
+          img: layer.image, sx, sy, ox, oy, t,
+          maskImg: layer.maskImage,
+          msx: cm ? cm.uvScale[0] : 0, msy: cm ? cm.uvScale[1] : 0,
+          mox: cm ? cm.uvOffset[0] : 0, moy: cm ? cm.uvOffset[1] : 0,
+          back, body, front,
+        });
       }
 
       function drawPass(group: 'back' | 'body' | 'front') {
@@ -219,7 +252,10 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
           if (idx.length === 0) continue;
           gl.uniform4f(uUvXform, p.sx, p.sy, p.ox, p.oy);
           gl.uniform4f(uTint, p.t.r / 255, p.t.g / 255, p.t.b / 255, p.t.a);
-          gl.uniform1f(uAlphaMask, p.alphaMask ? 1.0 : 0.0);
+          gl.uniform4f(uMaskXform, p.msx, p.msy, p.mox, p.moy);
+          gl.uniform1f(uUseMask, p.maskImg ? 1.0 : 0.0);
+          gl.activeTexture(gl.TEXTURE1);
+          gl.bindTexture(gl.TEXTURE_2D, p.maskImg ? texFor(p.maskImg) : blankTex);
           gl.activeTexture(gl.TEXTURE0);
           gl.bindTexture(gl.TEXTURE_2D, texFor(p.img));
           gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
@@ -261,7 +297,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         gl.uniform4f(uUvXform, ol.uvScale[0], ol.uvScale[1], ol.uvOffset[0], ol.uvOffset[1]);
         const t = ol.tint ?? { r: 255, g: 255, b: 255, a: 1 };
         gl.uniform4f(uTint, t.r / 255, t.g / 255, t.b / 255, t.a);
-        gl.uniform1f(uAlphaMask, 0.0);
+        gl.uniform1f(uUseMask, 0.0);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, texFor(ol.image));
@@ -279,6 +315,7 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
       }
     },
     dispose() {
+      gl.deleteTexture(blankTex);
       gl.deleteBuffer(posBuf);
       gl.deleteBuffer(uvBuf);
       gl.deleteBuffer(idxBuf);

@@ -68,7 +68,11 @@ function useHairThumbnails(
         if (layers.length === 0) continue;
 
         const withImages = await Promise.all(
-          layers.map(async (l) => ({ ...l, image: await loadAtlas(l.atlas) })),
+          layers.map(async (l) => ({
+            ...l,
+            image: await loadAtlas(l.atlas),
+            maskImage: l.coloringMask ? await loadAtlas(l.coloringMask.atlas) : undefined,
+          })),
         );
         if (cancelled) break;
         rendererRef.current!.draw(mesh, withImages, HEAD_BOUNDS);

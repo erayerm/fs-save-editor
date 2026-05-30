@@ -50,7 +50,11 @@ export function DwellerCanvas({
         });
         onUnknownOutfit?.(unknownOutfit);
         const withImages: RendererLayerInput[] = await Promise.all(
-          layers.map(async (l) => ({ ...l, image: await loadAtlas(l.atlas) })),
+          layers.map(async (l) => ({
+            ...l,
+            image: await loadAtlas(l.atlas),
+            maskImage: l.coloringMask ? await loadAtlas(l.coloringMask.atlas) : undefined,
+          })),
         );
         if (cancelled) return;
         rendererRef.current.draw(mesh, withImages);

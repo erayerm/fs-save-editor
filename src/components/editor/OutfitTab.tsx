@@ -61,7 +61,11 @@ function useOutfitThumbnails(
           (l) => l.slot !== 'face' && l.slot !== 'hair',
         );
         const withImages = await Promise.all(
-          layers.map(async (l) => ({ ...l, image: await loadAtlas(l.atlas) })),
+          layers.map(async (l) => ({
+            ...l,
+            image: await loadAtlas(l.atlas),
+            maskImage: l.coloringMask ? await loadAtlas(l.coloringMask.atlas) : undefined,
+          })),
         );
         if (cancelled) break;
         rendererRef.current!.draw(mesh, withImages);

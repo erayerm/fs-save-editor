@@ -58,10 +58,19 @@ export interface RenderLayer {
    */
   triMask?: TriMask;
   /**
-   * When true, the layer's texture is an alpha-only mask (black pixels, alpha = coverage).
-   * The renderer outputs `tint.rgb` directly, gated by `texture.a`, instead of `texture.rgb * tint`.
+   * Outfit coloring mask (port of the game's `_OutfitColoringMaskTex`). When present,
+   * the renderer samples this alpha-only mask in the SAME draw as the layer's base
+   * texture and multiplies `tint` into the base only where mask.a > 0:
+   *   finalRGB = baseTex.rgb * mix(white, tint.rgb, mask.a)
+   * This tints the existing shaded outfit art (preserving folds/shadows) instead of
+   * painting a flat colored region on top. Lives on the OUTFIT layer.
    */
-  useAlphaMask?: boolean;
+  coloringMask?: {
+    atlas: string;
+    bounds: AtlasRect;
+    uvScale: [number, number];
+    uvOffset: [number, number];
+  };
   /** When set, draw this mesh instead of the body mesh for this layer. */
   meshOverride?: MeshGeometry;
   /** When set, only draw this submesh range of meshOverride (hat quad only). */
@@ -138,26 +147,23 @@ export function buildLayers(
     });
   }
   if (outfit) {
-    // Draw the outfit sprite WITHOUT color tint (preserves base colors: pants, belt, shoes).
-    layers.push({
-      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds,
-      uvScale: ownScale(outfit.bounds), uvOffset: ownOffset(outfit.bounds),
-    });
-    // If the outfit has a coloring mask, draw it WITH the outfit color tint on top.
-    // The mask PNG is opaque only where the color should be applied (cloak, shoulder pads, etc).
-    // This replicates DwellerOutfit.ValidateColor + the shader's color-mask blending.
+    // Single outfit layer. Like the game's Dressup material, the outfit color is
+    // MULTIPLIED into the base outfit art, gated by the coloring mask's alpha — never
+    // a flat colored region painted on top. The base parts (pants, belt, shoes) lie
+    // outside the mask and stay their original color.
     const colorMask = outfit.coloringMaskGuid
       ? pieceByGuid(idx, 'outfitColoringMask', outfit.coloringMaskGuid)
       : null;
-    if (colorMask && outfitTintRgb) {
-      // Use the mask's own atlas position for UV sampling (colorMask is in a separate mask atlas).
-      // The mask has the same dimensions as the outfit so triangle selection is identical.
-      layers.push({
-        slot: 'outfit', atlas: colorMask.atlas, bounds: colorMask.bounds, tint: toTint(outfitTintRgb),
+    layers.push({
+      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds,
+      uvScale: ownScale(outfit.bounds), uvOffset: ownOffset(outfit.bounds),
+      // Only tint when there's a mask to localize it; otherwise leave the art untouched.
+      tint: colorMask ? toTint(outfitTintRgb) : undefined,
+      coloringMask: colorMask ? {
+        atlas: colorMask.atlas, bounds: colorMask.bounds,
         uvScale: ownScale(colorMask.bounds), uvOffset: ownOffset(colorMask.bounds),
-        useAlphaMask: true,
-      });
-    }
+      } : undefined,
+    });
   }
 
   // Re-render the head skin AFTER the outfit so it sits above the collar.
