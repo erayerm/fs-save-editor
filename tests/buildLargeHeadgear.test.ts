@@ -15,4 +15,8 @@ describe('parseHeadgearPlacement', () => {
       scale: [0.1123, 0.1084],
     });
   });
+
+  it('returns null when no placement fields are found', () => {
+    expect(parseHeadgearPlacement('m_unrelated: foo')).toBeNull();
+  });
 });

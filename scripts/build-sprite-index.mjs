@@ -170,14 +170,19 @@ for (const f of walk(MESH_DIR)) {
 }
 
 function decodeMeshAsset(path) {
-  const text = readFileSync(path, 'utf8');
-  const vertexCount = +text.match(/m_VertexCount:\s*(\d+)/)[1];
-  const indexCount = +text.match(/indexCount:\s*(\d+)/)[1];
-  const indexHex = text.match(/m_IndexBuffer:\s*([0-9a-f]+)/)[1];
-  const vertHex = text.match(/_typelessdata:\s*([0-9a-f]+)/)[1];
-  const indices = decodeIndexBuffer(indexHex, indexCount);
-  const { positions, uvs, uvs1 } = decodeVertexStreams(vertHex, vertexCount);
-  return { positions, uvs, uvs1, indices };
+  try {
+    const text = readFileSync(path, 'utf8');
+    const vertexCount = +text.match(/m_VertexCount:\s*(\d+)/)[1];
+    const indexCount = +text.match(/indexCount:\s*(\d+)/)[1];
+    const indexHex = text.match(/m_IndexBuffer:\s*([0-9a-f]+)/)[1];
+    const vertHex = text.match(/_typelessdata:\s*([0-9a-f]+)/)[1];
+    const indices = decodeIndexBuffer(indexHex, indexCount);
+    const { positions, uvs, uvs1 } = decodeVertexStreams(vertHex, vertexCount);
+    return { positions, uvs, uvs1, indices };
+  } catch (e) {
+    console.warn(`Warning: failed to decode mesh asset ${path}: ${e.message}`);
+    return null;
+  }
 }
 
 const largeHeadgearMeshes = {};

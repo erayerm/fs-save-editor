@@ -35,9 +35,9 @@ export interface PieceRef {
   colors?: [number, number, number, number][]; // DwellerOutfit m_colors (rgba 0..1)
   // largeHeadgear only: placement vectors (Unity units) for the prebaked hat mesh.
   headgear?: {
-    grabPoint: [number, number];
-    offset: [number, number];
-    scale: [number, number];
+    grabPoint?: [number, number];
+    offset?: [number, number];
+    scale?: [number, number];
   };
 }
 
