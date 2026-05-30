@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildLayers, type RenderLayer, nearestOutfitColor } from '../src/lib/dwellerLayers';
+import { buildLayers, buildLayersWithMeta, type RenderLayer, nearestOutfitColor } from '../src/lib/dwellerLayers';
 import type { SpriteIndex } from '../src/types/pieces';
 import type { MeshGeometry } from '../src/types/mesh';
 
@@ -57,6 +57,24 @@ describe('buildLayers', () => {
     const baldIdx = { ...idx, byType: { ...idx.byType, hair: [piece({ name: 'bald', gender: 'male', flags: { isBald: true } })] } };
     const layers = buildLayers({ gender: 2, hairName: 'bald' }, baldIdx);
     expect(layers.find((l) => l.slot === 'hair')).toBeUndefined();
+  });
+});
+
+describe('buildLayersWithMeta', () => {
+  const baseDweller = { gender: 2, outfitName: 'jumpsuit', hairName: '16', happinessValue: 60 };
+
+  it('falls back to jumpsuit and flags unknownOutfit when the outfit is missing', () => {
+    const result = buildLayersWithMeta(
+      { ...baseDweller, outfitName: 'NotARealOutfit' }, idx);
+    expect(result.unknownOutfit).toBe('NotARealOutfit');
+    // an outfit layer is still produced (from jumpsuit fallback)
+    expect(result.layers.some((l) => l.slot === 'outfit')).toBe(true);
+  });
+
+  it('does not set unknownOutfit when the outfit is known', () => {
+    const result = buildLayersWithMeta(baseDweller, idx);
+    expect(result.unknownOutfit).toBeUndefined();
+    expect(result.layers.some((l) => l.slot === 'outfit')).toBe(true);
   });
 });
 

@@ -189,3 +189,26 @@ export function buildLayers(
 
   return layers;
 }
+
+export interface BuildLayersResult {
+  layers: RenderLayer[];
+  unknownOutfit?: string; // original outfit name when it was not found in the index
+}
+
+export function buildLayersWithMeta(
+  dweller: RenderableDweller,
+  idx: SpriteIndex,
+  offsets?: GenderOffsets,
+  meshes?: { largeHeadgear?: Record<string, { male: MeshGeometry | null; female: MeshGeometry | null }> },
+): BuildLayersResult {
+  const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
+  let unknownOutfit: string | undefined;
+  let effective = dweller;
+
+  if (dweller.outfitName && !pieceByName(idx, 'outfit', dweller.outfitName, gender)) {
+    unknownOutfit = dweller.outfitName;
+    effective = { ...dweller, outfitName: 'jumpsuit' };
+  }
+
+  return { layers: buildLayers(effective, idx, offsets, meshes), unknownOutfit };
+}

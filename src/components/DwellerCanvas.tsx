@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { loadSpriteIndex } from '../lib/spriteIndex';
 import { loadAtlas } from '../lib/atlasLoader';
 import { loadMeshSet } from '../lib/meshLoader';
-import { buildLayers } from '../lib/dwellerLayers';
+import { buildLayersWithMeta } from '../lib/dwellerLayers';
 import { createDwellerRenderer, type DwellerRenderer, type RendererLayerInput } from '../lib/dwellerWebGL';
 import type { RenderableDweller } from '../lib/dwellerRender';
 import type { SpriteIndex } from '../types/pieces';
@@ -11,7 +11,15 @@ import type { DwellerMeshSet } from '../types/mesh';
 const W = 512;
 const H = 512;
 
-export function DwellerCanvas({ dweller, size = 320 }: { dweller: RenderableDweller | null; size?: number }) {
+export function DwellerCanvas({
+  dweller,
+  size = 320,
+  onUnknownOutfit,
+}: {
+  dweller: RenderableDweller | null;
+  size?: number;
+  onUnknownOutfit?: (name: string | undefined) => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendererRef = useRef<DwellerRenderer | null>(null);
   const [index, setIndex] = useState<SpriteIndex | null>(null);
@@ -37,9 +45,10 @@ export function DwellerCanvas({ dweller, size = 320 }: { dweller: RenderableDwel
         const gender = dweller.gender === 2 ? 'male' : 'female';
         const mesh = meshSet[gender].adult;
         const offsets = meshSet[gender].offsets;
-        const layers = buildLayers(dweller, index, offsets, {
+        const { layers, unknownOutfit } = buildLayersWithMeta(dweller, index, offsets, {
           largeHeadgear: meshSet.largeHeadgear,
         });
+        onUnknownOutfit?.(unknownOutfit);
         const withImages: RendererLayerInput[] = await Promise.all(
           layers.map(async (l) => ({ ...l, image: await loadAtlas(l.atlas) })),
         );

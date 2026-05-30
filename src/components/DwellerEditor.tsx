@@ -19,6 +19,7 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
   const [active, setActive] = useState('hair');
   const [index, setIndex] = useState<SpriteIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [unknownOutfit, setUnknownOutfit] = useState<string | undefined>(undefined);
   const update = useSaveStore((s) => s.updateSelectedDweller);
 
   useEffect(() => { loadSpriteIndex().then(setIndex).catch((e) => setError(e.message)); }, []);
@@ -28,7 +29,7 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
   if (dweller.isChild) {
     return (
       <div className="flex gap-6">
-        <DwellerCanvas dweller={dweller} size={360} />
+        <DwellerCanvas dweller={dweller} size={360} onUnknownOutfit={setUnknownOutfit} />
         <div className="text-zinc-400 italic self-center">
           Child dwellers cannot be customized.
         </div>
@@ -39,7 +40,12 @@ export function DwellerEditor({ dweller }: { dweller: RenderableDweller }) {
   return (
     <div className="flex gap-6">
       <div className="flex-shrink-0">
-        <DwellerCanvas dweller={dweller} size={360} />
+        <DwellerCanvas dweller={dweller} size={360} onUnknownOutfit={setUnknownOutfit} />
+        {unknownOutfit && (
+          <p className="text-xs text-amber-600 mt-1">
+            Bu karakterin kıyafeti ("{unknownOutfit}") veritabanımızda yok; önizlemede jumpsuit gösteriliyor. Kayıt dosyası değiştirilmedi.
+          </p>
+        )}
       </div>
       <div className="flex gap-4 flex-1 min-w-0">
         <EditorTabBar tabs={TABS} active={active} onSelect={setActive} />
