@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { buildLayers, type RenderLayer } from '../src/lib/dwellerLayers';
+import { buildLayers, buildLayersWithMeta, type RenderLayer, nearestOutfitColor } from '../src/lib/dwellerLayers';
 import type { SpriteIndex } from '../src/types/pieces';
+import type { MeshGeometry } from '../src/types/mesh';
 
 function piece(over: Partial<any> = {}) {
   return {
@@ -14,10 +15,14 @@ const idx: SpriteIndex = {
   version: 1,
   byType: {
     body: [piece({ name: 'base_body', gender: 'male' })],
-    outfit: [piece({ name: 'jumpsuit', gender: 'male' })],
+    outfit: [
+      piece({ name: 'jumpsuit', gender: 'male' }),
+      piece({ name: 'three_dog_outfit', gender: 'male', helmetGuid: 'helmet-three-dog' }),
+    ],
     face: [piece({ name: 'neutral', gender: 'male' })],
     hair: [piece({ name: '16', gender: 'male' })],
-    outfitColoringMask: [], faceMask: [], helmet: [], helmetMask: [],
+    helmet: [piece({ name: 'three_dog_hat', guid: 'helmet-three-dog', gender: 'male', flags: { isExclusive: false } })],
+    outfitColoringMask: [], faceMask: [], helmetMask: [],
     largeHeadgear: [], handPose: [], glovePose: [],
   },
 };
@@ -56,5 +61,115 @@ describe('buildLayers', () => {
     const baldIdx = { ...idx, byType: { ...idx.byType, hair: [piece({ name: 'bald', gender: 'male', flags: { isBald: true } })] } };
     const layers = buildLayers({ gender: 2, hairName: 'bald' }, baldIdx);
     expect(layers.find((l) => l.slot === 'hair')).toBeUndefined();
+  });
+
+  it('orders hat layers after hair (hat draws over hair)', () => {
+    const layers = buildLayers(
+      { gender: 2, outfitName: 'three_dog_outfit', hairName: '16', happinessValue: 60 },
+      idx,
+    );
+    const hairIdx = layers.findIndex((l) => l.slot === 'hair');
+    const hatIdx = layers.findIndex((l) => l.slot === 'helmet' || l.slot === 'headgear');
+    expect(hairIdx).toBeGreaterThanOrEqual(0);
+    expect(hatIdx).toBeGreaterThan(hairIdx);
+  });
+});
+
+describe('buildLayersWithMeta', () => {
+  const baseDweller = { gender: 2, outfitName: 'jumpsuit', hairName: '16', happinessValue: 60 };
+
+  it('falls back to jumpsuit and flags unknownOutfit when the outfit is missing', () => {
+    const result = buildLayersWithMeta(
+      { ...baseDweller, outfitName: 'NotARealOutfit' }, idx);
+    expect(result.unknownOutfit).toBe('NotARealOutfit');
+    // an outfit layer is still produced (from jumpsuit fallback)
+    expect(result.layers.some((l) => l.slot === 'outfit')).toBe(true);
+  });
+
+  it('does not set unknownOutfit when the outfit is known', () => {
+    const result = buildLayersWithMeta(baseDweller, idx);
+    expect(result.unknownOutfit).toBeUndefined();
+    expect(result.layers.some((l) => l.slot === 'outfit')).toBe(true);
+  });
+});
+
+describe('buildLayers largeHeadgear', () => {
+  const mitrePiece = piece({
+    guid: 'mitre-guid',
+    name: 'mitre',
+    atlas: 'outfit_atlas_34.png',
+    bounds: { x: 0, y: 0, w: 115, h: 111 },
+    gender: 'any',
+    headgear: { grabPoint: [0.42, 0.009], offset: [0, 0], scale: [0.11, 0.11] },
+  });
+  const outfitWithMitre = piece({
+    name: 'bishop_outfit',
+    gender: 'male',
+    largeHeadgearGuid: 'mitre-guid',
+  });
+  const idxWithMitre: SpriteIndex = {
+    version: 1,
+    byType: {
+      ...idx.byType,
+      outfit: [outfitWithMitre],
+      largeHeadgear: [mitrePiece],
+    },
+  };
+
+  const fakeMesh: MeshGeometry = {
+    positions: Array(72).fill([0, 0]) as [number, number][],
+    uvs: Array(72).fill([0, 0]) as [number, number][],
+    uvs1: Array(72).fill([0, 0]) as [number, number][],
+    indices: Array(108).fill(0),
+    indexCounts: [102, 6],
+  };
+
+  const meshes = {
+    largeHeadgear: {
+      'mitre-guid': { male: fakeMesh, female: null },
+    },
+  };
+
+  it('emits a headgear layer with correct slot, meshOverride, and uvScale', () => {
+    const layers = buildLayers(
+      { gender: 2, outfitName: 'bishop_outfit', happinessValue: 60 },
+      idxWithMitre,
+      undefined,
+      meshes,
+    );
+    const hgLayer = layers.find((l: RenderLayer) => l.slot === 'headgear');
+    expect(hgLayer).toBeDefined();
+    expect(hgLayer!.meshOverride).toBe(fakeMesh);
+    // uvScale should be the headgear's own bounds / ATLAS (115/1024, 111/1024)
+    expect(hgLayer!.uvScale[0]).toBeCloseTo(115 / 1024, 6);
+    expect(hgLayer!.uvScale[1]).toBeCloseTo(111 / 1024, 6);
+    // meshSubmesh should point to the hat quad (submesh 1: start=102, count=6)
+    expect(hgLayer!.meshSubmesh).toEqual({ start: 102, count: 6 });
+  });
+
+  it('does not emit headgear layer when meshes arg is omitted', () => {
+    const layers = buildLayers(
+      { gender: 2, outfitName: 'bishop_outfit', happinessValue: 60 },
+      idxWithMitre,
+    );
+    expect(layers.find((l: RenderLayer) => l.slot === 'headgear')).toBeUndefined();
+  });
+});
+
+describe('nearestOutfitColor', () => {
+  it('returns desired unchanged when outfit has no colors', () => {
+    expect(nearestOutfitColor({ r: 10, g: 20, b: 30 }, undefined))
+      .toEqual({ r: 10, g: 20, b: 30 });
+  });
+  it('snaps any desired color to the single allowed color (SportsfanSpecial-style)', () => {
+    const red: [number, number, number, number] = [1, 0, 0, 1];
+    expect(nearestOutfitColor({ r: 255, g: 255, b: 255 }, [red]))
+      .toEqual({ r: 255, g: 0, b: 0 });
+  });
+  it('picks the nearest of several allowed colors', () => {
+    const red: [number, number, number, number] = [1, 0, 0, 1];
+    const blue: [number, number, number, number] = [0, 0, 1, 1];
+    expect(nearestOutfitColor({ r: 10, g: 10, b: 200 }, [red, blue]))
+      .toEqual({ r: 0, g: 0, b: 255 });
   });
 });

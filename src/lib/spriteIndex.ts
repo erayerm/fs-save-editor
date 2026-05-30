@@ -44,6 +44,16 @@ export function pieceByName(
   return matches[0];
 }
 
+export function pieceByGuid(
+  idx: SpriteIndex,
+  type: PieceType,
+  guid: string,
+): PieceRef | null {
+  const list = idx.byType[type];
+  if (!list) return null;
+  return list.find((p) => p.guid === guid) ?? null;
+}
+
 export function piecesOfType(
   idx: SpriteIndex,
   type: PieceType,

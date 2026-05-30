@@ -141,7 +141,15 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
 
       gl.uniform4fv(uView, viewUniform());
 
+      // Separate mesh-override layers (e.g. largeHeadgear hat quad) from regular layers.
+      const overrideLayers: RendererLayerInput[] = [];
+      const regularLayers: RendererLayerInput[] = [];
       for (const layer of layers) {
+        if (layer.meshOverride) overrideLayers.push(layer);
+        else regularLayers.push(layer);
+      }
+
+      for (const layer of regularLayers) {
         const img = layer.image;
         const [sx, sy] = layer.uvScale;
         const [ox, oy] = layer.uvOffset;
@@ -169,6 +177,51 @@ export function createDwellerRenderer(canvas: HTMLCanvasElement): DwellerRendere
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, texFor(img));
         gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+      }
+
+      // Draw mesh-override layers on top (painter's order, after all regular layers).
+      for (const ol of overrideLayers) {
+        const m = ol.meshOverride!;
+        const sub = ol.meshSubmesh;
+
+        // Upload this override mesh's positions.
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array((m.posedPositions ?? m.positions).flat()), gl.STATIC_DRAW);
+        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+        // Upload uvs.
+        gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(m.uvs.flat()), gl.STATIC_DRAW);
+        gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
+
+        // Compute the index slice for the hat submesh only.
+        const allIdx = sub
+          ? m.indices.slice(sub.start, sub.start + sub.count)
+          : m.indices;
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(allIdx), gl.STATIC_DRAW);
+
+        // Set uniforms.
+        gl.uniform4f(uUvXform, ol.uvScale[0], ol.uvScale[1], ol.uvOffset[0], ol.uvOffset[1]);
+        const t = ol.tint ?? { r: 255, g: 255, b: 255, a: 1 };
+        gl.uniform4f(uTint, t.r / 255, t.g / 255, t.b / 255, t.a);
+
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texFor(ol.image));
+        gl.drawElements(gl.TRIANGLES, allIdx.length, gl.UNSIGNED_SHORT, 0);
+      }
+
+      // Restore shared body mesh buffers for any subsequent draw() calls.
+      if (overrideLayers.length > 0) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, uvs, gl.STATIC_DRAW);
+        gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
+        // Note: idxBuf is NOT restored here because every regular-layer draw call
+        // re-uploads its own index data via gl.bufferData before gl.drawElements.
+        // If a future refactor reads idxBuf without re-uploading, restore it here too.
       }
     },
     dispose() {

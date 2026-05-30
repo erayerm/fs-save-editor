@@ -1,8 +1,32 @@
 import type { SpriteIndex, AtlasRect } from '../types/pieces';
-import { pieceByName } from './spriteIndex';
+import type { MeshGeometry } from '../types/mesh';
+import { pieceByName, pieceByGuid } from './spriteIndex';
 import { faceNameForHappiness, type RenderableDweller, type Rgb } from './dwellerRender';
 
-export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair';
+export type LayerSlot = 'body' | 'outfit' | 'face' | 'hair' | 'helmet' | 'headgear';
+
+/**
+ * Port of DwellerOutfit.ValidateColor: snap a desired RGB (0..255) to the
+ * nearest entry of the outfit's m_colors (rgba 0..1). Returns desired unchanged
+ * when the outfit defines no colors.
+ */
+export function nearestOutfitColor(
+  desired: Rgb,
+  colors?: [number, number, number, number][],
+): Rgb {
+  if (!colors || colors.length === 0) return { r: desired.r, g: desired.g, b: desired.b };
+  const dr = desired.r / 255, dg = desired.g / 255, db = desired.b / 255;
+  let best = colors[0], bestD = Infinity;
+  for (const c of colors) {
+    const d = (c[0] - dr) ** 2 + (c[1] - dg) ** 2 + (c[2] - db) ** 2;
+    if (d < bestD) { bestD = d; best = c; }
+  }
+  return {
+    r: Math.round(best[0] * 255),
+    g: Math.round(best[1] * 255),
+    b: Math.round(best[2] * 255),
+  };
+}
 
 // All dweller atlases are 1024x1024; the game normalizes AtlasOffset/AtlasScale by
 // this size (see DwellerPiece.SetAtlasRef + Dressup.UpdateTexture).
@@ -33,6 +57,10 @@ export interface RenderLayer {
    * sampling the body texture.
    */
   triMask?: TriMask;
+  /** When set, draw this mesh instead of the body mesh for this layer. */
+  meshOverride?: MeshGeometry;
+  /** When set, only draw this submesh range of meshOverride (hat quad only). */
+  meshSubmesh?: { start: number; count: number };
 }
 
 const toTint = (c?: Rgb): (Rgb & { a: number }) | undefined =>
@@ -48,7 +76,12 @@ export interface GenderOffsets {
  * UVs into its atlas region; the WebGL renderer converts pixel bounds -> UV using
  * the loaded texture size and applies uvOffset (gender hand/face offset).
  */
-export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offsets?: GenderOffsets): RenderLayer[] {
+export function buildLayers(
+  dweller: RenderableDweller,
+  idx: SpriteIndex,
+  offsets?: GenderOffsets,
+  meshes?: { largeHeadgear?: Record<string, { male: MeshGeometry | null; female: MeshGeometry | null }> },
+): RenderLayer[] {
   const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
   const layers: RenderLayer[] = [];
   const faceOff = offsets?.face ?? [0, 0];
@@ -71,8 +104,12 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offset
     });
   }
   if (outfit) {
+    // Game snaps the stored color to the outfit's nearest allowed color (ValidateColor).
+    // For single-color "Special" outfits (SportsfanSpecial=red) this forces the game color.
+    const desiredOutfitRgb: Rgb = dweller.outfitColor ?? { r: 255, g: 255, b: 255 };
+    const outfitTintRgb = nearestOutfitColor(desiredOutfitRgb, outfit.colors);
     layers.push({
-      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(dweller.outfitColor),
+      slot: 'outfit', atlas: outfit.atlas, bounds: outfit.bounds, tint: toTint(outfitTintRgb),
       uvScale: ownScale(outfit.bounds), uvOffset: ownOffset(outfit.bounds),
     });
   }
@@ -115,5 +152,63 @@ export function buildLayers(dweller: RenderableDweller, idx: SpriteIndex, offset
     });
   }
 
+  // Normal helmet (helmetGuid) — keeps the existing body-scale + faceOffset UV.
+  const helmet = outfit?.helmetGuid ? pieceByGuid(idx, 'helmet', outfit.helmetGuid) : null;
+  if (helmet) {
+    const o = ownOffset(helmet.bounds);
+    layers.push({
+      slot: 'helmet', atlas: helmet.atlas, bounds: helmet.bounds,
+      uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
+    });
+  }
+
+  // largeHeadgear (e.g. Bishop mitre) — has its own prebaked hat mesh; draw only the hat quad.
+  const largeHeadgearPiece = outfit?.largeHeadgearGuid
+    ? pieceByGuid(idx, 'largeHeadgear', outfit.largeHeadgearGuid)
+    : null;
+  const largeHeadgearMesh = largeHeadgearPiece && meshes?.largeHeadgear?.[largeHeadgearPiece.guid]
+    ? (gender === 'male'
+        ? meshes.largeHeadgear[largeHeadgearPiece.guid].male
+        : (meshes.largeHeadgear[largeHeadgearPiece.guid].female
+            ?? meshes.largeHeadgear[largeHeadgearPiece.guid].male))
+    : null;
+
+  if (largeHeadgearPiece && largeHeadgearMesh) {
+    layers.push({
+      slot: 'headgear',
+      atlas: largeHeadgearPiece.atlas,
+      bounds: largeHeadgearPiece.bounds,
+      uvScale: ownScale(largeHeadgearPiece.bounds),
+      uvOffset: ownOffset(largeHeadgearPiece.bounds),
+      meshOverride: largeHeadgearMesh,
+      meshSubmesh: largeHeadgearMesh.indexCounts && largeHeadgearMesh.indexCounts.length > 1
+        ? { start: largeHeadgearMesh.indexCounts[0], count: largeHeadgearMesh.indexCounts[1] }
+        : undefined,
+    });
+  }
+
   return layers;
+}
+
+export interface BuildLayersResult {
+  layers: RenderLayer[];
+  unknownOutfit?: string; // original outfit name when it was not found in the index
+}
+
+export function buildLayersWithMeta(
+  dweller: RenderableDweller,
+  idx: SpriteIndex,
+  offsets?: GenderOffsets,
+  meshes?: { largeHeadgear?: Record<string, { male: MeshGeometry | null; female: MeshGeometry | null }> },
+): BuildLayersResult {
+  const gender: 'male' | 'female' = dweller.gender === 2 ? 'male' : 'female';
+  let unknownOutfit: string | undefined;
+  let effective = dweller;
+
+  if (dweller.outfitName && !pieceByName(idx, 'outfit', dweller.outfitName, gender)) {
+    unknownOutfit = dweller.outfitName;
+    effective = { ...dweller, outfitName: 'jumpsuit' };
+  }
+
+  return { layers: buildLayers(effective, idx, offsets, meshes), unknownOutfit };
 }
