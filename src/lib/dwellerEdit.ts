@@ -1,4 +1,5 @@
-import type { Dweller } from '../types/save';
+import type { Dweller, Special } from '../types/save';
+import { SPECIAL_ORDER } from '../types/save';
 import type { Rgb } from './dwellerRender';
 import { encodeArgb } from './colors';
 
@@ -25,4 +26,26 @@ export function applyCustomization(d: Dweller, patch: DwellerCustomization): Dwe
   if (patch.hairColor !== undefined) next.hairColor = encodeArgb(patch.hairColor);
   if (patch.outfitColor !== undefined) next.outfitColor = encodeArgb(patch.outfitColor);
   return next as unknown as Dweller;
+}
+
+const clampStat = (n: number) => Math.max(1, Math.min(10, Math.round(n)));
+
+export function setStat(d: Dweller, stat: Special, value: number): Dweller {
+  const i = SPECIAL_ORDER.indexOf(stat) + 1; // 1-based; slot 0 is placeholder
+  const cur = d.stats?.stats ?? [];
+  const stats = cur.map((s, idx) => (idx === i ? { ...s, value: clampStat(value) } : s));
+  return { ...d, stats: { ...(d.stats ?? {}), stats } } as Dweller;
+}
+
+export function setName(d: Dweller, patch: { name?: string; lastName?: string }): Dweller {
+  return {
+    ...d,
+    name: patch.name !== undefined ? patch.name.trim() : d.name,
+    lastName: patch.lastName !== undefined ? patch.lastName.trim() : d.lastName,
+  };
+}
+
+export function setWeapon(d: Dweller, weaponId: string): Dweller {
+  const cur = (d.equipedWeapon ?? { type: 'Weapon' }) as Record<string, unknown>;
+  return { ...d, equipedWeapon: { ...cur, id: weaponId, type: 'Weapon' } } as Dweller;
 }
