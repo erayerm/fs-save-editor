@@ -32,8 +32,17 @@ export interface PieceRef {
     hasSkirt?: boolean;   // DwellerOutfit
     isUsedByDefault?: boolean;
     isExclusive?: boolean;   // DwellerHelmet: when true the hair is hidden
+    // DwellerOutfit only: EOutfitCategory of the owning DwellerOutfitItem.
+    // 0=None 1=Casual 2=Premium 3=Default 4=CodeControlled. Premium (2) are the
+    // real, obtainable player items; the rest are enemy/scripted/default-only.
+    // Absent when no DwellerOutfitItem references this visual outfit.
+    outfitCategory?: number;
   };
   colors?: [number, number, number, number][]; // DwellerOutfit m_colors (rgba 0..1)
+  // DwellerOutfit only: SPECIAL bonus from the owning DwellerOutfitItem's
+  // m_specialStats. Only non-zero stats are present; absent when the outfit
+  // grants no bonus. Keys are SPECIAL letters: S P E C I A L.
+  special?: Partial<Record<'S' | 'P' | 'E' | 'C' | 'I' | 'A' | 'L', number>>;
   // Outfit only: guids of associated pieces.
   helmetGuid?: string;
   largeHeadgearGuid?: string;

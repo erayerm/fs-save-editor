@@ -14,10 +14,13 @@ const H = 512;
 export function DwellerCanvas({
   dweller,
   size = 320,
+  fill = false,
   onUnknownOutfit,
 }: {
   dweller: RenderableDweller | null;
   size?: number;
+  /** When true, fill the parent box (width/height 100%, contain) instead of a fixed square. */
+  fill?: boolean;
   onUnknownOutfit?: (name: string | undefined) => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -76,7 +79,7 @@ export function DwellerCanvas({
       ref={canvasRef}
       width={W}
       height={H}
-      style={{ width: size, height: size }}
+      style={fill ? { width: '100%', height: '100%', objectFit: 'contain' } : { width: size, height: size }}
       className="bg-zinc-950 rounded border border-zinc-700"
     />
   );

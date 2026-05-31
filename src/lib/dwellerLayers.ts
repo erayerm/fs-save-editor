@@ -77,6 +77,18 @@ export interface RenderLayer {
   meshSubmesh?: { start: number; count: number };
 }
 
+/**
+ * largeHeadgear meshes pack a large "blocker" submesh first and the actual hat
+ * quad as the LAST submesh. Given the per-submesh index counts, return the index
+ * range of that final submesh, or undefined when the mesh has a single submesh.
+ */
+function hatQuadSubmesh(mesh: MeshGeometry): { start: number; count: number } | undefined {
+  const counts = mesh.indexCounts;
+  if (!counts || counts.length < 2) return undefined;
+  const start = counts.slice(0, -1).reduce((a, b) => a + b, 0);
+  return { start, count: counts[counts.length - 1] };
+}
+
 const toTint = (c?: Rgb): (Rgb & { a: number }) | undefined =>
   c ? { r: c.r, g: c.g, b: c.b, a: c.a == null ? 1 : c.a / 255 } : undefined;
 
@@ -248,9 +260,10 @@ export function buildLayers(
       uvScale: ownScale(largeHeadgearPiece.bounds),
       uvOffset: ownOffset(largeHeadgearPiece.bounds),
       meshOverride: largeHeadgearMesh,
-      meshSubmesh: largeHeadgearMesh.indexCounts && largeHeadgearMesh.indexCounts.length > 1
-        ? { start: largeHeadgearMesh.indexCounts[0], count: largeHeadgearMesh.indexCounts[1] }
-        : undefined,
+      // largeHeadgear meshes bundle a large "blocker" submesh with the actual hat
+      // quad as the LAST submesh. Draw only that final submesh; otherwise the
+      // blocker renders as garbage beside the dweller.
+      meshSubmesh: hatQuadSubmesh(largeHeadgearMesh),
     });
   }
 
