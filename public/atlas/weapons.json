@@ -1,348 +1,68 @@
 {
   "version": 1,
   "weapons": {
-    "Fist": {
-      "name": "Fist",
-      "damageMin": 0,
+    "032Pistol": {
+      "name": ".32 Pistol",
+      "damageMin": 1,
+      "damageMax": 2,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1948,
+        "y": 1491,
+        "w": 90,
+        "h": 167,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "032Pistol_ArmorPiercing": {
+      "name": "Armor Piercing .32 Pistol",
+      "damageMin": 1,
+      "damageMax": 5,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1948,
+        "y": 1491,
+        "w": 90,
+        "h": 167,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "032Pistol_Enhanced": {
+      "name": "Enhanced .32 Pistol",
+      "damageMin": 1,
+      "damageMax": 3,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1948,
+        "y": 1491,
+        "w": 90,
+        "h": 167,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "032Pistol_Hardened": {
+      "name": "Hardened .32 Pistol",
+      "damageMin": 1,
+      "damageMax": 4,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1948,
+        "y": 1491,
+        "w": 90,
+        "h": 167,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "032Pistol_Rusty": {
+      "name": "Rusty .32 Pistol",
+      "damageMin": 1,
       "damageMax": 1,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1075,
-        "y": 1330,
-        "w": 124,
-        "h": 127,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "BaseballBat": {
-      "name": "Baseball bat",
-      "damageMin": 4,
-      "damageMax": 8,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 378,
-        "y": 718,
-        "w": 177,
-        "h": 179,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "ButcherKnife": {
-      "name": "Butcher knife",
-      "damageMin": 5,
-      "damageMax": 9,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 731,
-        "y": 1143,
-        "w": 146,
-        "h": 157,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "KitchenKnife": {
-      "name": "Kitchen knife",
-      "damageMin": 3,
-      "damageMax": 7,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 731,
-        "y": 1143,
-        "w": 146,
-        "h": 157,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Pickaxe": {
-      "name": "Pickaxe",
-      "damageMin": 6,
-      "damageMax": 10,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 876,
-        "w": 153,
-        "h": 184,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PoolCue": {
-      "name": "Pool cue",
-      "damageMin": 3,
-      "damageMax": 7,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 378,
-        "y": 718,
-        "w": 177,
-        "h": 179,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "FireHydrantBat": {
-      "name": "Fire hydrant bat",
-      "damageMin": 8,
-      "damageMax": 12,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1261,
-        "y": 1483,
-        "w": 176,
-        "h": 175,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "RelentlessRaiderSword": {
-      "name": "Relentless raider sword",
-      "damageMin": 10,
-      "damageMax": 15,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 378,
-        "y": 344,
-        "w": 168,
-        "h": 188,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Switchblade": {
-      "name": "Switchblade",
-      "damageMin": 5,
-      "damageMax": 9,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 731,
-        "y": 1143,
-        "w": 146,
-        "h": 157,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "GragnaksAxe": {
-      "name": "Grognak's axe",
-      "damageMin": 21,
-      "damageMax": 26,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 268,
-        "w": 184,
-        "h": 186,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "SuperSledge": {
-      "name": "Super sledge",
-      "damageMin": 21,
-      "damageMax": 26,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 378,
-        "y": 1280,
-        "w": 191,
-        "h": 188,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Ripper_Rusty": {
-      "name": "Rusty ripper",
-      "damageMin": 8,
-      "damageMax": 12,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 1652,
-        "w": 189,
-        "h": 194,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Ripper": {
-      "name": "Ripper",
-      "damageMin": 10,
-      "damageMax": 15,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 1652,
-        "w": 189,
-        "h": 194,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Ripper_Enhanced": {
-      "name": "Enhanced ripper",
-      "damageMin": 13,
-      "damageMax": 18,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 1652,
-        "w": 189,
-        "h": 194,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Ripper_Hardened": {
-      "name": "Hardened ripper",
-      "damageMin": 16,
-      "damageMax": 21,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 1652,
-        "w": 189,
-        "h": 194,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "SurgicalRipper_Rusty": {
-      "name": "Rusty surgical ripper",
-      "damageMin": 10,
-      "damageMax": 14,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1569,
-        "y": 1669,
-        "w": 197,
-        "h": 177,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "SurgicalRipper": {
-      "name": "Surgical ripper",
-      "damageMin": 13,
-      "damageMax": 17,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1569,
-        "y": 1669,
-        "w": 197,
-        "h": 177,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "SurgicalRipper_Enhanced": {
-      "name": "Enhanced surgical ripper",
-      "damageMin": 16,
-      "damageMax": 21,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1569,
-        "y": 1669,
-        "w": 197,
-        "h": 177,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "SurgicalRipper_Hardened": {
-      "name": "Hardened surgical ripper",
-      "damageMin": 19,
-      "damageMax": 24,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1569,
-        "y": 1669,
-        "w": 197,
-        "h": 177,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PowerFist_Rusty": {
-      "name": "Rusty power fist",
-      "damageMin": 11,
-      "damageMax": 16,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 108,
-        "w": 178,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PowerFist": {
-      "name": "Power fist",
-      "damageMin": 14,
-      "damageMax": 19,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 108,
-        "w": 178,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PowerFist_Enhanced": {
-      "name": "Enhanced power fist",
-      "damageMin": 17,
-      "damageMax": 23,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 108,
-        "w": 178,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PowerFist_Hardened": {
-      "name": "Hardened power fist",
-      "damageMin": 21,
-      "damageMax": 27,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 108,
-        "w": 178,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PowerFist_Eds": {
-      "name": "Ed's custom power fist",
-      "damageMin": 24,
-      "damageMax": 30,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 108,
-        "w": 178,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "32Pistol_Rusty": {
-      "name": "Rusty .32 pistol",
-      "damageMin": 5,
-      "damageMax": 9,
-      "icon": {
-        "atlas": "Weapons_HD.png",
         "x": 1948,
         "y": 1491,
         "w": 90,
@@ -351,66 +71,10 @@
         "ah": 2048
       }
     },
-    "32Pistol": {
-      "name": ".32 pistol",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1948,
-        "y": 1491,
-        "w": 90,
-        "h": 167,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "32Pistol_Enhanced": {
-      "name": "Enhanced .32 pistol",
-      "damageMin": 9,
-      "damageMax": 13,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1948,
-        "y": 1491,
-        "w": 90,
-        "h": 167,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "32Pistol_Hardened": {
-      "name": "Hardened .32 pistol",
-      "damageMin": 11,
-      "damageMax": 15,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1948,
-        "y": 1491,
-        "w": 90,
-        "h": 167,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "32Pistol_ArmorPiercing": {
-      "name": "Armor piercing .32 pistol",
-      "damageMin": 13,
-      "damageMax": 17,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1948,
-        "y": 1491,
-        "w": 90,
-        "h": 167,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "32Pistol_WildBills": {
+    "032Pistol_WildBillsSidearm": {
       "name": "Wild Bill's Sidearm",
-      "damageMin": 15,
-      "damageMax": 20,
+      "damageMin": 1,
+      "damageMax": 6,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 1948,
@@ -421,332 +85,94 @@
         "ah": 2048
       }
     },
-    "032Pistol": {
-      "name": ".32 pistol",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1948,
-        "y": 1491,
-        "w": 90,
-        "h": 167,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "10mmPistol_Rusty": {
-      "name": "Rusty 10mm pistol",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1257,
-        "w": 156,
-        "h": 200,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "10mmPistol": {
-      "name": "10mm pistol",
-      "damageMin": 9,
+    "50CalMachineGun": {
+      "name": ".50 Cal Machine Gun",
+      "damageMin": 11,
       "damageMax": 14,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1257,
-        "w": 156,
-        "h": 200,
+        "x": 1371,
+        "y": 1668,
+        "w": 196,
+        "h": 178,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "10mmPistol_Enhanced": {
-      "name": "Enhanced 10mm pistol",
-      "damageMin": 12,
+    "50CalMachineGun_ArmorPiercing": {
+      "name": "Armor Piercing .50 Cal Machine Gun",
+      "damageMin": 15,
       "damageMax": 16,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1257,
-        "w": 156,
-        "h": 200,
+        "x": 1371,
+        "y": 1668,
+        "w": 196,
+        "h": 178,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "10mmPistol_Hardened": {
-      "name": "Hardened 10mm pistol",
-      "damageMin": 14,
-      "damageMax": 19,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1257,
-        "w": 156,
-        "h": 200,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "10mmPistol_ArmorPiercing": {
-      "name": "Armor piercing 10mm pistol",
-      "damageMin": 17,
-      "damageMax": 22,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1257,
-        "w": 156,
-        "h": 200,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "10mmPistol_LoneWanderer": {
-      "name": "Lone Wanderer",
-      "damageMin": 20,
-      "damageMax": 25,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1257,
-        "w": 156,
-        "h": 200,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Scoped44_Rusty": {
-      "name": "Rusty scoped .44",
-      "damageMin": 9,
-      "damageMax": 13,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 101,
-        "w": 120,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Scoped44": {
-      "name": "Scoped .44",
+    "50CalMachineGun_Enhanced": {
+      "name": "Enhanced .50 Cal Machine Gun",
       "damageMin": 12,
-      "damageMax": 16,
+      "damageMax": 14,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 101,
-        "w": 120,
-        "h": 197,
+        "x": 1371,
+        "y": 1668,
+        "w": 196,
+        "h": 178,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "Scoped44_Enhanced": {
-      "name": "Enhanced scoped .44",
-      "damageMin": 15,
-      "damageMax": 20,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 101,
-        "w": 120,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Scoped44_Hardened": {
-      "name": "Hardened scoped .44",
-      "damageMin": 18,
-      "damageMax": 24,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 101,
-        "w": 120,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Scoped44_ArmorPiercing": {
-      "name": "Armor piercing scoped .44",
-      "damageMin": 22,
-      "damageMax": 28,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 101,
-        "w": 120,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Scoped44_Blackhawk": {
-      "name": "Blackhawk",
-      "damageMin": 25,
-      "damageMax": 31,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 101,
-        "w": 120,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "GaussPistol_Rusty": {
-      "name": "Rusty Gauss pistol",
-      "damageMin": 12,
-      "damageMax": 17,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1174,
-        "y": 1663,
-        "w": 195,
-        "h": 183,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "GaussPistol_Focused": {
-      "name": "Focused Gauss pistol",
-      "damageMin": 15,
-      "damageMax": 20,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1174,
-        "y": 1663,
-        "w": 195,
-        "h": 183,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "GaussPistol_Enhanced": {
-      "name": "Enhanced Gauss pistol",
-      "damageMin": 18,
-      "damageMax": 24,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1174,
-        "y": 1663,
-        "w": 195,
-        "h": 183,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "GaussPistol_Hardened": {
-      "name": "Hardened Gauss pistol",
-      "damageMin": 22,
-      "damageMax": 28,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1174,
-        "y": 1663,
-        "w": 195,
-        "h": 183,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipePistol": {
-      "name": "Pipe pistol",
-      "damageMin": 5,
-      "damageMax": 9,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 487,
-        "w": 136,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipePistol_HairTrigger": {
-      "name": "Hair trigger pipe pistol",
-      "damageMin": 6,
-      "damageMax": 10,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 487,
-        "w": 136,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipePistol_Heavy": {
-      "name": "Heavy pipe pistol",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 487,
-        "w": 136,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipePistol_Scoped": {
-      "name": "Scoped pipe pistol",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 487,
-        "w": 136,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipePistol_Auto": {
-      "name": "Auto pipe pistol",
-      "damageMin": 6,
-      "damageMax": 10,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 487,
-        "w": 136,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipePistol_LittleBrother": {
-      "name": "Little Brother",
-      "damageMin": 10,
+    "50CalMachineGun_Hardened": {
+      "name": "Hardened .50 Cal Machine Gun",
+      "damageMin": 13,
       "damageMax": 15,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 487,
-        "w": 136,
-        "h": 197,
+        "x": 1371,
+        "y": 1668,
+        "w": 196,
+        "h": 178,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "50CalMachineGun_Rusty": {
+      "name": "Rusty .50 Cal Machine Gun",
+      "damageMin": 10,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1371,
+        "y": 1668,
+        "w": 196,
+        "h": 178,
         "aw": 2048,
         "ah": 2048
       }
     },
     "AlienBlaster": {
-      "name": "Alien blaster",
-      "damageMin": 20,
-      "damageMax": 25,
+      "name": "Alien Blaster",
+      "damageMin": 18,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 300,
+        "w": 140,
+        "h": 185,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AlienBlaster_Amplified": {
+      "name": "Amplified Alien Blaster",
+      "damageMin": 18,
+      "damageMax": 22,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 573,
@@ -759,8 +185,8 @@
     },
     "AlienBlaster_Destabilizer": {
       "name": "Destabilizer",
-      "damageMin": 26,
-      "damageMax": 32,
+      "damageMin": 18,
+      "damageMax": 23,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 573,
@@ -771,136 +197,122 @@
         "ah": 2048
       }
     },
-    "InstitutePistol": {
-      "name": "Institute pistol",
-      "damageMin": 13,
+    "AlienBlaster_Focused": {
+      "name": "Focused Alien Blaster",
+      "damageMin": 18,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 300,
+        "w": 140,
+        "h": 185,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AlienBlaster_Rusty": {
+      "name": "Rusty Alien Blaster",
+      "damageMin": 18,
       "damageMax": 18,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 1247,
-        "w": 183,
-        "h": 195,
+        "x": 573,
+        "y": 300,
+        "w": 140,
+        "h": 185,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserPistol_Rusty": {
-      "name": "Rusty laser pistol",
-      "damageMin": 7,
-      "damageMax": 11,
+    "AlienBlaster_Tuned": {
+      "name": "Tuned Alien Blaster",
+      "damageMin": 18,
+      "damageMax": 20,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1572,
-        "y": 1860,
-        "w": 198,
-        "h": 188,
+        "x": 573,
+        "y": 300,
+        "w": 140,
+        "h": 185,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserPistol": {
-      "name": "Laser pistol",
-      "damageMin": 9,
-      "damageMax": 14,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1572,
-        "y": 1860,
-        "w": 198,
-        "h": 188,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "LaserPistol_Focused": {
-      "name": "Focused laser pistol",
-      "damageMin": 12,
+    "AlienDisintegrator": {
+      "name": "Alien Disintegrator",
+      "damageMin": 17,
       "damageMax": 17,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1572,
-        "y": 1860,
-        "w": 198,
-        "h": 188,
+        "x": 187,
+        "y": 875,
+        "w": 189,
+        "h": 189,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserPistol_SmugglersEnd": {
-      "name": "Smuggler's End",
+    "AlienDisintegrator_Enhanced": {
+      "name": "Enhanced Alien Disintegrator",
+      "damageMin": 18,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 875,
+        "w": 189,
+        "h": 189,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AlienDisintegrator_Hardened": {
+      "name": "Hardened Alien Disintegrator",
+      "damageMin": 19,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 875,
+        "w": 189,
+        "h": 189,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AlienDisintegrator_Rusty": {
+      "name": "Rusty Alien Disintegrator",
       "damageMin": 16,
-      "damageMax": 21,
+      "damageMax": 16,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1572,
-        "y": 1860,
-        "w": 198,
-        "h": 188,
+        "x": 187,
+        "y": 875,
+        "w": 189,
+        "h": 189,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "PlasmaPistol": {
-      "name": "Plasma pistol",
-      "damageMin": 12,
-      "damageMax": 17,
+    "AmataPistol": {
+      "name": "Amata's Pistol",
+      "damageMin": 2,
+      "damageMax": 5,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1595,
-        "y": 1471,
-        "w": 161,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PlasmaPistol_Focused": {
-      "name": "Focused plasma pistol",
-      "damageMin": 16,
-      "damageMax": 21,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1595,
-        "y": 1471,
-        "w": 161,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PlasmaPistol_MPXLNovasurge": {
-      "name": "MPXL Novasurge",
-      "damageMin": 22,
-      "damageMax": 28,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1595,
-        "y": 1471,
-        "w": 161,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Rifle_Rusty": {
-      "name": "Rusty rifle",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 456,
-        "w": 172,
+        "x": 573,
+        "y": 1257,
+        "w": 156,
         "h": 200,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "AssaultRifle_Rusty": {
-      "name": "Rusty assault rifle",
-      "damageMin": 9,
-      "damageMax": 14,
+    "AssaultRifle": {
+      "name": "Assault Rifle",
+      "damageMin": 8,
+      "damageMax": 9,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 596,
@@ -911,10 +323,10 @@
         "ah": 2048
       }
     },
-    "AssaultRifle": {
-      "name": "Assault rifle",
-      "damageMin": 13,
-      "damageMax": 18,
+    "AssaultRifle_ArmorPiercing": {
+      "name": "Armor Piercing Assault Rifle",
+      "damageMin": 8,
+      "damageMax": 12,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 596,
@@ -926,9 +338,9 @@
       }
     },
     "AssaultRifle_Enhanced": {
-      "name": "Enhanced assault rifle",
-      "damageMin": 17,
-      "damageMax": 22,
+      "name": "Enhanced Assault Rifle",
+      "damageMin": 8,
+      "damageMax": 10,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 596,
@@ -940,9 +352,9 @@
       }
     },
     "AssaultRifle_Hardened": {
-      "name": "Hardened assault rifle",
-      "damageMin": 21,
-      "damageMax": 27,
+      "name": "Hardened Assault Rifle",
+      "damageMin": 8,
+      "damageMax": 11,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 596,
@@ -955,8 +367,8 @@
     },
     "AssaultRifle_Infiltrator": {
       "name": "Infiltrator",
-      "damageMin": 25,
-      "damageMax": 31,
+      "damageMin": 8,
+      "damageMax": 13,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 596,
@@ -967,10 +379,80 @@
         "ah": 2048
       }
     },
-    "BBGun_Rusty": {
-      "name": "Rusty BB gun",
-      "damageMin": 3,
-      "damageMax": 6,
+    "AssaultRifle_Rusty": {
+      "name": "Rusty Assault Rifle",
+      "damageMin": 8,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 596,
+        "y": 1849,
+        "w": 190,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AssaultronHead": {
+      "name": "Assaultron Head",
+      "damageMin": 8,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 170,
+        "w": 183,
+        "h": 172,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AssaultronHead_Enhanced": {
+      "name": "Enhanced Assaultron Head",
+      "damageMin": 9,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 170,
+        "w": 183,
+        "h": 172,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AssaultronHead_Hardened": {
+      "name": "Hardened Assaultron Head",
+      "damageMin": 10,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 170,
+        "w": 183,
+        "h": 172,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "AssaultronHead_Rusty": {
+      "name": "Rusty Assaultron Head",
+      "damageMin": 7,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 170,
+        "w": 183,
+        "h": 172,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "BBGun": {
+      "name": "BB Gun",
+      "damageMin": 0,
+      "damageMax": 2,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 1439,
@@ -981,10 +463,10 @@
         "ah": 2048
       }
     },
-    "BBGun": {
-      "name": "BB gun",
-      "damageMin": 4,
-      "damageMax": 8,
+    "BBGun_ArmorPiercing": {
+      "name": "Armor Piercing BB Gun",
+      "damageMin": 0,
+      "damageMax": 5,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 1439,
@@ -996,9 +478,9 @@
       }
     },
     "BBGun_Enhanced": {
-      "name": "Enhanced BB gun",
-      "damageMin": 5,
-      "damageMax": 9,
+      "name": "Enhanced BB Gun",
+      "damageMin": 0,
+      "damageMax": 3,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 1439,
@@ -1010,9 +492,9 @@
       }
     },
     "BBGun_Hardened": {
-      "name": "Hardened BB gun",
-      "damageMin": 6,
-      "damageMax": 10,
+      "name": "Hardened BB Gun",
+      "damageMin": 0,
+      "damageMax": 4,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 1439,
@@ -1025,8 +507,8 @@
     },
     "BBGun_RedRocket": {
       "name": "Red Rocket",
-      "damageMin": 8,
-      "damageMax": 13,
+      "damageMin": 0,
+      "damageMax": 6,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 1439,
@@ -1037,10 +519,528 @@
         "ah": 2048
       }
     },
-    "GaussRifle_Rusty": {
-      "name": "Rusty Gauss rifle",
+    "BBGun_Rusty": {
+      "name": "Rusty BB Gun",
+      "damageMin": 0,
+      "damageMax": 1,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1439,
+        "y": 1462,
+        "w": 154,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "BOSAssaultRifle": {
+      "name": "BOS Assault Rifle",
+      "damageMin": 16,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1660,
+        "w": 196,
+        "h": 186,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "BOSAssaultRifle_ArmorPiercing": {
+      "name": "Armor Piercing BOS Assault Rifle",
+      "damageMin": 19,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1660,
+        "w": 196,
+        "h": 186,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "BOSAssaultRifle_Enhanced": {
+      "name": "Enhanced BOS Assault Rifle",
+      "damageMin": 16,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1660,
+        "w": 196,
+        "h": 186,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "BOSAssaultRifle_Hardened": {
+      "name": "Hardened BOS Assault Rifle",
+      "damageMin": 17,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1660,
+        "w": 196,
+        "h": 186,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "BOSAssaultRifle_Rusty": {
+      "name": "Rusty BOS Assault Rifle",
+      "damageMin": 15,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1660,
+        "w": 196,
+        "h": 186,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "CombatShotgun": {
+      "name": "Combat Shotgun",
+      "damageMin": 13,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "CombatShotgun_CharonsShotgun": {
+      "name": "Charon's Shotgun",
       "damageMin": 13,
       "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "CombatShotgun_DoubleBarrelled": {
+      "name": "Double-Barrel Combat Shotgun",
+      "damageMin": 13,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "CombatShotgun_Enhanced": {
+      "name": "Enhanced Combat Shotgun",
+      "damageMin": 13,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "CombatShotgun_Hardened": {
+      "name": "Hardened Combat Shotgun",
+      "damageMin": 13,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "CombatShotgun_Rusty": {
+      "name": "Rusty Combat Shotgun",
+      "damageMin": 13,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Cryolator": {
+      "name": "Cryolator",
+      "damageMin": 20,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 778,
+        "y": 1663,
+        "w": 197,
+        "h": 183,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "EnclavePlasmaRifle": {
+      "name": "Enclave Plasma Rifle",
+      "damageMin": 18,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1177,
+        "y": 1857,
+        "w": 195,
+        "h": 191,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fatman": {
+      "name": "Fat Man",
+      "damageMin": 22,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1772,
+        "y": 1860,
+        "w": 197,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fatman_Enhanced": {
+      "name": "Enhanced Fat Man",
+      "damageMin": 22,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1772,
+        "y": 1860,
+        "w": 197,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fatman_Guided": {
+      "name": "Guided Fat Man",
+      "damageMin": 22,
+      "damageMax": 26,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1772,
+        "y": 1860,
+        "w": 197,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fatman_Hardened": {
+      "name": "Hardened Fat Man",
+      "damageMin": 22,
+      "damageMax": 25,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1772,
+        "y": 1860,
+        "w": 197,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fatman_Mirv": {
+      "name": "MIRV",
+      "damageMin": 22,
+      "damageMax": 27,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1772,
+        "y": 1860,
+        "w": 197,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fatman_Rusty": {
+      "name": "Rusty Fat Man",
+      "damageMin": 22,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1772,
+        "y": 1860,
+        "w": 197,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Fist": {
+      "name": "Fist",
+      "damageMin": 1,
+      "damageMax": 1,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1075,
+        "y": 1330,
+        "w": 124,
+        "h": 127,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Flamer": {
+      "name": "Flamer",
+      "damageMin": 15,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1091,
+        "w": 191,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Flamer_Burnmaster": {
+      "name": "Burnmaster",
+      "damageMin": 15,
+      "damageMax": 20,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1091,
+        "w": 191,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Flamer_Enhanced": {
+      "name": "Enhanced Flamer",
+      "damageMin": 15,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1091,
+        "w": 191,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Flamer_Hardened": {
+      "name": "Hardened Flamer",
+      "damageMin": 15,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1091,
+        "w": 191,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Flamer_Pressurized": {
+      "name": "Pressurized Flamer",
+      "damageMin": 15,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1091,
+        "w": 191,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Flamer_Rusty": {
+      "name": "Rusty Flamer",
+      "damageMin": 15,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1091,
+        "w": 191,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GatlingLaser": {
+      "name": "Gatling Laser",
+      "damageMin": 21,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 576,
+        "y": 1665,
+        "w": 200,
+        "h": 181,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GatlingLaser_Amplified": {
+      "name": "Amplified Gatling Laser",
+      "damageMin": 21,
+      "damageMax": 25,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 576,
+        "y": 1665,
+        "w": 200,
+        "h": 181,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GatlingLaser_Focused": {
+      "name": "Focused Gatling Laser",
+      "damageMin": 21,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 576,
+        "y": 1665,
+        "w": 200,
+        "h": 181,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GatlingLaser_Rusty": {
+      "name": "Rusty Gatling Laser",
+      "damageMin": 21,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 576,
+        "y": 1665,
+        "w": 200,
+        "h": 181,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GatlingLaser_Tuned": {
+      "name": "Tuned Gatling Laser",
+      "damageMin": 21,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 576,
+        "y": 1665,
+        "w": 200,
+        "h": 181,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GatlingLaser_Vengeance": {
+      "name": "Vengeance",
+      "damageMin": 21,
+      "damageMax": 26,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 576,
+        "y": 1665,
+        "w": 200,
+        "h": 181,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GaussPistol_Enhanced": {
+      "name": "'Enhanced Gauss Pistol '",
+      "damageMin": 14,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1174,
+        "y": 1663,
+        "w": 195,
+        "h": 183,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GaussPistol_Focused": {
+      "name": "'Focused Gauss Pistol '",
+      "damageMin": 13,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1174,
+        "y": 1663,
+        "w": 195,
+        "h": 183,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GaussPistol_Hardened": {
+      "name": "'Hardened Gauss Pistol '",
+      "damageMin": 15,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1174,
+        "y": 1663,
+        "w": 195,
+        "h": 183,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GaussPistol_Rusty": {
+      "name": "'Rusty Gauss Pistol '",
+      "damageMin": 12,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1174,
+        "y": 1663,
+        "w": 195,
+        "h": 183,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GaussRifle": {
+      "name": "Gauss Rifle",
+      "damageMin": 16,
+      "damageMax": 17,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1051,10 +1051,10 @@
         "ah": 2048
       }
     },
-    "GaussRifle": {
-      "name": "Gauss rifle",
+    "GaussRifle_Accelerated": {
+      "name": "Accelerated Gauss Rifle",
       "damageMin": 16,
-      "damageMax": 22,
+      "damageMax": 20,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1066,9 +1066,9 @@
       }
     },
     "GaussRifle_Enhanced": {
-      "name": "Enhanced Gauss rifle",
-      "damageMin": 20,
-      "damageMax": 26,
+      "name": "Enhanced Gauss Rifle",
+      "damageMin": 16,
+      "damageMax": 18,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1080,9 +1080,9 @@
       }
     },
     "GaussRifle_Hardened": {
-      "name": "Hardened Gauss rifle",
-      "damageMin": 24,
-      "damageMax": 31,
+      "name": "Hardened Gauss Rifle",
+      "damageMin": 16,
+      "damageMax": 19,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1093,10 +1093,10 @@
         "ah": 2048
       }
     },
-    "GaussRifle_Magnetron4000": {
+    "GaussRifle_Magnetro4000": {
       "name": "Magnetron 4000",
-      "damageMin": 28,
-      "damageMax": 35,
+      "damageMin": 16,
+      "damageMax": 21,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1107,10 +1107,52 @@
         "ah": 2048
       }
     },
-    "HuntingRifle_Rusty": {
-      "name": "Rusty hunting rifle",
+    "GaussRifle_Rusty": {
+      "name": "Rusty Gauss Rifle",
+      "damageMin": 16,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1646,
+        "w": 185,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GhoulRevolver": {
+      "name": "Ghoul Revolver",
       "damageMin": 8,
       "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 899,
+        "w": 175,
+        "h": 190,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "GrognaksAxe": {
+      "name": "Grognak's Axe",
+      "damageMin": 18,
+      "damageMax": 26,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 268,
+        "w": 184,
+        "h": 186,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "HuntingRifle": {
+      "name": "Hunting Rifle",
+      "damageMin": 5,
+      "damageMax": 6,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1121,10 +1163,10 @@
         "ah": 2048
       }
     },
-    "HuntingRifle": {
-      "name": "Hunting rifle",
-      "damageMin": 11,
-      "damageMax": 15,
+    "HuntingRifle_ArmorPiercing": {
+      "name": "Armor Piercing Hunting Rifle",
+      "damageMin": 5,
+      "damageMax": 9,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1136,9 +1178,9 @@
       }
     },
     "HuntingRifle_Enhanced": {
-      "name": "Enhanced hunting rifle",
-      "damageMin": 14,
-      "damageMax": 19,
+      "name": "Enhanced Hunting Rifle",
+      "damageMin": 5,
+      "damageMax": 7,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1150,9 +1192,9 @@
       }
     },
     "HuntingRifle_Hardened": {
-      "name": "Hardened hunting rifle",
-      "damageMin": 18,
-      "damageMax": 23,
+      "name": "Hardened Hunting Rifle",
+      "damageMin": 5,
+      "damageMax": 8,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1165,8 +1207,8 @@
     },
     "HuntingRifle_OlPainless": {
       "name": "Ol' Painless",
-      "damageMin": 22,
-      "damageMax": 27,
+      "damageMin": 5,
+      "damageMax": 10,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1177,52 +1219,948 @@
         "ah": 2048
       }
     },
-    "LeverActionRifle": {
-      "name": "Lever-action rifle",
-      "damageMin": 13,
-      "damageMax": 18,
+    "HuntingRifle_Rusty": {
+      "name": "Rusty Hunting Rifle",
+      "damageMin": 5,
+      "damageMax": 5,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1459,
-        "w": 158,
-        "h": 199,
+        "x": 0,
+        "y": 456,
+        "w": 172,
+        "h": 200,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LeverActionRifle_LincolnsRepeater": {
-      "name": "Lincoln's repeater",
-      "damageMin": 20,
+    "InstitutePistol": {
+      "name": "Institute Pistol",
+      "damageMin": 9,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1247,
+        "w": 183,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstitutePistol_Apotheosis": {
+      "name": "Apotheosis",
+      "damageMin": 14,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1247,
+        "w": 183,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstitutePistol_Improved": {
+      "name": "Improved Institute Pistol",
+      "damageMin": 11,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1247,
+        "w": 183,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstitutePistol_Incendiary": {
+      "name": "Incendiary Institute Pistol",
+      "damageMin": 10,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1247,
+        "w": 183,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstitutePistol_Scattered": {
+      "name": "Scattered Institute Pistol",
+      "damageMin": 13,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1247,
+        "w": 183,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstitutePistol_Scoped": {
+      "name": "Scoped Institute Pistol",
+      "damageMin": 12,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1247,
+        "w": 183,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstituteRifle": {
+      "name": "Institute Rifle",
+      "damageMin": 14,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 401,
+        "y": 1850,
+        "w": 193,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstituteRifle_Excited": {
+      "name": "Excited Institute Rifle",
+      "damageMin": 15,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 401,
+        "y": 1850,
+        "w": 193,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstituteRifle_Long": {
+      "name": "Long Institute Rifle",
+      "damageMin": 16,
+      "damageMax": 20,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 401,
+        "y": 1850,
+        "w": 193,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstituteRifle_NightVision": {
+      "name": "Night-Vision Institute Rifle",
+      "damageMin": 17,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 401,
+        "y": 1850,
+        "w": 193,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstituteRifle_Targeting": {
+      "name": "Targeting Institute Rifle",
+      "damageMin": 18,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 401,
+        "y": 1850,
+        "w": 193,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "InstituteRifle_VirgilsRifle": {
+      "name": "Virgil's Rifle",
+      "damageMin": 19,
       "damageMax": 26,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 573,
-        "y": 1459,
+        "x": 401,
+        "y": 1850,
+        "w": 193,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "JunkJet": {
+      "name": "Junk Jet",
+      "damageMin": 13,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1061,
+        "y": 1502,
+        "w": 198,
+        "h": 156,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "JunkJet_Electrified": {
+      "name": "Electrified Junk Jet",
+      "damageMin": 16,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1061,
+        "y": 1502,
+        "w": 198,
+        "h": 156,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "JunkJet_Flaming": {
+      "name": "Flaming Junk Jet",
+      "damageMin": 17,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1061,
+        "y": 1502,
+        "w": 198,
+        "h": 156,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "JunkJet_RecoilCompensated": {
+      "name": "Recoil Compensated Junk Jet",
+      "damageMin": 14,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1061,
+        "y": 1502,
+        "w": 198,
+        "h": 156,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "JunkJet_Tactical": {
+      "name": "Tactical Junk Jet",
+      "damageMin": 15,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1061,
+        "y": 1502,
+        "w": 198,
+        "h": 156,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "JunkJet_TechniciansRevenge": {
+      "name": "Technician's Revenge",
+      "damageMin": 18,
+      "damageMax": 25,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1061,
+        "y": 1502,
+        "w": 198,
+        "h": 156,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "KelloggsPistol": {
+      "name": "Kellogg's Pistol",
+      "damageMin": 15,
+      "damageMax": 27,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 901,
+        "y": 1461,
         "w": 158,
-        "h": 199,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserMusket": {
+      "name": "Laser Musket",
+      "damageMin": 10,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1455,
+        "w": 186,
+        "h": 195,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserPistol": {
+      "name": "Laser Pistol",
+      "damageMin": 7,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1572,
+        "y": 1860,
+        "w": 198,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserPistol_Amplified": {
+      "name": "Amplified Laser Pistol",
+      "damageMin": 7,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1572,
+        "y": 1860,
+        "w": 198,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserPistol_Focused": {
+      "name": "Focused Laser Pistol",
+      "damageMin": 7,
+      "damageMax": 10,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1572,
+        "y": 1860,
+        "w": 198,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserPistol_Rusty": {
+      "name": "Rusty Laser Pistol",
+      "damageMin": 7,
+      "damageMax": 7,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1572,
+        "y": 1860,
+        "w": 198,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserPistol_SmugglersEnd": {
+      "name": "Smuggler's End",
+      "damageMin": 7,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1572,
+        "y": 1860,
+        "w": 198,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserPistol_Tuned": {
+      "name": "Tuned Laser Pistol",
+      "damageMin": 7,
+      "damageMax": 9,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1572,
+        "y": 1860,
+        "w": 198,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserRifle": {
+      "name": "Laser Rifle",
+      "damageMin": 12,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserRifle_Amplified": {
+      "name": "Amplified Laser Rifle",
+      "damageMin": 12,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserRifle_Focused": {
+      "name": "Focused Laser Rifle",
+      "damageMin": 12,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserRifle_Rusty": {
+      "name": "Rusty Laser Rifle",
+      "damageMin": 12,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserRifle_Tuned": {
+      "name": "Tuned Laser Rifle",
+      "damageMin": 12,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LaserRifle_WaserWifle": {
+      "name": "Wazer Wifle",
+      "damageMin": 12,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "LeverActionRifle_Henrietta": {
+      "name": "Henrietta",
+      "damageMin": 13,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1062,
+        "w": 152,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Magnum": {
+      "name": "Scoped .44",
+      "damageMin": 3,
+      "damageMax": 4,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 101,
+        "w": 120,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Magnum_ArmorPiercing": {
+      "name": "Armor Piercing Scoped .44",
+      "damageMin": 3,
+      "damageMax": 7,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 101,
+        "w": 120,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Magnum_Blackhawk": {
+      "name": "Blackhawk",
+      "damageMin": 3,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 101,
+        "w": 120,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Magnum_Enhanced": {
+      "name": "Enhanced Scoped .44",
+      "damageMin": 3,
+      "damageMax": 5,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 101,
+        "w": 120,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Magnum_Hardened": {
+      "name": "Hardened Scoped .44",
+      "damageMin": 3,
+      "damageMax": 6,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 101,
+        "w": 120,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Magnum_Rusty": {
+      "name": "Rusty Scoped .44",
+      "damageMin": 3,
+      "damageMax": 3,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 101,
+        "w": 120,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MaresLeg": {
+      "name": "Mare's Leg",
+      "damageMin": 9,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 854,
+        "w": 185,
+        "h": 191,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_BaseballBat": {
+      "name": "Baseball Bat",
+      "damageMin": 5,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 718,
+        "w": 177,
+        "h": 179,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_ButcherKnife": {
+      "name": "Butcher Knife",
+      "damageMin": 8,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 534,
+        "w": 174,
+        "h": 182,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_FireHydrantBat": {
+      "name": "Fire Hydrant Bat",
+      "damageMin": 19,
+      "damageMax": 31,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1261,
+        "y": 1483,
+        "w": 176,
+        "h": 175,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_KitchenKnife": {
+      "name": "Kitchen Knife",
+      "damageMin": 3,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 731,
+        "y": 1143,
+        "w": 146,
+        "h": 157,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_Pickaxe": {
+      "name": "Pickaxe",
+      "damageMin": 11,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 876,
+        "w": 153,
+        "h": 184,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_PoolCue": {
+      "name": "Pool Cue",
+      "damageMin": 0,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 82,
+        "w": 183,
+        "h": 184,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Melee_RaiderSword": {
+      "name": "Relentless Raider Sword",
+      "damageMin": 16,
+      "damageMax": 28,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 344,
+        "w": 168,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Minigun": {
+      "name": "Minigun",
+      "damageMin": 19,
+      "damageMax": 20,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 788,
+        "y": 1855,
+        "w": 195,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Minigun_ArmorPiercing": {
+      "name": "Armor Piercing Minigun",
+      "damageMin": 19,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 788,
+        "y": 1855,
+        "w": 195,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Minigun_Enhanced": {
+      "name": "Enhanced Minigun",
+      "damageMin": 19,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 788,
+        "y": 1855,
+        "w": 195,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Minigun_Hardened": {
+      "name": "Hardened Minigun",
+      "damageMin": 19,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 788,
+        "y": 1855,
+        "w": 195,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Minigun_LeadBelcher": {
+      "name": "Lead Belcher",
+      "damageMin": 19,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 788,
+        "y": 1855,
+        "w": 195,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Minigun_Rusty": {
+      "name": "Rusty Minigun",
+      "damageMin": 19,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 788,
+        "y": 1855,
+        "w": 195,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MissilLauncher": {
+      "name": "Missile Launcher",
+      "damageMin": 20,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 985,
+        "y": 1851,
+        "w": 190,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MissilLauncher_Enhanced": {
+      "name": "Enhanced Missile Launcher",
+      "damageMin": 20,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 985,
+        "y": 1851,
+        "w": 190,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MissilLauncher_Guided": {
+      "name": "Guided Missile Launcher",
+      "damageMin": 20,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 985,
+        "y": 1851,
+        "w": 190,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MissilLauncher_Hardened": {
+      "name": "Hardened Missile Launcher",
+      "damageMin": 20,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 985,
+        "y": 1851,
+        "w": 190,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MissilLauncher_MissLauncher": {
+      "name": "Miss Launcher",
+      "damageMin": 20,
+      "damageMax": 25,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 985,
+        "y": 1851,
+        "w": 190,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MissilLauncher_Rusty": {
+      "name": "Rusty Missile Launcher",
+      "damageMin": 20,
+      "damageMax": 20,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 985,
+        "y": 1851,
+        "w": 190,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "MountainMomma": {
+      "name": "Mountain Momma",
+      "damageMin": 14,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 297,
+        "w": 171,
+        "h": 196,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipePistol": {
+      "name": "Pipe Pistol",
+      "damageMin": 1,
+      "damageMax": 3,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 487,
+        "w": 136,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipePistol_Auto": {
+      "name": "Auto Pipe Pistol",
+      "damageMin": 5,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 487,
+        "w": 136,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipePistol_HairTrigger": {
+      "name": "Hair Trigger Pipe Pistol",
+      "damageMin": 2,
+      "damageMax": 5,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 487,
+        "w": 136,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipePistol_Heavy": {
+      "name": "Heavy Pipe Pistol",
+      "damageMin": 3,
+      "damageMax": 7,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 487,
+        "w": 136,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipePistol_LittleBrother": {
+      "name": "Little Brother",
+      "damageMin": 6,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 487,
+        "w": 136,
+        "h": 197,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipePistol_Scoped": {
+      "name": "Scoped Pipe Pistol",
+      "damageMin": 4,
+      "damageMax": 9,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 487,
+        "w": 136,
+        "h": 197,
         "aw": 2048,
         "ah": 2048
       }
     },
     "PipeRifle": {
-      "name": "Pipe rifle",
-      "damageMin": 7,
-      "damageMax": 11,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 187,
-        "y": 495,
-        "w": 180,
-        "h": 187,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "PipeRifle_Calibrated": {
-      "name": "Calibrated pipe rifle",
-      "damageMin": 9,
-      "damageMax": 13,
+      "name": "Pipe Rifle",
+      "damageMin": 5,
+      "damageMax": 7,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
@@ -1234,9 +2172,9 @@
       }
     },
     "PipeRifle_Bayoneted": {
-      "name": "Bayoneted pipe rifle",
+      "name": "Bayoneted Pipe Rifle",
       "damageMin": 9,
-      "damageMax": 13,
+      "damageMax": 15,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
@@ -1249,8 +2187,8 @@
     },
     "PipeRifle_BigSister": {
       "name": "Big Sister",
-      "damageMin": 14,
-      "damageMax": 19,
+      "damageMin": 10,
+      "damageMax": 17,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
@@ -1261,178 +2199,290 @@
         "ah": 2048
       }
     },
-    "RailwayRifle": {
-      "name": "Railway rifle",
-      "damageMin": 15,
-      "damageMax": 20,
+    "PipeRifle_Calibrated": {
+      "name": "Calibrated Pipe Rifle",
+      "damageMin": 6,
+      "damageMax": 9,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 456,
-        "w": 172,
+        "x": 187,
+        "y": 495,
+        "w": 180,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipeRifle_Long": {
+      "name": "Long Pipe Rifle",
+      "damageMin": 7,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 495,
+        "w": 180,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PipeRifle_NightVision": {
+      "name": "Night-Vision Pipe Rifle",
+      "damageMin": 8,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 495,
+        "w": 180,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Pistol": {
+      "name": "10mm Pistol",
+      "damageMin": 2,
+      "damageMax": 3,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1257,
+        "w": 156,
         "h": 200,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "RailwayRifle_Railmaster": {
-      "name": "Railmaster",
-      "damageMin": 20,
-      "damageMax": 26,
+    "Pistol_ArmorPiercing": {
+      "name": "Armor Piercing 10mm Pistol",
+      "damageMin": 2,
+      "damageMax": 6,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 456,
-        "w": 172,
+        "x": 573,
+        "y": 1257,
+        "w": 156,
         "h": 200,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "SniperRifle": {
-      "name": "Sniper rifle",
-      "damageMin": 15,
-      "damageMax": 20,
+    "Pistol_Enhanced": {
+      "name": "Enhanced 10mm Pistol",
+      "damageMin": 2,
+      "damageMax": 4,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1374,
-        "y": 1858,
-        "w": 196,
-        "h": 190,
+        "x": 573,
+        "y": 1257,
+        "w": 156,
+        "h": 200,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "SniperRifle_Enhanced": {
-      "name": "Enhanced sniper rifle",
+    "Pistol_Hardened": {
+      "name": "Hardened 10mm Pistol",
+      "damageMin": 2,
+      "damageMax": 5,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1257,
+        "w": 156,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Pistol_LoneWanderer": {
+      "name": "Lone Wanderer",
+      "damageMin": 2,
+      "damageMax": 7,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1257,
+        "w": 156,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Pistol_Rusty": {
+      "name": "Rusty 10mm Pistol",
+      "damageMin": 2,
+      "damageMax": 2,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1257,
+        "w": 156,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaCaster": {
+      "name": "Plasma Caster",
+      "damageMin": 17,
+      "damageMax": 21,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 202,
+        "y": 1850,
+        "w": 197,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaCaster_Enhanced": {
+      "name": "Enhanced Plasma Caster",
+      "damageMin": 18,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 202,
+        "y": 1850,
+        "w": 197,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaCaster_Hardened": {
+      "name": "Hardened Plasma Caster",
       "damageMin": 19,
-      "damageMax": 25,
+      "damageMax": 23,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1374,
-        "y": 1858,
-        "w": 196,
-        "h": 190,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "SniperRifle_Victory": {
-      "name": "Victory rifle",
-      "damageMin": 24,
-      "damageMax": 30,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1374,
-        "y": 1858,
-        "w": 196,
-        "h": 190,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "InstituteRifle": {
-      "name": "Institute rifle",
-      "damageMin": 17,
-      "damageMax": 22,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 401,
+        "x": 202,
         "y": 1850,
-        "w": 193,
+        "w": 197,
         "h": 198,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "InstituteRifle_Excited": {
-      "name": "Excited Institute rifle",
-      "damageMin": 21,
-      "damageMax": 27,
+    "PlasmaCaster_Rusty": {
+      "name": "Rusty Plasma Caster",
+      "damageMin": 16,
+      "damageMax": 20,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 401,
+        "x": 202,
         "y": 1850,
-        "w": 193,
+        "w": 197,
         "h": 198,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "InstituteRifle_Virgils": {
-      "name": "Virgil's rifle",
-      "damageMin": 25,
-      "damageMax": 32,
+    "PlasmaPistol": {
+      "name": "Plasma Pistol",
+      "damageMin": 11,
+      "damageMax": 12,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 401,
-        "y": 1850,
-        "w": 193,
-        "h": 198,
+        "x": 1595,
+        "y": 1471,
+        "w": 161,
+        "h": 187,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserRifle": {
-      "name": "Laser rifle",
-      "damageMin": 13,
-      "damageMax": 18,
+    "PlasmaPistol_Amplified": {
+      "name": "Amplified Plasma Pistol",
+      "damageMin": 11,
+      "damageMax": 15,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 1444,
-        "w": 181,
-        "h": 200,
+        "x": 1595,
+        "y": 1471,
+        "w": 161,
+        "h": 187,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserRifle_Amplified": {
-      "name": "Amplified laser rifle",
-      "damageMin": 17,
-      "damageMax": 22,
+    "PlasmaPistol_Focused": {
+      "name": "Focused Plasma Pistol",
+      "damageMin": 11,
+      "damageMax": 14,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 1444,
-        "w": 181,
-        "h": 200,
+        "x": 1595,
+        "y": 1471,
+        "w": 161,
+        "h": 187,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserRifle_Focused": {
-      "name": "Focused laser rifle",
-      "damageMin": 17,
-      "damageMax": 22,
+    "PlasmaPistol_MPLXNovasurge": {
+      "name": "MPLX Novasurge",
+      "damageMin": 11,
+      "damageMax": 16,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 1444,
-        "w": 181,
-        "h": 200,
+        "x": 1595,
+        "y": 1471,
+        "w": 161,
+        "h": 187,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "LaserRifle_WazerWifle": {
-      "name": "Wazer Wifle",
-      "damageMin": 22,
-      "damageMax": 28,
+    "PlasmaPistol_Rusty": {
+      "name": "Rusty Plasma Pistol",
+      "damageMin": 11,
+      "damageMax": 11,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 0,
-        "y": 1444,
-        "w": 181,
-        "h": 200,
+        "x": 1595,
+        "y": 1471,
+        "w": 161,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaPistol_Tuned": {
+      "name": "Tuned Plasma Pistol",
+      "damageMin": 11,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1595,
+        "y": 1471,
+        "w": 161,
+        "h": 187,
         "aw": 2048,
         "ah": 2048
       }
     },
     "PlasmaRifle": {
-      "name": "Plasma rifle",
+      "name": "Plasma Rifle",
       "damageMin": 17,
-      "damageMax": 23,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 658,
+        "w": 179,
+        "h": 194,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaRifle_Amplified": {
+      "name": "Amplified Plasma Rifle",
+      "damageMin": 17,
+      "damageMax": 22,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1444,9 +2494,9 @@
       }
     },
     "PlasmaRifle_Focused": {
-      "name": "Focused plasma rifle",
-      "damageMin": 21,
-      "damageMax": 28,
+      "name": "Focused Plasma Rifle",
+      "damageMin": 17,
+      "damageMax": 20,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1459,8 +2509,36 @@
     },
     "PlasmaRifle_MeanGreenMonster": {
       "name": "Mean Green Monster",
-      "damageMin": 26,
-      "damageMax": 33,
+      "damageMin": 17,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 658,
+        "w": 179,
+        "h": 194,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaRifle_Rusty": {
+      "name": "Rusty Plasma Rifle",
+      "damageMin": 17,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 658,
+        "w": 179,
+        "h": 194,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaRifle_Tuned": {
+      "name": "Tuned Plasma Rifle",
+      "damageMin": 17,
+      "damageMax": 19,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1472,9 +2550,23 @@
       }
     },
     "PlasmaThrower": {
-      "name": "Plasma thrower",
-      "damageMin": 21,
-      "damageMax": 27,
+      "name": "Plasma Thrower",
+      "damageMin": 17,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1470,
+        "w": 193,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaThrower_Agitated": {
+      "name": "Agitated Plasma Thrower",
+      "damageMin": 18,
+      "damageMax": 21,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 378,
@@ -1486,9 +2578,9 @@
       }
     },
     "PlasmaThrower_Boosted": {
-      "name": "Boosted plasma thrower",
-      "damageMin": 25,
-      "damageMax": 32,
+      "name": "Boosted Plasma Thrower",
+      "damageMin": 20,
+      "damageMax": 25,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 378,
@@ -1501,8 +2593,8 @@
     },
     "PlasmaThrower_DragonsMaw": {
       "name": "Dragon's Maw",
-      "damageMin": 30,
-      "damageMax": 38,
+      "damageMin": 22,
+      "damageMax": 29,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 378,
@@ -1513,52 +2605,450 @@
         "ah": 2048
       }
     },
-    "CombatShotgun": {
-      "name": "Combat shotgun",
+    "PlasmaThrower_Overcharged": {
+      "name": "Overcharged Plasma Thrower",
+      "damageMin": 21,
+      "damageMax": 27,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1470,
+        "w": 193,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PlasmaThrower_Tactical": {
+      "name": "Tactical Plasma Thrower",
+      "damageMin": 19,
+      "damageMax": 23,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1470,
+        "w": 193,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PoliceBaton": {
+      "name": "Police Baton",
+      "damageMin": 1,
+      "damageMax": 1,
+      "icon": null
+    },
+    "PowerFist": {
+      "name": "Power Fist",
+      "damageMin": 13,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 108,
+        "w": 178,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PowerFist_Enhanced": {
+      "name": "Enhanced Power Fist",
+      "damageMin": 14,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 108,
+        "w": 178,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PowerFist_Hardened": {
+      "name": "Hardened Power Fist",
       "damageMin": 15,
+      "damageMax": 20,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 108,
+        "w": 178,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PowerFist_Rusty": {
+      "name": "Rusty Power Fist",
+      "damageMin": 12,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 108,
+        "w": 178,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PowerFistEd": {
+      "name": "Ed's Custom Power Fist",
+      "damageMin": 16,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 108,
+        "w": 178,
+        "h": 187,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PulseRifle": {
+      "name": "Pulse Rifle",
+      "damageMin": 18,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 684,
+        "w": 188,
+        "h": 189,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PulseRifle_Enhanced": {
+      "name": "Enhanced Pulse Rifle",
+      "damageMin": 19,
+      "damageMax": 20,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 684,
+        "w": 188,
+        "h": 189,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "PulseRifle_Hardened": {
+      "name": "Hardened Pulse Rifle",
+      "damageMin": 20,
       "damageMax": 21,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
-        "y": 297,
-        "w": 171,
-        "h": 196,
+        "y": 684,
+        "w": 188,
+        "h": 189,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "CombatShotgun_Enhanced": {
-      "name": "Enhanced combat shotgun",
-      "damageMin": 19,
-      "damageMax": 26,
+    "PulseRifle_Rusty": {
+      "name": "Rusty Pulse Rifle",
+      "damageMin": 17,
+      "damageMax": 18,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
-        "y": 297,
-        "w": 171,
-        "h": 196,
+        "y": 684,
+        "w": 188,
+        "h": 189,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "CombatShotgun_Charons": {
-      "name": "Charon's shotgun",
-      "damageMin": 24,
-      "damageMax": 31,
+    "RadiumRifle": {
+      "name": "Radium Rifle",
+      "damageMin": 18,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1848,
+        "w": 200,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Railgun": {
+      "name": "Railway Rifle",
+      "damageMin": 14,
+      "damageMax": 15,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
-        "y": 297,
-        "w": 171,
-        "h": 196,
+        "y": 1261,
+        "w": 187,
+        "h": 192,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Railgun_Accelerated": {
+      "name": "Accelerated Railway Rifle",
+      "damageMin": 14,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1261,
+        "w": 187,
+        "h": 192,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Railgun_Enhanced": {
+      "name": "Enhanced Railway Rifle",
+      "damageMin": 14,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1261,
+        "w": 187,
+        "h": 192,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Railgun_Hardened": {
+      "name": "Hardened Railway Rifle",
+      "damageMin": 14,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1261,
+        "w": 187,
+        "h": 192,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Railgun_Railmaster": {
+      "name": "Railmaster",
+      "damageMin": 14,
+      "damageMax": 19,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1261,
+        "w": 187,
+        "h": 192,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Railgun_Rusty": {
+      "name": "Rusty Railway Rifle",
+      "damageMin": 14,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1261,
+        "w": 187,
+        "h": 192,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rifle": {
+      "name": "Lever-Action Rifle",
+      "damageMin": 4,
+      "damageMax": 5,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1459,
+        "w": 158,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rifle_ArmorPiercing": {
+      "name": "Armor Piercing Lever-Action Rifle",
+      "damageMin": 4,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1459,
+        "w": 158,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rifle_Enhanced": {
+      "name": "Enhanced Lever-Action Rifle",
+      "damageMin": 4,
+      "damageMax": 6,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1459,
+        "w": 158,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rifle_Hardened": {
+      "name": "Hardened Lever-Action Rifle",
+      "damageMin": 4,
+      "damageMax": 7,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1459,
+        "w": 158,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rifle_LincolnsRepeater": {
+      "name": "Lincoln's Repeater",
+      "damageMin": 4,
+      "damageMax": 9,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1459,
+        "w": 158,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rifle_Rusty": {
+      "name": "Rusty Lever-Action Rifle",
+      "damageMin": 4,
+      "damageMax": 4,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 1459,
+        "w": 158,
+        "h": 199,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Ripper": {
+      "name": "Ripper",
+      "damageMin": 11,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1652,
+        "w": 189,
+        "h": 194,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Ripper_Enhanced": {
+      "name": "Enhanced Ripper",
+      "damageMin": 12,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1652,
+        "w": 189,
+        "h": 194,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Ripper_Hardened": {
+      "name": "Hardened Ripper",
+      "damageMin": 13,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1652,
+        "w": 189,
+        "h": 194,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Ripper_Rusty": {
+      "name": "Rusty Ripper",
+      "damageMin": 10,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1652,
+        "w": 189,
+        "h": 194,
         "aw": 2048,
         "ah": 2048
       }
     },
     "SawedOffShotgun": {
-      "name": "Sawed-off shotgun",
-      "damageMin": 11,
-      "damageMax": 16,
+      "name": "Sawed-Off Shotgun",
+      "damageMin": 6,
+      "damageMax": 7,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 686,
+        "w": 146,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SawedOffShotgun_DoubleBarrelled": {
+      "name": "Double-Barrel Sawed-Off Shotgun",
+      "damageMin": 6,
+      "damageMax": 10,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 686,
+        "w": 146,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SawedOffShotgun_Enhanced": {
+      "name": "Enhanced Sawed-Off Shotgun",
+      "damageMin": 6,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 686,
+        "w": 146,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SawedOffShotgun_Hardened": {
+      "name": "Hardened Sawed-Off Shotgun",
+      "damageMin": 6,
+      "damageMax": 9,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 573,
@@ -1571,8 +3061,22 @@
     },
     "SawedOffShotgun_Kneecapper": {
       "name": "Kneecapper",
-      "damageMin": 16,
-      "damageMax": 22,
+      "damageMin": 6,
+      "damageMax": 11,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 573,
+        "y": 686,
+        "w": 146,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SawedOffShotgun_Rusty": {
+      "name": "Rusty Sawed-Off Shotgun",
+      "damageMin": 6,
+      "damageMax": 6,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 573,
@@ -1586,6 +3090,20 @@
     "Shotgun": {
       "name": "Shotgun",
       "damageMin": 9,
+      "damageMax": 10,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1047,
+        "w": 179,
+        "h": 198,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Shotgun_DoubleBarrelled": {
+      "name": "Double-Barrel Shotgun",
+      "damageMin": 9,
       "damageMax": 13,
       "icon": {
         "atlas": "Weapons_HD.png",
@@ -1597,10 +3115,10 @@
         "ah": 2048
       }
     },
-    "Shotgun_DoubleBarrel": {
-      "name": "Double-barrel shotgun",
-      "damageMin": 13,
-      "damageMax": 18,
+    "Shotgun_Enhanced": {
+      "name": "Enhanced Shotgun",
+      "damageMin": 9,
+      "damageMax": 11,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1613,8 +3131,8 @@
     },
     "Shotgun_FarmersDaughter": {
       "name": "Farmer's Daughter",
-      "damageMin": 18,
-      "damageMax": 24,
+      "damageMin": 9,
+      "damageMax": 14,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 0,
@@ -1625,184 +3143,408 @@
         "ah": 2048
       }
     },
-    "FatMan": {
-      "name": "Fat Man",
-      "damageMin": 40,
-      "damageMax": 50,
+    "Shotgun_Hardened": {
+      "name": "Hardened Shotgun",
+      "damageMin": 9,
+      "damageMax": 12,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1772,
-        "y": 1860,
-        "w": 197,
-        "h": 188,
+        "x": 0,
+        "y": 1047,
+        "w": 179,
+        "h": 198,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "FatMan_MIRV": {
-      "name": "MIRV",
-      "damageMin": 55,
-      "damageMax": 70,
+    "Shotgun_Rusty": {
+      "name": "Rusty Shotgun",
+      "damageMin": 9,
+      "damageMax": 9,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1772,
-        "y": 1860,
-        "w": 197,
-        "h": 188,
+        "x": 0,
+        "y": 1047,
+        "w": 179,
+        "h": 198,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "Flamer": {
-      "name": "Flamer",
-      "damageMin": 21,
-      "damageMax": 27,
+    "SniperRifle": {
+      "name": "Sniper Rifle",
+      "damageMin": 10,
+      "damageMax": 11,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 378,
-        "y": 1091,
-        "w": 191,
-        "h": 187,
+        "x": 1374,
+        "y": 1858,
+        "w": 196,
+        "h": 190,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "Flamer_Burnmaster": {
-      "name": "Burnmaster",
-      "damageMin": 26,
-      "damageMax": 33,
+    "SniperRifle_ArmorPiercing": {
+      "name": "Armor Piercing Sniper Rifle",
+      "damageMin": 10,
+      "damageMax": 14,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 378,
-        "y": 1091,
-        "w": 191,
-        "h": 187,
+        "x": 1374,
+        "y": 1858,
+        "w": 196,
+        "h": 190,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "GatlingLaser": {
-      "name": "Gatling laser",
-      "damageMin": 21,
-      "damageMax": 27,
+    "SniperRifle_Enhanced": {
+      "name": "Enhanced Sniper Rifle",
+      "damageMin": 10,
+      "damageMax": 12,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 576,
-        "y": 1665,
-        "w": 200,
-        "h": 181,
+        "x": 1374,
+        "y": 1858,
+        "w": 196,
+        "h": 190,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "GatlingLaser_Focused": {
-      "name": "Focused Gatling laser",
-      "damageMin": 26,
-      "damageMax": 33,
+    "SniperRifle_Hardened": {
+      "name": "Hardened Sniper Rifle",
+      "damageMin": 10,
+      "damageMax": 13,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 576,
-        "y": 1665,
-        "w": 200,
-        "h": 181,
+        "x": 1374,
+        "y": 1858,
+        "w": 196,
+        "h": 190,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "GatlingLaser_Vengeance": {
-      "name": "Vengeance",
-      "damageMin": 32,
-      "damageMax": 40,
+    "SniperRifle_Rusty": {
+      "name": "Rusty Sniper Rifle",
+      "damageMin": 10,
+      "damageMax": 10,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 576,
-        "y": 1665,
-        "w": 200,
-        "h": 181,
+        "x": 1374,
+        "y": 1858,
+        "w": 196,
+        "h": 190,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "JunkJet": {
-      "name": "Junk Jet",
-      "damageMin": 17,
-      "damageMax": 23,
+    "SniperRifle_VictoryRifle": {
+      "name": "Victory Rifle",
+      "damageMin": 10,
+      "damageMax": 15,
       "icon": {
         "atlas": "Weapons_HD.png",
-        "x": 1061,
-        "y": 1502,
-        "w": 198,
-        "h": 156,
+        "x": 1374,
+        "y": 1858,
+        "w": 196,
+        "h": 190,
         "aw": 2048,
         "ah": 2048
       }
     },
-    "JunkJet_Flaming": {
-      "name": "Flaming Junk Jet",
-      "damageMin": 21,
-      "damageMax": 28,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 1061,
-        "y": 1502,
-        "w": 198,
-        "h": 156,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Minigun": {
-      "name": "Minigun",
-      "damageMin": 17,
-      "damageMax": 23,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 788,
-        "y": 1855,
-        "w": 195,
-        "h": 193,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Minigun_LeadBelcher": {
-      "name": "Lead Belcher",
-      "damageMin": 22,
-      "damageMax": 29,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 788,
-        "y": 1855,
-        "w": 195,
-        "h": 193,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "MissileLauncher": {
-      "name": "Missile launcher",
-      "damageMin": 33,
-      "damageMax": 42,
-      "icon": {
-        "atlas": "Weapons_HD.png",
-        "x": 985,
-        "y": 1851,
-        "w": 190,
-        "h": 197,
-        "aw": 2048,
-        "ah": 2048
-      }
-    },
-    "Railgun": {
-      "name": "Railgun",
+    "SuperSledge": {
+      "name": "Super Sledge",
       "damageMin": 18,
-      "damageMax": 22,
+      "damageMax": 32,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 1280,
+        "w": 191,
+        "h": 188,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SurgicalRipper": {
+      "name": "Surgical Ripper",
+      "damageMin": 13,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1569,
+        "y": 1669,
+        "w": 197,
+        "h": 177,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SurgicalRipper_Enhanced": {
+      "name": "Enhanced Surgical Ripper",
+      "damageMin": 14,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1569,
+        "y": 1669,
+        "w": 197,
+        "h": 177,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SurgicalRipper_Hardened": {
+      "name": "Hardened Surgical Ripper",
+      "damageMin": 16,
+      "damageMax": 17,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1569,
+        "y": 1669,
+        "w": 197,
+        "h": 177,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "SurgicalRipper_Rusty": {
+      "name": "Rusty Surgical Ripper",
+      "damageMin": 12,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1569,
+        "y": 1669,
+        "w": 197,
+        "h": 177,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "T60Pistol": {
+      "name": "T60 Pistol",
+      "damageMin": 10,
+      "damageMax": 14,
       "icon": {
         "atlas": "Weapons_HD.png",
         "x": 187,
-        "y": 1261,
-        "w": 187,
-        "h": 192,
+        "y": 1066,
+        "w": 186,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "T60Pistol_ArmorPiercing": {
+      "name": "Armor Piercing T60 Pistol",
+      "damageMin": 13,
+      "damageMax": 16,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1066,
+        "w": 186,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "T60Pistol_Enhanced": {
+      "name": "Enhanced T60 Pistol",
+      "damageMin": 11,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1066,
+        "w": 186,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "T60Pistol_Hardened": {
+      "name": "Hardened T60 Pistol",
+      "damageMin": 12,
+      "damageMax": 15,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1066,
+        "w": 186,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "T60Pistol_Rusty": {
+      "name": "Rusty T60 Pistol",
+      "damageMin": 9,
+      "damageMax": 13,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 187,
+        "y": 1066,
+        "w": 186,
+        "h": 193,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "TranqPistol": {
+      "name": "Tranq Gun",
+      "damageMin": 2,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 977,
+        "y": 1662,
+        "w": 195,
+        "h": 184,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "TranqPistol_Enhanced": {
+      "name": "Enhanced Tranq Gun",
+      "damageMin": 4,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 977,
+        "y": 1662,
+        "w": 195,
+        "h": 184,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "TranqPistol_Hardened": {
+      "name": "Hardened Tranq Gun",
+      "damageMin": 6,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 977,
+        "y": 1662,
+        "w": 195,
+        "h": 184,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "TranqPistol_Rusty": {
+      "name": "Rusty Tranq Gun",
+      "damageMin": 1,
+      "damageMax": 10,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 977,
+        "y": 1662,
+        "w": 195,
+        "h": 184,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "TriBeamLaserRifle": {
+      "name": "Tri-Beam Laser Rifle",
+      "damageMin": 16,
+      "damageMax": 24,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 0,
+        "y": 1444,
+        "w": 181,
+        "h": 200,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "UltraciteGatling1": {
+      "name": "Ultracite Gatling Laser",
+      "damageMin": 7,
+      "damageMax": 12,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1758,
+        "y": 1500,
+        "w": 188,
+        "h": 158,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "UltraciteGatling2": {
+      "name": "Maximized Ultracite Gatling Laser",
+      "damageMin": 20,
+      "damageMax": 22,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1758,
+        "y": 1500,
+        "w": 188,
+        "h": 158,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "UltracitePlasma1": {
+      "name": "Ultracite Plasma Rifle",
+      "damageMin": 6,
+      "damageMax": 8,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1768,
+        "y": 1676,
+        "w": 191,
+        "h": 170,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "UltracitePlasma2": {
+      "name": "Optimized Ultracite Plasma Rifle",
+      "damageMin": 16,
+      "damageMax": 18,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 1768,
+        "y": 1676,
+        "w": 191,
+        "h": 170,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "UltraciteSword1": {
+      "name": "Ultracite Sword",
+      "damageMin": 3,
+      "damageMax": 6,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 9,
+        "w": 190,
+        "h": 159,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "UltraciteSword2": {
+      "name": "Ultracite Sword2",
+      "damageMin": 10,
+      "damageMax": 14,
+      "icon": {
+        "atlas": "Weapons_HD.png",
+        "x": 378,
+        "y": 9,
+        "w": 190,
+        "h": 159,
         "aw": 2048,
         "ah": 2048
       }

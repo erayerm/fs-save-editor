@@ -398,8 +398,8 @@ let weaponIconCount = 0;
 const weaponsOutput = {
   version: 1,
   weapons: Object.fromEntries(
-    Object.entries(WEAPON_DATA).map(([id, { name, damageMin, damageMax }]) => {
-      const spriteName = resolveWeaponSprite(id, weaponSprites);
+    Object.entries(WEAPON_DATA).map(([id, { name, damageMin, damageMax, sprite }]) => {
+      const spriteName = resolveWeaponSprite(sprite, weaponSprites);
       const rect = spriteName ? weaponSprites.get(spriteName) : null;
       const icon = rect
         ? { atlas: WEAPONS_ATLAS_PNG, ...rect, aw: weaponsAtlasSize.w, ah: weaponsAtlasSize.h }
