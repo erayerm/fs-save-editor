@@ -37,7 +37,7 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
 
   return (
     <div
-      className="grid gap-1.5 p-1 justify-between"
+      className="grid gap-1.5 p-1 pt-4 justify-between"
       style={{ gridTemplateColumns: 'repeat(auto-fill, 170px)' }}
     >
       {entries.map(([id, meta]) => {

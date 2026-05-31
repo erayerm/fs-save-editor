@@ -11,7 +11,7 @@ export function StatsTab({ dweller }: { dweller: RenderableDweller }) {
   const disabled = !!dweller.isChild;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pt-4">
       {/* SPECIAL stats */}
       <div className="space-y-3">
         <h3 className="text-zinc-300 text-sm font-semibold uppercase tracking-wide">SPECIAL</h3>
