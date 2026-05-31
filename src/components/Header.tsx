@@ -8,36 +8,59 @@ export function Header() {
   const page = useSaveStore((s) => s.page);
   const setPage = useSaveStore((s) => s.setPage);
 
+  // Modern header navigation: borderless links with a tapered (fading-ends) green
+  // underline marking the active page, rather than filled button chips.
   const navClass = (active: boolean) =>
-    'px-3 py-1.5 rounded text-sm font-medium transition-colors ' +
-    (active ? 'bg-green-600 text-white' : 'bg-zinc-700 hover:bg-zinc-600 text-zinc-200');
+    'relative pb-1 text-sm font-medium transition-colors ' +
+    (active ? 'text-white' : 'text-zinc-400 hover:text-zinc-100');
+
+  // Thin (1px) underline, solid through the middle 60% and fading out over the
+  // outer 20% on each side, in a darker green.
+  const Underline = () => (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-0 -bottom-px h-px"
+      style={{ background: 'linear-gradient(to right, transparent 0%, #15803d 20%, #15803d 80%, transparent 100%)' }}
+    />
+  );
 
   return (
     <header className="flex items-center justify-between px-6 py-3 bg-zinc-800 border-b border-zinc-700 shrink-0">
-      <div className="flex items-center gap-4">
-        <h1 className="text-xl font-bold tracking-tight">fs-save-editor</h1>
-        <nav className="flex items-center gap-2">
+      <div className="flex items-center gap-5">
+        <h1 className="text-xl font-bold tracking-tight">FS Save Editor</h1>
+        {/* Vertical separator: solid through the middle, fading out over the outer 20%. */}
+        <div
+          className="h-6 w-px"
+          aria-hidden="true"
+          style={{ background: 'linear-gradient(to bottom, transparent 0%, #71717a 20%, #71717a 80%, transparent 100%)' }}
+        />
+        <nav className="flex items-center gap-6 mt-1">
           <button onClick={() => setPage('vault')} className={navClass(page === 'vault')}>
             Vault Settings
+            {page === 'vault' && <Underline />}
           </button>
           <button onClick={() => setPage('dweller')} className={navClass(page === 'dweller')}>
             Dweller Settings
+            {page === 'dweller' && <Underline />}
           </button>
         </nav>
       </div>
-      <div className="flex items-center gap-3">
-        {fileName && <span className="text-zinc-400 text-sm">{fileName}</span>}
+      <div className="flex items-center gap-2">
         <button
           onClick={() => save && exportSave(save, fileName)}
-          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 rounded text-sm font-medium transition-colors"
+          className="px-3 py-1.5 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium transition-colors"
         >
           Export .sav file
         </button>
         <button
           onClick={clear}
-          className="px-3 py-1.5 bg-zinc-700 hover:bg-zinc-600 rounded text-sm font-medium transition-colors"
+          aria-label="Change .sav file"
+          title="Change .sav file"
+          className="flex items-center justify-center w-8 h-8 rounded bg-zinc-700 hover:bg-zinc-600 text-zinc-200 hover:text-white transition-colors"
         >
-          Change .sav File
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
         </button>
       </div>
     </header>
