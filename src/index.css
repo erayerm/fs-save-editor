@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Custom scrollbars — replace the default Chrome/Edge scrollbars with a dark,
+   slim theme that matches the zinc UI. Applies app-wide.
+   --------------------------------------------------------------------------- */
+@layer base {
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #52525b #18181b; /* zinc-600 thumb on zinc-900 track */
+  }
+
+  /* WebKit (Chrome/Edge/Safari) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #18181b; /* zinc-900 */
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #52525b; /* zinc-600 */
+    border-radius: 9999px;
+    border: 2px solid #18181b; /* inset look */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #71717a; /* zinc-500 */
+  }
+  ::-webkit-scrollbar-corner {
+    background: #18181b;
+  }
+}

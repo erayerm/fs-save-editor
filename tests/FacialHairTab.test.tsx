@@ -3,6 +3,19 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { FacialHairTab } from '../src/components/editor/FacialHairTab';
 import type { SpriteIndex } from '../src/types/pieces';
 
+// The thumbnail effect loads the mesh set and renders offscreen. Keep it inert
+// in tests (never resolves) so we only exercise the option-grid behavior.
+vi.mock('../src/lib/meshLoader', () => ({
+  loadMeshSet: () => new Promise(() => {}),
+  _resetMeshCache: vi.fn(),
+}));
+vi.mock('../src/lib/dwellerWebGL', () => ({
+  createDwellerRenderer: () => ({ draw: vi.fn(), dispose: vi.fn() }),
+}));
+vi.mock('../src/lib/atlasLoader', () => ({
+  loadAtlas: () => Promise.resolve({} as unknown),
+}));
+
 const idx: SpriteIndex = {
   version: 1,
   byType: {

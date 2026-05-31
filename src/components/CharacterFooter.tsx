@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useSaveStore } from '../store/saveStore';
-import { CharacterCard, CARD_W } from './CharacterCard';
+import { CharacterCard, CARD_W, CARD_GAP } from './CharacterCard';
 import { useWindowedRange } from '../lib/useWindowedRange';
 
 const OVERSCAN = 3;
@@ -18,7 +18,7 @@ export function CharacterFooter() {
   return (
     <div
       ref={scrollRef}
-      className="shrink-0 h-48 bg-zinc-900 border-t border-zinc-700 overflow-x-auto overflow-y-hidden"
+      className="shrink-0 h-64 bg-zinc-900 border-t border-zinc-700 overflow-x-auto overflow-y-hidden"
       style={{ position: 'relative' }}
     >
       {/* Inner spacer to give the scrollbar the correct total width */}
@@ -28,7 +28,7 @@ export function CharacterFooter() {
           return (
             <div
               key={dweller.serializeId}
-              style={{ position: 'absolute', left: globalIdx * CARD_W, top: 0, height: '100%' }}
+              style={{ position: 'absolute', left: globalIdx * CARD_W + CARD_GAP / 2, top: 8, height: 'calc(100% - 16px)' }}
             >
               <CharacterCard dweller={dweller} />
             </div>

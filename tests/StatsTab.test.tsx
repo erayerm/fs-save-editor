@@ -20,8 +20,7 @@ it('renders 7 SPECIAL controls and clamps edits to 1..10', () => {
   fireEvent.change(s, { target: { value: '15' } });
   expect(useSaveStore.getState().getSelectedDweller()!.stats!.stats[1].value).toBe(10);
 });
-it('edits the dweller name', () => {
+it('does not include name editing (moved to the Others tab)', () => {
   render(<StatsTab dweller={maleDweller} />);
-  fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: 'Zed' } });
-  expect(useSaveStore.getState().getSelectedDweller()!.name).toBe('Zed');
+  expect(screen.queryByLabelText(/first name/i)).toBeNull();
 });

@@ -30,15 +30,27 @@ export function OptionGrid({
   const hasPortrait = options.some((o) => o.thumbnailUrl);
   const hasSprite = options.some((o) => o.layers && o.layers.length > 0);
 
-  const cellClass = 'rounded border flex items-center justify-center overflow-hidden flex-shrink-0 ';
+  // Portrait cells stack the image and badge vertically (with a gap between them);
+  // other cells just center their content.
+  const cellClass =
+    'rounded border overflow-hidden ' +
+    (hasPortrait ? 'flex flex-col items-center ' : 'flex items-center justify-center ');
   const cellStyle = hasPortrait
-    ? { width: cellW ?? 170, height: cellH ?? 221 }
+    ? { width: cellW ?? 170, height: cellH ?? 246 }
     : hasSprite
     ? { width: cellW ?? 80, height: cellH ?? 80 }
     : { minWidth: cellW ?? 80, minHeight: cellH ?? 48 };
 
+  // Column width drives an auto-filling responsive grid: as many fixed-width
+  // columns as fit, with the remaining space distributed evenly between them.
+  // This keeps every row (including the last) aligned to the same columns.
+  const colW = hasPortrait ? cellW ?? 170 : (cellW ?? 80);
+
   return (
-    <div className="flex flex-wrap gap-1.5 overflow-y-auto max-h-[600px] p-1 content-start">
+    <div
+      className="grid gap-1.5 p-1 justify-between"
+      style={{ gridTemplateColumns: `repeat(auto-fill, ${colW}px)` }}
+    >
       {options.map((o) => (
         <button
           key={o.value}
@@ -48,26 +60,32 @@ export function OptionGrid({
           className={
             cellClass +
             (o.value === selected
-              ? 'border-emerald-400 bg-emerald-950/40 ring-1 ring-emerald-400'
+              ? 'border-green-400 bg-green-950/40 ring-1 ring-green-400'
               : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500')
           }
           style={{ ...cellStyle, position: 'relative' }}
         >
           {o.thumbnailUrl ? (
-            <img
-              src={o.thumbnailUrl}
-              alt={o.label}
-              style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', imageRendering: 'auto' }}
-            />
+            // Portrait: image fills the flexible top region; badge sits below it
+            // in normal flow so there's a clear gap between them.
+            <>
+              <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img
+                  src={o.thumbnailUrl}
+                  alt={o.label}
+                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block', imageRendering: 'auto' }}
+                />
+              </div>
+              {o.badge && (
+                <div style={{ paddingTop: 4, paddingBottom: 8, display: 'flex', justifyContent: 'center' }}>
+                  {o.badge}
+                </div>
+              )}
+            </>
           ) : o.layers && o.layers.length > 0 ? (
             <SpriteCanvas layers={o.layers} size={72} />
           ) : (
             <span className="text-xs text-zinc-300 text-center px-1 leading-tight">{o.label}</span>
-          )}
-          {o.badge && (
-            <div style={{ position: 'absolute', bottom: 2, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
-              {o.badge}
-            </div>
           )}
         </button>
       ))}

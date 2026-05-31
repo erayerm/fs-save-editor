@@ -8,12 +8,35 @@ import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
 import { buildLayers } from '../../lib/dwellerLayers';
 import { createDwellerRenderer, type DwellerRenderer } from '../../lib/dwellerWebGL';
-import type { SpriteIndex } from '../../types/pieces';
+import type { SpriteIndex, Gender, PieceRef } from '../../types/pieces';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
 
 const THUMB_SIZE = 340; // offscreen WebGL canvas — 2× cell width (170px) for crisp display
+
+// EOutfitCategory.Premium — the only category that is a real, obtainable player
+// item. Other categories are enemy/scripted (CodeControlled), basic Casual, or
+// the default vault suit. See scripts/build-sprite-index.mjs for tagging.
+const PREMIUM_CATEGORY = 2;
+// The default vault outfit (GameParameters m_vaultDefaultOutfit). It's category 3
+// (Default), so it's normally filtered out, but we keep it as an explicit
+// exception and pin it to the top of the list.
+const VAULT_DEFAULT_OUTFIT = 'jumpsuit';
+
+/**
+ * The outfits to show in the picker: real player items (Premium category) plus
+ * the default vault suit (jumpsuit) pinned to the front. Enemy/scripted outfits
+ * (Scorched, Gen1Synth, alien_space_suit_enemy, …) are excluded.
+ */
+function visibleOutfits(index: SpriteIndex, gender: Gender): PieceRef[] {
+  const all = piecesOfType(index, 'outfit', { gender });
+  const jumpsuits = all.filter((p) => p.name === VAULT_DEFAULT_OUTFIT);
+  const premium = all.filter(
+    (p) => p.name !== VAULT_DEFAULT_OUTFIT && p.flags.outfitCategory === PREMIUM_CATEGORY,
+  );
+  return [...jumpsuits, ...premium];
+}
 
 /** Render outfit thumbnails via a single shared offscreen WebGL canvas. */
 function useOutfitThumbnails(
@@ -50,7 +73,7 @@ function useOutfitThumbnails(
 
       const mesh = meshSet[gender].adult;
       const offsets = meshSet[gender].offsets;
-      const outfits = piecesOfType(index, 'outfit', { gender });
+      const outfits = visibleOutfits(index, gender);
       const newMap = new Map<string, string>();
 
       for (const outfit of outfits) {
@@ -60,11 +83,16 @@ function useOutfitThumbnails(
           ...dweller,
           outfitName: outfit.name,
           hairName: undefined,
+          facialHair: undefined, // no beard/mustache on outfit thumbnails
           happinessValue: undefined, // no face expression
         };
-        // buildLayers then filter to body + outfit only (no face/hair)
-        const layers = buildLayers(tempDweller, index, offsets).filter(
-          (l) => l.slot !== 'face' && l.slot !== 'hair',
+        // buildLayers then filter to body + outfit only (no face/hair/facial hair).
+        // Pass largeHeadgear meshes so outfits with hats (Bishop mitre, Mayor top
+        // hat, …) render their headgear in the thumbnail too.
+        const layers = buildLayers(tempDweller, index, offsets, {
+          largeHeadgear: meshSet.largeHeadgear,
+        }).filter(
+          (l) => l.slot !== 'face' && l.slot !== 'hair' && l.slot !== 'faceMask',
         );
         const withImages = await Promise.all(
           layers.map(async (l) => ({
@@ -108,11 +136,11 @@ export function OutfitTab({
   const gender = dweller.gender === 2 ? 'male' : 'female';
   const thumbnails = useOutfitThumbnails(index, meshSet, dweller);
 
-  const options = piecesOfType(index, 'outfit', { gender }).map((p) => ({
+  const options = visibleOutfits(index, gender).map((p) => ({
     value: p.name,
     label: p.name,
     thumbnailUrl: thumbnails.get(p.name),
-    badge: <SpecialBadges bonus={specialBonusFor(p.name)} />,
+    badge: <SpecialBadges bonus={p.special ?? specialBonusFor(p.name)} />,
   }));
 
   return (

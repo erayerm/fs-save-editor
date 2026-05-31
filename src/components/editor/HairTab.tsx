@@ -1,20 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { ColorPalette } from './ColorPalette';
 import { piecesOfType } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
-import { loadAtlas } from '../../lib/atlasLoader';
 import { buildLayers } from '../../lib/dwellerLayers';
 import { HAIR_PRESETS } from '../../lib/colorPresets';
-import { createDwellerRenderer, type DwellerRenderer, type ModelBounds } from '../../lib/dwellerWebGL';
+import { getCachedHeadThumbnail, renderHeadThumbnail } from '../../lib/headThumbnail';
+import { type ModelBounds } from '../../lib/dwellerWebGL';
 import type { SpriteIndex } from '../../types/pieces';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
 
-const THUMB_SIZE = 340; // square offscreen canvas, displayed at 170×170
-const CELL = 170;       // display cell px (square)
+const CELL = 170; // display cell px (square)
 
 // Zoom into head region. Square 1.0×1.0 → no distortion on square canvas.
 // Head visual centre ≈ y 1.6. ±0.5 shows hair above and a sliver of neck below.
@@ -26,8 +25,6 @@ function useHairThumbnails(
   dweller: RenderableDweller,
 ): Map<string, string> {
   const [thumbnails, setThumbnails] = useState<Map<string, string>>(new Map());
-  const rendererRef = useRef<DwellerRenderer | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const gender = dweller.gender === 2 ? 'male' : 'female';
   const skin = dweller.skinColor;
@@ -45,22 +42,25 @@ function useHairThumbnails(
     let cancelled = false;
 
     (async () => {
-      if (!canvasRef.current) {
-        canvasRef.current = document.createElement('canvas');
-        canvasRef.current.width = THUMB_SIZE;
-        canvasRef.current.height = THUMB_SIZE;
-      }
-      if (!rendererRef.current) {
-        rendererRef.current = createDwellerRenderer(canvasRef.current);
-      }
-
       const mesh = meshSet[gender].adult;
       const offsets = meshSet[gender].offsets;
       const hairs = piecesOfType(index, 'hair', { gender });
-      const newMap = new Map<string, string>();
+      const next = new Map<string, string>();
+
+      // Seed with anything already cached so previously-rendered (identical
+      // per-gender) thumbnails appear instantly without re-rendering.
+      for (const hairPiece of hairs) {
+        const key = `hair|${gender}|${debouncedSkinKey}|${debouncedHairKey}|${hairPiece.name}`;
+        const hit = getCachedHeadThumbnail(key);
+        if (hit) next.set(hairPiece.name, hit);
+      }
+      if (!cancelled && next.size > 0) setThumbnails(new Map(next));
 
       for (const hairPiece of hairs) {
         if (cancelled) break;
+        if (next.has(hairPiece.name)) continue;
+
+        const key = `hair|${gender}|${debouncedSkinKey}|${debouncedHairKey}|${hairPiece.name}`;
         const tempDweller: RenderableDweller = { ...dweller, hairName: hairPiece.name };
 
         // Keep head-skin (body+triMask), face, and hair — no full body, no outfit.
@@ -69,30 +69,16 @@ function useHairThumbnails(
         );
         if (layers.length === 0) continue;
 
-        const withImages = await Promise.all(
-          layers.map(async (l) => ({
-            ...l,
-            image: await loadAtlas(l.atlas),
-            maskImage: l.coloringMask ? await loadAtlas(l.coloringMask.atlas) : undefined,
-          })),
-        );
+        const url = await renderHeadThumbnail(key, mesh, layers, HEAD_BOUNDS);
         if (cancelled) break;
-        rendererRef.current!.draw(mesh, withImages, HEAD_BOUNDS);
-        newMap.set(hairPiece.name, canvasRef.current!.toDataURL());
+        next.set(hairPiece.name, url);
+        setThumbnails(new Map(next));
       }
-
-      if (!cancelled) setThumbnails(new Map(newMap));
     })();
 
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, meshSet, gender, debouncedSkinKey, debouncedHairKey]);
-
-  useEffect(() => () => {
-    rendererRef.current?.dispose();
-    rendererRef.current = null;
-    canvasRef.current = null;
-  }, []);
 
   return thumbnails;
 }
@@ -118,19 +104,24 @@ export function HairTab({
   }));
 
   return (
-    <div className="space-y-4">
+    <div>
+      {/* Outer sticky wrapper so the palette sticks without nesting issues */}
+      <div className="sticky top-0 z-10 bg-zinc-900">
+        <div className="pt-4 pb-3">
+          <ColorPalette
+            label="Hair color"
+            value={hairColor}
+            swatches={HAIR_PRESETS}
+            onChange={(c) => onChange({ hairColor: c })}
+          />
+        </div>
+      </div>
       <OptionGrid
         options={options}
         selected={dweller.hairName ?? null}
         onSelect={(v) => onChange({ hair: v })}
         cellW={CELL}
         cellH={CELL}
-      />
-      <ColorPalette
-        label="Hair color"
-        value={hairColor}
-        swatches={HAIR_PRESETS}
-        onChange={(c) => onChange({ hairColor: c })}
       />
     </div>
   );

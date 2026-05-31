@@ -75,11 +75,11 @@ describe('CharacterFooter', () => {
     expect(useSaveStore.getState().selectedDwellerId).toBe(1);
   });
 
-  it('highlights selected dweller with emerald ring class', () => {
+  it('highlights selected dweller with green ring class', () => {
     useSaveStore.setState({ save: makeSave([dweller1, dweller2]), selectedDwellerId: 1 });
     render(<CharacterFooter />);
-    // Find the card element for Alice — it should have ring-2 ring-emerald-400
-    const aliceCard = screen.getByText(/Alice Smith/i).closest('[class*="ring-emerald"]');
+    // Find the card element for Alice — it should have ring-2 ring-green-400
+    const aliceCard = screen.getByText(/Alice Smith/i).closest('[class*="ring-green"]');
     expect(aliceCard).not.toBeNull();
   });
 });

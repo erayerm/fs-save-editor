@@ -1,5 +1,6 @@
 import { useSaveStore } from '../store/saveStore';
-import { DwellerCanvas } from './DwellerCanvas';
+import { SpecialIcon } from './SpecialIcon';
+import { useDwellerThumbnail } from '../lib/useDwellerThumbnail';
 import { isChildDweller, type RenderableDweller } from '../lib/dwellerRender';
 import { decodeArgb } from '../lib/colors';
 import type { Dweller } from '../types/save';
@@ -21,7 +22,15 @@ function toRenderable(d: Dweller): RenderableDweller {
   };
 }
 
-export const CARD_W = 120;
+// Match the outfit-picker thumbnail cell size (see OptionGrid defaults: 170×221).
+export const AVATAR_SIZE = 170;
+// Tight card width (just the avatar + its own padding).
+export const CARD_INNER_W = AVATAR_SIZE + 8;
+// Empty space between neighboring cards, applied as margin (not padding) so the
+// card's own background/hover area stays tight to the avatar.
+export const CARD_GAP = 20;
+// Slot width consumed per card in the horizontal strip.
+export const CARD_W = CARD_INNER_W + CARD_GAP;
 
 interface Props {
   dweller: Dweller;
@@ -32,45 +41,52 @@ export function CharacterCard({ dweller }: Props) {
   const selectDweller = useSaveStore((s) => s.selectDweller);
   const isSelected = selectedId === dweller.serializeId;
   const renderable = toRenderable(dweller);
+  const thumb = useDwellerThumbnail(renderable);
 
   const stats = dweller.stats?.stats;
 
   return (
     <div
       className={`flex flex-col items-center cursor-pointer select-none rounded px-1 py-1 transition-all ${
-        isSelected ? 'ring-2 ring-emerald-400 bg-zinc-800' : 'hover:bg-zinc-800'
+        isSelected ? 'ring-2 ring-green-400 bg-green-950/40' : 'hover:bg-zinc-800'
       }`}
-      style={{ width: CARD_W }}
+      style={{ width: CARD_INNER_W }}
       onClick={() => selectDweller(dweller.serializeId)}
     >
-      {/* SPECIAL row */}
-      <div className="flex gap-0.5 flex-wrap justify-center mb-0.5">
+      {/* SPECIAL row: 7-column grid spanning the full avatar width */}
+      <div
+        className="grid mb-1"
+        style={{ width: AVATAR_SIZE, gridTemplateColumns: 'repeat(7, 1fr)' }}
+      >
         {SPECIAL_LABELS.map((label, i) => {
           const val = stats?.[i + 1]?.value ?? '–';
           return (
-            <span key={label} className="text-zinc-300 font-mono" style={{ fontSize: 9 }}>
-              <span className="text-zinc-500">{label}</span>{val}
+            <span key={label} className="flex flex-col items-center leading-none">
+              <SpecialIcon letter={label} size={18} title={label} />
+              <span className="text-zinc-300 font-mono" style={{ fontSize: 13 }}>{val}</span>
             </span>
           );
         })}
       </div>
 
       {/* Avatar */}
-      <div style={{ width: 80, height: 80, overflow: 'hidden', flexShrink: 0 }}>
-        <DwellerCanvas dweller={renderable} size={80} />
+      <div
+        className="bg-zinc-950 rounded border border-zinc-700 flex items-center justify-center overflow-hidden"
+        style={{ width: AVATAR_SIZE, height: AVATAR_SIZE, flexShrink: 0 }}
+      >
+        {renderable.isChild ? (
+          <span className="text-zinc-500 italic text-xs text-center px-2">Child</span>
+        ) : thumb ? (
+          <img src={thumb} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        ) : (
+          <span className="text-zinc-600 text-xs">…</span>
+        )}
       </div>
 
       {/* Name */}
-      <div className="text-zinc-100 text-center leading-tight mt-0.5" style={{ fontSize: 10 }}>
+      <div className="text-zinc-100 text-center leading-tight mt-1" style={{ fontSize: 12 }}>
         {dweller.name} {dweller.lastName}
       </div>
-
-      {/* Room */}
-      {dweller.savedRoom != null && (
-        <div className="text-zinc-500 text-center" style={{ fontSize: 9 }}>
-          Room {dweller.savedRoom}
-        </div>
-      )}
     </div>
   );
 }
