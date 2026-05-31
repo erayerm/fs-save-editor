@@ -92,7 +92,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -102,7 +103,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359"
+        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359",
+        "special": {
+          "E": 1,
+          "I": 2,
+          "A": 2,
+          "L": 2
+        }
       },
       {
         "guid": "b2a56a67051a7e448a5118e72b219208",
@@ -117,7 +124,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "A": 2,
+          "L": 2
         }
       },
       {
@@ -133,13 +145,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "1a4442ede378feb4d9199c2afe007453",
         "glovePoseGuids": [
           "c39737cdf7c011d4db05de35418f181b",
           "a5658efd82cae7e43bc6666bbb32ff51"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "I": 4,
+          "A": 2
+        }
       },
       {
         "guid": "4a5e3972f9d324a4d9b4129f4cf783c1",
@@ -154,13 +172,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "helmetGuid": "411617a07cf5c704eaa7f82c875b7588",
         "glovePoseGuids": [
           "bb1beef1a907d0e42bce413e36236ca4",
           "4f176c21108f5f942bbbc719db9c37eb"
-        ]
+        ],
+        "special": {
+          "E": 1,
+          "I": 2,
+          "A": 2,
+          "L": 2
+        }
       },
       {
         "guid": "00cd0167a14273c43b527eca892bea40",
@@ -175,13 +200,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "897a067d3e4e0a94b9ffd928a9afff6b",
         "glovePoseGuids": [
           "a3e6783b5b72a9e41b8261bb59a87041",
           "3503c305b0006d049806120812804605"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "I": 4,
+          "A": 2
+        }
       },
       {
         "guid": "c6a3271374bd64e419576471061b2d13",
@@ -196,7 +227,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 2,
+          "C": 2,
+          "I": 2,
+          "L": 1
         }
       },
       {
@@ -212,7 +250,11 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 3
         }
       },
       {
@@ -228,7 +270,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -268,7 +311,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "9e0f62793734c724aaeb523122084513"
+        "coloringMaskGuid": "9e0f62793734c724aaeb523122084513",
+        "special": {
+          "C": 3
+        }
       },
       {
         "guid": "2e876c6683509144382e3b8072644d94",
@@ -283,7 +329,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -293,7 +340,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663"
+        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663",
+        "special": {
+          "P": 4
+        }
       },
       {
         "guid": "81d34a5721c91b94abd0066f014efe08",
@@ -308,9 +358,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "86ce843e905924e40a440a85a38e2123"
+        "helmetGuid": "86ce843e905924e40a440a85a38e2123",
+        "special": {
+          "A": 4,
+          "L": 1
+        }
       },
       {
         "guid": "b89304eeea7be5448b0599ace4ec79ca",
@@ -325,9 +380,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "20addd276f6700f4e9be281662f5039b"
+        "helmetGuid": "20addd276f6700f4e9be281662f5039b",
+        "special": {
+          "A": 4,
+          "L": 1
+        }
       },
       {
         "guid": "6521bcc7f25df84448ae55cd6b6550fb",
@@ -342,7 +402,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "E": 1
         }
       },
       {
@@ -358,7 +423,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "E": 1
         }
       },
       {
@@ -374,9 +444,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "largeHeadgearGuid": "ccbd08d70e5ba934c95f28a750dcca2f"
+        "largeHeadgearGuid": "ccbd08d70e5ba934c95f28a750dcca2f",
+        "special": {
+          "C": 4,
+          "L": 1
+        }
       },
       {
         "guid": "d025a14a3ef964b4cb2eedc1d9a578fb",
@@ -391,7 +466,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "P": 2,
+          "E": 2,
+          "C": 1
         }
       },
       {
@@ -407,12 +489,18 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "4544301c6674c8149af485202c3073a4",
           "071b554e3025a3b44982740e92a5faea"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "P": 4,
+          "C": 2
+        }
       },
       {
         "guid": "fe7846b9217a11947a99d3f30d2dcca0",
@@ -427,12 +515,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "bbbefa5f085c7b048a3636c8f2a268c3",
           "717b7fbad0908c044a1b04a203b6e714"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "P": 4,
+          "C": 2
+        }
       },
       {
         "guid": "e75bb923a659f834383115ee24d49c86",
@@ -447,12 +541,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "02390fd41a268cc43a81fc2d72688595",
           "0d7eb7dafc045ba4a9ba58b850130288"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "C": 1
+        }
       },
       {
         "guid": "fa322f8e5b269334cb38c4a371f78b73",
@@ -467,12 +566,17 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "0dbca13865f1d58448bd79bfcbff56ba",
           "b6d09d9629071ba4388226726ece0b1a"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "C": 1
+        }
       },
       {
         "guid": "5b0a0a4d270bebd41920feeb553ac48b",
@@ -487,12 +591,17 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "0dbca13865f1d58448bd79bfcbff56ba",
           "b6d09d9629071ba4388226726ece0b1a"
-        ]
+        ],
+        "special": {
+          "P": 3,
+          "C": 2
+        }
       },
       {
         "guid": "fba6d7f19b2181b459ce24cb24316b11",
@@ -507,12 +616,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "02390fd41a268cc43a81fc2d72688595",
           "0d7eb7dafc045ba4a9ba58b850130288"
-        ]
+        ],
+        "special": {
+          "P": 3,
+          "C": 2
+        }
       },
       {
         "guid": "5c696b834d66979468a36a6aeb4c416c",
@@ -527,12 +641,17 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "0dbca13865f1d58448bd79bfcbff56ba",
           "b6d09d9629071ba4388226726ece0b1a"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "C": 3
+        }
       },
       {
         "guid": "c0403bf85a728e849b04bead30de141e",
@@ -547,12 +666,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "02390fd41a268cc43a81fc2d72688595",
           "0d7eb7dafc045ba4a9ba58b850130288"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "C": 3
+        }
       },
       {
         "guid": "37b4baa206ee15943ada06a7288a52c7",
@@ -567,7 +691,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "E": 2,
+          "A": 2
         }
       },
       {
@@ -583,7 +712,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "E": 2,
+          "A": 2
         }
       },
       {
@@ -599,7 +733,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -609,7 +744,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8"
+        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8",
+        "special": {
+          "S": 1,
+          "E": 1,
+          "A": 1,
+          "L": 1
+        }
       },
       {
         "guid": "542ba237d8bb572439070f0219740a41",
@@ -624,7 +765,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -634,7 +776,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "d2a0afc5bc457b7409be6701dfe3f47e"
+        "coloringMaskGuid": "d2a0afc5bc457b7409be6701dfe3f47e",
+        "special": {
+          "I": 4
+        }
       },
       {
         "guid": "dadd20511f9cd124ea5cd5a17b9d6991",
@@ -649,7 +794,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -659,7 +805,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb",
+        "special": {
+          "C": 4
+        }
       },
       {
         "guid": "33cfd63b91fbe374c99f406c0a3d4fcc",
@@ -674,7 +823,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 2,
+          "E": 1,
+          "C": 2,
+          "A": 2
         }
       },
       {
@@ -690,7 +846,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 3,
+          "E": 4
         }
       },
       {
@@ -706,7 +867,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -716,7 +878,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f"
+        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f",
+        "special": {
+          "E": 1,
+          "A": 1
+        }
       },
       {
         "guid": "022ab973af5947c42a35078e47f7978d",
@@ -829,7 +995,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 2,
+          "E": 3,
+          "C": 4,
+          "I": 5
         }
       },
       {
@@ -845,7 +1018,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "P": 2,
+          "E": 2,
+          "C": 1
         }
       },
       {
@@ -861,9 +1041,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "c0d734dc8088e854789627e4a319ce3d"
+        "helmetGuid": "c0d734dc8088e854789627e4a319ce3d",
+        "special": {
+          "S": 2,
+          "A": 1
+        }
       },
       {
         "guid": "d2690628dfaaa134d9b3fdcdfa33d49d",
@@ -878,9 +1063,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "e3b87cf99e81e8e4482901552f3793de"
+        "helmetGuid": "e3b87cf99e81e8e4482901552f3793de",
+        "special": {
+          "S": 2,
+          "A": 1
+        }
       },
       {
         "guid": "04eed77d14a1f604a9052ae4f229a28d",
@@ -895,7 +1085,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -906,7 +1097,12 @@
           ]
         ],
         "helmetGuid": "136f991850ea07548b40161956f1cf88",
-        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f"
+        "coloringMaskGuid": "57bfd48cb6bb76d4f8b6e23a8e14243f",
+        "special": {
+          "P": 2,
+          "C": 2,
+          "L": 1
+        }
       },
       {
         "guid": "adff52be985586e428739101ff4c210b",
@@ -921,7 +1117,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -976,7 +1173,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1031,7 +1229,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1086,7 +1285,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1141,7 +1341,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1196,7 +1397,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1263,7 +1465,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1318,7 +1521,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1367,7 +1571,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1422,7 +1627,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1477,7 +1683,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1526,7 +1733,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1581,7 +1789,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1630,7 +1839,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1685,7 +1895,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1734,7 +1945,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1789,7 +2001,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1844,7 +2057,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1893,7 +2107,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1942,7 +2157,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 1
         },
         "colors": [
           [
@@ -1991,12 +2207,17 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "6bd20cd63cd6b004a81b80745537f6d2",
           "073476cd6e0ffc941bd05058c9c9edb7"
-        ]
+        ],
+        "special": {
+          "P": 5,
+          "E": 5
+        }
       },
       {
         "guid": "8935f5a87e6c4c446a967e79f6257d7f",
@@ -2011,12 +2232,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "72a92f8770ff5c5448709d20a90ff471",
           "7a427303f429f894790f41c17ece9b9f"
-        ]
+        ],
+        "special": {
+          "P": 5,
+          "E": 5
+        }
       },
       {
         "guid": "b90bea0120cdf174f8dd33652227809f",
@@ -2031,7 +2257,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 2,
+          "E": 2,
+          "I": 1,
+          "L": 2
         }
       },
       {
@@ -2047,7 +2280,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2057,7 +2291,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae"
+        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae",
+        "special": {
+          "S": 1,
+          "C": 1,
+          "A": 1,
+          "L": 1
+        }
       },
       {
         "guid": "b7bcd209436bd914497201a1c436a103",
@@ -2072,7 +2312,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
+        },
+        "special": {
+          "P": 2,
+          "E": 1,
+          "C": 6,
+          "I": 2
         }
       },
       {
@@ -2088,9 +2335,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "8394b137d34fd2e42bd9c58c58a05fa8"
+        "helmetGuid": "8394b137d34fd2e42bd9c58c58a05fa8",
+        "special": {
+          "I": 3,
+          "L": 2
+        }
       },
       {
         "guid": "ceffd011236104e49b6fa1e275d627c0",
@@ -2105,9 +2357,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "a35256bc2c48eab4a94f73d5d3e6d0d6"
+        "helmetGuid": "a35256bc2c48eab4a94f73d5d3e6d0d6",
+        "special": {
+          "I": 3,
+          "L": 2
+        }
       },
       {
         "guid": "c5c9bede9b5443f4ca7a075090b39e89",
@@ -2122,9 +2379,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "718b837101fd11a4d92154430ebcb30b"
+        "helmetGuid": "718b837101fd11a4d92154430ebcb30b",
+        "special": {
+          "C": 4,
+          "L": 1
+        }
       },
       {
         "guid": "c506491b4aa01ef4eb13af9c96da26aa",
@@ -2139,13 +2401,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "dc1bf223d256ba14bb5991eb3eae0e0e",
         "glovePoseGuids": [
           "430c8d0e5910cdd4fbc9d4774d4f2b9e",
           "8c0520347621fb34dbaaa87774df78c2"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "E": 2,
+          "C": 4,
+          "I": 2
+        }
       },
       {
         "guid": "e1fff6915d8795b42a36246376b2f73f",
@@ -2160,13 +2429,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "f85966bacc59d784c8b98932278b7e7e",
         "glovePoseGuids": [
           "5ec0acd8d67893a498d51504b58d0301",
           "88d8492e970f7444f9ffe624d1ab167e"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "E": 2,
+          "C": 4,
+          "I": 2
+        }
       },
       {
         "guid": "c506491b4aa01ef4eb13af9c96da26aa",
@@ -2181,12 +2457,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "430c8d0e5910cdd4fbc9d4774d4f2b9e",
           "8c0520347621fb34dbaaa87774df78c2"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "E": 2,
+          "C": 4,
+          "I": 2
+        }
       },
       {
         "guid": "e1fff6915d8795b42a36246376b2f73f",
@@ -2201,12 +2484,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "5ec0acd8d67893a498d51504b58d0301",
           "88d8492e970f7444f9ffe624d1ab167e"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "E": 2,
+          "C": 4,
+          "I": 2
+        }
       },
       {
         "guid": "01d3545af6109ba469bb2d3595dd2a0d",
@@ -2221,13 +2511,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "12f77527464e37548b056006aa4899ba",
         "glovePoseGuids": [
           "8e1e8cf86fdb4c34da9470af11cc6981",
           "1c61b919324843d419287ef39b4ab2c0"
-        ]
+        ],
+        "special": {
+          "S": 6,
+          "E": 6,
+          "I": 2
+        }
       },
       {
         "guid": "d578d27dc7a88414c8d084c903395209",
@@ -2242,13 +2538,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "efbe27ed4f052ef418550de50cca125c",
         "glovePoseGuids": [
           "53c7aabe143b4354aaf8978ec0bf3c4f",
           "10244dfcd7a4c684b8bfdcdba7b4e113"
-        ]
+        ],
+        "special": {
+          "S": 6,
+          "E": 6,
+          "I": 2
+        }
       },
       {
         "guid": "01766acbadf051a468c9323908dcf022",
@@ -2263,9 +2565,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "9878c8932c93ac044813c4dde9e8ba81"
+        "helmetGuid": "9878c8932c93ac044813c4dde9e8ba81",
+        "special": {
+          "S": 2,
+          "E": 2
+        }
       },
       {
         "guid": "2d56306bf9955e949bf02852a496f10d",
@@ -2280,9 +2587,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "c174ea251cb2b7d4a937bb19488e5345"
+        "helmetGuid": "c174ea251cb2b7d4a937bb19488e5345",
+        "special": {
+          "S": 2,
+          "E": 2
+        }
       },
       {
         "guid": "01766acbadf051a468c9323908dcf022",
@@ -2297,7 +2609,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "E": 2
         }
       },
       {
@@ -2313,7 +2630,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "E": 2
         }
       },
       {
@@ -2329,7 +2651,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2340,7 +2663,12 @@
           ]
         ],
         "helmetGuid": "8236683858d73d642adbacff67d34dca",
-        "coloringMaskGuid": "938419825c596004db371b29e194558d"
+        "coloringMaskGuid": "938419825c596004db371b29e194558d",
+        "special": {
+          "E": 2,
+          "I": 2,
+          "L": 1
+        }
       },
       {
         "guid": "3c873a06ded8cd544a11723aaa571840",
@@ -2355,9 +2683,16 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "96d74e8e56f8f5847bebb9b5e50ea7e5"
+        "helmetGuid": "96d74e8e56f8f5847bebb9b5e50ea7e5",
+        "special": {
+          "P": 2,
+          "C": 2,
+          "I": 1,
+          "L": 2
+        }
       },
       {
         "guid": "90af88f5adc626941b423f7f09a04d67",
@@ -2372,7 +2707,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "E": 2,
+          "C": 2,
+          "L": 2
         }
       },
       {
@@ -2388,7 +2730,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "E": 1,
+          "A": 2
         }
       },
       {
@@ -2404,7 +2751,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "E": 1,
+          "A": 2
         }
       },
       {
@@ -2420,7 +2772,11 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "L": 3
         }
       },
       {
@@ -2436,7 +2792,11 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "L": 3
         }
       },
       {
@@ -2452,13 +2812,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "helmetGuid": "d94369fd65ec2ea42b120c2a0ddce47c",
         "glovePoseGuids": [
           "1ee13769407e078438c592b815744ee0",
           "efa9891e8d8b86441a7926c62980ebbc"
-        ]
+        ],
+        "special": {
+          "C": 3,
+          "L": 4
+        }
       },
       {
         "guid": "f2eb3e61b3c4d0442b9b2a77aeefe782",
@@ -2473,7 +2838,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "helmetGuid": "5bc067b5153fce94fb15a3dadc8bb83c",
         "glovePoseGuids": [
@@ -2494,7 +2860,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "A": 4,
+          "L": 4
         }
       },
       {
@@ -2510,7 +2881,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2520,7 +2892,12 @@
             1
           ]
         ],
-        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af"
+        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af",
+        "special": {
+          "C": 2,
+          "A": 2,
+          "L": 1
+        }
       },
       {
         "guid": "4a8721904d8bcde48a1d080459d7d348",
@@ -2535,7 +2912,11 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "A": 3
         }
       },
       {
@@ -2551,7 +2932,11 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "A": 3
         }
       },
       {
@@ -2567,12 +2952,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "708b3f6b67f104740862f42570908f36",
           "0b4a0fc1c034b9142b843d8da76e1a8f"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "E": 3,
+          "C": 2
+        }
       },
       {
         "guid": "1acea201454a89b4ba9c631fb8f2c971",
@@ -2587,13 +2978,17 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "c66e2e8d20eabbe41a78440d74d00a7e",
         "glovePoseGuids": [
           "eaaf26a0adaf7394fb341370fba0d752",
           "6383fc6747c29084bb4b5d113c466fde"
-        ]
+        ],
+        "special": {
+          "E": 3
+        }
       },
       {
         "guid": "408d288515c8ae049bb7ee0e60781cdd",
@@ -2608,13 +3003,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "f61cbc08ccefbb7439c76cb2f5a9394e",
         "glovePoseGuids": [
           "45924bfc560685f459f4eb459ecfbbf5",
           "d3f7364376d29b741b385b1bd5a140b5"
-        ]
+        ],
+        "special": {
+          "E": 3
+        }
       },
       {
         "guid": "110676bd430748149ab342db7d24218e",
@@ -2629,7 +3028,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 3,
+          "P": 2
         }
       },
       {
@@ -2645,7 +3049,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 3,
+          "P": 2
         }
       },
       {
@@ -2661,7 +3070,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 2,
+          "I": 2,
+          "A": 2,
+          "L": 2
         }
       },
       {
@@ -2677,7 +3093,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 2,
+          "I": 2,
+          "A": 2,
+          "L": 2
         }
       },
       {
@@ -2693,7 +3116,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "I": 3,
+          "A": 2
         }
       },
       {
@@ -2709,7 +3137,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "I": 3,
+          "A": 2
         }
       },
       {
@@ -2725,7 +3158,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2735,7 +3169,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af"
+        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af",
+        "special": {
+          "P": 4,
+          "E": 4,
+          "A": 4,
+          "L": 4
+        }
       },
       {
         "guid": "966a4c4d24ada6a4dbef0131d4d04110",
@@ -2750,7 +3190,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2760,7 +3201,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "59b63ba73e140d2478580d645116c473"
+        "coloringMaskGuid": "59b63ba73e140d2478580d645116c473",
+        "special": {
+          "P": 4,
+          "E": 4,
+          "A": 4,
+          "L": 4
+        }
       },
       {
         "guid": "7eeb2e43a35ab6f4aa64468975dbf298",
@@ -2775,7 +3222,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 3
         }
       },
       {
@@ -2791,7 +3239,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 3
         }
       },
       {
@@ -2807,12 +3256,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "e349a89e7f4c70d4fa2b2d0f716a04d2",
           "36da6ce9fffcfe148951c6d7dafffd5c"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "E": 4,
+          "A": 6
+        }
       },
       {
         "guid": "5ce77c6aa82e5d44689d101f19f2b3ec",
@@ -2827,7 +3282,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2838,7 +3294,12 @@
           ]
         ],
         "helmetGuid": "8fcf87e4a3981904aa264f5b37333ddc",
-        "coloringMaskGuid": "0de64ea0052c88e40800423eade2876d"
+        "coloringMaskGuid": "0de64ea0052c88e40800423eade2876d",
+        "special": {
+          "P": 2,
+          "C": 2,
+          "L": 1
+        }
       },
       {
         "guid": "d6a835e5c1e0e2c4f83b77aeb4ccfdf1",
@@ -2853,7 +3314,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2864,7 +3326,12 @@
           ]
         ],
         "helmetGuid": "68dadbabfd11e7e468a388be904efc61",
-        "coloringMaskGuid": "44d0f741bb4abe542b72b2a2d4f49f7f"
+        "coloringMaskGuid": "44d0f741bb4abe542b72b2a2d4f49f7f",
+        "special": {
+          "S": 2,
+          "P": 2,
+          "L": 1
+        }
       },
       {
         "guid": "8c82a9316353f9d45b95fa15c5c1038c",
@@ -2879,7 +3346,11 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "I": 3
         }
       },
       {
@@ -2895,7 +3366,11 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "I": 3
         }
       },
       {
@@ -2911,9 +3386,15 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "3855892508128784ea098260eaba7689"
+        "helmetGuid": "3855892508128784ea098260eaba7689",
+        "special": {
+          "S": 4,
+          "E": 6,
+          "C": 4
+        }
       },
       {
         "guid": "ffe135b4677643f47b130f8eed934b7e",
@@ -2928,7 +3409,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2939,7 +3421,11 @@
           ]
         ],
         "helmetGuid": "db90249d33470e849954d97b36692293",
-        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c"
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c",
+        "special": {
+          "I": 4,
+          "L": 1
+        }
       },
       {
         "guid": "d0e5f9bbc2ab35244aff319f246a64e2",
@@ -2954,9 +3440,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "0b361929de7b979429dbacc9b08dccdc"
+        "helmetGuid": "0b361929de7b979429dbacc9b08dccdc",
+        "special": {
+          "P": 4,
+          "L": 1
+        }
       },
       {
         "guid": "dbd1b591d562bc846b35424b49d330b2",
@@ -2971,9 +3462,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "182e4feb95e8e1d49bd34395484ce497"
+        "helmetGuid": "182e4feb95e8e1d49bd34395484ce497",
+        "special": {
+          "P": 4,
+          "L": 1
+        }
       },
       {
         "guid": "edaa8c6264235b448bcb8b005d86b06e",
@@ -2988,7 +3484,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -2998,7 +3495,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "35390ff0df518a5438f92858ddc22afc"
+        "coloringMaskGuid": "35390ff0df518a5438f92858ddc22afc",
+        "special": {
+          "P": 6
+        }
       },
       {
         "guid": "bb121801f9128b64ab3d6e50bb8fc1f6",
@@ -3013,9 +3513,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "7c40b111e060884469d21d67b28fbedb"
+        "helmetGuid": "7c40b111e060884469d21d67b28fbedb",
+        "special": {
+          "P": 2,
+          "E": 5
+        }
       },
       {
         "guid": "6f9389021b54d454fa1026b0b627bdc7",
@@ -3030,7 +3535,13 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 1,
+          "E": 5,
+          "L": 2
         }
       },
       {
@@ -3046,7 +3557,13 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 3,
+          "E": 2,
+          "L": 3
         }
       },
       {
@@ -3062,7 +3579,13 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 3,
+          "E": 2,
+          "L": 3
         }
       },
       {
@@ -3078,7 +3601,13 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 6,
+          "A": 4,
+          "L": 2
         }
       },
       {
@@ -3094,9 +3623,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "d48d476af47c8f84caefd6d84a8f6806"
+        "helmetGuid": "d48d476af47c8f84caefd6d84a8f6806",
+        "special": {
+          "P": 2,
+          "L": 2
+        }
       },
       {
         "guid": "d41dbd3ad02d0f64b94eaab036a48181",
@@ -3111,9 +3645,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "e03b0db805d4ac6478eec86f0d0ce96b"
+        "helmetGuid": "e03b0db805d4ac6478eec86f0d0ce96b",
+        "special": {
+          "P": 2,
+          "L": 2
+        }
       },
       {
         "guid": "cd5be587741522c44969b51a67558986",
@@ -3128,7 +3667,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "C": 2,
+          "A": 4,
+          "L": 4
         }
       },
       {
@@ -3144,7 +3690,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -3156,7 +3703,12 @@
         ],
         "helmetGuid": "a0167850054ce9743871e8444bd1155c",
         "largeHeadgearGuid": "aba6aa626df9ce34a8ae48b05adc7fd4",
-        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb",
+        "special": {
+          "C": 2,
+          "I": 2,
+          "L": 1
+        }
       },
       {
         "guid": "b44a6c7ba67b39043877a9b613b9dde2",
@@ -3171,7 +3723,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -3181,7 +3734,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3"
+        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3",
+        "special": {
+          "S": 1,
+          "C": 1
+        }
       },
       {
         "guid": "3d6698bbbe8498c4a9006d19bd563928",
@@ -3196,14 +3753,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "8d295863a1ec13d439ea354fab827603",
         "coloringMaskGuid": "65c24a26d398da040bfd8be81b40fdf6",
         "glovePoseGuids": [
           "53e65eab36e822842a44e77ed0d5e0e9",
           "822085115c2e7254b885cb68f48ac5e3"
-        ]
+        ],
+        "special": {
+          "S": 4,
+          "L": 3
+        }
       },
       {
         "guid": "4b3565d0e6feb014992cad55f3d687fe",
@@ -3218,13 +3780,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "a920c07962a39b84cba1282ae6b72576",
         "glovePoseGuids": [
           "8a9634575f81b2444958f3d1c7297ee0",
           "697d2a85493ade1498f82d5f561d35e5"
-        ]
+        ],
+        "special": {
+          "S": 4,
+          "L": 3
+        }
       },
       {
         "guid": "3d6698bbbe8498c4a9006d19bd563928",
@@ -3239,7 +3806,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 0
         },
         "colors": [
           [
@@ -3268,7 +3836,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 0
         },
         "colors": [
           [
@@ -3297,9 +3866,13 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "5ba68b772170e1546a4ba70339caf6a4"
+        "helmetGuid": "5ba68b772170e1546a4ba70339caf6a4",
+        "special": {
+          "S": 3
+        }
       },
       {
         "guid": "d2f51d7b49f53b1498bd6c9fa1623bbf",
@@ -3314,9 +3887,13 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "0e35897232ea91448b8f8c2616075e0a"
+        "helmetGuid": "0e35897232ea91448b8f8c2616075e0a",
+        "special": {
+          "S": 3
+        }
       },
       {
         "guid": "1a73c40bfe142d14c8ddc242e871e7cf",
@@ -3356,7 +3933,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "P": 2,
+          "E": 4,
+          "L": 4
         }
       },
       {
@@ -3372,7 +3956,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 2,
+          "P": 2,
+          "E": 4,
+          "L": 4
         }
       },
       {
@@ -3388,10 +3979,15 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "1ac15746a347def40b42c9c3297d2740",
-        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae"
+        "coloringMaskGuid": "f54657f4c46aca24aada50daaaa111ae",
+        "special": {
+          "P": 4,
+          "L": 1
+        }
       },
       {
         "guid": "ba3c9f4fc7c9dda448da309242b94a52",
@@ -3406,7 +4002,13 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 4,
+          "I": 2,
+          "L": 2
         }
       },
       {
@@ -3422,7 +4024,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "colors": [
           [
@@ -3433,7 +4036,11 @@
           ]
         ],
         "helmetGuid": "2c8fd06853afcde4d9ff721d83cb68c3",
-        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb"
+        "coloringMaskGuid": "58af5d3da830be34580d215d9c9f3cbb",
+        "special": {
+          "C": 4,
+          "L": 4
+        }
       },
       {
         "guid": "05a1a5f664a2f9c418518d417a0bf3a1",
@@ -3448,14 +4055,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "c6f0e83eec7c4b84baffdf620b9a9d84",
         "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c",
         "glovePoseGuids": [
           "1e5069bf69287b240bcb198385961e05",
           "6c52a8d54937b9043a575e0d36a1190f"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "C": 2
+        }
       },
       {
         "guid": "3f63ef65501061540bb519b0588f4431",
@@ -3470,13 +4082,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "896d473f20b6b564caddbe6927cf8bcd",
         "glovePoseGuids": [
           "4ba05a54d45d4224a9792b7ef46c0764",
           "914b3205d35b95a4fb63afb912d3455e"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "C": 2
+        }
       },
       {
         "guid": "05a1a5f664a2f9c418518d417a0bf3a1",
@@ -3491,13 +4108,18 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c",
         "glovePoseGuids": [
           "1e5069bf69287b240bcb198385961e05",
           "6c52a8d54937b9043a575e0d36a1190f"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "C": 2
+        }
       },
       {
         "guid": "3f63ef65501061540bb519b0588f4431",
@@ -3512,12 +4134,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "4ba05a54d45d4224a9792b7ef46c0764",
           "914b3205d35b95a4fb63afb912d3455e"
-        ]
+        ],
+        "special": {
+          "P": 4,
+          "C": 2
+        }
       },
       {
         "guid": "8cb353d38f5a6314a919db83ebac57e3",
@@ -3532,13 +4159,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "10554025c68c3404c82d127ec1917773",
         "glovePoseGuids": [
           "4d8fbc92aa5ecf048ac6bd525022abc3",
           "af23d74790386b744970f43607156b21"
-        ]
+        ],
+        "special": {
+          "S": 1,
+          "P": 2,
+          "E": 4,
+          "C": 2
+        }
       },
       {
         "guid": "ff13e09d979e5e14ba4880927d5569d9",
@@ -3553,13 +4187,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "0f657d7ddb61ff742a58c9028899d373",
         "glovePoseGuids": [
           "2bfe125ccfbf09842a29645985392f04",
           "bc4bdd619f400fd45821f5b340a541c2"
-        ]
+        ],
+        "special": {
+          "S": 1,
+          "P": 2,
+          "E": 4,
+          "C": 2
+        }
       },
       {
         "guid": "b9f19fac380001b4aa3cc0dbdc22f5f5",
@@ -3574,9 +4215,15 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "79bd9179b30950d489deb2b941612ba3"
+        "helmetGuid": "79bd9179b30950d489deb2b941612ba3",
+        "special": {
+          "P": 6,
+          "I": 4,
+          "A": 4
+        }
       },
       {
         "guid": "41dd9a6429722814190645bd29791a39",
@@ -3591,7 +4238,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -3602,7 +4250,11 @@
           ]
         ],
         "helmetGuid": "5f7b7768706d05241bb3a5745975098c",
-        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb"
+        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb",
+        "special": {
+          "A": 4,
+          "L": 1
+        }
       },
       {
         "guid": "98ae5ad099f1888448b47badad60cc8b",
@@ -3617,12 +4269,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "6f06d2b5e047a404a8e2570bb4e519b8",
           "e1ae7eaadfdf7214aa8d4a22fc4fe6b9"
-        ]
+        ],
+        "special": {
+          "S": 3,
+          "P": 5,
+          "E": 4
+        }
       },
       {
         "guid": "d79e00fe2310d5c47aa76eb8df99e0f4",
@@ -3637,13 +4295,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "832ed94fcdfb6854ea784673867f87a6",
         "glovePoseGuids": [
           "04de534ff1d181a449fcd41618e59834",
           "ba2582e0799ec9e4e886200daf7d1ae5"
-        ]
+        ],
+        "special": {
+          "S": 5,
+          "P": 1,
+          "E": 1
+        }
       },
       {
         "guid": "d79e00fe2310d5c47aa76eb8df99e0f4",
@@ -3658,13 +4322,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "bc590d26f6295964594c2cae8493033e",
         "glovePoseGuids": [
           "04de534ff1d181a449fcd41618e59834",
           "ba2582e0799ec9e4e886200daf7d1ae5"
-        ]
+        ],
+        "special": {
+          "S": 5,
+          "P": 1,
+          "E": 1
+        }
       },
       {
         "guid": "9554efbac474de744abae6c935968c9e",
@@ -3679,13 +4349,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "42fbc03cb78455941ae278d37b2ce3fc",
         "glovePoseGuids": [
           "0bd6fb57fc87ae34299c5a7240bfd96a",
           "34af207b06d25c14ab2fbee88d0a4078"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "E": 2,
+          "A": 2,
+          "L": 2
+        }
       },
       {
         "guid": "adff52be985586e428739101ff4c210b",
@@ -3700,7 +4377,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -3710,7 +4388,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "c03ebae0386138d4ebede97a1ed45db8"
+        "coloringMaskGuid": "c03ebae0386138d4ebede97a1ed45db8",
+        "special": {
+          "S": 1,
+          "I": 1
+        }
       },
       {
         "guid": "316acfb991077da49a121720bfef511a",
@@ -3725,14 +4407,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "428793b3fb06c0144bf256d42b9a8af4",
         "coloringMaskGuid": "1b50d4d3f01b5ef4ca80258d9e91a1b4",
         "glovePoseGuids": [
           "708b3f6b67f104740862f42570908f36",
           "0b4a0fc1c034b9142b843d8da76e1a8f"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "P": 3
+        }
       },
       {
         "guid": "a0a7e527889387b4c879b8d1a3fa1af8",
@@ -3747,14 +4434,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "2285b32ec925dfe48b7c73c477760eb9",
         "coloringMaskGuid": "65c24a26d398da040bfd8be81b40fdf6",
         "glovePoseGuids": [
           "04b1f43811b97ec4e8b6389aa4b0ca0c",
           "af7b5f52db218a146828e1c5a3cae252"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "P": 3
+        }
       },
       {
         "guid": "4126bfd493ddaf249abfc1b7e26feaf3",
@@ -3769,13 +4461,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "852c4761b702cef4baf4bb3aa5009b7e",
         "glovePoseGuids": [
           "708b3f6b67f104740862f42570908f36",
           "0b4a0fc1c034b9142b843d8da76e1a8f"
-        ]
+        ],
+        "special": {
+          "S": 3,
+          "P": 1
+        }
       },
       {
         "guid": "79a110f14562b1d4a8b4a067d7ca44fb",
@@ -3790,13 +4487,18 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "d44815bd9d58bf145b39eff31f3ebd60",
         "glovePoseGuids": [
           "04b1f43811b97ec4e8b6389aa4b0ca0c",
           "af7b5f52db218a146828e1c5a3cae252"
-        ]
+        ],
+        "special": {
+          "S": 3,
+          "P": 1
+        }
       },
       {
         "guid": "e1f384edd9190374b9013bf34b86e8cd",
@@ -3811,13 +4513,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "2958e01c33bbca84da381ab22801d9cc",
         "glovePoseGuids": [
           "708b3f6b67f104740862f42570908f36",
           "0b4a0fc1c034b9142b843d8da76e1a8f"
-        ]
+        ],
+        "special": {
+          "S": 4,
+          "P": 4,
+          "E": 4,
+          "C": 4
+        }
       },
       {
         "guid": "ea73d9d4524bcb04c8163a808ca0a5b4",
@@ -3832,13 +4541,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "ec585de5c6cacb1468cfca470855e653",
         "glovePoseGuids": [
           "04b1f43811b97ec4e8b6389aa4b0ca0c",
           "af7b5f52db218a146828e1c5a3cae252"
-        ]
+        ],
+        "special": {
+          "S": 4,
+          "P": 4,
+          "E": 4,
+          "C": 4
+        }
       },
       {
         "guid": "0c751c862b9263543ac4cab794eff129",
@@ -3853,13 +4569,19 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "6208c1f6119ca5644be3368fc159b92d",
         "glovePoseGuids": [
           "708b3f6b67f104740862f42570908f36",
           "0b4a0fc1c034b9142b843d8da76e1a8f"
-        ]
+        ],
+        "special": {
+          "S": 3,
+          "P": 1,
+          "E": 1
+        }
       },
       {
         "guid": "3551eb9f6e5a79a46aa701c1183d741c",
@@ -3874,13 +4596,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "4204d06af71416141941080821c20698",
         "glovePoseGuids": [
           "04b1f43811b97ec4e8b6389aa4b0ca0c",
           "af7b5f52db218a146828e1c5a3cae252"
-        ]
+        ],
+        "special": {
+          "S": 3,
+          "P": 1,
+          "E": 1
+        }
       },
       {
         "guid": "a0a7e527889387b4c879b8d1a3fa1af8",
@@ -3895,13 +4623,19 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "coloringMaskGuid": "65c24a26d398da040bfd8be81b40fdf6",
         "glovePoseGuids": [
           "04b1f43811b97ec4e8b6389aa4b0ca0c",
           "af7b5f52db218a146828e1c5a3cae252"
-        ]
+        ],
+        "special": {
+          "S": 5,
+          "P": 2,
+          "E": 2
+        }
       },
       {
         "guid": "8ccf9e8306a4eb048acd7516a6890437",
@@ -3932,13 +4666,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "e5fa81705cf6cfe418681fab84f2b100",
         "glovePoseGuids": [
           "45924bfc560685f459f4eb459ecfbbf5",
           "d3f7364376d29b741b385b1bd5a140b5"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "P": 2,
+          "I": 2,
+          "A": 2
+        }
       },
       {
         "guid": "2be5a04882ba6e942932da311c11060c",
@@ -3953,9 +4694,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "12d4436061d531345b5d291a6ded0149"
+        "helmetGuid": "12d4436061d531345b5d291a6ded0149",
+        "special": {
+          "C": 2,
+          "A": 2
+        }
       },
       {
         "guid": "8f3616132d1f89247a7b6e583648771c",
@@ -3970,9 +4716,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "c2ba34bdb6e9fbd41938bab3c4d6e554"
+        "helmetGuid": "c2ba34bdb6e9fbd41938bab3c4d6e554",
+        "special": {
+          "C": 2,
+          "A": 2
+        }
       },
       {
         "guid": "5ce77c6aa82e5d44689d101f19f2b3ec",
@@ -3987,7 +4738,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -3998,7 +4750,12 @@
           ]
         ],
         "helmetGuid": "a8e2b88f9f7c35b48adb83e5a1946b86",
-        "coloringMaskGuid": "0de64ea0052c88e40800423eade2876d"
+        "coloringMaskGuid": "0de64ea0052c88e40800423eade2876d",
+        "special": {
+          "E": 2,
+          "I": 2,
+          "L": 1
+        }
       },
       {
         "guid": "2e876c6683509144382e3b8072644d94",
@@ -4013,7 +4770,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4024,7 +4782,11 @@
           ]
         ],
         "helmetGuid": "81fea4935247b634f8ade6407bdf0ab8",
-        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663"
+        "coloringMaskGuid": "16a852ae78f50b64a8e53157d7247663",
+        "special": {
+          "I": 4,
+          "L": 1
+        }
       },
       {
         "guid": "3e963fb00a004d24c88716ca069039ad",
@@ -4039,13 +4801,18 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "5eba7745717af264187dd95967ff01f0",
         "glovePoseGuids": [
           "eaaf26a0adaf7394fb341370fba0d752",
           "6383fc6747c29084bb4b5d113c466fde"
-        ]
+        ],
+        "special": {
+          "P": 1,
+          "E": 2
+        }
       },
       {
         "guid": "ae4dd03266072644a97e866ebf4436f3",
@@ -4060,13 +4827,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "dc845f611ffc1584e8f21dcba444e0bc",
         "glovePoseGuids": [
           "45924bfc560685f459f4eb459ecfbbf5",
           "d3f7364376d29b741b385b1bd5a140b5"
-        ]
+        ],
+        "special": {
+          "P": 1,
+          "E": 2
+        }
       },
       {
         "guid": "41dd9a6429722814190645bd29791a39",
@@ -4081,7 +4853,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4145,7 +4918,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb"
+        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb",
+        "special": {
+          "P": 1,
+          "A": 2
+        }
       },
       {
         "guid": "a5467a45ea7a678478a60ab2ac2a3200",
@@ -4160,7 +4937,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4224,7 +5002,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "b5a79614e36f2b240823f0cda4e3392d"
+        "coloringMaskGuid": "b5a79614e36f2b240823f0cda4e3392d",
+        "special": {
+          "P": 1,
+          "A": 2
+        }
       },
       {
         "guid": "1c52e4d8956aee3468a922ddd947dbc9",
@@ -4239,7 +5021,13 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 1,
+          "A": 1,
+          "L": 1
         }
       },
       {
@@ -4255,7 +5043,13 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 1,
+          "A": 1,
+          "L": 1
         }
       },
       {
@@ -4271,7 +5065,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "E": 2,
+          "L": 2
         }
       },
       {
@@ -4287,7 +5086,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "E": 2,
+          "L": 2
         }
       },
       {
@@ -4303,13 +5107,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "fa778648b2941414e8462398037d9ee9",
         "glovePoseGuids": [
           "bbbf136065a43664ba7ac1e0f9b717d2",
           "22aa94aa228143c41bf9661e25ccbe02"
-        ]
+        ],
+        "special": {
+          "E": 2,
+          "I": 4
+        }
       },
       {
         "guid": "7082144784fba6e4db2777d6621c3289",
@@ -4324,13 +5133,18 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "c0b117c7973699c4cb46515339b25f12",
         "glovePoseGuids": [
           "75466004225f1ce48beab61964be36fb",
           "1f18201f893f83b478eb45e0b6340cfe"
-        ]
+        ],
+        "special": {
+          "E": 2,
+          "I": 4
+        }
       },
       {
         "guid": "22187ce4fc138ee4b85d947904050d19",
@@ -4345,12 +5159,17 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "bbbf136065a43664ba7ac1e0f9b717d2",
           "22aa94aa228143c41bf9661e25ccbe02"
-        ]
+        ],
+        "special": {
+          "E": 2,
+          "I": 4
+        }
       },
       {
         "guid": "7082144784fba6e4db2777d6621c3289",
@@ -4365,12 +5184,17 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "glovePoseGuids": [
           "75466004225f1ce48beab61964be36fb",
           "1f18201f893f83b478eb45e0b6340cfe"
-        ]
+        ],
+        "special": {
+          "E": 2,
+          "I": 4
+        }
       },
       {
         "guid": "2646ad4e947ca8449a50f5ddf1eccf36",
@@ -4385,9 +5209,15 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "ac8520eefa0bfbd4dabaea49ff56218b"
+        "helmetGuid": "ac8520eefa0bfbd4dabaea49ff56218b",
+        "special": {
+          "S": 2,
+          "E": 2,
+          "L": 2
+        }
       },
       {
         "guid": "a74b677a1accee04298a954d892d14e4",
@@ -4402,9 +5232,15 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "7e3db28f129a9b0479863b971eee5e99"
+        "helmetGuid": "7e3db28f129a9b0479863b971eee5e99",
+        "special": {
+          "S": 2,
+          "E": 2,
+          "L": 2
+        }
       },
       {
         "guid": "83772b1eef63ef14abc24ee9691f4809",
@@ -4419,13 +5255,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "42fe48cde5a09df44b3db91d135c7ba7",
         "glovePoseGuids": [
           "7f64f998b57f7674280032d2d799eec4",
           "1debd8adee7b4204595c3c6c1ecf4781"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "E": 2,
+          "C": 2,
+          "A": 2
+        }
       },
       {
         "guid": "e220b569723dfe24b8ec6abcdc560983",
@@ -4440,13 +5283,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "1162bbc17d1073042bcc46bd6a14f997",
         "glovePoseGuids": [
           "d2952060bb43876489ddfcde80ecbe49",
           "0550b079d434d6c4e8c0496a21498540"
-        ]
+        ],
+        "special": {
+          "P": 2,
+          "E": 2,
+          "C": 2,
+          "A": 2
+        }
       },
       {
         "guid": "531e136eca2e147489e936b61086c0b5",
@@ -4461,13 +5311,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "0404052a79250ab4aa732e66a13b14bb",
         "glovePoseGuids": [
           "29e5fd7589c79c14ca3569c06adc5465",
           "1fb64c7e3046e86468d3f8a2f9f42bae"
-        ]
+        ],
+        "special": {
+          "S": 4,
+          "P": 2,
+          "E": 4,
+          "C": 2
+        }
       },
       {
         "guid": "a12bbb97520b54b4584265f31ad06027",
@@ -4482,13 +5339,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "f35992132ead4fc41a37f74d740e7cc5",
         "glovePoseGuids": [
           "7427dfb0758017a488afa405c3553399",
           "e23610aecfb7022408a4ba57445dae94"
-        ]
+        ],
+        "special": {
+          "S": 4,
+          "P": 2,
+          "E": 4,
+          "C": 2
+        }
       },
       {
         "guid": "cf5f36e1527b14a4db43c0028cd898c1",
@@ -4503,7 +5367,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 1,
+          "I": 2
         }
       },
       {
@@ -4519,7 +5388,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 1,
+          "I": 2
         }
       },
       {
@@ -4535,10 +5409,16 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "45844c3599eb1a444a20b6dd9d909b27",
-        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8"
+        "coloringMaskGuid": "0eeb09799b9f95341a67b54f0e26d7d8",
+        "special": {
+          "I": 2,
+          "A": 2,
+          "L": 1
+        }
       },
       {
         "guid": "529266da23095e14fb09a66caff8986e",
@@ -4553,13 +5433,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "helmetGuid": "0bd78bf7fa7a00a4aba79dcd22f7f34c",
         "glovePoseGuids": [
           "e2d863d60f770424cbf228192208e30e",
           "e2d863d60f770424cbf228192208e30e"
-        ]
+        ],
+        "special": {
+          "E": 1,
+          "I": 2,
+          "A": 2,
+          "L": 2
+        }
       },
       {
         "guid": "b596d07da02e14f40b9394ae824b3b3a",
@@ -4574,13 +5461,20 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "helmetGuid": "6003d96d858174e48b78b827896400c2",
         "glovePoseGuids": [
           "81003ab0552da2f40bd9c48a00162ac5",
           "4591d0b12ece18040bb38e45369ebb39"
-        ]
+        ],
+        "special": {
+          "E": 1,
+          "I": 2,
+          "A": 2,
+          "L": 2
+        }
       },
       {
         "guid": "a477b817fe96bad4981cfe7e8a596e13",
@@ -4595,13 +5489,20 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 4
         },
         "helmetGuid": "b0b5563b734aa8e47a2739e176f076a6",
         "glovePoseGuids": [
           "ed973d03f336f9f4b8b50e47de38e26e",
           "e7ecd19a2e880cd489568fac705fb79d"
-        ]
+        ],
+        "special": {
+          "E": 1,
+          "I": 2,
+          "A": 2,
+          "L": 2
+        }
       },
       {
         "guid": "1a87f82a0a9611c4498488f13014a9b7",
@@ -4616,7 +5517,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4626,7 +5528,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "4aa734bdc9e9da746b3a158f60e55b54"
+        "coloringMaskGuid": "4aa734bdc9e9da746b3a158f60e55b54",
+        "special": {
+          "C": 3,
+          "A": 2
+        }
       },
       {
         "guid": "858f0864732007c4e8e8384988e8d2a3",
@@ -4641,7 +5547,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4651,7 +5558,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "ca37a1e0d67668f499b2cfea5d5e6b17"
+        "coloringMaskGuid": "ca37a1e0d67668f499b2cfea5d5e6b17",
+        "special": {
+          "P": 2,
+          "E": 1,
+          "C": 2,
+          "I": 2
+        }
       },
       {
         "guid": "1a87f82a0a9611c4498488f13014a9b7",
@@ -4666,7 +5579,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4676,7 +5590,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "4aa734bdc9e9da746b3a158f60e55b54"
+        "coloringMaskGuid": "4aa734bdc9e9da746b3a158f60e55b54",
+        "special": {
+          "S": 4,
+          "E": 4,
+          "I": 4,
+          "L": 4
+        }
       },
       {
         "guid": "858f0864732007c4e8e8384988e8d2a3",
@@ -4691,7 +5611,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4701,7 +5622,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "ca37a1e0d67668f499b2cfea5d5e6b17"
+        "coloringMaskGuid": "ca37a1e0d67668f499b2cfea5d5e6b17",
+        "special": {
+          "S": 4,
+          "E": 4,
+          "I": 4,
+          "L": 4
+        }
       },
       {
         "guid": "4f7a22cde6f875942920e4be611b08f2",
@@ -4716,7 +5643,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4726,7 +5654,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "1e064c6580937d6428c92769dddc569f"
+        "coloringMaskGuid": "1e064c6580937d6428c92769dddc569f",
+        "special": {
+          "C": 1,
+          "A": 1
+        }
       },
       {
         "guid": "443417d2b3e167746a890d47c7f28c9a",
@@ -4741,13 +5673,18 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "55cacbf2ba96a7447bea3761bcba04e3",
         "glovePoseGuids": [
           "77bd012ba2c986040acbe723391ffbf2",
           "42edc0dffdea74543a8c27cddc58c58c"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "L": 3
+        }
       },
       {
         "guid": "c75a65ec3cb0a9b40a83993ad9b5e346",
@@ -4762,13 +5699,18 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "helmetGuid": "e6a0500b8af184b448917d9d7378b5e5",
         "glovePoseGuids": [
           "9afac1e96261ed94aa31d7df1ad96b8a",
           "f9d03e9435fe1494588252c8a2c546e0"
-        ]
+        ],
+        "special": {
+          "S": 2,
+          "L": 3
+        }
       },
       {
         "guid": "4a8721904d8bcde48a1d080459d7d348",
@@ -4783,7 +5725,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4794,7 +5737,11 @@
           ]
         ],
         "helmetGuid": "0d63e99fc9e480a4cb3d5f9875ab28e9",
-        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3"
+        "coloringMaskGuid": "5d8966fafc8d9374b95e75ef6dc179b3",
+        "special": {
+          "E": 4,
+          "L": 1
+        }
       },
       {
         "guid": "af5967a703b06bd4da668dbd451dbc04",
@@ -4809,9 +5756,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "e0ebfd47e4b586344b6408b04bf34ea7"
+        "helmetGuid": "e0ebfd47e4b586344b6408b04bf34ea7",
+        "special": {
+          "C": 2,
+          "I": 2
+        }
       },
       {
         "guid": "c92e8bb1c6342e84c8ab8b87ad8b8244",
@@ -4826,9 +5778,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "b764475a4ba2bee48854319a7ebf001c"
+        "helmetGuid": "b764475a4ba2bee48854319a7ebf001c",
+        "special": {
+          "C": 2,
+          "I": 2
+        }
       },
       {
         "guid": "4d1e750179b8b8d48ae7aaa9ac1a61b1",
@@ -4843,7 +5800,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 6,
+          "I": 4
         }
       },
       {
@@ -4859,7 +5821,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 2,
+          "I": 2,
+          "A": 4,
+          "L": 4
         }
       },
       {
@@ -4875,7 +5844,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4885,7 +5855,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "0bf001ba05a1ada468c5758a6f366434"
+        "coloringMaskGuid": "0bf001ba05a1ada468c5758a6f366434",
+        "special": {
+          "P": 1,
+          "E": 1,
+          "I": 1,
+          "L": 1
+        }
       },
       {
         "guid": "7e4e47819b63b0149b030b31dcb6549a",
@@ -4900,7 +5876,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4911,7 +5888,12 @@
           ]
         ],
         "helmetGuid": "31a17a66aefa9e44dbb45516d1956971",
-        "coloringMaskGuid": "fa11c3e9af263504d8eec320b27cd6b9"
+        "coloringMaskGuid": "fa11c3e9af263504d8eec320b27cd6b9",
+        "special": {
+          "S": 2,
+          "E": 2,
+          "L": 1
+        }
       },
       {
         "guid": "93f8a4f888a1e314d8320669893fd889",
@@ -4926,7 +5908,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4936,7 +5919,11 @@
             1
           ]
         ],
-        "helmetGuid": "c9f04a89c02bdf3419eae53d38fbf49a"
+        "helmetGuid": "c9f04a89c02bdf3419eae53d38fbf49a",
+        "special": {
+          "E": 2,
+          "A": 3
+        }
       },
       {
         "guid": "47f53c557fb6ac94689935b309c796d0",
@@ -4951,7 +5938,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4961,7 +5949,11 @@
             1
           ]
         ],
-        "helmetGuid": "0035da10721d3fc4b9890ee562f00f97"
+        "helmetGuid": "0035da10721d3fc4b9890ee562f00f97",
+        "special": {
+          "E": 2,
+          "A": 3
+        }
       },
       {
         "guid": "718551631cfebe44b82c34d2701b34c3",
@@ -4976,7 +5968,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -4986,7 +5979,11 @@
             1
           ]
         ],
-        "helmetGuid": "d3002ae5a53f38f4396cf49f1b6140ab"
+        "helmetGuid": "d3002ae5a53f38f4396cf49f1b6140ab",
+        "special": {
+          "C": 3,
+          "I": 2
+        }
       },
       {
         "guid": "054b61e31a86b7c40b6b9993949dd734",
@@ -5001,7 +5998,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5011,7 +6009,11 @@
             1
           ]
         ],
-        "helmetGuid": "e6bb08444cad68b45891ff99328d4cda"
+        "helmetGuid": "e6bb08444cad68b45891ff99328d4cda",
+        "special": {
+          "C": 3,
+          "I": 2
+        }
       },
       {
         "guid": "f53a7dd4f4ec985429f49ddedf50d7a1",
@@ -5026,7 +6028,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5036,7 +6039,12 @@
             1
           ]
         ],
-        "helmetGuid": "322a37017479446418ed8d17a4e8bb59"
+        "helmetGuid": "322a37017479446418ed8d17a4e8bb59",
+        "special": {
+          "P": 4,
+          "E": 3,
+          "C": 4
+        }
       },
       {
         "guid": "e597eb3bdf9877c469aa12e2119e62c2",
@@ -5051,7 +6059,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5061,7 +6070,12 @@
             1
           ]
         ],
-        "helmetGuid": "412a4e9c0bc15674b93f66e8d41b2c83"
+        "helmetGuid": "412a4e9c0bc15674b93f66e8d41b2c83",
+        "special": {
+          "P": 4,
+          "E": 3,
+          "C": 4
+        }
       },
       {
         "guid": "6521bcc7f25df84448ae55cd6b6550fb",
@@ -5076,7 +6090,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5087,7 +6102,11 @@
           ]
         ],
         "helmetGuid": "bdeacd4a6b6a3734e8052d2fbf397198",
-        "coloringMaskGuid": "d8e4509a5d49b6d4f806a86f75df6eb9"
+        "coloringMaskGuid": "d8e4509a5d49b6d4f806a86f75df6eb9",
+        "special": {
+          "S": 4,
+          "L": 1
+        }
       },
       {
         "guid": "1a73c40bfe142d14c8ddc242e871e7cf",
@@ -5102,7 +6121,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5113,7 +6133,12 @@
           ]
         ],
         "helmetGuid": "71ce3bf52838a044f9a6828beb411a48",
-        "coloringMaskGuid": "e6c775d34512c17409a77649a15ca3fb"
+        "coloringMaskGuid": "e6c775d34512c17409a77649a15ca3fb",
+        "special": {
+          "P": 2,
+          "A": 2,
+          "L": 1
+        }
       },
       {
         "guid": "d6a835e5c1e0e2c4f83b77aeb4ccfdf1",
@@ -5128,7 +6153,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5139,7 +6165,12 @@
           ]
         ],
         "helmetGuid": "1a2b3caf78a8c0a47bd0afabe33d4350",
-        "coloringMaskGuid": "44d0f741bb4abe542b72b2a2d4f49f7f"
+        "coloringMaskGuid": "44d0f741bb4abe542b72b2a2d4f49f7f",
+        "special": {
+          "S": 2,
+          "A": 2,
+          "L": 1
+        }
       },
       {
         "guid": "085219b31a5903f4e8f85215e0b10263",
@@ -5154,7 +6185,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5164,7 +6196,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "8369c7fcecc42e645885514560c87480"
+        "coloringMaskGuid": "8369c7fcecc42e645885514560c87480",
+        "special": {
+          "E": 4
+        }
       },
       {
         "guid": "d816a02cf5d1e7643ac7fe0cacdcb892",
@@ -5179,7 +6214,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": false
+          "isUsedByDefault": false,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5189,7 +6225,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359"
+        "coloringMaskGuid": "ffe3ca9caab5aa840ba58b33fee84359",
+        "special": {
+          "P": 1,
+          "I": 1
+        }
       },
       {
         "guid": "bf0c10ab70d374c4bab4eb7bf9c2044d",
@@ -5204,9 +6244,15 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "11549c7e8a378d347ba66d2e8a4b6f4d"
+        "helmetGuid": "11549c7e8a378d347ba66d2e8a4b6f4d",
+        "special": {
+          "E": 2,
+          "C": 2,
+          "L": 1
+        }
       },
       {
         "guid": "f63572d89be858d49883f27deb0041c0",
@@ -5221,9 +6267,15 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "0619c39046e9b8245a6c23fd638f1761"
+        "helmetGuid": "0619c39046e9b8245a6c23fd638f1761",
+        "special": {
+          "E": 2,
+          "C": 2,
+          "L": 1
+        }
       },
       {
         "guid": "cfab24dfc94fe624bb20044a504bb5c8",
@@ -5238,7 +6290,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5248,7 +6301,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "d8355e200936795419e486d1d434fd98"
+        "coloringMaskGuid": "d8355e200936795419e486d1d434fd98",
+        "special": {
+          "A": 6
+        }
       },
       {
         "guid": "41a9886f7c5761743bb1b456414c3d31",
@@ -5263,9 +6319,16 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "00d05edd9db1c4045803d6314887e24c"
+        "helmetGuid": "00d05edd9db1c4045803d6314887e24c",
+        "special": {
+          "E": 4,
+          "C": 4,
+          "I": 4,
+          "A": 4
+        }
       },
       {
         "guid": "f70c7fc9451f71740ae31054d385102e",
@@ -5280,9 +6343,16 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "3546880d0f55ee3418b69fdc8a5ddbf5"
+        "helmetGuid": "3546880d0f55ee3418b69fdc8a5ddbf5",
+        "special": {
+          "E": 4,
+          "C": 4,
+          "I": 4,
+          "A": 4
+        }
       },
       {
         "guid": "ee9375336f043c843987a2d45e3b8ef3",
@@ -5297,9 +6367,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "53e9b5056f2e8254d80df97fa4da91f3"
+        "helmetGuid": "53e9b5056f2e8254d80df97fa4da91f3",
+        "special": {
+          "P": 2,
+          "C": 5
+        }
       },
       {
         "guid": "6d34226a9250b0c4c8f2db537fc8c1d8",
@@ -5314,7 +6389,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5324,7 +6400,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "88d6776e579b7144da79d340727e5974"
+        "coloringMaskGuid": "88d6776e579b7144da79d340727e5974",
+        "special": {
+          "S": 4
+        }
       },
       {
         "guid": "2c115822faca309409fcae7f36bf3d4d",
@@ -5339,7 +6418,11 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 3
         }
       },
       {
@@ -5355,7 +6438,11 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 3
         }
       },
       {
@@ -5371,7 +6458,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 3,
+          "L": 2
         }
       },
       {
@@ -5387,7 +6479,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 3,
+          "L": 2
         }
       },
       {
@@ -5403,9 +6500,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "c45e41a5c3b7b854481d49e4b8afdbf4"
+        "helmetGuid": "c45e41a5c3b7b854481d49e4b8afdbf4",
+        "special": {
+          "E": 2,
+          "L": 2
+        }
       },
       {
         "guid": "d93cbb3220b63924fb54deb79f9b1acb",
@@ -5420,9 +6522,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "2bd3f9a2bffa876429ae52620f3faa2d"
+        "helmetGuid": "2bd3f9a2bffa876429ae52620f3faa2d",
+        "special": {
+          "E": 2,
+          "L": 2
+        }
       },
       {
         "guid": "81980bcf33600ff4c88f1af1837ee3a6",
@@ -5437,7 +6544,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5447,7 +6555,13 @@
             1
           ]
         ],
-        "coloringMaskGuid": "7a20c28f03cdc614cacd093ef861a1a3"
+        "coloringMaskGuid": "7a20c28f03cdc614cacd093ef861a1a3",
+        "special": {
+          "P": 1,
+          "C": 1,
+          "I": 1,
+          "L": 1
+        }
       },
       {
         "guid": "c10d9320ccca4704197e2db18571823a",
@@ -5462,7 +6576,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5472,7 +6587,10 @@
             1
           ]
         ],
-        "coloringMaskGuid": "9d9191e6928b1364c927bae968339f78"
+        "coloringMaskGuid": "9d9191e6928b1364c927bae968339f78",
+        "special": {
+          "A": 4
+        }
       },
       {
         "guid": "2ef5b66eeabd3c54c83de84e2e826320",
@@ -5487,7 +6605,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 1,
+          "E": 2
         }
       },
       {
@@ -5503,7 +6626,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "S": 1,
+          "E": 2
         }
       },
       {
@@ -5519,7 +6647,12 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 4,
+          "L": 3
         }
       },
       {
@@ -5535,7 +6668,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 4,
+          "L": 3
         }
       },
       {
@@ -5551,9 +6689,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
-        "helmetGuid": "f3cddf80630210548846bca6720536c0"
+        "helmetGuid": "f3cddf80630210548846bca6720536c0",
+        "special": {
+          "C": 2,
+          "L": 2
+        }
       },
       {
         "guid": "93188b295b3195f4bad673a79a96be74",
@@ -5568,7 +6711,14 @@
         "gender": "female",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 4,
+          "E": 2,
+          "A": 2,
+          "L": 4
         }
       },
       {
@@ -5584,7 +6734,14 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "P": 4,
+          "E": 2,
+          "A": 2,
+          "L": 4
         }
       },
       {
@@ -5600,7 +6757,8 @@
         "gender": "female",
         "flags": {
           "hasSkirt": true,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5610,7 +6768,11 @@
             1
           ]
         ],
-        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c"
+        "coloringMaskGuid": "0a439a83ba9784c439e7db6cba4f934c",
+        "special": {
+          "P": 1,
+          "E": 1
+        }
       },
       {
         "guid": "41dd9a6429722814190645bd29791a39",
@@ -5625,7 +6787,8 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
         },
         "colors": [
           [
@@ -5636,7 +6799,12 @@
           ]
         ],
         "helmetGuid": "3cf945d553e700e44b4e0f5e03e51939",
-        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb"
+        "coloringMaskGuid": "0565ef44d0b87c14da1ba1d0f29800bb",
+        "special": {
+          "S": 2,
+          "E": 2,
+          "L": 1
+        }
       },
       {
         "guid": "fdf4762d945d63547b41d20c960a73ca",
@@ -5651,7 +6819,12 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true
+          "isUsedByDefault": true,
+          "outfitCategory": 2
+        },
+        "special": {
+          "C": 3,
+          "L": 4
         }
       }
     ],

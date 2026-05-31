@@ -7,13 +7,16 @@ import {
 } from 'node:fs';
 import { join, basename } from 'node:path';
 import { parseHeadgearPlacement } from './lib/parseHeadgear.mjs';
-import { decodeIndexBuffer, decodeVertexStreams } from './lib/decodeMesh.mjs';
+import { decodeIndexBuffer, decodeVertexStreams, decodeVertexChannels } from './lib/decodeMesh.mjs';
 import { WEAPON_DATA } from './lib/weaponData.mjs';
+import { parseNguiAtlas, pngSize } from './lib/parseNguiAtlas.mjs';
+import { resolveWeaponSprite } from './lib/weaponSprite.mjs';
 
 const ROOT = 'TEMPORARY-game-files/export-3/ExportedProject/Assets';
 const SCRIPTS_DIR = join(ROOT, 'Scripts/Assembly-CSharp');
 const MB_DIR = join(ROOT, 'MonoBehaviour');
 const ATLAS_DIR = join(ROOT, 'Resources/dwelleratlases');
+const UI_ATLAS_DIR = join(ROOT, 'Resources/atlas');
 const OUT_DIR = 'public/atlas';
 mkdirSync(OUT_DIR, { recursive: true });
 
@@ -148,6 +151,10 @@ const byType = {
 
 // assetMetaGuid → m_guid map (built during parse loop for cross-reference resolution).
 const assetMetaGuidToMGuid = new Map();
+// assetMetaGuid → outfit ref. Unlike m_guid (which collides across assets — e.g.
+// BattleArmor and EngineerFemaleSpecial share one m_guid), the .meta guid is unique
+// per asset file, so this maps a DwellerOutfitItem's outfit reference to the exact ref.
+const outfitMetaGuidToRef = new Map();
 // Pending cross-references to resolve after all pieces are parsed.
 const pendingRefs = [];
 
@@ -155,9 +162,11 @@ const files = readdirSync(MB_DIR).filter((f) => f.endsWith('.asset')).sort();
 for (const f of files) {
   // Build meta GUID → m_guid map on the fly (read .meta sidecar).
   const metaPath = join(MB_DIR, f + '.meta');
+  let fileMetaGuid;
   try {
     const metaGuid = readFileSync(metaPath, 'utf8').match(/^guid:\s*([0-9a-f]+)/m)?.[1];
     if (metaGuid) {
+      fileMetaGuid = metaGuid;
       const t2 = readFileSync(join(MB_DIR, f), 'utf8');
       const mGuid = t2.match(/^\s*m_guid:\s*([0-9a-f]+)/m)?.[1];
       if (mGuid) assetMetaGuidToMGuid.set(metaGuid, mGuid);
@@ -186,6 +195,7 @@ for (const f of files) {
     if (p.femaleMeshMetaGuid) ref._femaleMeshMetaGuid = p.femaleMeshMetaGuid;
   }
   byType[p.type].push(ref);
+  if (p.type === 'outfit' && fileMetaGuid) outfitMetaGuidToRef.set(fileMetaGuid, ref);
 
   // Queue cross-ref resolution for outfits and helmets.
   if (p.type === 'outfit') {
@@ -226,6 +236,64 @@ for (const { ref, helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, g
   }
 }
 
+// ---------------------------------------------------------------------------
+// Tag each visual outfit with its DwellerOutfitItem category.
+//
+// DwellerOutfit assets (parsed above) are purely visual — they carry no item
+// data. The real item definitions live in GameParameters.prefab as a list of
+// DwellerOutfitItem entries, each of which references its male/female visual
+// outfit by .meta GUID and declares an EOutfitCategory. We use that category to
+// distinguish real player items (Premium=2) from enemy/scripted outfits
+// (CodeControlled=4, e.g. Scorched, Gen1Synth, alien_space_suit_enemy).
+// ---------------------------------------------------------------------------
+{
+  const gpPath = join(ROOT, 'GameObject/GameParameters.prefab');
+  let tagged = 0;
+  try {
+    const gp = readFileSync(gpPath, 'utf8');
+    // male, female, outfitId, category appear consecutively in each entry. The
+    // male/female refs are .meta guids → resolve to the exact outfit ref.
+    const itemRe = /m_maleOutfit:\s*\{([^}]*)\}\s*\n\s*m_femaleOutfit:\s*\{([^}]*)\}\s*\n\s*m_outfitId:\s*(\S+)\s*\n\s*m_category:\s*(-?\d+)\s*\n\s*m_specialStats:\s*([\s\S]*?)m_outfitNameLocalizationId:/g;
+    const guidOf = (brace) => brace.match(/guid:\s*([0-9a-f]+)/)?.[1];
+    // Parse the m_specialStats block into a { S, P, E, C, I, A, L } map of non-zero bonuses.
+    const STAT_LETTERS = [
+      ['Strength', 'S'], ['Perception', 'P'], ['Endurance', 'E'], ['Charisma', 'C'],
+      ['Intelligence', 'I'], ['Agility', 'A'], ['Luck', 'L'],
+    ];
+    const parseSpecial = (block) => {
+      const out = {};
+      for (const [field, letter] of STAT_LETTERS) {
+        const v = block.match(new RegExp(`${field}:\\s*\\n\\s*Value:\\s*(-?\\d+)`))?.[1];
+        if (v != null && +v > 0) out[letter] = +v;
+      }
+      return out;
+    };
+    let m;
+    while ((m = itemRe.exec(gp)) !== null) {
+      const category = +m[4];
+      const special = parseSpecial(m[5]);
+      const hasSpecial = Object.keys(special).length > 0;
+      for (const metaGuid of [guidOf(m[1]), guidOf(m[2])]) {
+        if (!metaGuid) continue;
+        const ref = outfitMetaGuidToRef.get(metaGuid);
+        if (!ref) continue;
+        // A single visual sprite can be shared by several items (e.g. BattleArmor's
+        // male visual is used by both the Premium item and a CodeControlled enemy).
+        // Premium wins: once a visual is claimed by a real player item, keep it
+        // (along with its SPECIAL bonus).
+        if (ref.flags.outfitCategory === 2) continue;
+        ref.flags.outfitCategory = category;
+        if (hasSpecial) ref.special = special;
+        else delete ref.special;
+        tagged++;
+      }
+    }
+    console.log(`Tagged ${tagged} outfit visuals with DwellerOutfitItem categories`);
+  } catch (e) {
+    console.warn(`Warning: could not tag outfit categories from ${gpPath}: ${e.message}`);
+  }
+}
+
 // Sort each type by name for deterministic output.
 // Note: dwellers reference pieces by NAME (see Pre-flight findings), so the same
 // name may appear twice within a type (one per gender) — that's expected. Runtime
@@ -243,16 +311,38 @@ for (const f of walk(MESH_DIR)) {
   if (guid) meshMetaGuidToPath.set(guid, f.replace(/\.meta$/, ''));
 }
 
+// Parse the ordered m_Channels list (stream/offset/format/dimension) from a mesh asset.
+function parseVertexChannels(text) {
+  const block = text.match(/m_Channels:([\s\S]*?)m_DataSize:/);
+  if (!block) return [];
+  const re = /-\s*stream:\s*(\d+)\s*\n\s*offset:\s*(\d+)\s*\n\s*format:\s*(\d+)\s*\n\s*dimension:\s*(\d+)/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(block[1]))) {
+    out.push({ stream: +m[1], offset: +m[2], format: +m[3], dimension: +m[4] });
+  }
+  return out;
+}
+
 function decodeMeshAsset(path) {
   try {
     const text = readFileSync(path, 'utf8');
     const vertexCount = +text.match(/m_VertexCount:\s*(\d+)/)[1];
-    const indexCount = +text.match(/indexCount:\s*(\d+)/)[1];
+    // A mesh may have multiple submeshes (e.g. largeHeadgear bundles a large
+    // "blocker" submesh with the actual hat quad as the LAST submesh). The first
+    // `indexCount:` field belongs to submesh 0, not the whole buffer, so we sum
+    // every submesh's indexCount to decode the FULL index buffer and record the
+    // per-submesh counts so the renderer can isolate the hat quad.
+    const indexCounts = [...text.matchAll(/\bindexCount:\s*(\d+)/g)].map((m) => +m[1]);
+    const totalIndices = indexCounts.reduce((a, b) => a + b, 0);
     const indexHex = text.match(/m_IndexBuffer:\s*([0-9a-f]+)/)[1];
     const vertHex = text.match(/_typelessdata:\s*([0-9a-f]+)/)[1];
-    const indices = decodeIndexBuffer(indexHex, indexCount);
-    const { positions, uvs, uvs1 } = decodeVertexStreams(vertHex, vertexCount);
-    return { positions, uvs, uvs1, indices };
+    const indices = decodeIndexBuffer(indexHex, totalIndices);
+    // largeHeadgear meshes use a different stream layout than the dweller body mesh
+    // (stream1 = UV0 only, 8B). Parse m_Channels and decode channel-aware.
+    const channels = parseVertexChannels(text);
+    const { positions, uvs, uvs1 } = decodeVertexChannels(vertHex, vertexCount, channels);
+    return { positions, uvs, uvs1, indices, ...(indexCounts.length > 1 ? { indexCounts } : {}) };
   } catch (e) {
     console.warn(`Warning: failed to decode mesh asset ${path}: ${e.message}`);
     return null;
@@ -292,17 +382,36 @@ for (const filename of referencedAtlases) {
 const index = { version: 1, byType };
 writeFileSync(join(OUT_DIR, 'index.json'), JSON.stringify(index, null, 2));
 
-// Emit weapons.json from curated WEAPON_DATA table.
+// ---------------------------------------------------------------------------
+// UI sprite-atlas icons (weapons + SPECIAL stats), sourced from NGUI prefabs.
+// These are CSS-cropped at runtime from the copied atlas PNGs, so each icon is
+// { atlas, x, y, w, h } plus the atlas dimensions (aw, ah) for background-size.
+// ---------------------------------------------------------------------------
+
+// Weapon icons from Weapons_HD atlas.
+const WEAPONS_ATLAS_PNG = 'Weapons_HD.png';
+const weaponSprites = parseNguiAtlas(join(UI_ATLAS_DIR, 'Weapons_HD.prefab'));
+const weaponsAtlasSize = pngSize(join(UI_ATLAS_DIR, WEAPONS_ATLAS_PNG));
+copyFileSync(join(UI_ATLAS_DIR, WEAPONS_ATLAS_PNG), join(OUT_DIR, WEAPONS_ATLAS_PNG));
+
+let weaponIconCount = 0;
 const weaponsOutput = {
   version: 1,
   weapons: Object.fromEntries(
-    Object.entries(WEAPON_DATA).map(([id, { name, damageMin, damageMax }]) => [
-      id,
-      { name, damageMin, damageMax, icon: '' },
-    ])
+    Object.entries(WEAPON_DATA).map(([id, { name, damageMin, damageMax }]) => {
+      const spriteName = resolveWeaponSprite(id, weaponSprites);
+      const rect = spriteName ? weaponSprites.get(spriteName) : null;
+      const icon = rect
+        ? { atlas: WEAPONS_ATLAS_PNG, ...rect, aw: weaponsAtlasSize.w, ah: weaponsAtlasSize.h }
+        : null;
+      if (icon) weaponIconCount++;
+      return [id, { name, damageMin, damageMax, icon }];
+    })
   ),
 };
 writeFileSync(join(OUT_DIR, 'weapons.json'), JSON.stringify(weaponsOutput, null, 2));
+
+console.log(`Wrote ${OUT_DIR}/weapons.json — ${weaponIconCount}/${Object.keys(WEAPON_DATA).length} weapons have icons`);
 
 console.log(
   `Wrote ${OUT_DIR}/index.json` +
