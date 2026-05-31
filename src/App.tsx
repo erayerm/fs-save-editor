@@ -7,15 +7,15 @@ import { VaultSettings } from './components/VaultSettings';
 
 export default function App() {
   const save = useSaveStore((s) => s.save);
-  const selectedDwellerId = useSaveStore((s) => s.selectedDwellerId);
+  const page = useSaveStore((s) => s.page);
   if (!save) return <ImportLanding />;
   return (
     <div className="h-screen flex flex-col bg-zinc-900 text-zinc-100">
       <Header />
-      <main className="flex-1 overflow-auto p-4">
-        {selectedDwellerId === null ? <VaultSettings /> : <DwellerDetailPanel />}
+      <main className="flex-1 min-h-0 overflow-hidden p-4">
+        {page === 'vault' ? <VaultSettings /> : <DwellerDetailPanel />}
       </main>
-      <CharacterFooter />
+      {page === 'dweller' && <CharacterFooter />}
     </div>
   );
 }

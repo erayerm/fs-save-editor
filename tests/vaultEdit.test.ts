@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { getCaps, setCaps, getLunchboxes, setLunchboxes, setResource } from '../src/lib/vaultEdit';
 
 const save = () => ({
-  vault: { storage: { resources: { Nuka: 100, Food: 50 } }, LunchBoxesCount: 2 },
+  vault: { storage: { resources: { Nuka: 100, Food: 50 } }, LunchBoxesByType: [0, 0], LunchBoxesCount: 2 },
   dwellers: { dwellers: [] },
 } as any);
 
