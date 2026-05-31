@@ -61,7 +61,10 @@ function useHairThumbnails(
         if (next.has(hairPiece.name)) continue;
 
         const key = `hair|${gender}|${debouncedSkinKey}|${debouncedHairKey}|${hairPiece.name}`;
-        const tempDweller: RenderableDweller = { ...dweller, hairName: hairPiece.name };
+        // Drop the outfit when rendering hair previews: a worn helmet/outfit that
+        // hides hair (m_isExclusive) would otherwise make every option render bald.
+        // The actual character preview keeps the outfit, so hair stays hidden there.
+        const tempDweller: RenderableDweller = { ...dweller, hairName: hairPiece.name, outfitName: undefined };
 
         // Keep head-skin (body+triMask), face, and hair — no full body, no outfit.
         const layers = buildLayers(tempDweller, index, offsets).filter(
@@ -97,11 +100,11 @@ export function HairTab({
   const hairColor = dweller.hairColor ?? { r: 150, g: 95, b: 45 };
   const thumbnails = useHairThumbnails(index, meshSet, dweller);
 
-  const options = piecesOfType(index, 'hair', { gender }).map((p) => ({
-    value: p.name,
-    label: p.name,
-    thumbnailUrl: thumbnails.get(p.name),
-  }));
+  const options = piecesOfType(index, 'hair', { gender }).map((p) => {
+    const thumbnailUrl = thumbnails.get(p.name);
+    // Skeleton (not the bare id label like "01") until the head thumbnail renders.
+    return { value: p.name, label: p.name, thumbnailUrl, loading: !thumbnailUrl };
+  });
 
   return (
     <div>

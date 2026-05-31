@@ -105,13 +105,14 @@ export function FacialHairTab({
   const hairColor = dweller.hairColor ?? { r: 150, g: 95, b: 45 };
   const thumbnails = useFacialHairThumbnails(index, meshSet, dweller);
 
+  // Skeleton (not the bare piece-name label) until each head thumbnail renders.
+  const noneThumb = thumbnails.get(NONE);
   const options = [
-    { value: NONE, label: 'None', thumbnailUrl: thumbnails.get(NONE) },
-    ...facialHairPieces(index).map((p) => ({
-      value: p.name,
-      label: p.name,
-      thumbnailUrl: thumbnails.get(p.name),
-    })),
+    { value: NONE, label: 'None', thumbnailUrl: noneThumb, loading: !noneThumb },
+    ...facialHairPieces(index).map((p) => {
+      const thumbnailUrl = thumbnails.get(p.name);
+      return { value: p.name, label: p.name, thumbnailUrl, loading: !thumbnailUrl };
+    }),
   ];
 
   return (
