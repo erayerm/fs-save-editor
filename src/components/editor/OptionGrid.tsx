@@ -10,6 +10,12 @@ export interface GridOption {
   layers?: SpriteLayer[];
   /** Optional badge node rendered as an overlay at the bottom of the cell. */
   badge?: React.ReactNode;
+  /**
+   * Portrait thumbnail is still rendering. Shows a skeleton placeholder (sized
+   * like a portrait cell) instead of the label-text fallback, so the grid doesn't
+   * flash key names or jump layout while offscreen rendering catches up.
+   */
+  loading?: boolean;
 }
 
 export function OptionGrid({
@@ -27,7 +33,9 @@ export function OptionGrid({
     return <div className="text-zinc-500 italic text-sm p-2">No options available.</div>;
   }
 
-  const hasPortrait = options.some((o) => o.thumbnailUrl);
+  // `loading` cells are portrait placeholders, so treat them as portrait too —
+  // this keeps the grid at portrait width/height from the first paint (no jump).
+  const hasPortrait = options.some((o) => o.thumbnailUrl || o.loading);
   const hasSprite = options.some((o) => o.layers && o.layers.length > 0);
 
   // Portrait cells stack the image and badge vertically (with a gap between them);
@@ -65,22 +73,30 @@ export function OptionGrid({
           }
           style={{ ...cellStyle, position: 'relative' }}
         >
-          {o.thumbnailUrl ? (
-            // Portrait: image fills the flexible top region; badge sits below it
-            // in normal flow so there's a clear gap between them.
+          {o.thumbnailUrl || o.loading ? (
+            // Portrait: image (or skeleton) fills the flexible top region; badge
+            // sits below it in normal flow so there's a clear gap between them.
             <>
-              <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img
-                  src={o.thumbnailUrl}
-                  alt={o.label}
-                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block', imageRendering: 'auto' }}
-                />
+              <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: o.thumbnailUrl ? 0 : 10 }}>
+                {o.thumbnailUrl ? (
+                  <img
+                    src={o.thumbnailUrl}
+                    alt={o.label}
+                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block', imageRendering: 'auto' }}
+                  />
+                ) : (
+                  <div className="w-full h-full rounded-md bg-zinc-700/40 animate-pulse" />
+                )}
               </div>
-              {o.badge && (
+              {o.thumbnailUrl && o.badge ? (
                 <div style={{ paddingTop: 4, paddingBottom: 8, display: 'flex', justifyContent: 'center' }}>
                   {o.badge}
                 </div>
-              )}
+              ) : !o.thumbnailUrl ? (
+                <div style={{ paddingTop: 4, paddingBottom: 8, display: 'flex', justifyContent: 'center' }}>
+                  <div className="h-3 w-16 rounded bg-zinc-700/40 animate-pulse" />
+                </div>
+              ) : null}
             </>
           ) : o.layers && o.layers.length > 0 ? (
             <SpriteCanvas layers={o.layers} size={72} />
