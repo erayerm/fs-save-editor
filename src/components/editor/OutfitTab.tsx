@@ -1,41 +1,32 @@
 import { useState, useEffect, useRef } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { SpecialBadges } from './SpecialBadges';
-import { specialBonusFor } from '../../lib/outfitStats';
-import { piecesOfType } from '../../lib/spriteIndex';
+import { equippableOutfits } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
 import { buildLayers } from '../../lib/dwellerLayers';
 import { createDwellerRenderer, type DwellerRenderer } from '../../lib/dwellerWebGL';
-import type { SpriteIndex, Gender, PieceRef } from '../../types/pieces';
+import type { SpriteIndex, OutfitItem, Gender } from '../../types/pieces';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
 
 const THUMB_SIZE = 340; // offscreen WebGL canvas — 2× cell width (170px) for crisp display
 
-// EOutfitCategory.Premium — the only category that is a real, obtainable player
-// item. Other categories are enemy/scripted (CodeControlled), basic Casual, or
-// the default vault suit. See scripts/build-sprite-index.mjs for tagging.
-const PREMIUM_CATEGORY = 2;
-// The default vault outfit (GameParameters m_vaultDefaultOutfit). It's category 3
-// (Default), so it's normally filtered out, but we keep it as an explicit
-// exception and pin it to the top of the list.
 const VAULT_DEFAULT_OUTFIT = 'jumpsuit';
 
 /**
- * The outfits to show in the picker: real player items (Premium category) plus
- * the default vault suit (jumpsuit) pinned to the front. Enemy/scripted outfits
- * (Scorched, Gen1Synth, alien_space_suit_enemy, …) are excluded.
+ * The outfit items to show in the picker for a given gender: every equippable
+ * (Premium + default jumpsuit) item that has a visual for that gender, with the
+ * jumpsuit pinned to the front, then alphabetical by display name. Each entry is a
+ * real DwellerOutfitItem, so its `id` is a valid save value (variants like
+ * HandymanJumpsuit_Advanced appear as separate entries).
  */
-function visibleOutfits(index: SpriteIndex, gender: Gender): PieceRef[] {
-  const all = piecesOfType(index, 'outfit', { gender });
-  const jumpsuits = all.filter((p) => p.name === VAULT_DEFAULT_OUTFIT);
-  const premium = all.filter(
-    (p) => p.name !== VAULT_DEFAULT_OUTFIT && p.flags.outfitCategory === PREMIUM_CATEGORY,
-  );
-  return [...jumpsuits, ...premium];
+function visibleOutfits(index: SpriteIndex, gender: Gender): OutfitItem[] {
+  const items = equippableOutfits(index, gender);
+  const rank = (o: OutfitItem) => (o.id === VAULT_DEFAULT_OUTFIT ? 0 : 1);
+  return [...items].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name));
 }
 
 /** Render outfit thumbnails via a single shared offscreen WebGL canvas. */
@@ -78,10 +69,10 @@ function useOutfitThumbnails(
 
       for (const outfit of outfits) {
         if (cancelled) break;
-        // Build a temporary dweller with this outfit, no hair/face
+        // Build a temporary dweller wearing this outfit item, no hair/face
         const tempDweller: RenderableDweller = {
           ...dweller,
-          outfitName: outfit.name,
+          outfitName: outfit.id,
           hairName: undefined,
           facialHair: undefined, // no beard/mustache on outfit thumbnails
           happinessValue: undefined, // no face expression
@@ -103,7 +94,7 @@ function useOutfitThumbnails(
         );
         if (cancelled) break;
         rendererRef.current!.draw(mesh, withImages);
-        newMap.set(outfit.name, canvasRef.current!.toDataURL());
+        newMap.set(outfit.id, canvasRef.current!.toDataURL());
       }
 
       if (!cancelled) setThumbnails(new Map(newMap));
@@ -133,15 +124,20 @@ export function OutfitTab({
   const [meshSet, setMeshSet] = useState<DwellerMeshSet | null>(null);
   useEffect(() => { loadMeshSet().then(setMeshSet); }, []);
 
-  const gender = dweller.gender === 2 ? 'male' : 'female';
+  const gender: Gender = dweller.gender === 2 ? 'male' : 'female';
   const thumbnails = useOutfitThumbnails(index, meshSet, dweller);
 
-  const options = visibleOutfits(index, gender).map((p) => ({
-    value: p.name,
-    label: p.name,
-    thumbnailUrl: thumbnails.get(p.name),
-    badge: <SpecialBadges bonus={p.special ?? specialBonusFor(p.name)} />,
-  }));
+  const options = visibleOutfits(index, gender).map((o) => {
+    const thumbnailUrl = thumbnails.get(o.id);
+    return {
+      value: o.id,
+      label: o.name,
+      thumbnailUrl,
+      // Show a skeleton placeholder until the offscreen thumbnail finishes rendering.
+      loading: !thumbnailUrl,
+      badge: <SpecialBadges bonus={o.special ?? {}} />,
+    };
+  });
 
   return (
     <OptionGrid

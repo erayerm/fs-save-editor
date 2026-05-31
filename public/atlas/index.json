@@ -2881,8 +2881,7 @@
         "gender": "male",
         "flags": {
           "hasSkirt": false,
-          "isUsedByDefault": true,
-          "outfitCategory": 2
+          "isUsedByDefault": true
         },
         "colors": [
           [
@@ -2892,12 +2891,7 @@
             1
           ]
         ],
-        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af",
-        "special": {
-          "C": 2,
-          "A": 2,
-          "L": 1
-        }
+        "coloringMaskGuid": "1b15170c37a3a4a4b9a87d1f40df51af"
       },
       {
         "guid": "4a8721904d8bcde48a1d080459d7d348",
@@ -3871,7 +3865,7 @@
         },
         "helmetGuid": "5ba68b772170e1546a4ba70339caf6a4",
         "special": {
-          "S": 3
+          "S": 7
         }
       },
       {
@@ -3892,7 +3886,7 @@
         },
         "helmetGuid": "0e35897232ea91448b8f8c2616075e0a",
         "special": {
-          "S": 3
+          "S": 7
         }
       },
       {
@@ -14740,5 +14734,2430 @@
         }
       }
     ]
-  }
+  },
+  "outfitItems": [
+    {
+      "id": "AbrahamSpecial",
+      "name": "Abraham's Relaxedwear",
+      "category": 2,
+      "special": {
+        "E": 1,
+        "I": 2,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": "AbrahamSpecial",
+      "pieceFemale": null
+    },
+    {
+      "id": "ActionWeddingDress",
+      "name": "Action Wedding Dress",
+      "category": 2,
+      "special": {
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "ActionWeddingDress",
+      "hasHelmet": true
+    },
+    {
+      "id": "AlienSpaceSuit",
+      "name": "Alien Space Suit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "I": 4,
+        "A": 2
+      },
+      "pieceMale": "alien_space_suit",
+      "pieceFemale": "Alien_Space_Suit_F"
+    },
+    {
+      "id": "AlienSpaceSuitEnemy",
+      "name": "Alien Space Suit",
+      "category": 4,
+      "special": {
+        "E": 1,
+        "I": 2,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": "alien_space_suit_enemy",
+      "pieceFemale": null
+    },
+    {
+      "id": "AlistairSpecial",
+      "name": "Tenpenny's Suit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "C": 2,
+        "I": 2,
+        "L": 1
+      },
+      "pieceMale": "alistair",
+      "pieceFemale": null
+    },
+    {
+      "id": "AllNightware",
+      "name": "Nightwear",
+      "category": 2,
+      "special": {
+        "C": 3
+      },
+      "pieceMale": "AllNighware",
+      "pieceFemale": "AllNighware"
+    },
+    {
+      "id": "AllNightware_Lucky",
+      "name": "Lucky Nightwear",
+      "category": 2,
+      "special": {
+        "C": 7
+      },
+      "pieceMale": "AllNighware",
+      "pieceFemale": "AllNighware"
+    },
+    {
+      "id": "AllNightware_Naughty",
+      "name": "Naughty Nightwear",
+      "category": 2,
+      "special": {
+        "C": 5
+      },
+      "pieceMale": "AllNighware",
+      "pieceFemale": "AllNighware"
+    },
+    {
+      "id": "AmataSpecial",
+      "name": "Amata's Jumpsuit",
+      "category": 4,
+      "special": {
+        "C": 2,
+        "I": 2,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "jumpsuit"
+    },
+    {
+      "id": "ArgyleSweater",
+      "name": "Accountant Outfit",
+      "category": 2,
+      "special": {
+        "P": 4
+      },
+      "pieceMale": "ArgyleSweater",
+      "pieceFemale": null
+    },
+    {
+      "id": "BaseballUniform",
+      "name": "Baseball Uniform",
+      "category": 2,
+      "special": {
+        "A": 4,
+        "L": 1
+      },
+      "pieceMale": "BaseballUniform",
+      "pieceFemale": "BaseballUniform",
+      "hasHelmet": true
+    },
+    {
+      "id": "BattleArmor",
+      "name": "Battle Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 1
+      },
+      "pieceMale": "BattleArmor",
+      "pieceFemale": "BattleArmor"
+    },
+    {
+      "id": "BattleArmor_Heavy",
+      "name": "Heavy Battle Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "E": 3
+      },
+      "pieceMale": "BattleArmor",
+      "pieceFemale": "BattleArmor"
+    },
+    {
+      "id": "BattleArmor_Sturdy",
+      "name": "Sturdy Battle Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "E": 2
+      },
+      "pieceMale": "BattleArmor",
+      "pieceFemale": "BattleArmor"
+    },
+    {
+      "id": "BishopSpecial",
+      "name": "Clergy Outfit",
+      "category": 2,
+      "special": {
+        "C": 4,
+        "L": 1
+      },
+      "pieceMale": "Bishop",
+      "pieceFemale": null
+    },
+    {
+      "id": "BittercupSpecial",
+      "name": "Bittercup's Outfit",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 2,
+        "E": 2,
+        "C": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "bittercup"
+    },
+    {
+      "id": "BOSCasual",
+      "name": "BOS Casual",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "A": 2
+      },
+      "pieceMale": "BOSCasual",
+      "pieceFemale": "BOSCasual"
+    },
+    {
+      "id": "BOSUniform",
+      "name": "BoS Uniform",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "C": 1
+      },
+      "pieceMale": "BOS_Uniform",
+      "pieceFemale": "BOS_Uniform"
+    },
+    {
+      "id": "BOSUniform_Advanced",
+      "name": "Advanced BoS Uniform",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "C": 2
+      },
+      "pieceMale": "BOS_Uniform_Advanced",
+      "pieceFemale": "BOS_Uniform_Advanced"
+    },
+    {
+      "id": "BOSUniform_Expert",
+      "name": "Expert BoS Uniform",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "C": 3
+      },
+      "pieceMale": "BOS_Uniform_Expert",
+      "pieceFemale": "BOS_Uniform_Expert"
+    },
+    {
+      "id": "BowlingShirt",
+      "name": "Drag Racer",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "E": 1,
+        "A": 1,
+        "L": 1
+      },
+      "pieceMale": "BowlingShirt",
+      "pieceFemale": null
+    },
+    {
+      "id": "BusinessDress",
+      "name": "Agent Provocateur",
+      "category": 2,
+      "special": {
+        "I": 4
+      },
+      "pieceMale": null,
+      "pieceFemale": "BusinessDress"
+    },
+    {
+      "id": "BusinessSuit",
+      "name": "Business Suit",
+      "category": 2,
+      "special": {
+        "C": 4
+      },
+      "pieceMale": "BusinessSuit",
+      "pieceFemale": null
+    },
+    {
+      "id": "ButchSpecial",
+      "name": "Tunnel Snakes' Outfit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 1,
+        "C": 2,
+        "A": 2
+      },
+      "pieceMale": "butch",
+      "pieceFemale": null
+    },
+    {
+      "id": "CaitsCorset",
+      "name": "Cait's Corset",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "E": 4
+      },
+      "pieceMale": null,
+      "pieceFemale": "Cait Corset",
+      "hasHelmet": true
+    },
+    {
+      "id": "CheckeredShirt",
+      "name": "Spring Casualwear",
+      "category": 2,
+      "special": {
+        "E": 1,
+        "A": 1
+      },
+      "pieceMale": "CheckeredShirt",
+      "pieceFemale": null
+    },
+    {
+      "id": "ColonelSpecial",
+      "name": "Autumn's Uniform",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 2,
+        "E": 2,
+        "C": 1
+      },
+      "pieceMale": "colonel",
+      "pieceFemale": null
+    },
+    {
+      "id": "CombatArmor",
+      "name": "Combat Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "A": 1
+      },
+      "pieceMale": "CombatArmor",
+      "pieceFemale": "CombatArmor"
+    },
+    {
+      "id": "CombatArmor_Heavy",
+      "name": "Heavy Combat Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "A": 3
+      },
+      "pieceMale": "CombatArmor",
+      "pieceFemale": "CombatArmor"
+    },
+    {
+      "id": "CombatArmor_Sturdy",
+      "name": "Sturdy Combat Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "A": 2
+      },
+      "pieceMale": "CombatArmor",
+      "pieceFemale": "CombatArmor"
+    },
+    {
+      "id": "ComedianSpecial",
+      "name": "Comedian Outfit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "C": 2,
+        "L": 1
+      },
+      "pieceMale": "ComedianMaleSpecial",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "costume_01",
+      "name": "Casual01",
+      "category": 1,
+      "pieceMale": "costume_01",
+      "pieceFemale": "costume_01"
+    },
+    {
+      "id": "costume_02",
+      "name": "Casual02",
+      "category": 1,
+      "pieceMale": "costume_02",
+      "pieceFemale": "costume_02"
+    },
+    {
+      "id": "costume_03",
+      "name": "Casual03",
+      "category": 1,
+      "pieceMale": "costume_03",
+      "pieceFemale": "costume_03"
+    },
+    {
+      "id": "costume_04",
+      "name": "Casual04",
+      "category": 1,
+      "pieceMale": "costume_04",
+      "pieceFemale": "costume_04"
+    },
+    {
+      "id": "costume_05",
+      "name": "Casual05",
+      "category": 1,
+      "pieceMale": "costume_05",
+      "pieceFemale": "costume_05"
+    },
+    {
+      "id": "costume_06",
+      "name": "Casual06",
+      "category": 1,
+      "pieceMale": "costume_06",
+      "pieceFemale": "costume_06"
+    },
+    {
+      "id": "costume_07",
+      "name": "Casual07",
+      "category": 1,
+      "pieceMale": "costume_07",
+      "pieceFemale": "costume_07"
+    },
+    {
+      "id": "costume_08",
+      "name": "Casual08",
+      "category": 1,
+      "pieceMale": "costume_08",
+      "pieceFemale": "costume_08"
+    },
+    {
+      "id": "costume_09",
+      "name": "Casual09",
+      "category": 1,
+      "pieceMale": "costume_09",
+      "pieceFemale": "costume_09"
+    },
+    {
+      "id": "costume_10",
+      "name": "Casual10",
+      "category": 1,
+      "pieceMale": "costume_10",
+      "pieceFemale": "costume_10"
+    },
+    {
+      "id": "CourserUniform",
+      "name": "Courser Uniform",
+      "category": 2,
+      "special": {
+        "P": 5,
+        "E": 5
+      },
+      "pieceMale": "Courser",
+      "pieceFemale": "Courser"
+    },
+    {
+      "id": "CromwellSpecial",
+      "name": "Confessor Cromwell's Rags",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 2,
+        "I": 1,
+        "L": 2
+      },
+      "pieceMale": "Cromwell",
+      "pieceFemale": null
+    },
+    {
+      "id": "Detective",
+      "name": "Detective Outfit",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "E": 4,
+        "I": 4,
+        "L": 4
+      },
+      "pieceMale": "colonel",
+      "pieceFemale": null
+    },
+    {
+      "id": "DooWopOutfit",
+      "name": "Doo-Wop Singer",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "C": 1,
+        "A": 1,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "DooWopOutfit"
+    },
+    {
+      "id": "DrLiSpecial",
+      "name": "Doctor Li's Outfit",
+      "category": 4,
+      "special": {
+        "I": 3,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "LabCoat"
+    },
+    {
+      "id": "ElderLyonsSpecial",
+      "name": "Elder Lyon's Robe",
+      "category": 4,
+      "special": {
+        "P": 2,
+        "E": 1,
+        "C": 6,
+        "I": 2
+      },
+      "pieceMale": "elder_lyons",
+      "pieceFemale": null
+    },
+    {
+      "id": "EmpressSpecial",
+      "name": "Republic Robes",
+      "category": 2,
+      "special": {
+        "C": 4,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "Empress"
+    },
+    {
+      "id": "EnclaveOfficerUniform",
+      "name": "Enclave Officer Uniform",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "E": 2,
+        "C": 4,
+        "I": 2
+      },
+      "pieceMale": "EnclaveOfficerUniform",
+      "pieceFemale": "EnclaveOfficerUniform"
+    },
+    {
+      "id": "EnclaveOfficerUniform_Helmetless",
+      "name": "Enclave Officer Uniform",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "E": 2,
+        "C": 4,
+        "I": 2
+      },
+      "pieceMale": "EnclaveOfficerUniform_Helmetless",
+      "pieceFemale": "EnclaveOfficerUniform_Helmetless"
+    },
+    {
+      "id": "EnclavePowerArmor",
+      "name": "Enclave Power Armor",
+      "category": 2,
+      "special": {
+        "S": 6,
+        "E": 6,
+        "I": 2
+      },
+      "pieceMale": "EnclavePowerArmor",
+      "pieceFemale": "EnclavePowerArmor"
+    },
+    {
+      "id": "EnclaveSecurityOutfit",
+      "name": "Enclave Security Outfit",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 2
+      },
+      "pieceMale": "EnclaveSecurityOutfit",
+      "pieceFemale": "EnclaveSecurityOutfit",
+      "hasHelmet": true
+    },
+    {
+      "id": "EnclaveSecurityOutfit_Helmetless",
+      "name": "Enclave Security Outfit",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 2
+      },
+      "pieceMale": "EnclaveSecurityOutfit_Helmetless",
+      "pieceFemale": "EnclaveSecurityOutfit_Helmetless",
+      "hasHelmet": true
+    },
+    {
+      "id": "EngineerSpecial",
+      "name": "Engineer Outfit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "I": 2,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "EngineerFemaleSpecial",
+      "hasHelmet": true
+    },
+    {
+      "id": "EulogyJonesSpecial",
+      "name": "Eulogy Jones' Suit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "C": 2,
+        "I": 1,
+        "L": 2
+      },
+      "pieceMale": "eulogy",
+      "pieceFemale": null
+    },
+    {
+      "id": "FarHarborSpecial",
+      "name": "Tattered Longcoat",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 2,
+        "C": 2,
+        "L": 2
+      },
+      "pieceMale": "farharbor",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "FlightSuit",
+      "name": "Flight Suit",
+      "category": 2,
+      "special": {
+        "E": 1,
+        "A": 2
+      },
+      "pieceMale": "FlightSuit",
+      "pieceFemale": "FlightSuit"
+    },
+    {
+      "id": "FlightSuit_Advanced",
+      "name": "Advanced Flight Suit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "A": 3
+      },
+      "pieceMale": "FlightSuit",
+      "pieceFemale": "FlightSuit"
+    },
+    {
+      "id": "FlightSuit_Expert",
+      "name": "Expert Flight Suit",
+      "category": 2,
+      "special": {
+        "E": 3,
+        "A": 4
+      },
+      "pieceMale": "FlightSuit",
+      "pieceFemale": "FlightSuit"
+    },
+    {
+      "id": "FormalWear",
+      "name": "Formal Wear",
+      "category": 2,
+      "special": {
+        "L": 3
+      },
+      "pieceMale": "GamblerSuit",
+      "pieceFemale": "GamblerSuit"
+    },
+    {
+      "id": "FormalWear_Fancy",
+      "name": "Fancy Formal Wear",
+      "category": 2,
+      "special": {
+        "L": 5
+      },
+      "pieceMale": "GamblerSuit",
+      "pieceFemale": "GamblerSuit"
+    },
+    {
+      "id": "FormalWear_Lucky",
+      "name": "Lucky Formal Wear",
+      "category": 2,
+      "special": {
+        "L": 7
+      },
+      "pieceMale": "GamblerSuit",
+      "pieceFemale": "GamblerSuit"
+    },
+    {
+      "id": "Gen1Synth",
+      "name": "Gen1Synth",
+      "category": 4,
+      "special": {
+        "C": 3,
+        "L": 4
+      },
+      "pieceMale": "Gen1Synth",
+      "pieceFemale": null
+    },
+    {
+      "id": "Gen2SynthEnemy",
+      "name": "Greaser Outfit",
+      "category": 4,
+      "pieceMale": "Gen2Synth",
+      "pieceFemale": null
+    },
+    {
+      "id": "HandymanJumpsuit",
+      "name": "Handyman Jumpsuit",
+      "category": 2,
+      "special": {
+        "A": 3
+      },
+      "pieceMale": "HandymanJumpsuit",
+      "pieceFemale": "HandymanJumpsuit"
+    },
+    {
+      "id": "HandymanJumpsuit_Advanced",
+      "name": "Advanced Jumpsuit",
+      "category": 2,
+      "special": {
+        "A": 5
+      },
+      "pieceMale": "HandymanJumpsuit",
+      "pieceFemale": "HandymanJumpsuit"
+    },
+    {
+      "id": "HandymanJumpsuit_Expert",
+      "name": "Expert Jumpsuit",
+      "category": 2,
+      "special": {
+        "A": 7
+      },
+      "pieceMale": "HandymanJumpsuit",
+      "pieceFemale": "HandymanJumpsuit"
+    },
+    {
+      "id": "HanksPowerArmor",
+      "name": "Hank's Power Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 3,
+        "C": 2
+      },
+      "pieceMale": "HanksPowerArmor",
+      "pieceFemale": null
+    },
+    {
+      "id": "HarknessSpecial",
+      "name": "Harkness' Security Uniform",
+      "category": 4,
+      "special": {
+        "P": 5,
+        "A": 3,
+        "L": 2
+      },
+      "pieceMale": "BattleArmor",
+      "pieceFemale": null
+    },
+    {
+      "id": "HazmatSuit",
+      "name": "Wasteland Gear",
+      "category": 2,
+      "special": {
+        "E": 3
+      },
+      "pieceMale": "HazmatSuit",
+      "pieceFemale": "HazmatSuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "HazmatSuit_Heavy",
+      "name": "Heavy Wasteland Gear",
+      "category": 2,
+      "special": {
+        "E": 7
+      },
+      "pieceMale": "HazmatSuit",
+      "pieceFemale": "HazmatSuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "HazmatSuit_Sturdy",
+      "name": "Sturdy Wasteland Gear",
+      "category": 2,
+      "special": {
+        "E": 5
+      },
+      "pieceMale": "HazmatSuit",
+      "pieceFemale": "HazmatSuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "Horseman_DeathJacket",
+      "name": "Death's Jacket",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "E": 4,
+        "A": 4,
+        "L": 4
+      },
+      "pieceMale": "JacketTshirt",
+      "pieceFemale": "JacketTshirt"
+    },
+    {
+      "id": "Horseman_FamineVestment",
+      "name": "Famine's Vestment",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "E": 4,
+        "I": 4,
+        "L": 4
+      },
+      "pieceMale": "ScribeRobeLegen",
+      "pieceFemale": "ScribeRobeLegen"
+    },
+    {
+      "id": "Horseman_PestilencePlating",
+      "name": "Pestilence's Plating",
+      "category": 2,
+      "special": {
+        "E": 4,
+        "C": 4,
+        "I": 4,
+        "A": 4
+      },
+      "pieceMale": "synth_armor",
+      "pieceFemale": "synth_armor"
+    },
+    {
+      "id": "Horseman_WarArmor",
+      "name": "War's Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "P": 4,
+        "E": 4,
+        "C": 4
+      },
+      "pieceMale": "PowerArmor_60",
+      "pieceFemale": "PowerArmor_60",
+      "hasHelmet": true
+    },
+    {
+      "id": "HunterGear_Bounty",
+      "name": "Bounty Hunter Gear",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "P": 2
+      },
+      "pieceMale": "HunterGear",
+      "pieceFemale": "HunterGear"
+    },
+    {
+      "id": "HunterGear_Mutant",
+      "name": "Mutant Hunter Gear",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "P": 3
+      },
+      "pieceMale": "HunterGear",
+      "pieceFemale": "HunterGear"
+    },
+    {
+      "id": "HunterGear_Treasure",
+      "name": "Treasure Hunter Gear",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 1
+      },
+      "pieceMale": "HunterGear",
+      "pieceFemale": "HunterGear"
+    },
+    {
+      "id": "Incognito",
+      "name": "Incognito Leisurewear",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "I": 2,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": "Incognito",
+      "pieceFemale": "Incognito_Female"
+    },
+    {
+      "id": "InstituteJumper_Advanced",
+      "name": "Advanced Institute Jumper",
+      "category": 2,
+      "special": {
+        "I": 3,
+        "A": 2
+      },
+      "pieceMale": "institute_jumpsuit",
+      "pieceFemale": "institute_jumpsuit"
+    },
+    {
+      "id": "InstituteJumper_Expert",
+      "name": "Expert Institute Jumper",
+      "category": 2,
+      "special": {
+        "I": 4,
+        "A": 3
+      },
+      "pieceMale": "institute_jumpsuit",
+      "pieceFemale": "institute_jumpsuit"
+    },
+    {
+      "id": "JacketTshirt",
+      "name": "Motorcycle Jacket",
+      "category": 2,
+      "special": {
+        "S": 6
+      },
+      "pieceMale": "JacketTshirt",
+      "pieceFemale": "JacketTshirt"
+    },
+    {
+      "id": "JailhouseRocker",
+      "name": "Jailhouse Rocker",
+      "category": 2,
+      "special": {
+        "A": 4,
+        "L": 4
+      },
+      "pieceMale": "GhoulKing",
+      "pieceFemale": null
+    },
+    {
+      "id": "JamesSpecial",
+      "name": "Dad's Lab Uniform",
+      "category": 4,
+      "special": {
+        "I": 5,
+        "L": 2
+      },
+      "pieceMale": "LabCoat",
+      "pieceFemale": null
+    },
+    {
+      "id": "JerichoSpecial",
+      "name": "Jericho's Leather Armor",
+      "category": 4,
+      "special": {
+        "S": 2,
+        "E": 6
+      },
+      "pieceMale": "WandererArmor",
+      "pieceFemale": null
+    },
+    {
+      "id": "JobinsonsJersey",
+      "name": "Rackie Jobinson's Jersey",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "P": 4,
+        "C": 4,
+        "A": 4
+      },
+      "pieceMale": "BaseballUniform",
+      "pieceFemale": "BaseballUniform",
+      "hasHelmet": true
+    },
+    {
+      "id": "jumpsuit",
+      "name": "Vault Suit",
+      "category": 3,
+      "pieceMale": "jumpsuit",
+      "pieceFemale": "jumpsuit"
+    },
+    {
+      "id": "KelloggsOutfit",
+      "name": "Kellogg's Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 4,
+        "A": 6
+      },
+      "pieceMale": "Kellogg_Armor",
+      "pieceFemale": null
+    },
+    {
+      "id": "KingSpecial",
+      "name": "Medieval Ruler Outfit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "C": 2,
+        "L": 1
+      },
+      "pieceMale": "King",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "KnightSpecial",
+      "name": "Knight Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 2,
+        "L": 1
+      },
+      "pieceMale": "KnightSpecial",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "LabCoat",
+      "name": "Lab Coat",
+      "category": 2,
+      "special": {
+        "I": 3
+      },
+      "pieceMale": "LabCoat",
+      "pieceFemale": "LabCoat"
+    },
+    {
+      "id": "LabCoat_Advanced",
+      "name": "Advanced Lab Coat",
+      "category": 2,
+      "special": {
+        "I": 5
+      },
+      "pieceMale": "LabCoat",
+      "pieceFemale": "LabCoat"
+    },
+    {
+      "id": "LabCoat_Expert",
+      "name": "Expert Lab Coat",
+      "category": 2,
+      "special": {
+        "I": 7
+      },
+      "pieceMale": "LabCoat",
+      "pieceFemale": "LabCoat"
+    },
+    {
+      "id": "LegatesArmor",
+      "name": "Legate's Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "E": 6,
+        "C": 4
+      },
+      "pieceMale": "Legate",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "LibrarianSpecial",
+      "name": "Librarian Outfit",
+      "category": 2,
+      "special": {
+        "I": 4,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "LibrarianFemaleSpecial"
+    },
+    {
+      "id": "LifeguardOutfit",
+      "name": "Lifeguard Outfit",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "L": 1
+      },
+      "pieceMale": "lifeguard",
+      "pieceFemale": "lifeguard"
+    },
+    {
+      "id": "LoungeShirt",
+      "name": "Bowling Shirt",
+      "category": 2,
+      "special": {
+        "P": 6
+      },
+      "pieceMale": "LoungeShirt",
+      "pieceFemale": null
+    },
+    {
+      "id": "LucasSpecial",
+      "name": "Sheriff's Duster",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 5
+      },
+      "pieceMale": "Lucas",
+      "pieceFemale": null
+    },
+    {
+      "id": "LucysVaultSuit",
+      "name": "Lucy's Vault Suit",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "E": 2,
+        "L": 3
+      },
+      "pieceMale": "LucysVaultSuit",
+      "pieceFemale": "LucysVaultSuit"
+    },
+    {
+      "id": "LucysYellowDress",
+      "name": "Lucy's Yellow Dress",
+      "category": 2,
+      "special": {
+        "C": 6,
+        "A": 4,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "LucyYellowDress"
+    },
+    {
+      "id": "MaJuneJacket",
+      "name": "Ma June Jacket",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "L": 2
+      },
+      "pieceMale": "MaJuneJacket",
+      "pieceFemale": "MaJuneJacket"
+    },
+    {
+      "id": "MaximusJacket",
+      "name": "Maximus' Jacket",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "C": 2,
+        "A": 4,
+        "L": 4
+      },
+      "pieceMale": "Maximus Coat",
+      "pieceFemale": null
+    },
+    {
+      "id": "MayorSpecial",
+      "name": "Mayor Outfit",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "I": 2,
+        "L": 1
+      },
+      "pieceMale": "MayorSpecial",
+      "pieceFemale": null
+    },
+    {
+      "id": "MechanicJumpsuit",
+      "name": "Mechanic Jumpsuit",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "C": 1
+      },
+      "pieceMale": "MechanicJumpsuit",
+      "pieceFemale": null
+    },
+    {
+      "id": "MetalArmor_Heavy",
+      "name": "Heavy Metal Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "L": 3
+      },
+      "pieceMale": "MetalArmor",
+      "pieceFemale": "MetalArmor"
+    },
+    {
+      "id": "MetalArmor_Sturdy",
+      "name": "Sturdy Metal Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "L": 2
+      },
+      "pieceMale": "MetalArmor",
+      "pieceFemale": "MetalArmor"
+    },
+    {
+      "id": "MetalArmorRaiderBoss",
+      "name": "Military Fatigues",
+      "category": 0,
+      "pieceMale": "MetalArmorRaiderBoss",
+      "pieceFemale": "MetalArmorRaiderBoss"
+    },
+    {
+      "id": "MilitaryJumpsuit_Commander",
+      "name": "Commander Fatigues",
+      "category": 2,
+      "special": {
+        "S": 7
+      },
+      "pieceMale": "MilitaryJumpsuit",
+      "pieceFemale": "MilitaryJumpsuit"
+    },
+    {
+      "id": "MilitaryJumpsuit_Officer",
+      "name": "Officer Fatigues",
+      "category": 2,
+      "special": {
+        "S": 5
+      },
+      "pieceMale": "MilitaryJumpsuit",
+      "pieceFemale": "MilitaryJumpsuit"
+    },
+    {
+      "id": "MoiraSpecial",
+      "name": "Moira's RobCo Jumpsuit",
+      "category": 4,
+      "special": {
+        "P": 3,
+        "E": 1,
+        "I": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "HandymanJumpsuit"
+    },
+    {
+      "id": "MojaveWastelandSurvivor",
+      "name": "Mojave Wasteland Survivor",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "E": 5,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "LucyNewVegas"
+    },
+    {
+      "id": "MoldaversArmor",
+      "name": "Moldaver's Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 2,
+        "E": 4,
+        "L": 4
+      },
+      "pieceMale": "MoldaversArmor",
+      "pieceFemale": "MoldaversArmor"
+    },
+    {
+      "id": "MoviefanSpecial",
+      "name": "Movie Fan Outfit",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "MoviefanFemaleSpecial",
+      "hasHelmet": true
+    },
+    {
+      "id": "MrBurkeSpecial",
+      "name": "Mr. Burke's Businesswear",
+      "category": 4,
+      "special": {
+        "C": 4,
+        "L": 4
+      },
+      "pieceMale": "MrBurkeSpecial",
+      "pieceFemale": null
+    },
+    {
+      "id": "MrHousesSuit",
+      "name": "Mr. House's Suit",
+      "category": 2,
+      "special": {
+        "C": 4,
+        "I": 2,
+        "L": 2
+      },
+      "pieceMale": "Mr House",
+      "pieceFemale": null
+    },
+    {
+      "id": "NCR_Ranger",
+      "name": "NCR Ranger Outfit",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "C": 2
+      },
+      "pieceMale": "ncr_ranger",
+      "pieceFemale": "ncr_ranger",
+      "hasHelmet": true
+    },
+    {
+      "id": "NCR_Ranger_Helmetless",
+      "name": "NCR Ranger Outfit",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "C": 2
+      },
+      "pieceMale": "ncr_ranger_Helmetless",
+      "pieceFemale": "ncr_ranger_Helmetless",
+      "hasHelmet": true
+    },
+    {
+      "id": "NCRPowerArmor",
+      "name": "NCR Power Armor",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "P": 2,
+        "E": 4,
+        "C": 2
+      },
+      "pieceMale": "NCRPowerArmor",
+      "pieceFemale": "NCRPowerArmor"
+    },
+    {
+      "id": "NinjaSuit",
+      "name": "Ninja Outfit",
+      "category": 2,
+      "special": {
+        "A": 4,
+        "L": 1
+      },
+      "pieceMale": "NinjaSuit",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "NormalClothing",
+      "name": "NormalClothing",
+      "category": 1,
+      "pieceMale": "costume_01",
+      "pieceFemale": "costume_01"
+    },
+    {
+      "id": "OrionsExplorerGear",
+      "name": "Orion's Explorer Gear",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "P": 5,
+        "E": 4
+      },
+      "pieceMale": "OrionMoreno_Outfit",
+      "pieceFemale": null
+    },
+    {
+      "id": "OverseerClaffsJumpsuit",
+      "name": "Pioneer Overseer Suit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 3,
+        "C": 4,
+        "I": 5
+      },
+      "pieceMale": "Claff_Armor",
+      "pieceFemale": null
+    },
+    {
+      "id": "PaladinDansesPowerArmor",
+      "name": "Paladin Danse's Power Armor",
+      "category": 2,
+      "special": {
+        "S": 5,
+        "P": 1,
+        "E": 1
+      },
+      "pieceMale": "PaladinDanse_T60",
+      "pieceFemale": null
+    },
+    {
+      "id": "PaladinDansesPowerArmorWithHelmet",
+      "name": "Paladin Danse's Power Armor",
+      "category": 2,
+      "special": {
+        "S": 5,
+        "P": 1,
+        "E": 1
+      },
+      "pieceMale": "PaladinDanse_T60_WithHelmet",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "PaladinJacket",
+      "name": "BoS Paladin Jacket",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 4,
+        "C": 2
+      },
+      "pieceMale": "BOS Paladin",
+      "pieceFemale": "BOS Paladin"
+    },
+    {
+      "id": "PiperSpecial",
+      "name": "Piper's Outfit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 2,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "PiperSpecial",
+      "hasHelmet": true
+    },
+    {
+      "id": "PolkaDotDress",
+      "name": "Polka Dot Sundress",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "I": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "PolkaDotDress"
+    },
+    {
+      "id": "PowerArmor",
+      "name": "T-45a Power Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 3
+      },
+      "pieceMale": "PowerArmor",
+      "pieceFemale": "PowerArmor",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_51a",
+      "name": "T-51a Power Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "P": 1
+      },
+      "pieceMale": "PowerArmor_51",
+      "pieceFemale": "PowerArmor_51",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_51d",
+      "name": "T-51d Power Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "P": 2
+      },
+      "pieceMale": "PowerArmor_51",
+      "pieceFemale": "PowerArmor_51",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_51f",
+      "name": "T-51f Power Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "P": 3
+      },
+      "pieceMale": "PowerArmor_51",
+      "pieceFemale": "PowerArmor_51",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_MkI",
+      "name": "X-01 Mk I Power Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "P": 1,
+        "E": 1
+      },
+      "pieceMale": "PowerArmor_X1",
+      "pieceFemale": "PowerArmor_X1",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_MkIV",
+      "name": "X-01 Mk IV Power Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "P": 1,
+        "E": 1
+      },
+      "pieceMale": "PowerArmor_X1",
+      "pieceFemale": "PowerArmor_X1",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_MkVI",
+      "name": "X-01 Mk VI Power Armor",
+      "category": 2,
+      "special": {
+        "S": 5,
+        "P": 1,
+        "E": 1
+      },
+      "pieceMale": "PowerArmor_X1",
+      "pieceFemale": "PowerArmor_X1",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_T45d",
+      "name": "T-45d Power Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 4
+      },
+      "pieceMale": "PowerArmor",
+      "pieceFemale": "PowerArmor",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_T45f",
+      "name": "T-45f Power Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 5
+      },
+      "pieceMale": "PowerArmor",
+      "pieceFemale": "PowerArmor",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_T60a",
+      "name": "T-60a Power Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 3
+      },
+      "pieceMale": "PowerArmor_60",
+      "pieceFemale": "PowerArmor_60",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_T60d",
+      "name": "T-60d Power Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 4
+      },
+      "pieceMale": "PowerArmor_60",
+      "pieceFemale": "PowerArmor_60",
+      "hasHelmet": true
+    },
+    {
+      "id": "PowerArmor_T60f",
+      "name": "T-60f Power Armor",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "P": 1,
+        "E": 5
+      },
+      "pieceMale": "PowerArmor_60",
+      "pieceFemale": "PowerArmor_60",
+      "hasHelmet": true
+    },
+    {
+      "id": "PrestonSpecial",
+      "name": "Minuteman Uniform",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "P": 2,
+        "I": 2,
+        "A": 2
+      },
+      "pieceMale": "Preston",
+      "pieceFemale": null
+    },
+    {
+      "id": "PrewarCowboy",
+      "name": "Prewar Cowboy Costume",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "A": 2
+      },
+      "pieceMale": "PrewarCowboy",
+      "pieceFemale": "PrewarCowboy",
+      "hasHelmet": true
+    },
+    {
+      "id": "PrinceSpecial",
+      "name": "Nobility Outfit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "I": 2,
+        "L": 1
+      },
+      "pieceMale": "Prince",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "ProfessorSpecial",
+      "name": "Professor Outfit",
+      "category": 2,
+      "special": {
+        "I": 4,
+        "L": 1
+      },
+      "pieceMale": "ProfessorSpecial",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "RadiationSuit",
+      "name": "Radiation Suit",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "E": 2
+      },
+      "pieceMale": "RadiationSuit",
+      "pieceFemale": "RadiationSuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "RadiationSuit_Advanced",
+      "name": "Advanced Radiation Suit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 3
+      },
+      "pieceMale": "RadiationSuit",
+      "pieceFemale": "RadiationSuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "RadiationSuit_Expert",
+      "name": "Expert Radiation Suit",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "E": 4
+      },
+      "pieceMale": "RadiationSuit",
+      "pieceFemale": "RadiationSuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "RaiderArmor",
+      "name": "Raider Armor",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "A": 2
+      },
+      "pieceMale": "RaiderArmor",
+      "pieceFemale": "RaiderArmor"
+    },
+    {
+      "id": "RaiderArmor_Heavy",
+      "name": "Heavy Raider Armor",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "A": 4
+      },
+      "pieceMale": "RaiderArmor",
+      "pieceFemale": "RaiderArmor"
+    },
+    {
+      "id": "RaiderArmor_Sturdy",
+      "name": "Sturdy Raider Armor",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "A": 3
+      },
+      "pieceMale": "RaiderArmor",
+      "pieceFemale": "RaiderArmor"
+    },
+    {
+      "id": "RegsDirtyBlackSuit",
+      "name": "Regs' Dirty Black Suit",
+      "category": 2,
+      "special": {
+        "P": 6,
+        "I": 4
+      },
+      "pieceMale": "SleekSuit",
+      "pieceFemale": null
+    },
+    {
+      "id": "RiotGear",
+      "name": "Merc Gear",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "A": 1,
+        "L": 1
+      },
+      "pieceMale": "RiotGear",
+      "pieceFemale": "RiotGear"
+    },
+    {
+      "id": "RiotGear_Heavy",
+      "name": "Heavy Merc Gear",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "A": 3,
+        "L": 2
+      },
+      "pieceMale": "RiotGear",
+      "pieceFemale": "RiotGear"
+    },
+    {
+      "id": "RiotGear_Sturdy",
+      "name": "Sturdy Merc Gear",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": "RiotGear",
+      "pieceFemale": "RiotGear"
+    },
+    {
+      "id": "RobCoFactoryUniform",
+      "name": "RobCo Factory Uniform",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "L": 2
+      },
+      "pieceMale": "robco_factory_uniform",
+      "pieceFemale": "robco_factory_uniform"
+    },
+    {
+      "id": "RobCoRdSuit",
+      "name": "RobCo R&D Suit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "I": 4
+      },
+      "pieceMale": "robco_rd_suit",
+      "pieceFemale": "robco_rd_suit"
+    },
+    {
+      "id": "RobCoRdSuit_Helmetless",
+      "name": "RobCo R&D Suit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "I": 4
+      },
+      "pieceMale": "robco_rd_suit_Helmetless",
+      "pieceFemale": "robco_rd_suit_Heltmetless"
+    },
+    {
+      "id": "RobotArmor",
+      "name": "Robot Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 2,
+        "L": 2
+      },
+      "pieceMale": "robot_armor",
+      "pieceFemale": "robot_armor"
+    },
+    {
+      "id": "RothchildSpecial",
+      "name": "Scribe Rothchild's Robe",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 1,
+        "C": 2,
+        "I": 2
+      },
+      "pieceMale": "ScribeRobe",
+      "pieceFemale": null
+    },
+    {
+      "id": "RottedDuster",
+      "name": "The Ghoul's Coat",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "E": 2,
+        "C": 2,
+        "A": 2
+      },
+      "pieceMale": "RottedDuster",
+      "pieceFemale": "RottedDuster"
+    },
+    {
+      "id": "SantaSuit_Original",
+      "name": "Original Santa Suit",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "E": 3,
+        "C": 4
+      },
+      "pieceMale": "SpecialThemeXmasM",
+      "pieceFemale": "SpecialThemeXmasF"
+    },
+    {
+      "id": "SarahSpecial",
+      "name": "Lyon's Pride Armor",
+      "category": 4,
+      "special": {
+        "S": 4,
+        "P": 3,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "PowerArmorSpecial"
+    },
+    {
+      "id": "ScarredPowerArmor",
+      "name": "Scarred Power Armor",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "P": 2,
+        "E": 4,
+        "C": 2
+      },
+      "pieceMale": "ScarredPowerArmor",
+      "pieceFemale": "ScarredPowerArmor",
+      "hasHelmet": true
+    },
+    {
+      "id": "ScientistScrubs",
+      "name": "Junior Officer Uniform",
+      "category": 2,
+      "special": {
+        "C": 1,
+        "I": 2
+      },
+      "pieceMale": "ScientistScrubs",
+      "pieceFemale": "ScientistScrubs"
+    },
+    {
+      "id": "ScientistScrubs_Commander",
+      "name": "Commander Uniform",
+      "category": 2,
+      "special": {
+        "C": 3,
+        "I": 4
+      },
+      "pieceMale": "ScientistScrubs",
+      "pieceFemale": "ScientistScrubs"
+    },
+    {
+      "id": "ScientistScrubs_Officer",
+      "name": "Officer Uniform",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "I": 3
+      },
+      "pieceMale": "ScientistScrubs",
+      "pieceFemale": "ScientistScrubs"
+    },
+    {
+      "id": "ScifiSpecial",
+      "name": "Sci-Fi Fan Outfit",
+      "category": 2,
+      "special": {
+        "I": 2,
+        "A": 2,
+        "L": 1
+      },
+      "pieceMale": "ScifiSpecial",
+      "pieceFemale": null
+    },
+    {
+      "id": "Scorched",
+      "name": "Scorched",
+      "category": 4,
+      "special": {
+        "E": 1,
+        "I": 2,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": "Scorched",
+      "pieceFemale": "Scorched"
+    },
+    {
+      "id": "ScorchedHeavy",
+      "name": "Scorched",
+      "category": 4,
+      "special": {
+        "E": 1,
+        "I": 2,
+        "A": 2,
+        "L": 2
+      },
+      "pieceMale": "Scorched 2",
+      "pieceFemale": "Scorched 2"
+    },
+    {
+      "id": "ScribeRobe",
+      "name": "Scribe Robe",
+      "category": 2,
+      "special": {
+        "C": 3,
+        "A": 2
+      },
+      "pieceMale": "ScribeRobe",
+      "pieceFemale": "ScribeRobe"
+    },
+    {
+      "id": "ScribeRobe_Elder",
+      "name": "Elder Robe",
+      "category": 2,
+      "special": {
+        "C": 4,
+        "A": 3
+      },
+      "pieceMale": "ScribeRobeLegen",
+      "pieceFemale": "ScribeRobeLegen"
+    },
+    {
+      "id": "ScribeRobe_Initiate",
+      "name": "Initiate Robe",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "A": 1
+      },
+      "pieceMale": "ScribeRobe",
+      "pieceFemale": "ScribeRobe"
+    },
+    {
+      "id": "SequinDress",
+      "name": "Vault Socialite",
+      "category": 2,
+      "special": {
+        "C": 1,
+        "A": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "SequinDress"
+    },
+    {
+      "id": "SlasherSpecial",
+      "name": "Horror Fan Outfit",
+      "category": 2,
+      "special": {
+        "E": 4,
+        "L": 1
+      },
+      "pieceMale": "SlasherSpecial",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "SleazySuit",
+      "name": "Sleazy Suit",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "I": 2
+      },
+      "pieceMale": "SleazySuit",
+      "pieceFemale": "SleazySuit"
+    },
+    {
+      "id": "SleekSuit",
+      "name": "Sleek Suit",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "I": 2,
+        "A": 4,
+        "L": 4
+      },
+      "pieceMale": "SleekSuit",
+      "pieceFemale": "SleekSuit"
+    },
+    {
+      "id": "SodaFountainDress",
+      "name": "Soda Fountain Dress",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "E": 1,
+        "I": 1,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "SodaFountainDress"
+    },
+    {
+      "id": "SoldierSpecial",
+      "name": "Soldier Uniform",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 2,
+        "L": 1
+      },
+      "pieceMale": "BOS Paladin",
+      "pieceFemale": "SoldierFemaleSpecial",
+      "hasHelmet": true
+    },
+    {
+      "id": "SpecialThemeHalloween",
+      "name": "Ghost Costume",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "A": 3
+      },
+      "pieceMale": "SpecialThemeHalloweenM",
+      "pieceFemale": "SpecialThemeHalloweenF",
+      "hasHelmet": true
+    },
+    {
+      "id": "SpecialThemeHalloween2",
+      "name": "Skeleton Costume",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "L": 3
+      },
+      "pieceMale": "Skeleton",
+      "pieceFemale": "Skeleton",
+      "hasHelmet": true
+    },
+    {
+      "id": "SpecialThemeThanksGiving",
+      "name": "Pilgrim Outfit",
+      "category": 2,
+      "special": {
+        "C": 3,
+        "I": 2
+      },
+      "pieceMale": "SpecialThemeThanksgivingM",
+      "pieceFemale": "SpecialThemeThanksgivingF"
+    },
+    {
+      "id": "SpecialThemeXmas",
+      "name": "Santa Suit",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "C": 2
+      },
+      "pieceMale": "SpecialThemeXmasM",
+      "pieceFemale": "SpecialThemeXmasF"
+    },
+    {
+      "id": "SpecialThemeXmas2",
+      "name": "Elf Outfit",
+      "category": 2,
+      "special": {
+        "I": 3,
+        "L": 2
+      },
+      "pieceMale": "Elf",
+      "pieceFemale": "Elf",
+      "hasHelmet": true
+    },
+    {
+      "id": "SportsfanSpecial",
+      "name": "Sports Fan Outfit",
+      "category": 2,
+      "special": {
+        "S": 4,
+        "L": 1
+      },
+      "pieceMale": "SportsfanSpecial",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "StarPaladinSpecial",
+      "name": "Cross' Power Armor",
+      "category": 4,
+      "special": {
+        "S": 5,
+        "P": 2,
+        "E": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "PowerArmorSpecial"
+    },
+    {
+      "id": "SurgeonSpecial",
+      "name": "Surgeon Outfit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "A": 2,
+        "L": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "SurgeonFemaleSpecial"
+    },
+    {
+      "id": "SurvivorSpecial",
+      "name": "Survivor Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "A": 2,
+        "L": 1
+      },
+      "pieceMale": "SurvivorSpecial",
+      "pieceFemale": null
+    },
+    {
+      "id": "Suspenders",
+      "name": "Bespoke Attire",
+      "category": 2,
+      "special": {
+        "E": 4
+      },
+      "pieceMale": "Suspenders",
+      "pieceFemale": null
+    },
+    {
+      "id": "SweaterVest",
+      "name": "Pre-War Suburbanite",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "I": 1
+      },
+      "pieceMale": "SweaterVest",
+      "pieceFemale": null
+    },
+    {
+      "id": "Swimsuit",
+      "name": "Swimsuit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "C": 2,
+        "L": 1
+      },
+      "pieceMale": "swimsuit",
+      "pieceFemale": "swimsuit",
+      "hasHelmet": true
+    },
+    {
+      "id": "SwingDress",
+      "name": "Swing Dress",
+      "category": 2,
+      "special": {
+        "A": 6
+      },
+      "pieceMale": null,
+      "pieceFemale": "SwingDress"
+    },
+    {
+      "id": "SynthArmor_Heavy",
+      "name": "Heavy Synth Armor",
+      "category": 2,
+      "special": {
+        "E": 4,
+        "I": 3
+      },
+      "pieceMale": "synth_armor",
+      "pieceFemale": "synth_armor"
+    },
+    {
+      "id": "ThreedogSpecial",
+      "name": "Three Dog's Outfit",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "C": 5
+      },
+      "pieceMale": "Three_dog",
+      "pieceFemale": null
+    },
+    {
+      "id": "TiedBlouse",
+      "name": "Country Girl",
+      "category": 2,
+      "special": {
+        "S": 4
+      },
+      "pieceMale": null,
+      "pieceFemale": "TiedBlouse",
+      "hasHelmet": true
+    },
+    {
+      "id": "UtilityJumpsuit",
+      "name": "Armored Vault Suit",
+      "category": 2,
+      "special": {
+        "P": 3
+      },
+      "pieceMale": "UtilityJumpsuit",
+      "pieceFemale": "UtilityJumpsuit"
+    },
+    {
+      "id": "UtilityJumpsuit_Heavy",
+      "name": "Heavy Vault Suit",
+      "category": 2,
+      "special": {
+        "P": 7
+      },
+      "pieceMale": "UtilityJumpsuit",
+      "pieceFemale": "UtilityJumpsuit"
+    },
+    {
+      "id": "UtilityJumpsuit_Sturdy",
+      "name": "Sturdy Vault Suit",
+      "category": 2,
+      "special": {
+        "P": 5
+      },
+      "pieceMale": "UtilityJumpsuit",
+      "pieceFemale": "UtilityJumpsuit"
+    },
+    {
+      "id": "ValentinesTrenchCoat",
+      "name": "Valentine's Trench Coat",
+      "category": 2,
+      "special": {
+        "P": 6,
+        "I": 4,
+        "A": 4
+      },
+      "pieceMale": "NickValentine_TrenchCoat",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "Vault33Suit",
+      "name": "Vault 33 Suit",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "L": 2
+      },
+      "pieceMale": "Vault33Suit",
+      "pieceFemale": "Vault33Suit"
+    },
+    {
+      "id": "VaultSecurityOutfit",
+      "name": "Vault Security Outfit",
+      "category": 2,
+      "special": {
+        "E": 2,
+        "L": 2
+      },
+      "pieceMale": "VaultSecurityOutfit",
+      "pieceFemale": "VaultSecurityOutfit",
+      "hasHelmet": true
+    },
+    {
+      "id": "Vest",
+      "name": "Post-War Casanova",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "C": 1,
+        "I": 1,
+        "L": 1
+      },
+      "pieceMale": "Vest",
+      "pieceFemale": null
+    },
+    {
+      "id": "WaitressUniform",
+      "name": "Waitress Uniform",
+      "category": 2,
+      "special": {
+        "A": 4
+      },
+      "pieceMale": null,
+      "pieceFemale": "WaitressUniform"
+    },
+    {
+      "id": "WandererArmor",
+      "name": "Leather Armor",
+      "category": 2,
+      "special": {
+        "S": 1,
+        "E": 2
+      },
+      "pieceMale": "WandererArmor",
+      "pieceFemale": "WandererArmor"
+    },
+    {
+      "id": "WandererArmor_Heavy",
+      "name": "Heavy Leather Armor",
+      "category": 2,
+      "special": {
+        "S": 3,
+        "E": 4
+      },
+      "pieceMale": "WandererArmor",
+      "pieceFemale": "WandererArmor"
+    },
+    {
+      "id": "WandererArmor_Sturdy",
+      "name": "Sturdy Leather Armor",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 3
+      },
+      "pieceMale": "WandererArmor",
+      "pieceFemale": "WandererArmor"
+    },
+    {
+      "id": "WastelandSurgeon",
+      "name": "Wasteland Surgeon",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "L": 3
+      },
+      "pieceMale": "WastelandSurgeon",
+      "pieceFemale": "WastelandSurgeon"
+    },
+    {
+      "id": "WastelandSurgeon_Doctor",
+      "name": "Wasteland Doctor",
+      "category": 2,
+      "special": {
+        "P": 3,
+        "L": 2
+      },
+      "pieceMale": "WastelandSurgeon",
+      "pieceFemale": "WastelandSurgeon"
+    },
+    {
+      "id": "WastelandSurgeon_Settler",
+      "name": "Wasteland Medic",
+      "category": 2,
+      "special": {
+        "P": 2,
+        "L": 1
+      },
+      "pieceMale": "WastelandSurgeon",
+      "pieceFemale": "WastelandSurgeon"
+    },
+    {
+      "id": "WeddingDress",
+      "name": "Wedding Dress",
+      "category": 2,
+      "special": {
+        "C": 2,
+        "L": 2
+      },
+      "pieceMale": null,
+      "pieceFemale": "WeddingDress",
+      "hasHelmet": true
+    },
+    {
+      "id": "WilzigsTravelwear",
+      "name": "Wilzig's Travelwear",
+      "category": 2,
+      "special": {
+        "P": 4,
+        "E": 2,
+        "A": 2,
+        "L": 4
+      },
+      "pieceMale": "WilzigsTravelwear",
+      "pieceFemale": "WilzigsTravelwear"
+    },
+    {
+      "id": "WorkDress",
+      "name": "Rural Schoolmarm",
+      "category": 2,
+      "special": {
+        "P": 1,
+        "E": 1
+      },
+      "pieceMale": null,
+      "pieceFemale": "WorkDress"
+    },
+    {
+      "id": "WrestlerSpecial",
+      "name": "Wrestler Outfit",
+      "category": 2,
+      "special": {
+        "S": 2,
+        "E": 2,
+        "L": 1
+      },
+      "pieceMale": "WrestlerSpecial",
+      "pieceFemale": null,
+      "hasHelmet": true
+    },
+    {
+      "id": "ZekesJacketAndJeans",
+      "name": "Zeke's Jacket and Jeans",
+      "category": 2,
+      "special": {
+        "C": 3,
+        "L": 4
+      },
+      "pieceMale": "Zeke jacket and jeans",
+      "pieceFemale": null
+    }
+  ]
 }

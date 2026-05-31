@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { SpecialBadges } from './editor/SpecialBadges';
 import { renderOutfitThumbnail } from '../lib/dwellerThumbnail';
-import { loadSpriteIndex } from '../lib/spriteIndex';
+import { loadSpriteIndex, outfitItemById } from '../lib/spriteIndex';
 import { specialBonusFor } from '../lib/outfitStats';
-import type { SpriteIndex, PieceRef } from '../types/pieces';
+import type { SpriteIndex } from '../types/pieces';
 import type { RenderableDweller } from '../lib/dwellerRender';
 
 /**
@@ -30,16 +30,14 @@ export function OutfitBadge({ dweller }: { dweller: RenderableDweller }) {
 
   if (!dweller.outfitName) return null;
 
-  const gender = dweller.gender === 2 ? 'male' : 'female';
-  const ref: PieceRef | undefined = index?.byType.outfit.find(
-    (p) => p.name === dweller.outfitName && (p.gender === gender || p.gender === 'any'),
-  );
-  const bonus = ref?.special ?? specialBonusFor(dweller.outfitName);
+  const item = index ? outfitItemById(index, dweller.outfitName) : null;
+  const bonus = item?.special ?? specialBonusFor(dweller.outfitName);
+  const label = item?.name ?? dweller.outfitName;
 
   return (
     <div className="absolute bottom-1.5 left-1.5 flex items-center gap-2 rounded bg-zinc-900/85 border border-zinc-700 px-2 py-1 leading-tight shadow-lg">
       <div className="text-left">
-        <div className="text-green-400 font-medium" style={{ fontSize: 12 }}>{dweller.outfitName}</div>
+        <div className="text-green-400 font-medium" style={{ fontSize: 12 }}>{label}</div>
         <div className="mt-0.5">
           <SpecialBadges bonus={bonus} inline />
         </div>
@@ -47,7 +45,7 @@ export function OutfitBadge({ dweller }: { dweller: RenderableDweller }) {
       {thumb && (
         <img
           src={thumb}
-          alt={dweller.outfitName}
+          alt={label}
           style={{ width: 40, height: 40, objectFit: 'contain' }}
         />
       )}

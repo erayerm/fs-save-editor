@@ -1,4 +1,4 @@
-import type { SpriteIndex, PieceRef, PieceType } from '../types/pieces';
+import type { SpriteIndex, PieceRef, PieceType, OutfitItem } from '../types/pieces';
 
 let cached: SpriteIndex | null = null;
 let pending: Promise<SpriteIndex> | null = null;
@@ -42,6 +42,48 @@ export function pieceByName(
     );
   }
   return matches[0];
+}
+
+/** Look up an outfit item by its save id (equipedOutfit.id). */
+export function outfitItemById(idx: SpriteIndex, id: string): OutfitItem | null {
+  return idx.outfitItems?.find((o) => o.id === id) ?? null;
+}
+
+/**
+ * Resolve the visual outfit piece to render for a given equipped outfit id.
+ * Maps the item id to its gender-appropriate visual piece (handling variants and
+ * uniques whose item id differs from the piece name). Falls back to treating the
+ * id itself as a piece name (legacy/base outfits where the two coincide).
+ */
+export function outfitPieceFor(
+  idx: SpriteIndex,
+  id: string,
+  gender: 'male' | 'female',
+): PieceRef | null {
+  const item = outfitItemById(idx, id);
+  if (item) {
+    const preferred = gender === 'male' ? item.pieceMale : item.pieceFemale;
+    const other = gender === 'male' ? item.pieceFemale : item.pieceMale;
+    const pieceName = preferred ?? other;
+    if (pieceName) return pieceByName(idx, 'outfit', pieceName, gender);
+  }
+  return pieceByName(idx, 'outfit', id, gender);
+}
+
+/**
+ * Player-equippable outfit items: Premium plus the default vault jumpsuit. When a
+ * `gender` is given, only items with a visual for that gender are returned —
+ * many outfits are gender-specific in the game (e.g. Action Wedding Dress is
+ * female-only, Ninja Outfit is male-only), so a male dweller must not be offered
+ * female-only outfits and vice versa.
+ */
+export function equippableOutfits(idx: SpriteIndex, gender?: 'male' | 'female'): OutfitItem[] {
+  const items = idx.outfitItems ?? [];
+  return items.filter((o) => {
+    if (o.category !== 2 && o.id !== 'jumpsuit') return false;
+    const piece = gender === 'male' ? o.pieceMale : gender === 'female' ? o.pieceFemale : (o.pieceMale || o.pieceFemale);
+    return !!piece;
+  });
 }
 
 export function pieceByGuid(

@@ -58,7 +58,27 @@ export interface PieceRef {
   };
 }
 
+/**
+ * A DwellerOutfitItem — the real, equippable outfit as stored in saves
+ * (`equipedOutfit.id` = `id`). Several items can share one visual outfit but
+ * differ in SPECIAL bonus (e.g. HandymanJumpsuit / _Advanced / _Expert give
+ * +3 / +5 / +7 Agility on the same art). `pieceMale`/`pieceFemale` name the
+ * visual outfit piece used to render each gender (null when that gender has none).
+ */
+export interface OutfitItem {
+  id: string;
+  name: string;
+  /** EOutfitCategory: 1=Casual 2=Premium 3=Default 4=CodeControlled. */
+  category: number;
+  special?: Partial<Record<'S' | 'P' | 'E' | 'C' | 'I' | 'A' | 'L', number>>;
+  pieceMale: string | null;
+  pieceFemale: string | null;
+  hasHelmet?: boolean;
+}
+
 export interface SpriteIndex {
   version: 1;
   byType: Record<PieceType, PieceRef[]>;
+  /** All equippable outfit items keyed by their save id. */
+  outfitItems?: OutfitItem[];
 }

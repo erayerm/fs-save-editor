@@ -7,6 +7,7 @@ import {
 } from 'node:fs';
 import { join, basename } from 'node:path';
 import { parseHeadgearPlacement } from './lib/parseHeadgear.mjs';
+import { parseLocalization } from './lib/localization.mjs';
 import { decodeIndexBuffer, decodeVertexStreams, decodeVertexChannels } from './lib/decodeMesh.mjs';
 import { WEAPON_DATA } from './lib/weaponData.mjs';
 import { parseNguiAtlas, pngSize } from './lib/parseNguiAtlas.mjs';
@@ -246,14 +247,24 @@ for (const { ref, helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, g
 // distinguish real player items (Premium=2) from enemy/scripted outfits
 // (CodeControlled=4, e.g. Scorched, Gen1Synth, alien_space_suit_enemy).
 // ---------------------------------------------------------------------------
+// outfitItems: every DwellerOutfitItem keyed by its m_outfitId (the string stored
+// in saves as equipedOutfit.id). This is the AUTHORITATIVE outfit list — using any
+// other id (e.g. the visual piece name) makes the game replace the outfit with the
+// default jumpsuit on load. Each item also records the resolved visual piece NAME
+// per gender so the renderer can draw the right art (multiple items, e.g.
+// HandymanJumpsuit / _Advanced / _Expert, share one visual but differ in SPECIAL).
+const outfitItems = [];
 {
   const gpPath = join(ROOT, 'GameObject/GameParameters.prefab');
   let tagged = 0;
   try {
     const gp = readFileSync(gpPath, 'utf8');
-    // male, female, outfitId, category appear consecutively in each entry. The
-    // male/female refs are .meta guids → resolve to the exact outfit ref.
-    const itemRe = /m_maleOutfit:\s*\{([^}]*)\}\s*\n\s*m_femaleOutfit:\s*\{([^}]*)\}\s*\n\s*m_outfitId:\s*(\S+)\s*\n\s*m_category:\s*(-?\d+)\s*\n\s*m_specialStats:\s*([\s\S]*?)m_outfitNameLocalizationId:/g;
+    let locMap = new Map();
+    try { locMap = parseLocalization(readFileSync(join(ROOT, 'Resources/I2Languages.prefab'), 'utf8')); } catch { /* names optional */ }
+
+    // male, female, outfitId, category, specialStats, nameLoc, hasHelmet appear
+    // consecutively in each entry. The male/female refs are .meta guids.
+    const itemRe = /m_maleOutfit:\s*\{([^}]*)\}\s*\n\s*m_femaleOutfit:\s*\{([^}]*)\}\s*\n\s*m_outfitId:\s*(\S+)\s*\n\s*m_category:\s*(-?\d+)\s*\n\s*m_specialStats:\s*([\s\S]*?)m_outfitNameLocalizationId:\s*(\S+)\s*\n\s*m_HasHelmet:\s*(\d+)/g;
     const guidOf = (brace) => brace.match(/guid:\s*([0-9a-f]+)/)?.[1];
     // Parse the m_specialStats block into a { S, P, E, C, I, A, L } map of non-zero bonuses.
     const STAT_LETTERS = [
@@ -270,17 +281,29 @@ for (const { ref, helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, g
     };
     let m;
     while ((m = itemRe.exec(gp)) !== null) {
+      const maleGuid = guidOf(m[1]);
+      const femaleGuid = guidOf(m[2]);
+      const id = m[3];
       const category = +m[4];
       const special = parseSpecial(m[5]);
+      const name = locMap.get(m[6]) || id;
+      const hasHelmet = +m[7] === 1;
+      const maleRef = maleGuid ? outfitMetaGuidToRef.get(maleGuid) : null;
+      const femaleRef = femaleGuid ? outfitMetaGuidToRef.get(femaleGuid) : null;
+
+      outfitItems.push({
+        id, name, category,
+        ...(Object.keys(special).length ? { special } : {}),
+        pieceMale: maleRef?.name ?? null,
+        pieceFemale: femaleRef?.name ?? null,
+        ...(hasHelmet ? { hasHelmet: true } : {}),
+      });
+
+      // Also tag the visual pieces with category/special (kept for backward compat
+      // with any piece-level consumers). Premium wins when a visual is shared.
       const hasSpecial = Object.keys(special).length > 0;
-      for (const metaGuid of [guidOf(m[1]), guidOf(m[2])]) {
-        if (!metaGuid) continue;
-        const ref = outfitMetaGuidToRef.get(metaGuid);
+      for (const ref of [maleRef, femaleRef]) {
         if (!ref) continue;
-        // A single visual sprite can be shared by several items (e.g. BattleArmor's
-        // male visual is used by both the Premium item and a CodeControlled enemy).
-        // Premium wins: once a visual is claimed by a real player item, keep it
-        // (along with its SPECIAL bonus).
         if (ref.flags.outfitCategory === 2) continue;
         ref.flags.outfitCategory = category;
         if (hasSpecial) ref.special = special;
@@ -288,9 +311,9 @@ for (const { ref, helmetMetaGuid, largeHeadgearMetaGuid, coloringMaskMetaGuid, g
         tagged++;
       }
     }
-    console.log(`Tagged ${tagged} outfit visuals with DwellerOutfitItem categories`);
+    console.log(`Parsed ${outfitItems.length} outfit items (${tagged} visuals tagged)`);
   } catch (e) {
-    console.warn(`Warning: could not tag outfit categories from ${gpPath}: ${e.message}`);
+    console.warn(`Warning: could not parse outfit items from ${gpPath}: ${e.message}`);
   }
 }
 
@@ -379,7 +402,8 @@ for (const filename of referencedAtlases) {
   copyFileSync(entry.srcPath, join(OUT_DIR, filename));
 }
 
-const index = { version: 1, byType };
+outfitItems.sort((a, b) => a.id.localeCompare(b.id));
+const index = { version: 1, byType, outfitItems };
 writeFileSync(join(OUT_DIR, 'index.json'), JSON.stringify(index, null, 2));
 
 // ---------------------------------------------------------------------------

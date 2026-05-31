@@ -18,6 +18,9 @@ const idx: SpriteIndex = {
     hair: [], body: [], outfitColoringMask: [], face: [], faceMask: [],
     helmet: [], helmetMask: [], largeHeadgear: [], handPose: [], glovePose: [],
   },
+  outfitItems: [
+    { id: 'jumpsuit', name: 'jumpsuit', category: 3, pieceMale: 'jumpsuit', pieceFemale: 'jumpsuit' },
+  ],
 };
 
 describe('OutfitTab', () => {

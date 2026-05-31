@@ -1,6 +1,6 @@
 import type { SpriteIndex, AtlasRect } from '../types/pieces';
 import type { MeshGeometry } from '../types/mesh';
-import { pieceByName, pieceByGuid, isFacialHairPiece } from './spriteIndex';
+import { pieceByName, pieceByGuid, isFacialHairPiece, outfitPieceFor } from './spriteIndex';
 import { faceNameForHappiness, type RenderableDweller, type Rgb } from './dwellerRender';
 
 export type LayerSlot = 'body' | 'outfit' | 'face' | 'faceMask' | 'hair' | 'helmet' | 'hand' | 'headgear';
@@ -117,7 +117,7 @@ export function buildLayers(
   const ownScale = (b: AtlasRect): [number, number] => [b.w / ATLAS, b.h / ATLAS];
   const ownOffset = (b: AtlasRect): [number, number] => [b.x / ATLAS, b.y / ATLAS];
 
-  const outfit = dweller.outfitName ? pieceByName(idx, 'outfit', dweller.outfitName, gender) : null;
+  const outfit = dweller.outfitName ? outfitPieceFor(idx, dweller.outfitName, gender) : null;
   const wantBody = outfit?.flags.hasSkirt && gender === 'female' ? 'skirt_body' : 'base_body';
   const body = pieceByName(idx, 'body', wantBody, gender) ?? pieceByName(idx, 'body', 'base_body', gender);
 
@@ -285,7 +285,7 @@ export function buildLayersWithMeta(
   let unknownOutfit: string | undefined;
   let effective = dweller;
 
-  if (dweller.outfitName && !pieceByName(idx, 'outfit', dweller.outfitName, gender)) {
+  if (dweller.outfitName && !outfitPieceFor(idx, dweller.outfitName, gender)) {
     unknownOutfit = dweller.outfitName;
     effective = { ...dweller, outfitName: 'jumpsuit' };
   }
