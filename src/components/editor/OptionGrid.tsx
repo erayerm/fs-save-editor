@@ -19,7 +19,7 @@ export interface GridOption {
 }
 
 export function OptionGrid({
-  options, selected, onSelect, cellW, cellH,
+  options, selected, onSelect, cellW, cellH, showLabel = false,
 }: {
   options: GridOption[];
   selected: string | null;
@@ -28,6 +28,13 @@ export function OptionGrid({
   cellW?: number;
   /** Override cell height (px). Default: 221 for thumbnailUrl, 80 for sprite layers. */
   cellH?: number;
+  /**
+   * Portrait cells only: show the option's name below the thumbnail (with a
+   * fixed-height SPECIAL badge row beneath it). Used by the outfit picker, whose
+   * labels are real names; left off for e.g. hair, whose labels are bare ids
+   * ("01", "02") that shouldn't be shown.
+   */
+  showLabel?: boolean;
 }) {
   if (options.length === 0) {
     return <div className="text-zinc-500 italic text-sm p-2">No options available.</div>;
@@ -44,7 +51,7 @@ export function OptionGrid({
     'rounded border overflow-hidden ' +
     (hasPortrait ? 'flex flex-col items-center ' : 'flex items-center justify-center ');
   const cellStyle = hasPortrait
-    ? { width: cellW ?? 170, height: cellH ?? 246 }
+    ? { width: cellW ?? 170, height: cellH ?? 268 }
     : hasSprite
     ? { width: cellW ?? 80, height: cellH ?? 80 }
     : { minWidth: cellW ?? 80, minHeight: cellH ?? 48 };
@@ -74,10 +81,12 @@ export function OptionGrid({
           style={{ ...cellStyle, position: 'relative' }}
         >
           {o.thumbnailUrl || o.loading ? (
-            // Portrait: image (or skeleton) fills the flexible top region; badge
-            // sits below it in normal flow so there's a clear gap between them.
+            // Portrait: image (or skeleton) fills the flexible top region. With
+            // showLabel, the option name is shown right beneath the image and a
+            // FIXED-height SPECIAL badge row follows (reserving the height keeps
+            // cells with and without a badge — e.g. the jumpsuit — aligned).
             <>
-              <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: o.thumbnailUrl ? 0 : 10 }}>
+              <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', alignItems: showLabel ? 'flex-end' : 'center', justifyContent: 'center', padding: o.thumbnailUrl ? 0 : 10 }}>
                 {o.thumbnailUrl ? (
                   <img
                     src={o.thumbnailUrl}
@@ -88,14 +97,20 @@ export function OptionGrid({
                   <div className="w-full h-full rounded-md bg-zinc-700/40 animate-pulse" />
                 )}
               </div>
-              {o.thumbnailUrl && o.badge ? (
-                <div style={{ paddingTop: 4, paddingBottom: 8, display: 'flex', justifyContent: 'center' }}>
-                  {o.badge}
-                </div>
-              ) : !o.thumbnailUrl ? (
-                <div style={{ paddingTop: 4, paddingBottom: 8, display: 'flex', justifyContent: 'center' }}>
-                  <div className="h-3 w-16 rounded bg-zinc-700/40 animate-pulse" />
-                </div>
+              {showLabel ? (
+                <>
+                  {/* Name hugs the outfit above; a larger gap separates it from the SPECIAL row below. */}
+                  <div className="w-full px-1 text-center text-[11px] font-medium text-zinc-200 truncate" style={{ paddingTop: 2 }}>
+                    {o.label}
+                  </div>
+                  <div style={{ height: 42, marginTop: 12, paddingBottom: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {o.thumbnailUrl
+                      ? (o.badge ?? null)
+                      : <div className="h-3 w-16 rounded bg-zinc-700/40 animate-pulse" />}
+                  </div>
+                </>
+              ) : o.thumbnailUrl && o.badge ? (
+                <div style={{ paddingTop: 4, paddingBottom: 8, display: 'flex', justifyContent: 'center' }}>{o.badge}</div>
               ) : null}
             </>
           ) : o.layers && o.layers.length > 0 ? (

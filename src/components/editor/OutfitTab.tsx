@@ -144,6 +144,7 @@ export function OutfitTab({
       options={options}
       selected={dweller.outfitName ?? null}
       onSelect={(v) => onChange({ outfitId: v })}
+      showLabel
     />
   );
 }
