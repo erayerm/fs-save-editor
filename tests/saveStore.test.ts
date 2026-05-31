@@ -41,4 +41,26 @@ describe('saveStore raw/vault actions', () => {
     store.setVault((sv) => setCaps(sv, 500));
     expect(getCaps(useSaveStore.getState().save!)).toBe(500);
   });
+
+  it('removeDweller evicts the dweller and re-selects the first remaining one', () => {
+    const store = useSaveStore.getState();
+    const s = sampleSave();
+    s.dwellers.dwellers.push({ serializeId: 2, name: 'Eve', lastName: 'Snow', gender: 1 });
+    store.setSave(s, 'x.sav');
+    store.selectDweller(1);
+    store.removeDweller(1);
+    const st = useSaveStore.getState();
+    expect(st.save!.dwellers.dwellers.map((d) => d.serializeId)).toEqual([2]);
+    expect(st.selectedDwellerId).toBe(2);
+  });
+
+  it('removeDweller sets selection to null when the last dweller is evicted', () => {
+    const store = useSaveStore.getState();
+    store.setSave(sampleSave(), 'x.sav');
+    store.selectDweller(1);
+    store.removeDweller(1);
+    const st = useSaveStore.getState();
+    expect(st.save!.dwellers.dwellers).toHaveLength(0);
+    expect(st.selectedDwellerId).toBeNull();
+  });
 });

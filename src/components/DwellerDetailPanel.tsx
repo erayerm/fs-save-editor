@@ -3,6 +3,7 @@ import { DwellerEditor } from './DwellerEditor';
 import { isChildDweller, type RenderableDweller } from '../lib/dwellerRender';
 import type { Dweller } from '../types/save';
 import { decodeArgb } from '../lib/colors';
+import { randomDwellerInput } from '../lib/dwellerEdit';
 
 function toRenderable(d: Dweller): RenderableDweller {
   const raw = d as unknown as Record<string, any>;
@@ -21,14 +22,27 @@ function toRenderable(d: Dweller): RenderableDweller {
 
 export function DwellerDetailPanel() {
   const dweller = useSaveStore((s) => s.getSelectedDweller());
+  const addDweller = useSaveStore((s) => s.addDweller);
   if (!dweller) {
-    return <div className="text-zinc-400 italic">Select a dweller to preview.</div>;
+    return (
+      <div className="h-full flex flex-col items-center justify-center gap-4 text-center">
+        <div className="text-zinc-400 italic">No dwellers in this vault.</div>
+        <button
+          type="button"
+          onClick={() => addDweller(randomDwellerInput())}
+          className="flex items-center gap-1.5 px-3 h-8 rounded text-sm font-medium bg-green-600 hover:bg-green-500 text-white"
+        >
+          <span aria-hidden="true">+</span>
+          Add New Dweller
+        </button>
+      </div>
+    );
   }
   const renderable = toRenderable(dweller);
+  const name = `${dweller.name} ${dweller.lastName ?? ''}`.trim();
   return (
-    <div className="space-y-3">
-      <div className="text-lg font-medium">{dweller.name} {dweller.lastName}</div>
-      <DwellerEditor dweller={renderable} />
+    <div className="h-full min-h-0">
+      <DwellerEditor dweller={renderable} name={name} />
     </div>
   );
 }

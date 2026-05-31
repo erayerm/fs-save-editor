@@ -1,17 +1,26 @@
 import { create } from 'zustand';
 import type { SaveJson, Dweller } from '../types/save';
-import { applyCustomization, type DwellerCustomization } from '../lib/dwellerEdit';
+import { applyCustomization, createDwellerAtDoor, type DwellerCustomization, type NewDwellerInput } from '../lib/dwellerEdit';
+
+export type Page = 'vault' | 'dweller';
 
 interface SaveState {
   save: SaveJson | null;
   selectedDwellerId: number | null;
   fileName: string | null;
+  page: Page;
   setSave: (save: SaveJson, fileName: string) => void;
+  /** Switch the top-level page. Navigating to 'dweller' selects the first dweller if none is selected. */
+  setPage: (page: Page) => void;
   selectDweller: (id: number | null) => void;
   getSelectedDweller: () => Dweller | null;
   updateSelectedDweller: (patch: DwellerCustomization) => void;
   updateSelectedDwellerRaw: (fn: (d: Dweller) => Dweller) => void;
   setVault: (fn: (s: SaveJson) => SaveJson) => void;
+  /** Add a fresh dweller at the vault door; returns the new dweller's id (or null if no save). */
+  addDweller: (input: NewDwellerInput) => number | null;
+  /** Evict (permanently remove) a dweller. If it was selected, selection moves to the first remaining dweller. */
+  removeDweller: (id: number) => void;
   clear: () => void;
 }
 
@@ -19,7 +28,15 @@ export const useSaveStore = create<SaveState>((set, get) => ({
   save: null,
   selectedDwellerId: null,
   fileName: null,
-  setSave: (save, fileName) => set({ save, fileName, selectedDwellerId: null }),
+  page: 'vault',
+  setSave: (save, fileName) => set({ save, fileName, selectedDwellerId: null, page: 'vault' }),
+  setPage: (page) => set((state) => {
+    if (page === 'dweller' && state.selectedDwellerId === null) {
+      const first = state.save?.dwellers.dwellers[0]?.serializeId ?? null;
+      return { page, selectedDwellerId: first };
+    }
+    return { page };
+  }),
   selectDweller: (id) => set({ selectedDwellerId: id }),
   getSelectedDweller: () => {
     const { save, selectedDwellerId } = get();
@@ -43,5 +60,29 @@ export const useSaveStore = create<SaveState>((set, get) => ({
     return { save: { ...save, dwellers: { ...save.dwellers, dwellers } } };
   }),
   setVault: (fn) => set((state) => (state.save ? { save: fn(state.save) } : {})),
+  addDweller: (input) => {
+    const { save } = get();
+    if (!save) return null;
+    const existing = save.dwellers.dwellers;
+    const dweller = createDwellerAtDoor(input, existing.map((d) => d.serializeId));
+    set({
+      save: { ...save, dwellers: { ...save.dwellers, dwellers: [...existing, dweller] } },
+      selectedDwellerId: dweller.serializeId,
+      page: 'dweller',
+    });
+    return dweller.serializeId;
+  },
+  removeDweller: (id) => set((state) => {
+    const { save, selectedDwellerId } = state;
+    if (!save) return {};
+    const remaining = save.dwellers.dwellers.filter((d) => d.serializeId !== id);
+    const nextSelected = selectedDwellerId === id
+      ? (remaining[0]?.serializeId ?? null)
+      : selectedDwellerId;
+    return {
+      save: { ...save, dwellers: { ...save.dwellers, dwellers: remaining } },
+      selectedDwellerId: nextSelected,
+    };
+  }),
   clear: () => set({ save: null, selectedDwellerId: null, fileName: null }),
 }));
