@@ -20,6 +20,41 @@ export function ColorPalette({
     <div className="space-y-2">
       <div className="text-xs uppercase tracking-wide text-zinc-400">{label}</div>
       <div className="flex flex-wrap gap-1">
+        {/* Custom color picker, pinned first: shows the current selection as its
+            background with the standard eyedropper icon overlaid. Clicking opens
+            the native color map. */}
+        <label
+          aria-label={`${label} custom`}
+          title="Pick a custom color"
+          style={{ backgroundColor: toHex(value) }}
+          className="relative w-6 h-6 rounded border border-zinc-600 cursor-pointer overflow-hidden"
+        >
+          <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            {(() => {
+              const paths = (
+                <>
+                  <path d="m2 22 1-1h3l9-9" />
+                  <path d="M3 21v-3l9-9" />
+                  <path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z" />
+                </>
+              );
+              return (
+                <span className="relative block w-3.5 h-3.5">
+                  {/* Black outline behind (thicker stroke) + white icon on top, so the
+                      eyedropper stays legible over any selected color. */}
+                  <svg className="absolute inset-0 w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round">{paths}</svg>
+                  <svg className="absolute inset-0 w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{paths}</svg>
+                </span>
+              );
+            })()}
+          </span>
+          <input
+            type="color"
+            value={toHex(value)}
+            onChange={(e) => onChange(fromHex(e.target.value))}
+            className="absolute inset-0 opacity-0 cursor-pointer"
+          />
+        </label>
         {swatches.map((s, i) => (
           <button
             key={i}
@@ -29,13 +64,6 @@ export function ColorPalette({
             className="w-6 h-6 rounded border border-zinc-600"
           />
         ))}
-        <input
-          type="color"
-          aria-label={`${label} custom`}
-          value={toHex(value)}
-          onChange={(e) => onChange(fromHex(e.target.value))}
-          className="w-6 h-6 rounded border border-zinc-600 bg-transparent p-0"
-        />
       </div>
     </div>
   );
