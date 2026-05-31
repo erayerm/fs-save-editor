@@ -27,12 +27,20 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
     return <div className="text-zinc-400 text-sm">Loading weapons…</div>;
   }
 
+  // The default unarmed weapon (Fist) is pinned to the front, mirroring how the
+  // outfit picker pins the default jumpsuit.
+  const DEFAULT_WEAPON = 'Fist';
+  const entries = Object.entries(weaponIndex.weapons).sort(
+    ([a], [b]) =>
+      (a === DEFAULT_WEAPON ? 0 : 1) - (b === DEFAULT_WEAPON ? 0 : 1) || a.localeCompare(b),
+  );
+
   return (
     <div
       className="grid gap-1.5 p-1 justify-between"
       style={{ gridTemplateColumns: 'repeat(auto-fill, 170px)' }}
     >
-      {Object.entries(weaponIndex.weapons).map(([id, meta]) => {
+      {entries.map(([id, meta]) => {
         const isEquipped = id === equippedId;
         return (
           <button
