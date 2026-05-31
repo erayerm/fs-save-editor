@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadWeaponIndex } from '../../lib/weaponIndex';
+import { SpriteCrop } from '../SpriteCrop';
 import { setWeapon } from '../../lib/dwellerEdit';
 import { useSaveStore } from '../../store/saveStore';
 import type { WeaponIndex } from '../../types/weapons';
@@ -27,23 +28,35 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div
+      className="grid gap-1.5 p-1 justify-between"
+      style={{ gridTemplateColumns: 'repeat(auto-fill, 170px)' }}
+    >
       {Object.entries(weaponIndex.weapons).map(([id, meta]) => {
         const isEquipped = id === equippedId;
         return (
           <button
             key={id}
+            title={meta.name}
+            aria-pressed={isEquipped}
             onClick={() => useSaveStore.getState().updateSelectedDwellerRaw((d) => setWeapon(d, id))}
             className={[
-              'flex items-center gap-2 rounded px-3 py-2 text-sm text-left transition-colors',
+              'rounded border flex flex-col items-center overflow-hidden transition-colors',
               isEquipped
-                ? 'bg-emerald-600 text-white'
-                : 'bg-zinc-700 text-zinc-200 hover:bg-zinc-600',
+                ? 'border-green-400 bg-green-950/40 ring-1 ring-green-400'
+                : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500',
             ].join(' ')}
+            style={{ width: 170, height: 170 }}
           >
-            {meta.icon && <img src={'/weapons/' + meta.icon} alt={meta.name} className="w-6 h-6 object-contain" />}
-            <span className="flex-1 font-medium">{meta.name}</span>
-            <span className="text-xs opacity-75">{meta.damageMin}-{meta.damageMax}</span>
+            <div className="flex-1 flex items-center justify-center w-full">
+              {meta.icon
+                ? <SpriteCrop rect={meta.icon} size={104} title={meta.name} />
+                : <div className="w-16 h-16" />}
+            </div>
+            <div className="w-full px-1 pb-1 text-center leading-tight">
+              <div className="text-xs font-medium text-zinc-100 truncate">{meta.name}</div>
+              <div className="text-[11px] text-zinc-400">{meta.damageMin}-{meta.damageMax}</div>
+            </div>
           </button>
         );
       })}
