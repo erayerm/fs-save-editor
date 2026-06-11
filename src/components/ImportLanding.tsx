@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
 import { decodeSav } from '../lib/savFile';
 import { useSaveStore } from '../store/saveStore';
+import { GITHUB_REPO_URL } from '../lib/constants';
+import { GitHubIcon } from './GitHubIcon';
 
 export function ImportLanding() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -16,6 +18,18 @@ export function ImportLanding() {
       setSave(data, f.name);
     } catch (err) {
       alert(`Failed to decode .sav: ${(err as Error).message}`);
+    }
+  }
+
+  async function loadDemo() {
+    try {
+      const res = await fetch('/demo.sav');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      const data = await decodeSav(text);
+      setSave(data, 'demo.sav', { isDemo: true });
+    } catch (err) {
+      alert(`Failed to load the demo save: ${(err as Error).message}`);
     }
   }
 
@@ -63,7 +77,7 @@ export function ImportLanding() {
       <div className="flex flex-col items-center gap-6 p-10 bg-zinc-800 rounded-xl shadow-xl">
         <h1 className="text-3xl font-bold tracking-tight">FS Save Editor</h1>
         <p className="text-zinc-400 text-sm">
-          Load a Fallout Shelter .sav file to get started — click below or drop the file anywhere.
+          Load a Fallout Shelter .sav file to get started, or try the demo. Click below or drop the file anywhere.
         </p>
         <input
           ref={inputRef}
@@ -72,12 +86,29 @@ export function ImportLanding() {
           className="hidden"
           onChange={onPick}
         />
-        <button
-          onClick={() => inputRef.current?.click()}
-          className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 rounded font-medium transition-colors"
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => inputRef.current?.click()}
+            className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 rounded font-medium transition-colors"
+          >
+            Import .sav
+          </button>
+          <button
+            onClick={loadDemo}
+            className="px-5 py-2.5 border border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 rounded font-medium transition-colors"
+          >
+            Try the demo
+          </button>
+        </div>
+        <a
+          href={GITHUB_REPO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full pt-4 border-t border-zinc-700 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
         >
-          Import .sav
-        </button>
+          <GitHubIcon size={16} />
+          Open source on GitHub
+        </a>
       </div>
 
       {dragging && (
