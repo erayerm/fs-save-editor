@@ -50,7 +50,7 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
           </p>
         )}
         <p className="text-sm text-zinc-400">
-          This project is open source. Issues and pull requests are welcome.
+          This project is open source. Contributions, issues and feature requests are welcome.
         </p>
         <a
           href={GITHUB_REPO_URL}
