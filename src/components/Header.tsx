@@ -1,5 +1,7 @@
 import { useSaveStore } from '../store/saveStore';
 import { exportSave } from '../lib/exportSave';
+import { GITHUB_REPO_URL } from '../lib/constants';
+import { GitHubIcon } from './GitHubIcon';
 
 export function Header() {
   const save = useSaveStore((s) => s.save);
@@ -46,6 +48,16 @@ export function Header() {
         </nav>
       </div>
       <div className="flex items-center gap-2">
+        <a
+          href={GITHUB_REPO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View on GitHub"
+          title="View on GitHub"
+          className="flex items-center justify-center w-8 h-8 rounded bg-zinc-700 hover:bg-zinc-600 text-zinc-200 hover:text-white transition-colors"
+        >
+          <GitHubIcon size={16} />
+        </a>
         <button
           onClick={() => save && exportSave(save, fileName)}
           className="px-3 py-1.5 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium transition-colors"
