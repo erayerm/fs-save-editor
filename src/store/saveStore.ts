@@ -9,7 +9,9 @@ interface SaveState {
   selectedDwellerId: number | null;
   fileName: string | null;
   page: Page;
-  setSave: (save: SaveJson, fileName: string) => void;
+  /** True when the loaded save is the bundled demo file. */
+  isDemo: boolean;
+  setSave: (save: SaveJson, fileName: string, opts?: { isDemo?: boolean }) => void;
   /** Switch the top-level page. Navigating to 'dweller' selects the first dweller if none is selected. */
   setPage: (page: Page) => void;
   selectDweller: (id: number | null) => void;
@@ -29,7 +31,9 @@ export const useSaveStore = create<SaveState>((set, get) => ({
   selectedDwellerId: null,
   fileName: null,
   page: 'vault',
-  setSave: (save, fileName) => set({ save, fileName, selectedDwellerId: null, page: 'vault' }),
+  isDemo: false,
+  setSave: (save, fileName, opts) =>
+    set({ save, fileName, selectedDwellerId: null, page: 'vault', isDemo: opts?.isDemo ?? false }),
   setPage: (page) => set((state) => {
     if (page === 'dweller' && state.selectedDwellerId === null) {
       const first = state.save?.dwellers.dwellers[0]?.serializeId ?? null;
@@ -84,5 +88,5 @@ export const useSaveStore = create<SaveState>((set, get) => ({
       selectedDwellerId: nextSelected,
     };
   }),
-  clear: () => set({ save: null, selectedDwellerId: null, fileName: null }),
+  clear: () => set({ save: null, selectedDwellerId: null, fileName: null, isDemo: false }),
 }));
