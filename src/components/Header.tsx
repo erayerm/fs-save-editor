@@ -4,6 +4,7 @@ import { exportSave } from '../lib/exportSave';
 import { GITHUB_REPO_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
 import { ExportSuccessModal } from './ExportSuccessModal';
+import { DisclaimerModal } from './DisclaimerModal';
 
 export function Header() {
   const save = useSaveStore((s) => s.save);
@@ -13,6 +14,7 @@ export function Header() {
   const setPage = useSaveStore((s) => s.setPage);
   const isDemo = useSaveStore((s) => s.isDemo);
   const [exportedOpen, setExportedOpen] = useState(false);
+  const [disclaimerOpen, setDisclaimerOpen] = useState(false);
 
   // Modern header navigation: borderless links with a tapered (fading-ends) green
   // underline marking the active page, rather than filled button chips.
@@ -52,6 +54,12 @@ export function Header() {
         </nav>
       </div>
       <div className="flex items-center gap-2">
+        <button
+          onClick={() => setDisclaimerOpen(true)}
+          className="px-2 text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
+        >
+          Disclaimer
+        </button>
         <a
           href={GITHUB_REPO_URL}
           target="_blank"
@@ -88,6 +96,7 @@ export function Header() {
         </button>
       </div>
       <ExportSuccessModal open={exportedOpen} isDemo={isDemo} onClose={() => setExportedOpen(false)} />
+      <DisclaimerModal open={disclaimerOpen} onClose={() => setDisclaimerOpen(false)} />
     </header>
   );
 }

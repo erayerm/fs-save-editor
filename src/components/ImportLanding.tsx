@@ -3,11 +3,13 @@ import { decodeSav } from '../lib/savFile';
 import { useSaveStore } from '../store/saveStore';
 import { GITHUB_REPO_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
+import { DisclaimerModal } from './DisclaimerModal';
 
 export function ImportLanding() {
   const inputRef = useRef<HTMLInputElement>(null);
   const setSave = useSaveStore((s) => s.setSave);
   const [dragging, setDragging] = useState(false);
+  const [disclaimerOpen, setDisclaimerOpen] = useState(false);
   // Track nested drag enter/leave so child elements don't flicker the overlay.
   const dragDepth = useRef(0);
 
@@ -100,16 +102,26 @@ export function ImportLanding() {
             Try the demo
           </button>
         </div>
-        <a
-          href={GITHUB_REPO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full pt-4 border-t border-zinc-700 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
-        >
-          <GitHubIcon size={16} />
-          Open source on GitHub
-        </a>
+        <div className="flex items-center justify-center gap-5 w-full pt-4 border-t border-zinc-700 text-sm">
+          <a
+            href={GITHUB_REPO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors"
+          >
+            <GitHubIcon size={16} />
+            Open source on GitHub
+          </a>
+          <button
+            onClick={() => setDisclaimerOpen(true)}
+            className="text-zinc-400 hover:text-zinc-200 transition-colors"
+          >
+            Disclaimer
+          </button>
+        </div>
       </div>
+
+      <DisclaimerModal open={disclaimerOpen} onClose={() => setDisclaimerOpen(false)} />
 
       {dragging && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-zinc-900/80 border-4 border-dashed border-emerald-500 pointer-events-none">
