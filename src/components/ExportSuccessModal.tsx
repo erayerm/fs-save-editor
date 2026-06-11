@@ -31,7 +31,7 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="export-success-title"
-        className="relative flex flex-col items-center gap-4 w-80 p-6 bg-zinc-800 rounded-xl shadow-xl text-center"
+        className="relative flex flex-col items-center gap-4 w-80 p-6 bg-zinc-800 rounded-xl shadow-xl text-center text-zinc-100"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -50,7 +50,7 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
           </p>
         )}
         <p className="text-sm text-zinc-400">
-          If this tool helped you, consider leaving a star on GitHub. It is completely free and open source.
+          This project is open source. Issues and pull requests are welcome.
         </p>
         <a
           href={GITHUB_REPO_URL}
@@ -59,7 +59,7 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
           className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-white text-zinc-900 rounded font-medium text-sm transition-colors"
         >
           <GitHubIcon size={16} />
-          Star on GitHub
+          GitHub
         </a>
       </div>
     </div>,
