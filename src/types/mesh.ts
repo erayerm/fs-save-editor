@@ -7,6 +7,8 @@ export interface MeshGeometry {
   indexCounts?: number[];
   /** Posed (skinned) positions, if pre-computed. Falls back to positions if absent. */
   posedPositions?: [number, number][];
+  /** Per-vertex bone index, used to split arm geometry into draw groups. */
+  boneIndices?: number[];
 }
 
 export interface GenderMeshData {
