@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import type { Rgb } from '../../lib/dwellerRender';
 
 const toHex = (c: Rgb) =>
@@ -16,6 +17,33 @@ export function ColorPalette({
   swatches: Rgb[];
   onChange: (c: Rgb) => void;
 }) {
+  // The native color map fires onChange continuously while dragging. Committing
+  // each tick to the store re-renders the whole editor + redraws the avatar (WebGL),
+  // which makes dragging feel laggy. So we show the dragged color locally right away
+  // (cheap) but debounce the actual onChange commit.
+  const [preview, setPreview] = useState<Rgb | null>(null);
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Once the committed value catches up (or the dweller changes), drop the preview.
+  const valueHex = toHex(value);
+  useEffect(() => { setPreview(null); }, [valueHex]);
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
+
+  const handlePick = (c: Rgb) => {
+    setPreview(c); // immediate, cheap visual feedback
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => onChangeRef.current(c), 80);
+  };
+
+  const commitNow = (c: Rgb) => {
+    if (timer.current) clearTimeout(timer.current);
+    onChange(c);
+  };
+
+  const shown = preview ?? value;
+
   return (
     <div className="space-y-2">
       <div className="text-xs uppercase tracking-wide text-zinc-400">{label}</div>
@@ -26,7 +54,7 @@ export function ColorPalette({
         <label
           aria-label={`${label} custom`}
           title="Pick a custom color"
-          style={{ backgroundColor: toHex(value) }}
+          style={{ backgroundColor: toHex(shown) }}
           className="relative w-6 h-6 rounded border border-zinc-600 cursor-pointer overflow-hidden"
         >
           <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
@@ -50,8 +78,8 @@ export function ColorPalette({
           </span>
           <input
             type="color"
-            value={toHex(value)}
-            onChange={(e) => onChange(fromHex(e.target.value))}
+            value={toHex(shown)}
+            onChange={(e) => handlePick(fromHex(e.target.value))}
             className="absolute inset-0 opacity-0 cursor-pointer"
           />
         </label>
@@ -59,7 +87,7 @@ export function ColorPalette({
           <button
             key={i}
             aria-label={`${label} swatch ${i}`}
-            onClick={() => onChange(s)}
+            onClick={() => commitNow(s)}
             style={{ backgroundColor: toHex(s) }}
             className="w-6 h-6 rounded border border-zinc-600"
           />
