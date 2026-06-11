@@ -65,8 +65,12 @@ export function Header() {
         <button
           onClick={async () => {
             if (!save) return;
-            await exportSave(save, fileName);
-            setExportedOpen(true);
+            try {
+              await exportSave(save, fileName);
+              setExportedOpen(true);
+            } catch (err) {
+              alert(`Failed to export .sav: ${(err as Error).message}`);
+            }
           }}
           className="px-3 py-1.5 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium transition-colors"
         >

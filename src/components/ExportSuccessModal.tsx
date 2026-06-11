@@ -1,5 +1,6 @@
 // src/components/ExportSuccessModal.tsx
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { GITHUB_REPO_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
 
@@ -21,7 +22,7 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
       onClick={onClose}
@@ -61,6 +62,7 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
           Star on GitHub
         </a>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
