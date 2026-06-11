@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useSaveStore } from '../store/saveStore';
 import { exportSave } from '../lib/exportSave';
 import { GITHUB_REPO_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
+import { ExportSuccessModal } from './ExportSuccessModal';
 
 export function Header() {
   const save = useSaveStore((s) => s.save);
@@ -9,6 +11,8 @@ export function Header() {
   const clear = useSaveStore((s) => s.clear);
   const page = useSaveStore((s) => s.page);
   const setPage = useSaveStore((s) => s.setPage);
+  const isDemo = useSaveStore((s) => s.isDemo);
+  const [exportedOpen, setExportedOpen] = useState(false);
 
   // Modern header navigation: borderless links with a tapered (fading-ends) green
   // underline marking the active page, rather than filled button chips.
@@ -59,7 +63,11 @@ export function Header() {
           <GitHubIcon size={16} />
         </a>
         <button
-          onClick={() => save && exportSave(save, fileName)}
+          onClick={async () => {
+            if (!save) return;
+            await exportSave(save, fileName);
+            setExportedOpen(true);
+          }}
           className="px-3 py-1.5 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium transition-colors"
         >
           Export .sav file
@@ -75,6 +83,7 @@ export function Header() {
           </svg>
         </button>
       </div>
+      <ExportSuccessModal open={exportedOpen} isDemo={isDemo} onClose={() => setExportedOpen(false)} />
     </header>
   );
 }
