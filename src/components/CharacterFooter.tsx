@@ -3,7 +3,6 @@ import { useSaveStore } from '../store/saveStore';
 import { CharacterCard, CARD_W, CARD_GAP } from './CharacterCard';
 import { useWindowedRange } from '../lib/useWindowedRange';
 import { filterByText } from '../lib/pickerSort';
-import { FALLOUT_GREEN } from './SpecialIcon';
 
 const OVERSCAN = 3;
 
@@ -59,18 +58,15 @@ export function CharacterFooter() {
       {/* Filter control: one solid fallout-green bar attached above the dweller
           bar. The funnel toggles a search field that grows to the left; the
           field and button share the same continuous green background. */}
-      <div
-        className="absolute right-3 -top-8 z-20 flex items-stretch h-8 rounded-t-md overflow-hidden"
-        style={{ backgroundColor: FALLOUT_GREEN }}
-      >
-        {/* Expanding search field (grows to the left) */}
+      <div className="absolute right-3 -top-8 z-20 flex items-stretch h-8 rounded-t-md overflow-hidden bg-zinc-700">
+        {/* Expanding search field (grows to the left); clipped to 0 when closed */}
         <div
           className={[
-            'flex items-center transition-all duration-200 ease-out',
+            'flex items-center overflow-hidden transition-all duration-200 ease-out',
             open ? 'w-56' : 'w-0',
           ].join(' ')}
         >
-          <SearchIcon className="w-4 h-4 ml-2.5 shrink-0 text-zinc-800" />
+          <SearchIcon className="w-4 h-4 ml-2.5 shrink-0 text-zinc-300" />
           <input
             ref={inputRef}
             type="text"
@@ -79,28 +75,28 @@ export function CharacterFooter() {
             placeholder="Filter by name…"
             aria-label="Filter dwellers by name"
             tabIndex={open ? 0 : -1}
-            className="flex-1 min-w-0 h-8 bg-transparent px-2 text-sm text-zinc-900 placeholder-zinc-700 focus:outline-none"
+            className="flex-1 min-w-0 h-8 bg-transparent px-2 text-sm text-zinc-100 placeholder-zinc-400 focus:outline-none"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery('')}
               aria-label="Clear text"
-              className="shrink-0 mr-1 flex items-center justify-center w-5 h-5 rounded text-zinc-800 hover:bg-black/10"
+              className="shrink-0 mr-1 flex items-center justify-center w-5 h-5 rounded text-zinc-300 hover:bg-black/20"
             >
               <CloseIcon className="w-3.5 h-3.5" />
             </button>
           )}
         </div>
 
-        {/* Funnel handle (dark icon on the green background) */}
+        {/* Funnel handle */}
         <button
           type="button"
           onClick={() => { if (open) { setQuery(''); setOpen(false); } else setOpen(true); }}
           title={open ? 'Close filter' : 'Filter dwellers'}
           aria-label={open ? 'Close filter' : 'Filter dwellers'}
           aria-pressed={open}
-          className="shrink-0 flex items-center justify-center w-9 text-zinc-900 hover:bg-black/10 transition-colors"
+          className="shrink-0 flex items-center justify-center w-9 text-zinc-200 hover:bg-black/20 transition-colors"
         >
           <FilterIcon className="w-4 h-4" />
         </button>
