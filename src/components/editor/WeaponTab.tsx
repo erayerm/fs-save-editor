@@ -6,7 +6,7 @@ import { useSaveStore } from '../../store/saveStore';
 import type { WeaponIndex } from '../../types/weapons';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import { SortFilterBar } from './SortFilterBar';
-import { sortByDamage, type SortDir } from '../../lib/pickerSort';
+import { sortByDamage, filterByText, type SortDir } from '../../lib/pickerSort';
 
 export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
   const [weaponIndex, setWeaponIndex] = useState<WeaponIndex | null>(null);
@@ -17,7 +17,8 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
     return d?.equipedWeapon?.id;
   });
 
-  const [dir, setDir] = useState<SortDir>('desc');
+  const [dir, setDir] = useState<SortDir>('default');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     unmounted.current = false;
@@ -33,13 +34,21 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
 
   const DEFAULT_WEAPON = 'Fist';
   const all = Object.entries(weaponIndex.weapons).map(([id, meta]) => ({ id, ...meta }));
-  const def = all.filter((w) => w.id === DEFAULT_WEAPON);
-  const rest = sortByDamage(all.filter((w) => w.id !== DEFAULT_WEAPON), dir);
+  const searched = filterByText(all, query, (w) => w.name);
+  const def = searched.filter((w) => w.id === DEFAULT_WEAPON);
+  const rest = sortByDamage(searched.filter((w) => w.id !== DEFAULT_WEAPON), dir);
   const entries: [string, typeof all[number]][] = [...def, ...rest].map((w) => [w.id, w]);
 
   return (
-    <div className="pt-4">
-      <SortFilterBar mode="weapon" dir={dir} onDirChange={setDir} />
+    <div>
+      <SortFilterBar
+        mode="weapon"
+        query={query}
+        onQueryChange={setQuery}
+        onReset={() => { setQuery(''); setDir('default'); }}
+        dir={dir}
+        onDirChange={setDir}
+      />
       <div
         className="grid gap-1.5 p-1 justify-between"
         style={{ gridTemplateColumns: 'repeat(auto-fill, 170px)' }}
