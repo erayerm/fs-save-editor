@@ -3,7 +3,7 @@ import { DwellerCanvas } from './DwellerCanvas';
 import { ChildAvatar } from './editor/ChildAvatar';
 import { EditorTabBar, type EditorTab } from './editor/EditorTabBar';
 import { HairTab } from './editor/HairTab';
-import { FacialHairTab } from './editor/FacialHairTab';
+import { FaceTab } from './editor/FaceTab';
 import { OutfitTab } from './editor/OutfitTab';
 import { WeaponTab } from './editor/WeaponTab';
 import { PetTab } from './editor/PetTab';
@@ -29,7 +29,6 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
   const onChange = (patch: DwellerCustomization) => update(patch);
 
   const isChild = !!dweller.isChild;
-  const isMale = dweller.gender === 2;
 
   // Children get only SPECIAL and a reduced Others tab; everything that needs a
   // rendered model (hair/outfit/weapon/pet/facial hair) is hidden.
@@ -40,7 +39,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
       ]
     : [
         { id: 'hair', label: 'Hair' },
-        ...(isMale ? [{ id: 'facialHair', label: 'Facial Hair' }] : []),
+        { id: 'face', label: 'Face' },
         { id: 'outfit', label: 'Outfit' },
         { id: 'weapon', label: 'Weapon' },
         { id: 'pet', label: 'Pet' },
@@ -92,7 +91,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
         <div className="flex-1 min-w-0 min-h-0 overflow-y-auto">
           {error && <div className="text-red-400 text-sm">Could not load pieces: {error}</div>}
           {index && activeTab === 'hair' && <HairTab index={index} dweller={dweller} onChange={onChange} />}
-          {index && activeTab === 'facialHair' && isMale && <FacialHairTab index={index} dweller={dweller} onChange={onChange} />}
+          {index && activeTab === 'face' && <FaceTab index={index} dweller={dweller} onChange={onChange} />}
           {index && activeTab === 'outfit' && <OutfitTab index={index} dweller={dweller} onChange={onChange} />}
           {activeTab === 'weapon' && <WeaponTab dweller={dweller} />}
           {activeTab === 'pet' && <PetTab dweller={dweller} />}
