@@ -9,7 +9,7 @@
       "rarity": "Normal",
       "bonus": "Resistance",
       "bonusValue": 24,
-      "bonusLabel": "Resistance +24",
+      "bonusLabel": "24% Damage Resistance",
       "uniqueName": "Abyssinian",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -29,7 +29,7 @@
       "rarity": "Legendary",
       "bonus": "Resistance",
       "bonusValue": 50,
-      "bonusLabel": "Resistance +50",
+      "bonusLabel": "50% Damage Resistance",
       "uniqueName": "Zula",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -49,7 +49,7 @@
       "rarity": "Rare",
       "bonus": "Resistance",
       "bonusValue": 40,
-      "bonusLabel": "Resistance +40",
+      "bonusLabel": "40% Damage Resistance",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -69,7 +69,7 @@
       "rarity": "Legendary",
       "bonus": "MysteriousMagnet",
       "bonusValue": 7.5,
-      "bonusLabel": "MysteriousMagnet +7.5",
+      "bonusLabel": "x7.5 Stranger Chance",
       "uniqueName": "Kuma",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -89,7 +89,7 @@
       "rarity": "Legendary",
       "bonus": "MysteriousMagnet",
       "bonusValue": 5,
-      "bonusLabel": "MysteriousMagnet +5",
+      "bonusLabel": "x5 Stranger Chance",
       "uniqueName": "Kabosu",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -109,7 +109,7 @@
       "rarity": "Rare",
       "bonus": "MysteriousMagnet",
       "bonusValue": 2.5,
-      "bonusLabel": "MysteriousMagnet +2.5",
+      "bonusLabel": "x2.5 Stranger Chance",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -129,7 +129,7 @@
       "rarity": "Rare",
       "bonus": "DamageBoost",
       "bonusValue": 4,
-      "bonusLabel": "DamageBoost +4",
+      "bonusLabel": "+4 Damage",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_FloatingDrone_HD.png",
@@ -149,7 +149,7 @@
       "rarity": "Normal",
       "bonus": "WastelandCapsBoost",
       "bonusValue": 15,
-      "bonusLabel": "WastelandCapsBoost +15",
+      "bonusLabel": "+15% Wasteland Caps",
       "uniqueName": "American Shorthair",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -169,7 +169,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandCapsBoost",
       "bonusValue": 45,
-      "bonusLabel": "WastelandCapsBoost +45",
+      "bonusLabel": "+45% Wasteland Caps",
       "uniqueName": "Sterling",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -189,7 +189,7 @@
       "rarity": "Rare",
       "bonus": "WastelandCapsBoost",
       "bonusValue": 30,
-      "bonusLabel": "WastelandCapsBoost +30",
+      "bonusLabel": "+30% Wasteland Caps",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -209,7 +209,7 @@
       "rarity": "Legendary",
       "bonus": "ChildSpecialBoost",
       "bonusValue": 3,
-      "bonusLabel": "ChildSpecialBoost +3",
+      "bonusLabel": "+3 Child SPECIALs",
       "uniqueName": "Bandit",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -229,7 +229,7 @@
       "rarity": "Rare",
       "bonus": "ChildSpecialBoost",
       "bonusValue": 2,
-      "bonusLabel": "ChildSpecialBoost +2",
+      "bonusLabel": "+2 Child SPECIALs",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -249,7 +249,7 @@
       "rarity": "Rare",
       "bonus": "ChildSpecialBoost",
       "bonusValue": 1,
-      "bonusLabel": "ChildSpecialBoost +1",
+      "bonusLabel": "+1 Child SPECIALs",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -269,7 +269,7 @@
       "rarity": "Normal",
       "bonus": "TrainingBoost",
       "bonusValue": 10,
-      "bonusLabel": "TrainingBoost +10",
+      "bonusLabel": "-10% Training Time",
       "uniqueName": "Black Lab",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -289,7 +289,7 @@
       "rarity": "Legendary",
       "bonus": "TrainingNonStopBoost",
       "bonusValue": 30,
-      "bonusLabel": "TrainingNonStopBoost +30",
+      "bonusLabel": "-30% Training Time (Continuous)",
       "uniqueName": "Muttface",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -309,7 +309,7 @@
       "rarity": "Rare",
       "bonus": "TrainingBoost",
       "bonusValue": 20,
-      "bonusLabel": "TrainingBoost +20",
+      "bonusLabel": "-20% Training Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -329,7 +329,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 100,
-      "bonusLabel": "WastelandJunkBoost +100",
+      "bonusLabel": "+100% Wasteland Junk",
       "uniqueName": "Duke",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -349,7 +349,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 33,
-      "bonusLabel": "WastelandJunkBoost +33",
+      "bonusLabel": "+33% Wasteland Junk",
       "uniqueName": "Valentine",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -369,7 +369,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 66,
-      "bonusLabel": "WastelandJunkBoost +66",
+      "bonusLabel": "+66% Wasteland Junk",
       "uniqueName": "Moose",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -389,7 +389,7 @@
       "rarity": "Legendary",
       "bonus": "ObjectiveMultiplier",
       "bonusValue": 3,
-      "bonusLabel": "ObjectiveMultiplier +3",
+      "bonusLabel": "x3 Objective Completion",
       "uniqueName": "Pip",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -409,7 +409,7 @@
       "rarity": "Legendary",
       "bonus": "ObjectiveMultiplier",
       "bonusValue": 2,
-      "bonusLabel": "ObjectiveMultiplier +2",
+      "bonusLabel": "x2 Objective Completion",
       "uniqueName": "Vinnie",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -429,7 +429,7 @@
       "rarity": "Normal",
       "bonus": "AddMaxHP",
       "bonusValue": 33,
-      "bonusLabel": "AddMaxHP +33",
+      "bonusLabel": "+33% Health",
       "uniqueName": "Bombay",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -449,7 +449,7 @@
       "rarity": "Legendary",
       "bonus": "AddMaxHP",
       "bonusValue": 100,
-      "bonusLabel": "AddMaxHP +100",
+      "bonusLabel": "+100% Health",
       "uniqueName": "Shadow",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -469,7 +469,7 @@
       "rarity": "Rare",
       "bonus": "AddMaxHP",
       "bonusValue": 66,
-      "bonusLabel": "AddMaxHP +66",
+      "bonusLabel": "+66% Health",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -489,7 +489,7 @@
       "rarity": "Normal",
       "bonus": "XPBoost",
       "bonusValue": 15,
-      "bonusLabel": "XPBoost +15",
+      "bonusLabel": "+15% XP",
       "uniqueName": "Boxer",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -509,7 +509,7 @@
       "rarity": "Legendary",
       "bonus": "XPBoost",
       "bonusValue": 45,
-      "bonusLabel": "XPBoost +45",
+      "bonusLabel": "+45% XP",
       "uniqueName": "Scavver",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -529,7 +529,7 @@
       "rarity": "Rare",
       "bonus": "XPBoost",
       "bonusValue": 30,
-      "bonusLabel": "XPBoost +30",
+      "bonusLabel": "+30% XP",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -549,7 +549,7 @@
       "rarity": "Normal",
       "bonus": "HealingBoost",
       "bonusValue": 2,
-      "bonusLabel": "HealingBoost +2",
+      "bonusLabel": "x2 Healing Speed",
       "uniqueName": "British Shorthair",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -569,7 +569,7 @@
       "rarity": "Legendary",
       "bonus": "HealingBoost",
       "bonusValue": 4,
-      "bonusLabel": "HealingBoost +4",
+      "bonusLabel": "x4 Healing Speed",
       "uniqueName": "Ashes",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -589,7 +589,7 @@
       "rarity": "Rare",
       "bonus": "HealingBoost",
       "bonusValue": 3,
-      "bonusLabel": "HealingBoost +3",
+      "bonusLabel": "x3 Healing Speed",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -609,7 +609,7 @@
       "rarity": "Normal",
       "bonus": "FasterAndCheaperCrafting",
       "bonusValue": 10,
-      "bonusLabel": "FasterAndCheaperCrafting +10",
+      "bonusLabel": "-10% Crafting Time & Cost",
       "uniqueName": "Brittany",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -629,7 +629,7 @@
       "rarity": "Legendary",
       "bonus": "FasterAndCheaperCrafting",
       "bonusValue": 30,
-      "bonusLabel": "FasterAndCheaperCrafting +30",
+      "bonusLabel": "-30% Crafting Time & Cost",
       "uniqueName": "Gaston",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -649,7 +649,7 @@
       "rarity": "Rare",
       "bonus": "FasterAndCheaperCrafting",
       "bonusValue": 20,
-      "bonusLabel": "FasterAndCheaperCrafting +20",
+      "bonusLabel": "-20% Crafting Time & Cost",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -669,7 +669,7 @@
       "rarity": "Legendary",
       "bonus": "CheaperCrafting",
       "bonusValue": 30,
-      "bonusLabel": "CheaperCrafting +30",
+      "bonusLabel": "-30% Crafting Cost",
       "uniqueName": "Diamond",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -689,7 +689,7 @@
       "rarity": "Legendary",
       "bonus": "CheaperCrafting",
       "bonusValue": 20,
-      "bonusLabel": "CheaperCrafting +20",
+      "bonusLabel": "-20% Crafting Cost",
       "uniqueName": "Cloudy",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -709,7 +709,7 @@
       "rarity": "Rare",
       "bonus": "CheaperCrafting",
       "bonusValue": 10,
-      "bonusLabel": "CheaperCrafting +10",
+      "bonusLabel": "-10% Crafting Cost",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -729,7 +729,7 @@
       "rarity": "Normal",
       "bonus": "WastelandCapsBoost",
       "bonusValue": 15,
-      "bonusLabel": "WastelandCapsBoost +15",
+      "bonusLabel": "+15% Wasteland Caps",
       "uniqueName": "Cattle Dog",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -749,7 +749,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandCapsBoost",
       "bonusValue": 45,
-      "bonusLabel": "WastelandCapsBoost +45",
+      "bonusLabel": "+45% Wasteland Caps",
       "uniqueName": "Four Score",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -769,7 +769,7 @@
       "rarity": "Rare",
       "bonus": "WastelandCapsBoost",
       "bonusValue": 30,
-      "bonusLabel": "WastelandCapsBoost +30",
+      "bonusLabel": "+30% Wasteland Caps",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -789,7 +789,7 @@
       "rarity": "Normal",
       "bonus": "CheaperCrafting",
       "bonusValue": 10,
-      "bonusLabel": "CheaperCrafting +10",
+      "bonusLabel": "-10% Crafting Cost",
       "uniqueName": "Collie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -809,7 +809,7 @@
       "rarity": "Legendary",
       "bonus": "CheaperCrafting",
       "bonusValue": 30,
-      "bonusLabel": "CheaperCrafting +30",
+      "bonusLabel": "-30% Crafting Cost",
       "uniqueName": "Pal",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -829,7 +829,7 @@
       "rarity": "Rare",
       "bonus": "CheaperCrafting",
       "bonusValue": 20,
-      "bonusLabel": "CheaperCrafting +20",
+      "bonusLabel": "-20% Crafting Cost",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -849,7 +849,7 @@
       "rarity": "Legendary",
       "bonus": "XPBoost",
       "bonusValue": 45,
-      "bonusLabel": "XPBoost +45",
+      "bonusLabel": "+45% XP",
       "uniqueName": "CX404",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -869,7 +869,7 @@
       "rarity": "Legendary",
       "bonus": "Resistance",
       "bonusValue": 50,
-      "bonusLabel": "Resistance +50",
+      "bonusLabel": "50% Damage Resistance",
       "uniqueName": "Cyberdog",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -889,7 +889,7 @@
       "rarity": "Legendary",
       "bonus": "ChildMultiplier",
       "bonusValue": 75,
-      "bonusLabel": "ChildMultiplier +75",
+      "bonusLabel": "75% Twins Chance",
       "uniqueName": "Pongo",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -909,7 +909,7 @@
       "rarity": "Legendary",
       "bonus": "ChildMultiplier",
       "bonusValue": 50,
-      "bonusLabel": "ChildMultiplier +50",
+      "bonusLabel": "50% Twins Chance",
       "uniqueName": "Lucky",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -929,7 +929,7 @@
       "rarity": "Rare",
       "bonus": "ChildMultiplier",
       "bonusValue": 25,
-      "bonusLabel": "ChildMultiplier +25",
+      "bonusLabel": "25% Twins Chance",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -949,7 +949,7 @@
       "rarity": "Normal",
       "bonus": "HealingBoost",
       "bonusValue": 2,
-      "bonusLabel": "HealingBoost +2",
+      "bonusLabel": "x2 Healing Speed",
       "uniqueName": "Doberman",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -969,7 +969,7 @@
       "rarity": "Legendary",
       "bonus": "HealingBoost",
       "bonusValue": 4,
-      "bonusLabel": "HealingBoost +4",
+      "bonusLabel": "x4 Healing Speed",
       "uniqueName": "Apolda",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -989,7 +989,7 @@
       "rarity": "Rare",
       "bonus": "HealingBoost",
       "bonusValue": 3,
-      "bonusLabel": "HealingBoost +3",
+      "bonusLabel": "x3 Healing Speed",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1009,7 +1009,7 @@
       "rarity": "Legendary",
       "bonus": "CheaperCrafting",
       "bonusValue": 30,
-      "bonusLabel": "CheaperCrafting +30",
+      "bonusLabel": "-30% Crafting Cost",
       "uniqueName": "Goliath",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1029,7 +1029,7 @@
       "rarity": "Rare",
       "bonus": "CheaperCrafting",
       "bonusValue": 20,
-      "bonusLabel": "CheaperCrafting +20",
+      "bonusLabel": "-20% Crafting Cost",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1049,7 +1049,7 @@
       "rarity": "Rare",
       "bonus": "CheaperCrafting",
       "bonusValue": 10,
-      "bonusLabel": "CheaperCrafting +10",
+      "bonusLabel": "-10% Crafting Cost",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1069,7 +1069,7 @@
       "rarity": "Normal",
       "bonus": "RadHealingBoost",
       "bonusValue": 2,
-      "bonusLabel": "RadHealingBoost +2",
+      "bonusLabel": "x2 Rad Healing Speed",
       "uniqueName": "German Pointer",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1089,7 +1089,7 @@
       "rarity": "Legendary",
       "bonus": "RadHealingBoost",
       "bonusValue": 4,
-      "bonusLabel": "RadHealingBoost +4",
+      "bonusLabel": "x4 Rad Healing Speed",
       "uniqueName": "Mr. Peepers",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1109,7 +1109,7 @@
       "rarity": "Legendary",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 4,
-      "bonusLabel": "FasterWastelandReturnSpeed +4",
+      "bonusLabel": "x4 Wasteland Return Speed",
       "uniqueName": "Cocoa Bean",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1129,7 +1129,7 @@
       "rarity": "Rare",
       "bonus": "RadHealingBoost",
       "bonusValue": 3,
-      "bonusLabel": "RadHealingBoost +3",
+      "bonusLabel": "x3 Rad Healing Speed",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1149,7 +1149,7 @@
       "rarity": "Legendary",
       "bonus": "ObjectiveMultiplier",
       "bonusValue": 3,
-      "bonusLabel": "ObjectiveMultiplier +3",
+      "bonusLabel": "x3 Objective Completion",
       "uniqueName": "Dogmeat",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1169,7 +1169,7 @@
       "rarity": "Rare",
       "bonus": "ObjectiveMultiplier",
       "bonusValue": 2,
-      "bonusLabel": "ObjectiveMultiplier +2",
+      "bonusLabel": "x2 Objective Completion",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1189,7 +1189,7 @@
       "rarity": "Normal",
       "bonus": "WastelandItemBoost",
       "bonusValue": 10,
-      "bonusLabel": "WastelandItemBoost +10",
+      "bonusLabel": "+10% Wasteland Weapons & Outfits",
       "uniqueName": "Golden Retriever",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1209,7 +1209,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandItemBoost",
       "bonusValue": 30,
-      "bonusLabel": "WastelandItemBoost +30",
+      "bonusLabel": "+30% Wasteland Weapons & Outfits",
       "uniqueName": "Cindy",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1229,7 +1229,7 @@
       "rarity": "Rare",
       "bonus": "WastelandItemBoost",
       "bonusValue": 20,
-      "bonusLabel": "WastelandItemBoost +20",
+      "bonusLabel": "+20% Wasteland Weapons & Outfits",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1249,7 +1249,7 @@
       "rarity": "Normal",
       "bonus": "FasterCrafting",
       "bonusValue": 15,
-      "bonusLabel": "FasterCrafting +15",
+      "bonusLabel": "-15% Crafting Time",
       "uniqueName": "Greyhound",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1269,7 +1269,7 @@
       "rarity": "Legendary",
       "bonus": "FasterCrafting",
       "bonusValue": 45,
-      "bonusLabel": "FasterCrafting +45",
+      "bonusLabel": "-45% Crafting Time",
       "uniqueName": "Little Helper",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1289,7 +1289,7 @@
       "rarity": "Rare",
       "bonus": "FasterCrafting",
       "bonusValue": 30,
-      "bonusLabel": "FasterCrafting +30",
+      "bonusLabel": "-30% Crafting Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1309,7 +1309,7 @@
       "rarity": "Legendary",
       "bonus": "FasterCrafting",
       "bonusValue": 45,
-      "bonusLabel": "FasterCrafting +45",
+      "bonusLabel": "-45% Crafting Time",
       "uniqueName": "Merlin",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1329,7 +1329,7 @@
       "rarity": "Rare",
       "bonus": "FasterCrafting",
       "bonusValue": 30,
-      "bonusLabel": "FasterCrafting +30",
+      "bonusLabel": "-30% Crafting Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1349,7 +1349,7 @@
       "rarity": "Rare",
       "bonus": "FasterCrafting",
       "bonusValue": 15,
-      "bonusLabel": "FasterCrafting +15",
+      "bonusLabel": "-15% Crafting Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1369,7 +1369,7 @@
       "rarity": "Normal",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 1.25,
-      "bonusLabel": "FasterWastelandReturnSpeed +1.25",
+      "bonusLabel": "x1.25 Wasteland Return Speed",
       "uniqueName": "Husky",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1389,7 +1389,7 @@
       "rarity": "Legendary",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 4,
-      "bonusLabel": "FasterWastelandReturnSpeed +4",
+      "bonusLabel": "x4 Wasteland Return Speed",
       "uniqueName": "Trench",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1409,7 +1409,7 @@
       "rarity": "Rare",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 2,
-      "bonusLabel": "FasterWastelandReturnSpeed +2",
+      "bonusLabel": "x2 Wasteland Return Speed",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1429,7 +1429,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 100,
-      "bonusLabel": "WastelandJunkBoost +100",
+      "bonusLabel": "+100% Wasteland Junk",
       "uniqueName": "Pouncer",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1449,7 +1449,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 33,
-      "bonusLabel": "WastelandJunkBoost +33",
+      "bonusLabel": "+33% Wasteland Junk",
       "uniqueName": "Static",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1469,7 +1469,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 66,
-      "bonusLabel": "WastelandJunkBoost +66",
+      "bonusLabel": "+66% Wasteland Junk",
       "uniqueName": "Luna",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1489,7 +1489,7 @@
       "rarity": "Normal",
       "bonus": "DamageBoost",
       "bonusValue": 2,
-      "bonusLabel": "DamageBoost +2",
+      "bonusLabel": "+2 Damage",
       "uniqueName": "Lykoi",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1509,7 +1509,7 @@
       "rarity": "Legendary",
       "bonus": "DamageBoost",
       "bonusValue": 6,
-      "bonusLabel": "DamageBoost +6",
+      "bonusLabel": "+6 Damage",
       "uniqueName": "Calypso",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1529,7 +1529,7 @@
       "rarity": "Rare",
       "bonus": "DamageBoost",
       "bonusValue": 4,
-      "bonusLabel": "DamageBoost +4",
+      "bonusLabel": "+4 Damage",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1549,7 +1549,7 @@
       "rarity": "Normal",
       "bonus": "TrainingBoost",
       "bonusValue": 10,
-      "bonusLabel": "TrainingBoost +10",
+      "bonusLabel": "-10% Training Time",
       "uniqueName": "Maine Coon",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1569,7 +1569,7 @@
       "rarity": "Legendary",
       "bonus": "TrainingNonStopBoost",
       "bonusValue": 30,
-      "bonusLabel": "TrainingNonStopBoost +30",
+      "bonusLabel": "-30% Training Time (Continuous)",
       "uniqueName": "Bangor",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1589,7 +1589,7 @@
       "rarity": "Rare",
       "bonus": "TrainingBoost",
       "bonusValue": 20,
-      "bonusLabel": "TrainingBoost +20",
+      "bonusLabel": "-20% Training Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1609,7 +1609,7 @@
       "rarity": "Legendary",
       "bonus": "ChildMultiplier",
       "bonusValue": 75,
-      "bonusLabel": "ChildMultiplier +75",
+      "bonusLabel": "75% Twins Chance",
       "uniqueName": "Shakespeare",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1629,7 +1629,7 @@
       "rarity": "Legendary",
       "bonus": "ChildMultiplier",
       "bonusValue": 25,
-      "bonusLabel": "ChildMultiplier +25",
+      "bonusLabel": "25% Twins Chance",
       "uniqueName": "Genius",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1649,7 +1649,7 @@
       "rarity": "Legendary",
       "bonus": "ChildMultiplier",
       "bonusValue": 50,
-      "bonusLabel": "ChildMultiplier +50",
+      "bonusLabel": "50% Twins Chance",
       "uniqueName": "Stubbs",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1669,7 +1669,7 @@
       "rarity": "Legendary",
       "bonus": "DamageBoost",
       "bonusValue": 6,
-      "bonusLabel": "DamageBoost +6",
+      "bonusLabel": "+6 Damage",
       "uniqueName": "Polly",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -1689,7 +1689,7 @@
       "rarity": "Legendary",
       "bonus": "DamageBoost",
       "bonusValue": 4,
-      "bonusLabel": "DamageBoost +4",
+      "bonusLabel": "+4 Damage",
       "uniqueName": "Butch",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -1709,7 +1709,7 @@
       "rarity": "Rare",
       "bonus": "DamageBoost",
       "bonusValue": 2,
-      "bonusLabel": "DamageBoost +2",
+      "bonusLabel": "+2 Damage",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -1729,7 +1729,7 @@
       "rarity": "Normal",
       "bonus": "WastelandItemBoost",
       "bonusValue": 10,
-      "bonusLabel": "WastelandItemBoost +10",
+      "bonusLabel": "+10% Wasteland Weapons & Outfits",
       "uniqueName": "Ocicat",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1749,7 +1749,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandItemBoost",
       "bonusValue": 30,
-      "bonusLabel": "WastelandItemBoost +30",
+      "bonusLabel": "+30% Wasteland Weapons & Outfits",
       "uniqueName": "Speckle",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1769,7 +1769,7 @@
       "rarity": "Rare",
       "bonus": "WastelandItemBoost",
       "bonusValue": 20,
-      "bonusLabel": "WastelandItemBoost +20",
+      "bonusLabel": "+20% Wasteland Weapons & Outfits",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1789,7 +1789,7 @@
       "rarity": "Normal",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 33,
-      "bonusLabel": "WastelandJunkBoost +33",
+      "bonusLabel": "+33% Wasteland Junk",
       "uniqueName": "Pallas Cat",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1809,7 +1809,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 100,
-      "bonusLabel": "WastelandJunkBoost +100",
+      "bonusLabel": "+100% Wasteland Junk",
       "uniqueName": "Cinder",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1829,7 +1829,7 @@
       "rarity": "Rare",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 66,
-      "bonusLabel": "WastelandJunkBoost +66",
+      "bonusLabel": "+66% Wasteland Junk",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1849,7 +1849,7 @@
       "rarity": "Normal",
       "bonus": "HappinessBoost",
       "bonusValue": 33,
-      "bonusLabel": "HappinessBoost +33",
+      "bonusLabel": "+33% Happiness",
       "uniqueName": "Persian",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1869,7 +1869,7 @@
       "rarity": "Legendary",
       "bonus": "HappinessBoost",
       "bonusValue": 100,
-      "bonusLabel": "HappinessBoost +100",
+      "bonusLabel": "+100% Happiness",
       "uniqueName": "Mr. Pebbles",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1889,7 +1889,7 @@
       "rarity": "Normal",
       "bonus": "TrainingNonStopBoost",
       "bonusValue": 30,
-      "bonusLabel": "TrainingNonStopBoost +30",
+      "bonusLabel": "-30% Training Time (Continuous)",
       "uniqueName": "Persian",
       "icon": null
     },
@@ -1901,7 +1901,7 @@
       "rarity": "Rare",
       "bonus": "HappinessBoost",
       "bonusValue": 66,
-      "bonusLabel": "HappinessBoost +66",
+      "bonusLabel": "+66% Happiness",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -1921,7 +1921,7 @@
       "rarity": "Legendary",
       "bonus": "DamageBoost",
       "bonusValue": 6,
-      "bonusLabel": "DamageBoost +6",
+      "bonusLabel": "+6 Damage",
       "uniqueName": "Hulk",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1941,7 +1941,7 @@
       "rarity": "Legendary",
       "bonus": "DamageBoost",
       "bonusValue": 2,
-      "bonusLabel": "DamageBoost +2",
+      "bonusLabel": "+2 Damage",
       "uniqueName": "Ranger",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1961,7 +1961,7 @@
       "rarity": "Legendary",
       "bonus": "DamageBoost",
       "bonusValue": 4,
-      "bonusLabel": "DamageBoost +4",
+      "bonusLabel": "+4 Damage",
       "uniqueName": "Titan",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -1981,7 +1981,7 @@
       "rarity": "Normal",
       "bonus": "HappinessBoost",
       "bonusValue": 33,
-      "bonusLabel": "HappinessBoost +33",
+      "bonusLabel": "+33% Happiness",
       "uniqueName": "Poodle",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2001,7 +2001,7 @@
       "rarity": "Legendary",
       "bonus": "HappinessBoost",
       "bonusValue": 100,
-      "bonusLabel": "HappinessBoost +100",
+      "bonusLabel": "+100% Happiness",
       "uniqueName": "Lord Puffington",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2021,7 +2021,7 @@
       "rarity": "Rare",
       "bonus": "HappinessBoost",
       "bonusValue": 66,
-      "bonusLabel": "HappinessBoost +66",
+      "bonusLabel": "+66% Happiness",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2041,7 +2041,7 @@
       "rarity": "Legendary",
       "bonus": "HappinessBoost",
       "bonusValue": 100,
-      "bonusLabel": "HappinessBoost +100",
+      "bonusLabel": "+100% Happiness",
       "uniqueName": "Rollerbrain",
       "icon": {
         "atlas": "Pet_Rollerbrain_HD.png",
@@ -2061,7 +2061,7 @@
       "rarity": "Normal",
       "bonus": "AddMaxHP",
       "bonusValue": 33,
-      "bonusLabel": "AddMaxHP +33",
+      "bonusLabel": "+33% Health",
       "uniqueName": "Rottweiler",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2081,7 +2081,7 @@
       "rarity": "Legendary",
       "bonus": "AddMaxHP",
       "bonusValue": 100,
-      "bonusLabel": "AddMaxHP +100",
+      "bonusLabel": "+100% Health",
       "uniqueName": "Maizie Rai",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2101,7 +2101,7 @@
       "rarity": "Rare",
       "bonus": "AddMaxHP",
       "bonusValue": 66,
-      "bonusLabel": "AddMaxHP +66",
+      "bonusLabel": "+66% Health",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2121,7 +2121,7 @@
       "rarity": "Normal",
       "bonus": "Resistance",
       "bonusValue": 24,
-      "bonusLabel": "Resistance +24",
+      "bonusLabel": "24% Damage Resistance",
       "uniqueName": "Scarlet Macaw",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -2141,7 +2141,7 @@
       "rarity": "Legendary",
       "bonus": "Resistance",
       "bonusValue": 50,
-      "bonusLabel": "Resistance +50",
+      "bonusLabel": "50% Damage Resistance",
       "uniqueName": "Wanderer",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -2161,7 +2161,7 @@
       "rarity": "Rare",
       "bonus": "Resistance",
       "bonusValue": 40,
-      "bonusLabel": "Resistance +40",
+      "bonusLabel": "40% Damage Resistance",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Macaws_HD.png",
@@ -2181,7 +2181,7 @@
       "rarity": "Normal",
       "bonus": "XPBoost",
       "bonusValue": 15,
-      "bonusLabel": "XPBoost +15",
+      "bonusLabel": "+15% XP",
       "uniqueName": "Scottish Fold",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2201,7 +2201,7 @@
       "rarity": "Legendary",
       "bonus": "XPBoost",
       "bonusValue": 45,
-      "bonusLabel": "XPBoost +45",
+      "bonusLabel": "+45% XP",
       "uniqueName": "Ginger",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2221,7 +2221,7 @@
       "rarity": "Rare",
       "bonus": "XPBoost",
       "bonusValue": 30,
-      "bonusLabel": "XPBoost +30",
+      "bonusLabel": "+30% XP",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2241,7 +2241,7 @@
       "rarity": "Normal",
       "bonus": "RadHealingBoost",
       "bonusValue": 2,
-      "bonusLabel": "RadHealingBoost +2",
+      "bonusLabel": "x2 Rad Healing Speed",
       "uniqueName": "Siamese",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2261,7 +2261,7 @@
       "rarity": "Legendary",
       "bonus": "RadHealingBoost",
       "bonusValue": 4,
-      "bonusLabel": "RadHealingBoost +4",
+      "bonusLabel": "x4 Rad Healing Speed",
       "uniqueName": "Goblet",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2281,7 +2281,7 @@
       "rarity": "Rare",
       "bonus": "RadHealingBoost",
       "bonusValue": 3,
-      "bonusLabel": "RadHealingBoost +3",
+      "bonusLabel": "x3 Rad Healing Speed",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2301,7 +2301,7 @@
       "rarity": "Legendary",
       "bonus": "FasterCrafting",
       "bonusValue": 45,
-      "bonusLabel": "FasterCrafting +45",
+      "bonusLabel": "-45% Crafting Time",
       "uniqueName": "Saffron",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2321,7 +2321,7 @@
       "rarity": "Rare",
       "bonus": "FasterCrafting",
       "bonusValue": 30,
-      "bonusLabel": "FasterCrafting +30",
+      "bonusLabel": "-30% Crafting Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2341,7 +2341,7 @@
       "rarity": "Rare",
       "bonus": "FasterCrafting",
       "bonusValue": 15,
-      "bonusLabel": "FasterCrafting +15",
+      "bonusLabel": "-15% Crafting Time",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2361,7 +2361,7 @@
       "rarity": "Normal",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 1.25,
-      "bonusLabel": "FasterWastelandReturnSpeed +1.25",
+      "bonusLabel": "x1.25 Wasteland Return Speed",
       "uniqueName": "Sphynx",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2381,7 +2381,7 @@
       "rarity": "Legendary",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 4,
-      "bonusLabel": "FasterWastelandReturnSpeed +4",
+      "bonusLabel": "x4 Wasteland Return Speed",
       "uniqueName": "Bastet",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2401,7 +2401,7 @@
       "rarity": "Rare",
       "bonus": "FasterWastelandReturnSpeed",
       "bonusValue": 2,
-      "bonusLabel": "FasterWastelandReturnSpeed +2",
+      "bonusLabel": "x2 Wasteland Return Speed",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2421,7 +2421,7 @@
       "rarity": "Normal",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 33,
-      "bonusLabel": "WastelandJunkBoost +33",
+      "bonusLabel": "+33% Wasteland Junk",
       "uniqueName": "St Bernard",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2441,7 +2441,7 @@
       "rarity": "Legendary",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 100,
-      "bonusLabel": "WastelandJunkBoost +100",
+      "bonusLabel": "+100% Wasteland Junk",
       "uniqueName": "Barry",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2461,7 +2461,7 @@
       "rarity": "Rare",
       "bonus": "WastelandJunkBoost",
       "bonusValue": 66,
-      "bonusLabel": "WastelandJunkBoost +66",
+      "bonusLabel": "+66% Wasteland Junk",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Dogs_HD.png",
@@ -2481,7 +2481,7 @@
       "rarity": "Normal",
       "bonus": "MysteriousMagnet",
       "bonusValue": 2.5,
-      "bonusLabel": "MysteriousMagnet +2.5",
+      "bonusLabel": "x2.5 Stranger Chance",
       "uniqueName": "Toyger",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2501,7 +2501,7 @@
       "rarity": "Legendary",
       "bonus": "MysteriousMagnet",
       "bonusValue": 7.5,
-      "bonusLabel": "MysteriousMagnet +7.5",
+      "bonusLabel": "x7.5 Stranger Chance",
       "uniqueName": "Kato",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2521,7 +2521,7 @@
       "rarity": "Rare",
       "bonus": "MysteriousMagnet",
       "bonusValue": 5,
-      "bonusLabel": "MysteriousMagnet +5",
+      "bonusLabel": "x5 Stranger Chance",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2541,7 +2541,7 @@
       "rarity": "Legendary",
       "bonus": "ChildSpecialBoost",
       "bonusValue": 3,
-      "bonusLabel": "ChildSpecialBoost +3",
+      "bonusLabel": "+3 Child SPECIALs",
       "uniqueName": "Duchess",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2561,7 +2561,7 @@
       "rarity": "Legendary",
       "bonus": "ChildSpecialBoost",
       "bonusValue": 2,
-      "bonusLabel": "ChildSpecialBoost +2",
+      "bonusLabel": "+2 Child SPECIALs",
       "uniqueName": "Pumpkin",
       "icon": {
         "atlas": "Pet_Cats_HD.png",
@@ -2581,7 +2581,7 @@
       "rarity": "Rare",
       "bonus": "ChildSpecialBoost",
       "bonusValue": 1,
-      "bonusLabel": "ChildSpecialBoost +1",
+      "bonusLabel": "+1 Child SPECIALs",
       "uniqueName": "Archie",
       "icon": {
         "atlas": "Pet_Cats_HD.png",

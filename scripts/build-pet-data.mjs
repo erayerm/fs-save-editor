@@ -8,11 +8,13 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseEBonusEffect } from './lib/parseEBonusEffect.mjs';
 import { parsePetData } from './lib/parsePetData.mjs';
+import { parseLocalization } from './lib/localization.mjs';
 
 const ROOT = 'TEMPORARY-game-files/export-3/ExportedProject/Assets';
 const PCD = join(ROOT, 'MonoBehaviour/PetsCustomizationData.asset');
 const EBONUS = join(ROOT, 'Scripts/Assembly-CSharp/EBonusEffect.cs');
 const EBREED = join(ROOT, 'Scripts/Assembly-CSharp/EPetBreed.cs');
+const I2 = join(ROOT, 'Resources/I2Languages.prefab');
 const OUT = 'scripts/lib/petData.mjs';
 
 const RARITY = { 2: 'Normal', 3: 'Rare', 4: 'Legendary' };
@@ -38,8 +40,24 @@ function firstNamePool(text) {
 
 const bonusMap = parseEBonusEffect(readFileSync(EBONUS, 'utf8'));
 const breedMap = parseBreeds(readFileSync(EBREED, 'utf8'));
+const locMap = parseLocalization(readFileSync(I2, 'utf8'));
 const sampleRareName = firstNamePool(readFileSync(PCD, 'utf8')) ?? 'Buddy';
 const pets = parsePetData(readFileSync(PCD, 'utf8'));
+
+/**
+ * Human bonus label, exactly as the game renders it:
+ * string.Format(ScriptLocalization.Get("Bonus_" + effect), value).
+ * The localized template carries the correct sign/format ("x{0} ...", "+{0}% ...",
+ * "-{0}% ...", "{0}% ..."). I2 wraps some templates in single quotes to preserve
+ * literal whitespace — strip a matching surrounding pair. Falls back to a plain
+ * "Effect value" when no template exists.
+ */
+function bonusLabelFor(effect, value) {
+  let tmpl = locMap.get('Bonus_' + effect);
+  if (!tmpl) return `${effect} ${value}`;
+  if (tmpl.length >= 2 && tmpl.startsWith("'") && tmpl.endsWith("'")) tmpl = tmpl.slice(1, -1);
+  return tmpl.replace(/\{0\}/g, String(value));
+}
 
 function uniqueNameFor(p, breedName) {
   if (p.rarity === 4) return p.baseName;       // Legendary: fixed base name
@@ -58,7 +76,7 @@ const records = pets.map((p) => {
     rarity: RARITY[p.rarity] ?? 'Normal',
     bonus,
     bonusValue: p.maxValue,
-    bonusLabel: `${bonus} +${p.maxValue}`,
+    bonusLabel: bonusLabelFor(bonus, p.maxValue),
     uniqueName: uniqueNameFor(p, breedName),
     headSprite: p.headSprite,
     fullBodySprite: p.fullBodySprite,
