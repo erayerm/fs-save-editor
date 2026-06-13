@@ -65,7 +65,12 @@ function uniqueNameFor(p, breedName) {
   return breedName;                             // Normal: breed name
 }
 
-const records = pets.map((p) => {
+const records = pets
+  // Drop placeholder/cut entries: anything without a real obtainable rarity
+  // (EItemRarity.None = 0). These use placeholder art (e.g. persian_l_2 →
+  // PlaceHolder_Cat_Head) and have no icon, so they shouldn't appear in the picker.
+  .filter((p) => RARITY[p.rarity])
+  .map((p) => {
   const bonus = bonusMap.get(p.bonusEffect) ?? String(p.bonusEffect);
   const breedName = breedMap.get(p.breed) ?? p.baseName;
   return {
@@ -73,7 +78,7 @@ const records = pets.map((p) => {
     name: breedName,
     type: PET_TYPE[p.type] ?? 'Dog',
     breed: breedName,
-    rarity: RARITY[p.rarity] ?? 'Normal',
+    rarity: RARITY[p.rarity],
     bonus,
     bonusValue: p.maxValue,
     bonusLabel: bonusLabelFor(bonus, p.maxValue),

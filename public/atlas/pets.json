@@ -1881,18 +1881,6 @@
         "ah": 1024
       }
     },
-    "persian_l_2": {
-      "id": "persian_l_2",
-      "name": "Persian",
-      "type": "Cat",
-      "breed": "Persian",
-      "rarity": "Normal",
-      "bonus": "TrainingNonStopBoost",
-      "bonusValue": 30,
-      "bonusLabel": "-30% Training Time (Continuous)",
-      "uniqueName": "Persian",
-      "icon": null
-    },
     "persian_r": {
       "id": "persian_r",
       "name": "Persian",
