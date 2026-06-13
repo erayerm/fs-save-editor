@@ -38,4 +38,5 @@ it('shows only Name and Danger Zone for child dwellers', () => {
   expect(screen.queryByText('Gender')).toBeNull();
   expect(screen.queryByText('Level')).toBeNull();
   expect(screen.queryByText(/skin color/i)).toBeNull();
+  expect(screen.queryByText('Pregnancy')).toBeNull();
 });
