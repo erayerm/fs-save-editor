@@ -31,7 +31,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
   const isChild = !!dweller.isChild;
 
   // Children get only SPECIAL and a reduced Others tab; everything that needs a
-  // rendered model (hair/outfit/weapon/pet/facial hair) is hidden.
+  // rendered model (hair/outfit/weapon/pet/face) is hidden.
   const tabs: EditorTab[] = isChild
     ? [
         { id: 'stats', label: 'SPECIAL' },
