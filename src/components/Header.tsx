@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSaveStore } from '../store/saveStore';
 import { exportSave } from '../lib/exportSave';
+import { countExport } from '../lib/analytics';
 import { GITHUB_REPO_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
 import { ExportSuccessModal } from './ExportSuccessModal';
@@ -75,6 +76,7 @@ export function Header() {
             if (!save) return;
             try {
               await exportSave(save, fileName);
+              countExport(isDemo);
               setExportedOpen(true);
             } catch (err) {
               alert(`Failed to export .sav: ${(err as Error).message}`);
