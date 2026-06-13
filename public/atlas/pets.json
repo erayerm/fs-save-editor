@@ -1,0 +1,2597 @@
+{
+  "version": 1,
+  "pets": {
+    "abyssinian_c": {
+      "id": "abyssinian_c",
+      "name": "Abyssinian",
+      "type": "Cat",
+      "breed": "Abyssinian",
+      "rarity": "Normal",
+      "bonus": "Resistance",
+      "bonusValue": 24,
+      "bonusLabel": "Resistance +24",
+      "uniqueName": "Abyssinian",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 533,
+        "w": 131,
+        "h": 158,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "abyssinian_l": {
+      "id": "abyssinian_l",
+      "name": "Abyssinian",
+      "type": "Cat",
+      "breed": "Abyssinian",
+      "rarity": "Legendary",
+      "bonus": "Resistance",
+      "bonusValue": 50,
+      "bonusLabel": "Resistance +50",
+      "uniqueName": "Zula",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 533,
+        "w": 131,
+        "h": 158,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "abyssinian_r": {
+      "id": "abyssinian_r",
+      "name": "Abyssinian",
+      "type": "Cat",
+      "breed": "Abyssinian",
+      "rarity": "Rare",
+      "bonus": "Resistance",
+      "bonusValue": 40,
+      "bonusLabel": "Resistance +40",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 533,
+        "w": 131,
+        "h": 158,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "akita_l": {
+      "id": "akita_l",
+      "name": "Akita",
+      "type": "Dog",
+      "breed": "Akita",
+      "rarity": "Legendary",
+      "bonus": "MysteriousMagnet",
+      "bonusValue": 7.5,
+      "bonusLabel": "MysteriousMagnet +7.5",
+      "uniqueName": "Kuma",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1008,
+        "y": 63,
+        "w": 159,
+        "h": 151,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "akita_l2": {
+      "id": "akita_l2",
+      "name": "Akita",
+      "type": "Dog",
+      "breed": "Akita",
+      "rarity": "Legendary",
+      "bonus": "MysteriousMagnet",
+      "bonusValue": 5,
+      "bonusLabel": "MysteriousMagnet +5",
+      "uniqueName": "Kabosu",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1008,
+        "y": 63,
+        "w": 159,
+        "h": 151,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "akita_r": {
+      "id": "akita_r",
+      "name": "Akita",
+      "type": "Dog",
+      "breed": "Akita",
+      "rarity": "Rare",
+      "bonus": "MysteriousMagnet",
+      "bonusValue": 2.5,
+      "bonusLabel": "MysteriousMagnet +2.5",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1008,
+        "y": 63,
+        "w": 159,
+        "h": 151,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Alien_Drone": {
+      "id": "Alien_Drone",
+      "name": "Default Floating Drone",
+      "type": "Macaw",
+      "breed": "Default Floating Drone",
+      "rarity": "Rare",
+      "bonus": "DamageBoost",
+      "bonusValue": 4,
+      "bonusLabel": "DamageBoost +4",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_FloatingDrone_HD.png",
+        "x": 0,
+        "y": 78,
+        "w": 200,
+        "h": 136,
+        "aw": 512,
+        "ah": 512
+      }
+    },
+    "american_c": {
+      "id": "american_c",
+      "name": "American Shorthair",
+      "type": "Cat",
+      "breed": "American Shorthair",
+      "rarity": "Normal",
+      "bonus": "WastelandCapsBoost",
+      "bonusValue": 15,
+      "bonusLabel": "WastelandCapsBoost +15",
+      "uniqueName": "American Shorthair",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1643,
+        "y": 864,
+        "w": 140,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "american_l": {
+      "id": "american_l",
+      "name": "American Shorthair",
+      "type": "Cat",
+      "breed": "American Shorthair",
+      "rarity": "Legendary",
+      "bonus": "WastelandCapsBoost",
+      "bonusValue": 45,
+      "bonusLabel": "WastelandCapsBoost +45",
+      "uniqueName": "Sterling",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1643,
+        "y": 864,
+        "w": 140,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "american_r": {
+      "id": "american_r",
+      "name": "American Shorthair",
+      "type": "Cat",
+      "breed": "American Shorthair",
+      "rarity": "Rare",
+      "bonus": "WastelandCapsBoost",
+      "bonusValue": 30,
+      "bonusLabel": "WastelandCapsBoost +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1643,
+        "y": 864,
+        "w": 140,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "australianshepherd_l": {
+      "id": "australianshepherd_l",
+      "name": "Australian Shepherd",
+      "type": "Dog",
+      "breed": "Australian Shepherd",
+      "rarity": "Legendary",
+      "bonus": "ChildSpecialBoost",
+      "bonusValue": 3,
+      "bonusLabel": "ChildSpecialBoost +3",
+      "uniqueName": "Bandit",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 554,
+        "w": 175,
+        "h": 119,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "australianshepherd_r": {
+      "id": "australianshepherd_r",
+      "name": "Australian Shepherd",
+      "type": "Dog",
+      "breed": "Australian Shepherd",
+      "rarity": "Rare",
+      "bonus": "ChildSpecialBoost",
+      "bonusValue": 2,
+      "bonusLabel": "ChildSpecialBoost +2",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 554,
+        "w": 175,
+        "h": 119,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "australianshepherd_r2": {
+      "id": "australianshepherd_r2",
+      "name": "Australian Shepherd",
+      "type": "Dog",
+      "breed": "Australian Shepherd",
+      "rarity": "Rare",
+      "bonus": "ChildSpecialBoost",
+      "bonusValue": 1,
+      "bonusLabel": "ChildSpecialBoost +1",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 554,
+        "w": 175,
+        "h": 119,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "blacklab_c": {
+      "id": "blacklab_c",
+      "name": "Black Lab",
+      "type": "Dog",
+      "breed": "Black Lab",
+      "rarity": "Normal",
+      "bonus": "TrainingBoost",
+      "bonusValue": 10,
+      "bonusLabel": "TrainingBoost +10",
+      "uniqueName": "Black Lab",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1704,
+        "y": 677,
+        "w": 147,
+        "h": 110,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "blacklab_l": {
+      "id": "blacklab_l",
+      "name": "Black Lab",
+      "type": "Dog",
+      "breed": "Black Lab",
+      "rarity": "Legendary",
+      "bonus": "TrainingNonStopBoost",
+      "bonusValue": 30,
+      "bonusLabel": "TrainingNonStopBoost +30",
+      "uniqueName": "Muttface",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1704,
+        "y": 677,
+        "w": 147,
+        "h": 110,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "blacklab_r": {
+      "id": "blacklab_r",
+      "name": "Black Lab",
+      "type": "Dog",
+      "breed": "Black Lab",
+      "rarity": "Rare",
+      "bonus": "TrainingBoost",
+      "bonusValue": 20,
+      "bonusLabel": "TrainingBoost +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1704,
+        "y": 677,
+        "w": 147,
+        "h": 110,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "bloodhound_l": {
+      "id": "bloodhound_l",
+      "name": "Bloodhound",
+      "type": "Dog",
+      "breed": "Bloodhound",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 100,
+      "bonusLabel": "WastelandJunkBoost +100",
+      "uniqueName": "Duke",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1781,
+        "y": 1760,
+        "w": 161,
+        "h": 117,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "bloodhound_l2": {
+      "id": "bloodhound_l2",
+      "name": "Bloodhound",
+      "type": "Dog",
+      "breed": "Bloodhound",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 33,
+      "bonusLabel": "WastelandJunkBoost +33",
+      "uniqueName": "Valentine",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1781,
+        "y": 1760,
+        "w": 161,
+        "h": 117,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "bloodhound_l3": {
+      "id": "bloodhound_l3",
+      "name": "Bloodhound",
+      "type": "Dog",
+      "breed": "Bloodhound",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 66,
+      "bonusLabel": "WastelandJunkBoost +66",
+      "uniqueName": "Moose",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1781,
+        "y": 1760,
+        "w": 161,
+        "h": 117,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "blueyellowmacaw_l": {
+      "id": "blueyellowmacaw_l",
+      "name": "Blue Yellow Macaw",
+      "type": "FloatingDrone",
+      "breed": "Blue Yellow Macaw",
+      "rarity": "Legendary",
+      "bonus": "ObjectiveMultiplier",
+      "bonusValue": 3,
+      "bonusLabel": "ObjectiveMultiplier +3",
+      "uniqueName": "Pip",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 744,
+        "y": 271,
+        "w": 107,
+        "h": 109,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "blueyellowmacaw_l2": {
+      "id": "blueyellowmacaw_l2",
+      "name": "Blue Yellow Macaw",
+      "type": "FloatingDrone",
+      "breed": "Blue Yellow Macaw",
+      "rarity": "Legendary",
+      "bonus": "ObjectiveMultiplier",
+      "bonusValue": 2,
+      "bonusLabel": "ObjectiveMultiplier +2",
+      "uniqueName": "Vinnie",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 744,
+        "y": 271,
+        "w": 107,
+        "h": 109,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "bombay_c": {
+      "id": "bombay_c",
+      "name": "Bombay",
+      "type": "Cat",
+      "breed": "Bombay",
+      "rarity": "Normal",
+      "bonus": "AddMaxHP",
+      "bonusValue": 33,
+      "bonusLabel": "AddMaxHP +33",
+      "uniqueName": "Bombay",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1787,
+        "y": 864,
+        "w": 140,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "bombay_l": {
+      "id": "bombay_l",
+      "name": "Bombay",
+      "type": "Cat",
+      "breed": "Bombay",
+      "rarity": "Legendary",
+      "bonus": "AddMaxHP",
+      "bonusValue": 100,
+      "bonusLabel": "AddMaxHP +100",
+      "uniqueName": "Shadow",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1787,
+        "y": 864,
+        "w": 140,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "bombay_r": {
+      "id": "bombay_r",
+      "name": "Bombay",
+      "type": "Cat",
+      "breed": "Bombay",
+      "rarity": "Rare",
+      "bonus": "AddMaxHP",
+      "bonusValue": 66,
+      "bonusLabel": "AddMaxHP +66",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1787,
+        "y": 864,
+        "w": 140,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "boxer_c": {
+      "id": "boxer_c",
+      "name": "Boxer",
+      "type": "Dog",
+      "breed": "Boxer",
+      "rarity": "Normal",
+      "bonus": "XPBoost",
+      "bonusValue": 15,
+      "bonusLabel": "XPBoost +15",
+      "uniqueName": "Boxer",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 318,
+        "w": 152,
+        "h": 118,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "boxer_l": {
+      "id": "boxer_l",
+      "name": "Boxer",
+      "type": "Dog",
+      "breed": "Boxer",
+      "rarity": "Legendary",
+      "bonus": "XPBoost",
+      "bonusValue": 45,
+      "bonusLabel": "XPBoost +45",
+      "uniqueName": "Scavver",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 318,
+        "w": 152,
+        "h": 118,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "boxer_r": {
+      "id": "boxer_r",
+      "name": "Boxer",
+      "type": "Dog",
+      "breed": "Boxer",
+      "rarity": "Rare",
+      "bonus": "XPBoost",
+      "bonusValue": 30,
+      "bonusLabel": "XPBoost +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 318,
+        "w": 152,
+        "h": 118,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "british_c": {
+      "id": "british_c",
+      "name": "British Shorthair",
+      "type": "Cat",
+      "breed": "British Shorthair",
+      "rarity": "Normal",
+      "bonus": "HealingBoost",
+      "bonusValue": 2,
+      "bonusLabel": "HealingBoost +2",
+      "uniqueName": "British Shorthair",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1491,
+        "y": 715,
+        "w": 145,
+        "h": 142,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "british_l": {
+      "id": "british_l",
+      "name": "British Shorthair",
+      "type": "Cat",
+      "breed": "British Shorthair",
+      "rarity": "Legendary",
+      "bonus": "HealingBoost",
+      "bonusValue": 4,
+      "bonusLabel": "HealingBoost +4",
+      "uniqueName": "Ashes",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1491,
+        "y": 715,
+        "w": 145,
+        "h": 142,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "british_r": {
+      "id": "british_r",
+      "name": "British Shorthair",
+      "type": "Cat",
+      "breed": "British Shorthair",
+      "rarity": "Rare",
+      "bonus": "HealingBoost",
+      "bonusValue": 3,
+      "bonusLabel": "HealingBoost +3",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1491,
+        "y": 715,
+        "w": 145,
+        "h": 142,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "brittany_c": {
+      "id": "brittany_c",
+      "name": "Brittany",
+      "type": "Dog",
+      "breed": "Brittany",
+      "rarity": "Normal",
+      "bonus": "FasterAndCheaperCrafting",
+      "bonusValue": 10,
+      "bonusLabel": "FasterAndCheaperCrafting +10",
+      "uniqueName": "Brittany",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1909,
+        "y": 1214,
+        "w": 137,
+        "h": 104,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "brittany_l": {
+      "id": "brittany_l",
+      "name": "Brittany",
+      "type": "Dog",
+      "breed": "Brittany",
+      "rarity": "Legendary",
+      "bonus": "FasterAndCheaperCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "FasterAndCheaperCrafting +30",
+      "uniqueName": "Gaston",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1909,
+        "y": 1214,
+        "w": 137,
+        "h": 104,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "brittany_r": {
+      "id": "brittany_r",
+      "name": "Brittany",
+      "type": "Dog",
+      "breed": "Brittany",
+      "rarity": "Rare",
+      "bonus": "FasterAndCheaperCrafting",
+      "bonusValue": 20,
+      "bonusLabel": "FasterAndCheaperCrafting +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1909,
+        "y": 1214,
+        "w": 137,
+        "h": 104,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "burmilla_l": {
+      "id": "burmilla_l",
+      "name": "Burmilla",
+      "type": "Cat",
+      "breed": "Burmilla",
+      "rarity": "Legendary",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "CheaperCrafting +30",
+      "uniqueName": "Diamond",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 695,
+        "w": 138,
+        "h": 162,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "burmilla_l2": {
+      "id": "burmilla_l2",
+      "name": "Burmilla",
+      "type": "Cat",
+      "breed": "Burmilla",
+      "rarity": "Legendary",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 20,
+      "bonusLabel": "CheaperCrafting +20",
+      "uniqueName": "Cloudy",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 695,
+        "w": 138,
+        "h": 162,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "burmilla_r": {
+      "id": "burmilla_r",
+      "name": "Burmilla",
+      "type": "Cat",
+      "breed": "Burmilla",
+      "rarity": "Rare",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 10,
+      "bonusLabel": "CheaperCrafting +10",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 695,
+        "w": 138,
+        "h": 162,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "cattledog_c": {
+      "id": "cattledog_c",
+      "name": "Cattle Dog",
+      "type": "Dog",
+      "breed": "Cattle Dog",
+      "rarity": "Normal",
+      "bonus": "WastelandCapsBoost",
+      "bonusValue": 15,
+      "bonusLabel": "WastelandCapsBoost +15",
+      "uniqueName": "Cattle Dog",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1909,
+        "y": 1322,
+        "w": 136,
+        "h": 136,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "cattledog_l": {
+      "id": "cattledog_l",
+      "name": "Cattle Dog",
+      "type": "Dog",
+      "breed": "Cattle Dog",
+      "rarity": "Legendary",
+      "bonus": "WastelandCapsBoost",
+      "bonusValue": 45,
+      "bonusLabel": "WastelandCapsBoost +45",
+      "uniqueName": "Four Score",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1909,
+        "y": 1322,
+        "w": 136,
+        "h": 136,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "cattledog_r": {
+      "id": "cattledog_r",
+      "name": "Cattle Dog",
+      "type": "Dog",
+      "breed": "Cattle Dog",
+      "rarity": "Rare",
+      "bonus": "WastelandCapsBoost",
+      "bonusValue": 30,
+      "bonusLabel": "WastelandCapsBoost +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1909,
+        "y": 1322,
+        "w": 136,
+        "h": 136,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "collie_c": {
+      "id": "collie_c",
+      "name": "Collie",
+      "type": "Dog",
+      "breed": "Collie",
+      "rarity": "Normal",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 10,
+      "bonusLabel": "CheaperCrafting +10",
+      "uniqueName": "Collie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 218,
+        "w": 186,
+        "h": 132,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "collie_l": {
+      "id": "collie_l",
+      "name": "Collie",
+      "type": "Dog",
+      "breed": "Collie",
+      "rarity": "Legendary",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "CheaperCrafting +30",
+      "uniqueName": "Pal",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 218,
+        "w": 186,
+        "h": 132,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "collie_r": {
+      "id": "collie_r",
+      "name": "Collie",
+      "type": "Dog",
+      "breed": "Collie",
+      "rarity": "Rare",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 20,
+      "bonusLabel": "CheaperCrafting +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 218,
+        "w": 186,
+        "h": 132,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "cx404_l": {
+      "id": "cx404_l",
+      "name": "German Shepherd",
+      "type": "Dog",
+      "breed": "German Shepherd",
+      "rarity": "Legendary",
+      "bonus": "XPBoost",
+      "bonusValue": 45,
+      "bonusLabel": "XPBoost +45",
+      "uniqueName": "CX404",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1781,
+        "y": 1881,
+        "w": 184,
+        "h": 167,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "cyberdog_l": {
+      "id": "cyberdog_l",
+      "name": "German Shepherd",
+      "type": "Dog",
+      "breed": "German Shepherd",
+      "rarity": "Legendary",
+      "bonus": "Resistance",
+      "bonusValue": 50,
+      "bonusLabel": "Resistance +50",
+      "uniqueName": "Cyberdog",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 49,
+        "w": 147,
+        "h": 165,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "dalmatian_l": {
+      "id": "dalmatian_l",
+      "name": "Dalmatian",
+      "type": "Dog",
+      "breed": "Dalmatian",
+      "rarity": "Legendary",
+      "bonus": "ChildMultiplier",
+      "bonusValue": 75,
+      "bonusLabel": "ChildMultiplier +75",
+      "uniqueName": "Pongo",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 202,
+        "w": 158,
+        "h": 112,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "dalmatian_l2": {
+      "id": "dalmatian_l2",
+      "name": "Dalmatian",
+      "type": "Dog",
+      "breed": "Dalmatian",
+      "rarity": "Legendary",
+      "bonus": "ChildMultiplier",
+      "bonusValue": 50,
+      "bonusLabel": "ChildMultiplier +50",
+      "uniqueName": "Lucky",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 202,
+        "w": 158,
+        "h": 112,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "dalmatian_r": {
+      "id": "dalmatian_r",
+      "name": "Dalmatian",
+      "type": "Dog",
+      "breed": "Dalmatian",
+      "rarity": "Rare",
+      "bonus": "ChildMultiplier",
+      "bonusValue": 25,
+      "bonusLabel": "ChildMultiplier +25",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 202,
+        "w": 158,
+        "h": 112,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "doberman_c": {
+      "id": "doberman_c",
+      "name": "Doberman",
+      "type": "Dog",
+      "breed": "Doberman",
+      "rarity": "Normal",
+      "bonus": "HealingBoost",
+      "bonusValue": 2,
+      "bonusLabel": "HealingBoost +2",
+      "uniqueName": "Doberman",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1868,
+        "y": 779,
+        "w": 141,
+        "h": 149,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "doberman_l": {
+      "id": "doberman_l",
+      "name": "Doberman",
+      "type": "Dog",
+      "breed": "Doberman",
+      "rarity": "Legendary",
+      "bonus": "HealingBoost",
+      "bonusValue": 4,
+      "bonusLabel": "HealingBoost +4",
+      "uniqueName": "Apolda",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1868,
+        "y": 779,
+        "w": 141,
+        "h": 149,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "doberman_r": {
+      "id": "doberman_r",
+      "name": "Doberman",
+      "type": "Dog",
+      "breed": "Doberman",
+      "rarity": "Rare",
+      "bonus": "HealingBoost",
+      "bonusValue": 3,
+      "bonusLabel": "HealingBoost +3",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1868,
+        "y": 779,
+        "w": 141,
+        "h": 149,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "englishmastiff_l": {
+      "id": "englishmastiff_l",
+      "name": "English Mastiff",
+      "type": "Dog",
+      "breed": "English Mastiff",
+      "rarity": "Legendary",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "CheaperCrafting +30",
+      "uniqueName": "Goliath",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1914,
+        "y": 1632,
+        "w": 131,
+        "h": 124,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "englishmastiff_r": {
+      "id": "englishmastiff_r",
+      "name": "English Mastiff",
+      "type": "Dog",
+      "breed": "English Mastiff",
+      "rarity": "Rare",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 20,
+      "bonusLabel": "CheaperCrafting +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1914,
+        "y": 1632,
+        "w": 131,
+        "h": 124,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "englishmastiff_r2": {
+      "id": "englishmastiff_r2",
+      "name": "English Mastiff",
+      "type": "Dog",
+      "breed": "English Mastiff",
+      "rarity": "Rare",
+      "bonus": "CheaperCrafting",
+      "bonusValue": 10,
+      "bonusLabel": "CheaperCrafting +10",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1914,
+        "y": 1632,
+        "w": 131,
+        "h": 124,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "germanpointer_c": {
+      "id": "germanpointer_c",
+      "name": "German Pointer",
+      "type": "Dog",
+      "breed": "German Pointer",
+      "rarity": "Normal",
+      "bonus": "RadHealingBoost",
+      "bonusValue": 2,
+      "bonusLabel": "RadHealingBoost +2",
+      "uniqueName": "German Pointer",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 354,
+        "w": 191,
+        "h": 131,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "germanpointer_l": {
+      "id": "germanpointer_l",
+      "name": "German Pointer",
+      "type": "Dog",
+      "breed": "German Pointer",
+      "rarity": "Legendary",
+      "bonus": "RadHealingBoost",
+      "bonusValue": 4,
+      "bonusLabel": "RadHealingBoost +4",
+      "uniqueName": "Mr. Peepers",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 354,
+        "w": 191,
+        "h": 131,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "germanpointer_l2": {
+      "id": "germanpointer_l2",
+      "name": "German Pointer",
+      "type": "Dog",
+      "breed": "German Pointer",
+      "rarity": "Legendary",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 4,
+      "bonusLabel": "FasterWastelandReturnSpeed +4",
+      "uniqueName": "Cocoa Bean",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 354,
+        "w": 191,
+        "h": 131,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "germanpointer_r": {
+      "id": "germanpointer_r",
+      "name": "German Pointer",
+      "type": "Dog",
+      "breed": "German Pointer",
+      "rarity": "Rare",
+      "bonus": "RadHealingBoost",
+      "bonusValue": 3,
+      "bonusLabel": "RadHealingBoost +3",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 857,
+        "y": 354,
+        "w": 191,
+        "h": 131,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "germanshepherd_l": {
+      "id": "germanshepherd_l",
+      "name": "German Shepherd",
+      "type": "Dog",
+      "breed": "German Shepherd",
+      "rarity": "Legendary",
+      "bonus": "ObjectiveMultiplier",
+      "bonusValue": 3,
+      "bonusLabel": "ObjectiveMultiplier +3",
+      "uniqueName": "Dogmeat",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1557,
+        "y": 763,
+        "w": 143,
+        "h": 165,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "germanshepherd_r": {
+      "id": "germanshepherd_r",
+      "name": "German Shepherd",
+      "type": "Dog",
+      "breed": "German Shepherd",
+      "rarity": "Rare",
+      "bonus": "ObjectiveMultiplier",
+      "bonusValue": 2,
+      "bonusLabel": "ObjectiveMultiplier +2",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1557,
+        "y": 763,
+        "w": 143,
+        "h": 165,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "goldenret_c": {
+      "id": "goldenret_c",
+      "name": "Golden Retriever",
+      "type": "Dog",
+      "breed": "Golden Retriever",
+      "rarity": "Normal",
+      "bonus": "WastelandItemBoost",
+      "bonusValue": 10,
+      "bonusLabel": "WastelandItemBoost +10",
+      "uniqueName": "Golden Retriever",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1052,
+        "y": 368,
+        "w": 146,
+        "h": 117,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "goldenret_l": {
+      "id": "goldenret_l",
+      "name": "Golden Retriever",
+      "type": "Dog",
+      "breed": "Golden Retriever",
+      "rarity": "Legendary",
+      "bonus": "WastelandItemBoost",
+      "bonusValue": 30,
+      "bonusLabel": "WastelandItemBoost +30",
+      "uniqueName": "Cindy",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1052,
+        "y": 368,
+        "w": 146,
+        "h": 117,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "goldenret_r": {
+      "id": "goldenret_r",
+      "name": "Golden Retriever",
+      "type": "Dog",
+      "breed": "Golden Retriever",
+      "rarity": "Rare",
+      "bonus": "WastelandItemBoost",
+      "bonusValue": 20,
+      "bonusLabel": "WastelandItemBoost +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1052,
+        "y": 368,
+        "w": 146,
+        "h": 117,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "greyhound_c": {
+      "id": "greyhound_c",
+      "name": "Greyhound",
+      "type": "Dog",
+      "breed": "Greyhound",
+      "rarity": "Normal",
+      "bonus": "FasterCrafting",
+      "bonusValue": 15,
+      "bonusLabel": "FasterCrafting +15",
+      "uniqueName": "Greyhound",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 440,
+        "w": 166,
+        "h": 110,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "greyhound_l": {
+      "id": "greyhound_l",
+      "name": "Greyhound",
+      "type": "Dog",
+      "breed": "Greyhound",
+      "rarity": "Legendary",
+      "bonus": "FasterCrafting",
+      "bonusValue": 45,
+      "bonusLabel": "FasterCrafting +45",
+      "uniqueName": "Little Helper",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 440,
+        "w": 166,
+        "h": 110,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "greyhound_r": {
+      "id": "greyhound_r",
+      "name": "Greyhound",
+      "type": "Dog",
+      "breed": "Greyhound",
+      "rarity": "Rare",
+      "bonus": "FasterCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "FasterCrafting +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1203,
+        "y": 440,
+        "w": 166,
+        "h": 110,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "havanabrown_l": {
+      "id": "havanabrown_l",
+      "name": "Havana Brown",
+      "type": "Cat",
+      "breed": "Havana Brown",
+      "rarity": "Legendary",
+      "bonus": "FasterCrafting",
+      "bonusValue": 45,
+      "bonusLabel": "FasterCrafting +45",
+      "uniqueName": "Merlin",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 34,
+        "w": 146,
+        "h": 167,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "havanabrown_r": {
+      "id": "havanabrown_r",
+      "name": "Havana Brown",
+      "type": "Cat",
+      "breed": "Havana Brown",
+      "rarity": "Rare",
+      "bonus": "FasterCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "FasterCrafting +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 34,
+        "w": 146,
+        "h": 167,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "havanabrown_r2": {
+      "id": "havanabrown_r2",
+      "name": "Havana Brown",
+      "type": "Cat",
+      "breed": "Havana Brown",
+      "rarity": "Rare",
+      "bonus": "FasterCrafting",
+      "bonusValue": 15,
+      "bonusLabel": "FasterCrafting +15",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 34,
+        "w": 146,
+        "h": 167,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "husky_c": {
+      "id": "husky_c",
+      "name": "Husky",
+      "type": "Dog",
+      "breed": "Husky",
+      "rarity": "Normal",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 1.25,
+      "bonusLabel": "FasterWastelandReturnSpeed +1.25",
+      "uniqueName": "Husky",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1024,
+        "y": 495,
+        "w": 169,
+        "h": 159,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "husky_l": {
+      "id": "husky_l",
+      "name": "Husky",
+      "type": "Dog",
+      "breed": "Husky",
+      "rarity": "Legendary",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 4,
+      "bonusLabel": "FasterWastelandReturnSpeed +4",
+      "uniqueName": "Trench",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1024,
+        "y": 495,
+        "w": 169,
+        "h": 159,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "husky_r": {
+      "id": "husky_r",
+      "name": "Husky",
+      "type": "Dog",
+      "breed": "Husky",
+      "rarity": "Rare",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 2,
+      "bonusLabel": "FasterWastelandReturnSpeed +2",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1024,
+        "y": 495,
+        "w": 169,
+        "h": 159,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "laperm_l": {
+      "id": "laperm_l",
+      "name": "La Perm",
+      "type": "Cat",
+      "breed": "La Perm",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 100,
+      "bonusLabel": "WastelandJunkBoost +100",
+      "uniqueName": "Pouncer",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1481,
+        "y": 881,
+        "w": 158,
+        "h": 143,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "laperm_l2": {
+      "id": "laperm_l2",
+      "name": "La Perm",
+      "type": "Cat",
+      "breed": "La Perm",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 33,
+      "bonusLabel": "WastelandJunkBoost +33",
+      "uniqueName": "Static",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1481,
+        "y": 881,
+        "w": 158,
+        "h": 143,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "laperm_l3": {
+      "id": "laperm_l3",
+      "name": "La Perm",
+      "type": "Cat",
+      "breed": "La Perm",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 66,
+      "bonusLabel": "WastelandJunkBoost +66",
+      "uniqueName": "Luna",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1481,
+        "y": 881,
+        "w": 158,
+        "h": 143,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "lykoi_c": {
+      "id": "lykoi_c",
+      "name": "Lykoi",
+      "type": "Cat",
+      "breed": "Lykoi",
+      "rarity": "Normal",
+      "bonus": "DamageBoost",
+      "bonusValue": 2,
+      "bonusLabel": "DamageBoost +2",
+      "uniqueName": "Lykoi",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 712,
+        "y": 132,
+        "w": 158,
+        "h": 162,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "lykoi_l": {
+      "id": "lykoi_l",
+      "name": "Lykoi",
+      "type": "Cat",
+      "breed": "Lykoi",
+      "rarity": "Legendary",
+      "bonus": "DamageBoost",
+      "bonusValue": 6,
+      "bonusLabel": "DamageBoost +6",
+      "uniqueName": "Calypso",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 712,
+        "y": 132,
+        "w": 158,
+        "h": 162,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "lykoi_r": {
+      "id": "lykoi_r",
+      "name": "Lykoi",
+      "type": "Cat",
+      "breed": "Lykoi",
+      "rarity": "Rare",
+      "bonus": "DamageBoost",
+      "bonusValue": 4,
+      "bonusLabel": "DamageBoost +4",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 712,
+        "y": 132,
+        "w": 158,
+        "h": 162,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "mainecoon_c": {
+      "id": "mainecoon_c",
+      "name": "Maine Coon",
+      "type": "Cat",
+      "breed": "Maine Coon",
+      "rarity": "Normal",
+      "bonus": "TrainingBoost",
+      "bonusValue": 10,
+      "bonusLabel": "TrainingBoost +10",
+      "uniqueName": "Maine Coon",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 689,
+        "w": 158,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "mainecoon_l": {
+      "id": "mainecoon_l",
+      "name": "Maine Coon",
+      "type": "Cat",
+      "breed": "Maine Coon",
+      "rarity": "Legendary",
+      "bonus": "TrainingNonStopBoost",
+      "bonusValue": 30,
+      "bonusLabel": "TrainingNonStopBoost +30",
+      "uniqueName": "Bangor",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 689,
+        "w": 158,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "mainecoon_r": {
+      "id": "mainecoon_r",
+      "name": "Maine Coon",
+      "type": "Cat",
+      "breed": "Maine Coon",
+      "rarity": "Rare",
+      "bonus": "TrainingBoost",
+      "bonusValue": 20,
+      "bonusLabel": "TrainingBoost +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 689,
+        "w": 158,
+        "h": 160,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "manx_l": {
+      "id": "manx_l",
+      "name": "Manx",
+      "type": "Cat",
+      "breed": "Manx",
+      "rarity": "Legendary",
+      "bonus": "ChildMultiplier",
+      "bonusValue": 75,
+      "bonusLabel": "ChildMultiplier +75",
+      "uniqueName": "Shakespeare",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1337,
+        "y": 861,
+        "w": 140,
+        "h": 163,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "manx_l2": {
+      "id": "manx_l2",
+      "name": "Manx",
+      "type": "Cat",
+      "breed": "Manx",
+      "rarity": "Legendary",
+      "bonus": "ChildMultiplier",
+      "bonusValue": 25,
+      "bonusLabel": "ChildMultiplier +25",
+      "uniqueName": "Genius",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1337,
+        "y": 861,
+        "w": 140,
+        "h": 163,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "manx_l3": {
+      "id": "manx_l3",
+      "name": "Manx",
+      "type": "Cat",
+      "breed": "Manx",
+      "rarity": "Legendary",
+      "bonus": "ChildMultiplier",
+      "bonusValue": 50,
+      "bonusLabel": "ChildMultiplier +50",
+      "uniqueName": "Stubbs",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1337,
+        "y": 861,
+        "w": 140,
+        "h": 163,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "militarymacaw_l": {
+      "id": "militarymacaw_l",
+      "name": "Military Macaw",
+      "type": "FloatingDrone",
+      "breed": "Military Macaw",
+      "rarity": "Legendary",
+      "bonus": "DamageBoost",
+      "bonusValue": 6,
+      "bonusLabel": "DamageBoost +6",
+      "uniqueName": "Polly",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 852,
+        "y": 269,
+        "w": 105,
+        "h": 111,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "militarymacaw_l2": {
+      "id": "militarymacaw_l2",
+      "name": "Military Macaw",
+      "type": "FloatingDrone",
+      "breed": "Military Macaw",
+      "rarity": "Legendary",
+      "bonus": "DamageBoost",
+      "bonusValue": 4,
+      "bonusLabel": "DamageBoost +4",
+      "uniqueName": "Butch",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 852,
+        "y": 269,
+        "w": 105,
+        "h": 111,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "militarymacaw_r": {
+      "id": "militarymacaw_r",
+      "name": "Military Macaw",
+      "type": "FloatingDrone",
+      "breed": "Military Macaw",
+      "rarity": "Rare",
+      "bonus": "DamageBoost",
+      "bonusValue": 2,
+      "bonusLabel": "DamageBoost +2",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 852,
+        "y": 269,
+        "w": 105,
+        "h": 111,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "ocicat_c": {
+      "id": "ocicat_c",
+      "name": "Ocicat",
+      "type": "Cat",
+      "breed": "Ocicat",
+      "rarity": "Normal",
+      "bonus": "WastelandItemBoost",
+      "bonusValue": 10,
+      "bonusLabel": "WastelandItemBoost +10",
+      "uniqueName": "Ocicat",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 370,
+        "w": 130,
+        "h": 159,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "ocicat_l": {
+      "id": "ocicat_l",
+      "name": "Ocicat",
+      "type": "Cat",
+      "breed": "Ocicat",
+      "rarity": "Legendary",
+      "bonus": "WastelandItemBoost",
+      "bonusValue": 30,
+      "bonusLabel": "WastelandItemBoost +30",
+      "uniqueName": "Speckle",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 370,
+        "w": 130,
+        "h": 159,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "ocicat_r": {
+      "id": "ocicat_r",
+      "name": "Ocicat",
+      "type": "Cat",
+      "breed": "Ocicat",
+      "rarity": "Rare",
+      "bonus": "WastelandItemBoost",
+      "bonusValue": 20,
+      "bonusLabel": "WastelandItemBoost +20",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 370,
+        "w": 130,
+        "h": 159,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "pallascat_c": {
+      "id": "pallascat_c",
+      "name": "Pallas Cat",
+      "type": "Cat",
+      "breed": "Pallas Cat",
+      "rarity": "Normal",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 33,
+      "bonusLabel": "WastelandJunkBoost +33",
+      "uniqueName": "Pallas Cat",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 540,
+        "w": 170,
+        "h": 145,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "pallascat_l": {
+      "id": "pallascat_l",
+      "name": "Pallas Cat",
+      "type": "Cat",
+      "breed": "Pallas Cat",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 100,
+      "bonusLabel": "WastelandJunkBoost +100",
+      "uniqueName": "Cinder",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 540,
+        "w": 170,
+        "h": 145,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "pallascat_r": {
+      "id": "pallascat_r",
+      "name": "Pallas Cat",
+      "type": "Cat",
+      "breed": "Pallas Cat",
+      "rarity": "Rare",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 66,
+      "bonusLabel": "WastelandJunkBoost +66",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 540,
+        "w": 170,
+        "h": 145,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "persian_c": {
+      "id": "persian_c",
+      "name": "Persian",
+      "type": "Cat",
+      "breed": "Persian",
+      "rarity": "Normal",
+      "bonus": "HappinessBoost",
+      "bonusValue": 33,
+      "bonusLabel": "HappinessBoost +33",
+      "uniqueName": "Persian",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1333,
+        "y": 565,
+        "w": 148,
+        "h": 145,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "persian_l": {
+      "id": "persian_l",
+      "name": "Persian",
+      "type": "Cat",
+      "breed": "Persian",
+      "rarity": "Legendary",
+      "bonus": "HappinessBoost",
+      "bonusValue": 100,
+      "bonusLabel": "HappinessBoost +100",
+      "uniqueName": "Mr. Pebbles",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1333,
+        "y": 565,
+        "w": 148,
+        "h": 145,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "persian_l_2": {
+      "id": "persian_l_2",
+      "name": "Persian",
+      "type": "Cat",
+      "breed": "Persian",
+      "rarity": "Normal",
+      "bonus": "TrainingNonStopBoost",
+      "bonusValue": 30,
+      "bonusLabel": "TrainingNonStopBoost +30",
+      "uniqueName": "Persian",
+      "icon": null
+    },
+    "persian_r": {
+      "id": "persian_r",
+      "name": "Persian",
+      "type": "Cat",
+      "breed": "Persian",
+      "rarity": "Rare",
+      "bonus": "HappinessBoost",
+      "bonusValue": 66,
+      "bonusLabel": "HappinessBoost +66",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1333,
+        "y": 565,
+        "w": 148,
+        "h": 145,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "pitbullterrier_l": {
+      "id": "pitbullterrier_l",
+      "name": "Pit Bull Terrier",
+      "type": "Dog",
+      "breed": "Pit Bull Terrier",
+      "rarity": "Legendary",
+      "bonus": "DamageBoost",
+      "bonusValue": 6,
+      "bonusLabel": "DamageBoost +6",
+      "uniqueName": "Hulk",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1704,
+        "y": 791,
+        "w": 160,
+        "h": 137,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "pitbullterrier_l2": {
+      "id": "pitbullterrier_l2",
+      "name": "Pit Bull Terrier",
+      "type": "Dog",
+      "breed": "Pit Bull Terrier",
+      "rarity": "Legendary",
+      "bonus": "DamageBoost",
+      "bonusValue": 2,
+      "bonusLabel": "DamageBoost +2",
+      "uniqueName": "Ranger",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1704,
+        "y": 791,
+        "w": 160,
+        "h": 137,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "pitbullterrier_l3": {
+      "id": "pitbullterrier_l3",
+      "name": "Pit Bull Terrier",
+      "type": "Dog",
+      "breed": "Pit Bull Terrier",
+      "rarity": "Legendary",
+      "bonus": "DamageBoost",
+      "bonusValue": 4,
+      "bonusLabel": "DamageBoost +4",
+      "uniqueName": "Titan",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1704,
+        "y": 791,
+        "w": 160,
+        "h": 137,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "poodle_c": {
+      "id": "poodle_c",
+      "name": "Poodle",
+      "type": "Dog",
+      "breed": "Poodle",
+      "rarity": "Normal",
+      "bonus": "HappinessBoost",
+      "bonusValue": 33,
+      "bonusLabel": "HappinessBoost +33",
+      "uniqueName": "Poodle",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1727,
+        "y": 1465,
+        "w": 198,
+        "h": 133,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "poodle_l": {
+      "id": "poodle_l",
+      "name": "Poodle",
+      "type": "Dog",
+      "breed": "Poodle",
+      "rarity": "Legendary",
+      "bonus": "HappinessBoost",
+      "bonusValue": 100,
+      "bonusLabel": "HappinessBoost +100",
+      "uniqueName": "Lord Puffington",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1727,
+        "y": 1465,
+        "w": 198,
+        "h": 133,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "poodle_r": {
+      "id": "poodle_r",
+      "name": "Poodle",
+      "type": "Dog",
+      "breed": "Poodle",
+      "rarity": "Rare",
+      "bonus": "HappinessBoost",
+      "bonusValue": 66,
+      "bonusLabel": "HappinessBoost +66",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1727,
+        "y": 1465,
+        "w": 198,
+        "h": 133,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "Rollerbrain": {
+      "id": "Rollerbrain",
+      "name": "Default Rollerbrain",
+      "type": "Dog",
+      "breed": "Default Rollerbrain",
+      "rarity": "Legendary",
+      "bonus": "HappinessBoost",
+      "bonusValue": 100,
+      "bonusLabel": "HappinessBoost +100",
+      "uniqueName": "Rollerbrain",
+      "icon": {
+        "atlas": "Pet_Rollerbrain_HD.png",
+        "x": 0,
+        "y": 98,
+        "w": 165,
+        "h": 135,
+        "aw": 512,
+        "ah": 512
+      }
+    },
+    "rottweiler_c": {
+      "id": "rottweiler_c",
+      "name": "Rottweiler",
+      "type": "Dog",
+      "breed": "Rottweiler",
+      "rarity": "Normal",
+      "bonus": "AddMaxHP",
+      "bonusValue": 33,
+      "bonusLabel": "AddMaxHP +33",
+      "uniqueName": "Rottweiler",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1047,
+        "y": 218,
+        "w": 148,
+        "h": 132,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "rottweiler_l": {
+      "id": "rottweiler_l",
+      "name": "Rottweiler",
+      "type": "Dog",
+      "breed": "Rottweiler",
+      "rarity": "Legendary",
+      "bonus": "AddMaxHP",
+      "bonusValue": 100,
+      "bonusLabel": "AddMaxHP +100",
+      "uniqueName": "Maizie Rai",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1047,
+        "y": 218,
+        "w": 148,
+        "h": 132,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "rottweiler_r": {
+      "id": "rottweiler_r",
+      "name": "Rottweiler",
+      "type": "Dog",
+      "breed": "Rottweiler",
+      "rarity": "Rare",
+      "bonus": "AddMaxHP",
+      "bonusValue": 66,
+      "bonusLabel": "AddMaxHP +66",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1047,
+        "y": 218,
+        "w": 148,
+        "h": 132,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "scarletmacaw_c": {
+      "id": "scarletmacaw_c",
+      "name": "Scarlet Macaw",
+      "type": "FloatingDrone",
+      "breed": "Scarlet Macaw",
+      "rarity": "Normal",
+      "bonus": "Resistance",
+      "bonusValue": 24,
+      "bonusLabel": "Resistance +24",
+      "uniqueName": "Scarlet Macaw",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 912,
+        "y": 916,
+        "w": 105,
+        "h": 108,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "scarletmacaw_l": {
+      "id": "scarletmacaw_l",
+      "name": "Scarlet Macaw",
+      "type": "FloatingDrone",
+      "breed": "Scarlet Macaw",
+      "rarity": "Legendary",
+      "bonus": "Resistance",
+      "bonusValue": 50,
+      "bonusLabel": "Resistance +50",
+      "uniqueName": "Wanderer",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 912,
+        "y": 916,
+        "w": 105,
+        "h": 108,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "scarletmacaw_r": {
+      "id": "scarletmacaw_r",
+      "name": "Scarlet Macaw",
+      "type": "FloatingDrone",
+      "breed": "Scarlet Macaw",
+      "rarity": "Rare",
+      "bonus": "Resistance",
+      "bonusValue": 40,
+      "bonusLabel": "Resistance +40",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Macaws_HD.png",
+        "x": 912,
+        "y": 916,
+        "w": 105,
+        "h": 108,
+        "aw": 1024,
+        "ah": 1024
+      }
+    },
+    "scottishfold_c": {
+      "id": "scottishfold_c",
+      "name": "Scottish Fold",
+      "type": "Cat",
+      "breed": "Scottish Fold",
+      "rarity": "Normal",
+      "bonus": "XPBoost",
+      "bonusValue": 15,
+      "bonusLabel": "XPBoost +15",
+      "uniqueName": "Scottish Fold",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 712,
+        "y": 14,
+        "w": 140,
+        "h": 114,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "scottishfold_l": {
+      "id": "scottishfold_l",
+      "name": "Scottish Fold",
+      "type": "Cat",
+      "breed": "Scottish Fold",
+      "rarity": "Legendary",
+      "bonus": "XPBoost",
+      "bonusValue": 45,
+      "bonusLabel": "XPBoost +45",
+      "uniqueName": "Ginger",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 712,
+        "y": 14,
+        "w": 140,
+        "h": 114,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "scottishfold_r": {
+      "id": "scottishfold_r",
+      "name": "Scottish Fold",
+      "type": "Cat",
+      "breed": "Scottish Fold",
+      "rarity": "Rare",
+      "bonus": "XPBoost",
+      "bonusValue": 30,
+      "bonusLabel": "XPBoost +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 712,
+        "y": 14,
+        "w": 140,
+        "h": 114,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "siamese_c": {
+      "id": "siamese_c",
+      "name": "Siamese",
+      "type": "Cat",
+      "breed": "Siamese",
+      "rarity": "Normal",
+      "bonus": "RadHealingBoost",
+      "bonusValue": 2,
+      "bonusLabel": "RadHealingBoost +2",
+      "uniqueName": "Siamese",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 211,
+        "w": 130,
+        "h": 155,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "siamese_l": {
+      "id": "siamese_l",
+      "name": "Siamese",
+      "type": "Cat",
+      "breed": "Siamese",
+      "rarity": "Legendary",
+      "bonus": "RadHealingBoost",
+      "bonusValue": 4,
+      "bonusLabel": "RadHealingBoost +4",
+      "uniqueName": "Goblet",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 211,
+        "w": 130,
+        "h": 155,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "siamese_r": {
+      "id": "siamese_r",
+      "name": "Siamese",
+      "type": "Cat",
+      "breed": "Siamese",
+      "rarity": "Rare",
+      "bonus": "RadHealingBoost",
+      "bonusValue": 3,
+      "bonusLabel": "RadHealingBoost +3",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 211,
+        "w": 130,
+        "h": 155,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "somali_l": {
+      "id": "somali_l",
+      "name": "Somali",
+      "type": "Cat",
+      "breed": "Somali",
+      "rarity": "Legendary",
+      "bonus": "FasterCrafting",
+      "bonusValue": 45,
+      "bonusLabel": "FasterCrafting +45",
+      "uniqueName": "Saffron",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1333,
+        "y": 714,
+        "w": 154,
+        "h": 143,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "somali_r": {
+      "id": "somali_r",
+      "name": "Somali",
+      "type": "Cat",
+      "breed": "Somali",
+      "rarity": "Rare",
+      "bonus": "FasterCrafting",
+      "bonusValue": 30,
+      "bonusLabel": "FasterCrafting +30",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1333,
+        "y": 714,
+        "w": 154,
+        "h": 143,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "somali_r2": {
+      "id": "somali_r2",
+      "name": "Somali",
+      "type": "Cat",
+      "breed": "Somali",
+      "rarity": "Rare",
+      "bonus": "FasterCrafting",
+      "bonusValue": 15,
+      "bonusLabel": "FasterCrafting +15",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1333,
+        "y": 714,
+        "w": 154,
+        "h": 143,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "sphynx_c": {
+      "id": "sphynx_c",
+      "name": "Sphynx",
+      "type": "Cat",
+      "breed": "Sphynx",
+      "rarity": "Normal",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 1.25,
+      "bonusLabel": "FasterWastelandReturnSpeed +1.25",
+      "uniqueName": "Sphynx",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 49,
+        "w": 125,
+        "h": 158,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "sphynx_l": {
+      "id": "sphynx_l",
+      "name": "Sphynx",
+      "type": "Cat",
+      "breed": "Sphynx",
+      "rarity": "Legendary",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 4,
+      "bonusLabel": "FasterWastelandReturnSpeed +4",
+      "uniqueName": "Bastet",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 49,
+        "w": 125,
+        "h": 158,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "sphynx_r": {
+      "id": "sphynx_r",
+      "name": "Sphynx",
+      "type": "Cat",
+      "breed": "Sphynx",
+      "rarity": "Rare",
+      "bonus": "FasterWastelandReturnSpeed",
+      "bonusValue": 2,
+      "bonusLabel": "FasterWastelandReturnSpeed +2",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 1191,
+        "y": 49,
+        "w": 125,
+        "h": 158,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "stbernard_c": {
+      "id": "stbernard_c",
+      "name": "St Bernard",
+      "type": "Dog",
+      "breed": "St Bernard",
+      "rarity": "Normal",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 33,
+      "bonusLabel": "WastelandJunkBoost +33",
+      "uniqueName": "St Bernard",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1727,
+        "y": 1602,
+        "w": 183,
+        "h": 154,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "stbernard_l": {
+      "id": "stbernard_l",
+      "name": "St Bernard",
+      "type": "Dog",
+      "breed": "St Bernard",
+      "rarity": "Legendary",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 100,
+      "bonusLabel": "WastelandJunkBoost +100",
+      "uniqueName": "Barry",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1727,
+        "y": 1602,
+        "w": 183,
+        "h": 154,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "stbernard_r": {
+      "id": "stbernard_r",
+      "name": "St Bernard",
+      "type": "Dog",
+      "breed": "St Bernard",
+      "rarity": "Rare",
+      "bonus": "WastelandJunkBoost",
+      "bonusValue": 66,
+      "bonusLabel": "WastelandJunkBoost +66",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Dogs_HD.png",
+        "x": 1727,
+        "y": 1602,
+        "w": 183,
+        "h": 154,
+        "aw": 2048,
+        "ah": 2048
+      }
+    },
+    "toyger_c": {
+      "id": "toyger_c",
+      "name": "Toyger",
+      "type": "Cat",
+      "breed": "Toyger",
+      "rarity": "Normal",
+      "bonus": "MysteriousMagnet",
+      "bonusValue": 2.5,
+      "bonusLabel": "MysteriousMagnet +2.5",
+      "uniqueName": "Toyger",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 368,
+        "w": 146,
+        "h": 168,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "toyger_l": {
+      "id": "toyger_l",
+      "name": "Toyger",
+      "type": "Cat",
+      "breed": "Toyger",
+      "rarity": "Legendary",
+      "bonus": "MysteriousMagnet",
+      "bonusValue": 7.5,
+      "bonusLabel": "MysteriousMagnet +7.5",
+      "uniqueName": "Kato",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 368,
+        "w": 146,
+        "h": 168,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "toyger_r": {
+      "id": "toyger_r",
+      "name": "Toyger",
+      "type": "Cat",
+      "breed": "Toyger",
+      "rarity": "Rare",
+      "bonus": "MysteriousMagnet",
+      "bonusValue": 5,
+      "bonusLabel": "MysteriousMagnet +5",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 368,
+        "w": 146,
+        "h": 168,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "turkishvan_l": {
+      "id": "turkishvan_l",
+      "name": "Turkish Van",
+      "type": "Cat",
+      "breed": "Turkish Van",
+      "rarity": "Legendary",
+      "bonus": "ChildSpecialBoost",
+      "bonusValue": 3,
+      "bonusLabel": "ChildSpecialBoost +3",
+      "uniqueName": "Duchess",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 205,
+        "w": 154,
+        "h": 159,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "turkishvan_l2": {
+      "id": "turkishvan_l2",
+      "name": "Turkish Van",
+      "type": "Cat",
+      "breed": "Turkish Van",
+      "rarity": "Legendary",
+      "bonus": "ChildSpecialBoost",
+      "bonusValue": 2,
+      "bonusLabel": "ChildSpecialBoost +2",
+      "uniqueName": "Pumpkin",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 205,
+        "w": 154,
+        "h": 159,
+        "aw": 2048,
+        "ah": 1024
+      }
+    },
+    "turkishvan_r": {
+      "id": "turkishvan_r",
+      "name": "Turkish Van",
+      "type": "Cat",
+      "breed": "Turkish Van",
+      "rarity": "Rare",
+      "bonus": "ChildSpecialBoost",
+      "bonusValue": 1,
+      "bonusLabel": "ChildSpecialBoost +1",
+      "uniqueName": "Archie",
+      "icon": {
+        "atlas": "Pet_Cats_HD.png",
+        "x": 946,
+        "y": 205,
+        "w": 154,
+        "h": 159,
+        "aw": 2048,
+        "ah": 1024
+      }
+    }
+  }
+}

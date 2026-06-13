@@ -10,6 +10,7 @@ import { parseHeadgearPlacement } from './lib/parseHeadgear.mjs';
 import { parseLocalization } from './lib/localization.mjs';
 import { decodeIndexBuffer, decodeVertexStreams, decodeVertexChannels } from './lib/decodeMesh.mjs';
 import { WEAPON_DATA } from './lib/weaponData.mjs';
+import { PET_DATA } from './lib/petData.mjs';
 import { parseNguiAtlas, pngSize } from './lib/parseNguiAtlas.mjs';
 import { resolveWeaponSprite } from './lib/weaponSprite.mjs';
 
@@ -436,6 +437,46 @@ const weaponsOutput = {
 writeFileSync(join(OUT_DIR, 'weapons.json'), JSON.stringify(weaponsOutput, null, 2));
 
 console.log(`Wrote ${OUT_DIR}/weapons.json — ${weaponIconCount}/${Object.keys(WEAPON_DATA).length} weapons have icons`);
+
+// ---------------------------------------------------------------------------
+// Pet icons from the Pet_*_HD atlases. Pets reference a head sprite (preferred)
+// or a full-body sprite; we resolve against a combined sprite map and copy the
+// PNGs that actually get used. (readdirSync/copyFileSync/writeFileSync, join,
+// parseNguiAtlas, pngSize, UI_ATLAS_DIR and OUT_DIR are all already in scope.)
+// ---------------------------------------------------------------------------
+const petAtlasPrefabs = readdirSync(UI_ATLAS_DIR).filter((f) => /^Pet_.*_HD\.prefab$/.test(f));
+const petSpriteToAtlas = new Map(); // spriteName -> { atlasPng, rect, aw, ah }
+for (const prefab of petAtlasPrefabs) {
+  const png = prefab.replace('.prefab', '.png');
+  const sprites = parseNguiAtlas(join(UI_ATLAS_DIR, prefab));
+  if (sprites.size === 0) continue;
+  const size = pngSize(join(UI_ATLAS_DIR, png));
+  for (const [name, rect] of sprites) {
+    if (!petSpriteToAtlas.has(name)) petSpriteToAtlas.set(name, { atlasPng: png, rect, aw: size.w, ah: size.h });
+  }
+}
+
+const usedPetAtlases = new Set();
+let petIconCount = 0;
+const petsOutput = {
+  version: 1,
+  pets: Object.fromEntries(
+    Object.entries(PET_DATA).map(([id, p]) => {
+      const hit = petSpriteToAtlas.get(p.headSprite) || petSpriteToAtlas.get(p.fullBodySprite);
+      let icon = null;
+      if (hit) {
+        usedPetAtlases.add(hit.atlasPng);
+        icon = { atlas: hit.atlasPng, ...hit.rect, aw: hit.aw, ah: hit.ah };
+        petIconCount++;
+      }
+      const { headSprite, fullBodySprite, ...meta } = p;
+      return [id, { ...meta, icon }];
+    })
+  ),
+};
+for (const png of usedPetAtlases) copyFileSync(join(UI_ATLAS_DIR, png), join(OUT_DIR, png));
+writeFileSync(join(OUT_DIR, 'pets.json'), JSON.stringify(petsOutput, null, 2));
+console.log(`Wrote ${OUT_DIR}/pets.json — ${petIconCount}/${Object.keys(PET_DATA).length} pets have icons`);
 
 console.log(
   `Wrote ${OUT_DIR}/index.json` +
