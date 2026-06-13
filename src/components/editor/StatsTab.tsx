@@ -4,11 +4,9 @@ import { SPECIAL_ORDER } from '../../types/save';
 import { SpecialIcon } from '../SpecialIcon';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 
-export function StatsTab({ dweller }: { dweller: RenderableDweller }) {
+export function StatsTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
   const sel = useSaveStore((s) => s.getSelectedDweller());
   const updateRaw = useSaveStore((s) => s.updateSelectedDwellerRaw);
-
-  const disabled = !!dweller.isChild;
 
   return (
     <div className="space-y-6 pt-4">
@@ -30,12 +28,9 @@ export function StatsTab({ dweller }: { dweller: RenderableDweller }) {
                   aria-label={letter}
                   min={1}
                   max={10}
-                  disabled={disabled}
                   value={value}
-                  onChange={(e) =>
-                    updateRaw((d) => setStat(d, letter, Number(e.target.value)))
-                  }
-                  className="w-16 bg-zinc-700 text-zinc-100 rounded px-2 py-1 text-sm text-center disabled:opacity-50"
+                  onChange={(e) => updateRaw((d) => setStat(d, letter, Number(e.target.value)))}
+                  className="w-16 bg-zinc-700 text-zinc-100 rounded px-2 py-1 text-sm text-center"
                 />
                 <input
                   type="range"
@@ -43,12 +38,9 @@ export function StatsTab({ dweller }: { dweller: RenderableDweller }) {
                   tabIndex={-1}
                   min={1}
                   max={10}
-                  disabled={disabled}
                   value={value}
-                  onChange={(e) =>
-                    updateRaw((d) => setStat(d, letter, Number(e.target.value)))
-                  }
-                  className="flex-1 accent-emerald-500 disabled:opacity-50"
+                  onChange={(e) => updateRaw((d) => setStat(d, letter, Number(e.target.value)))}
+                  className="flex-1 accent-emerald-500"
                 />
                 <span className="w-6 text-right text-zinc-400 text-sm">{value}</span>
               </div>
