@@ -1,7 +1,7 @@
 /**
  * Pinned card shown at the front of a picker for an equipped item the editor
  * doesn't recognize. It is always "selected" (the item IS equipped) and never
- * changes the save — clicking it (or its warning badge) opens an explanatory
+ * changes the save; clicking it (or its warning badge) opens an explanatory
  * modal. A skeleton stands in for the avatar (we can't render unknown art), and
  * a yellow warning badge sits in the top-right corner.
  */
@@ -25,7 +25,7 @@ export function UnknownItemCard({
       {/* Warning badge, top-right */}
       <span
         role="img"
-        aria-label="Unsupported item — more info"
+        aria-label="Unsupported item, more info"
         onClick={(e) => { e.stopPropagation(); onWarn(); }}
         className="absolute top-1.5 right-1.5 z-10 flex items-center justify-center w-5 h-5 rounded-full bg-amber-400 text-zinc-900 shadow"
       >

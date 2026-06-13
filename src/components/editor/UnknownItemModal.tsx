@@ -5,9 +5,9 @@ import { createPortal } from 'react-dom';
  * Centered modal warning the user about an equipped item the editor's catalog
  * doesn't recognize (almost certainly content the game added after this editor's
  * last update). Two modes:
- *  - 'info'    : the user clicked the warning badge — purely informational.
- *  - 'confirm' : the user is about to replace the unknown item — must confirm,
- *                because the original value can't be restored afterwards.
+ *  - 'info'    : the user clicked the warning badge; purely informational.
+ *  - 'confirm' : the user is about to replace the unknown item, so they must
+ *                confirm, because the original value can't be restored afterwards.
  */
 export function UnknownItemModal({
   open, itemId, mode, onCancel, onConfirm,
@@ -44,9 +44,9 @@ export function UnknownItemModal({
         </div>
         <p className="text-sm text-zinc-300 mb-5 leading-relaxed">
           This character has the item <span className="font-semibold text-amber-300 break-all">{itemId}</span>,
-          which must have been added to the game after this editor was last updated — so it can't be displayed
-          correctly. If you change it, you won't be able to set it back to this item, so make sure you want to
-          do this before continuing.
+          which this editor doesn't recognize. It was probably added to the game in an update newer than this
+          editor, or it comes from a mod. Either way we can't display it correctly, and if you replace it you
+          won't be able to set it back to this item. Make sure you want to do this before continuing.
         </p>
         <div className="flex justify-end gap-2">
           {mode === 'confirm' ? (
