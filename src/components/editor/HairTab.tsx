@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { ColorPalette } from './ColorPalette';
+import { UnknownItemCard } from './UnknownItemCard';
+import { useUnknownItemGuard } from './UnknownItemModal';
 import { piecesOfType } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
@@ -100,11 +102,18 @@ export function HairTab({
   const hairColor = dweller.hairColor ?? { r: 150, g: 95, b: 45 };
   const thumbnails = useHairThumbnails(index, meshSet, dweller);
 
-  const options = piecesOfType(index, 'hair', { gender }).map((p) => {
+  const hairs = piecesOfType(index, 'hair', { gender });
+  const options = hairs.map((p) => {
     const thumbnailUrl = thumbnails.get(p.name);
     // Skeleton (not the bare id label like "01") until the head thumbnail renders.
     return { value: p.name, label: p.name, thumbnailUrl, loading: !thumbnailUrl };
   });
+
+  // The hair is unknown when its name isn't a piece we know for this gender
+  // (content added in a game update newer than this editor, or from a mod).
+  const hairName = dweller.hairName;
+  const known = !hairName || hairs.some((p) => p.name === hairName);
+  const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(hairName, known);
 
   return (
     <div>
@@ -122,10 +131,14 @@ export function HairTab({
       <OptionGrid
         options={options}
         selected={dweller.hairName ?? null}
-        onSelect={(v) => onChange({ hair: v })}
+        onSelect={(v) => guardSelect(() => onChange({ hair: v }))}
         cellW={CELL}
         cellH={CELL}
+        leading={isUnknown && hairName
+          ? <UnknownItemCard id={hairName} width={CELL} height={CELL} onWarn={openInfo} />
+          : undefined}
       />
+      {modal}
     </div>
   );
 }

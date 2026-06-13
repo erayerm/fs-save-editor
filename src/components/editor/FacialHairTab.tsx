@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { ColorPalette } from './ColorPalette';
+import { UnknownItemCard } from './UnknownItemCard';
+import { useUnknownItemGuard } from './UnknownItemModal';
 import { facialHairPieces } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
@@ -107,13 +109,20 @@ export function FacialHairTab({
 
   // Skeleton (not the bare piece-name label) until each head thumbnail renders.
   const noneThumb = thumbnails.get(NONE);
+  const pieces = facialHairPieces(index);
   const options = [
     { value: NONE, label: 'None', thumbnailUrl: noneThumb, loading: !noneThumb },
-    ...facialHairPieces(index).map((p) => {
+    ...pieces.map((p) => {
       const thumbnailUrl = thumbnails.get(p.name);
       return { value: p.name, label: p.name, thumbnailUrl, loading: !thumbnailUrl };
     }),
   ];
+
+  // The facial hair is unknown when it's set to a piece we don't know (content
+  // added in a game update newer than this editor, or from a mod).
+  const facialHair = dweller.facialHair;
+  const known = !facialHair || pieces.some((p) => p.name === facialHair);
+  const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(facialHair, known);
 
   return (
     <div>
@@ -131,10 +140,14 @@ export function FacialHairTab({
       <OptionGrid
         options={options}
         selected={dweller.facialHair ?? NONE}
-        onSelect={(v) => onChange({ facialHair: v === NONE ? null : v })}
+        onSelect={(v) => guardSelect(() => onChange({ facialHair: v === NONE ? null : v }))}
         cellW={CELL}
         cellH={CELL}
+        leading={isUnknown && facialHair
+          ? <UnknownItemCard id={facialHair} width={CELL} height={CELL} onWarn={openInfo} />
+          : undefined}
       />
+      {modal}
     </div>
   );
 }
