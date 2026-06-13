@@ -96,7 +96,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
           {active === 'weapon' && <WeaponTab dweller={dweller} />}
           {active === 'pet' && <PetTab dweller={dweller} />}
           {active === 'stats' && <StatsTab dweller={dweller} />}
-          {active === 'others' && <OthersTab dweller={dweller} onChange={onChange} />}
+          {active === 'others' && <OthersTab dweller={dweller} onChange={onChange} index={index} />}
         </div>
       </div>
     </div>

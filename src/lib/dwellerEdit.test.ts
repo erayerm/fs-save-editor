@@ -78,4 +78,66 @@ describe('setGender', () => {
     setGender(d, 2);
     expect(d.gender).toBe(1);
   });
+
+  // A minimal sprite index: hair "01" exists for both genders (default), the
+  // male-only hair "m1" and female-only hair "f1"; outfits "ninja" (male-only),
+  // "weddingdress" (female-only) and "battlearmor" (both). "jumpsuit" is the default.
+  const IDX = {
+    version: 1,
+    byType: {
+      hair: [
+        { name: '01', gender: 'male', flags: {} },
+        { name: '01', gender: 'female', flags: {} },
+        { name: 'm1', gender: 'male', flags: {} },
+        { name: 'f1', gender: 'female', flags: {} },
+      ],
+      outfit: [],
+    },
+    outfitItems: [
+      { id: 'jumpsuit', name: 'Vault Suit', category: 3, pieceMale: 'jumpsuit', pieceFemale: 'jumpsuit' },
+      { id: 'ninja', name: 'Ninja Outfit', category: 2, pieceMale: 'ninja', pieceFemale: null },
+      { id: 'weddingdress', name: 'Wedding Dress', category: 2, pieceMale: null, pieceFemale: 'weddingdress' },
+      { id: 'battlearmor', name: 'Battle Armor', category: 2, pieceMale: 'battlearmor', pieceFemale: 'battlearmor' },
+    ],
+  } as any;
+
+  it('resets gender-specific hair to the new gender default', () => {
+    const d = { ...mkDweller(), gender: 2, hair: 'm1' } as any;
+    const next = setGender(d, 1, IDX) as any;
+    expect(next.gender).toBe(1);
+    expect(next.hair).toBe('01'); // m1 has no female art -> default
+  });
+
+  it('keeps hair that has art for the new gender', () => {
+    const d = { ...mkDweller(), gender: 1, hair: '01' } as any;
+    expect((setGender(d, 2, IDX) as any).hair).toBe('01');
+  });
+
+  it('resets a gender-specific outfit to the jumpsuit', () => {
+    const d = { ...mkDweller(), gender: 1, equipedOutfit: { id: 'weddingdress', type: 'Outfit' } } as any;
+    const next = setGender(d, 2, IDX) as any;
+    expect(next.equipedOutfit).toEqual({ id: 'jumpsuit', type: 'Outfit' });
+  });
+
+  it('keeps a unisex outfit across a gender change', () => {
+    const d = { ...mkDweller(), gender: 2, equipedOutfit: { id: 'battlearmor' } } as any;
+    expect((setGender(d, 1, IDX) as any).equipedOutfit.id).toBe('battlearmor');
+  });
+
+  it('clears facial hair when switching to female', () => {
+    const d = { ...mkDweller(), gender: 2, faceMask: 'f_hair_11' } as any;
+    expect((setGender(d, 1, IDX) as any).faceMask).toBeNull();
+  });
+
+  it('keeps facial hair when staying/switching male', () => {
+    const d = { ...mkDweller(), gender: 1, faceMask: 'f_hair_11' } as any;
+    expect((setGender(d, 2, IDX) as any).faceMask).toBe('f_hair_11');
+  });
+
+  it('leaves items untouched when no index is provided', () => {
+    const d = { ...mkDweller(), gender: 2, hair: 'm1', equipedOutfit: { id: 'ninja' } } as any;
+    const next = setGender(d, 1) as any;
+    expect(next.hair).toBe('m1');
+    expect(next.equipedOutfit.id).toBe('ninja');
+  });
 });
