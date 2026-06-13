@@ -205,16 +205,19 @@ export function buildLayers(
     });
   }
 
-  // Facial hair (beard/mustache) — male-only head overlay. Same UV transform as the
-  // face layer (bodyScale + faceOffset). These pieces use hair color (m_useHairColor),
-  // so tint with hairColor, mirroring the hair layer. Drawn over the face, under hair.
-  const faceMask = (gender === 'male' && dweller.facialHair && isFacialHairPiece(dweller.facialHair))
+  // faceMask — a single head-overlay slot holding facial hair OR a decoration
+  // (glasses, wrinkles, makeup, scars, ghoul face, ...). Same UV transform as the
+  // face layer (bodyScale + faceOffset); drawn over the face, under hair. Facial
+  // hair uses hair color (m_useHairColor); other decorations keep their own art
+  // colors (no tint). Rendered for either gender.
+  const faceMask = dweller.facialHair
     ? pieceByName(idx, 'faceMask', dweller.facialHair, gender)
     : null;
   if (faceMask) {
     const o = ownOffset(faceMask.bounds);
+    const tint = isFacialHairPiece(faceMask.name) ? toTint(dweller.hairColor) : undefined;
     layers.push({
-      slot: 'faceMask', atlas: faceMask.atlas, bounds: faceMask.bounds, tint: toTint(dweller.hairColor),
+      slot: 'faceMask', atlas: faceMask.atlas, bounds: faceMask.bounds, tint,
       uvScale: bodyScale, uvOffset: [o[0] + faceOff[0], o[1] + faceOff[1]],
     });
   }
