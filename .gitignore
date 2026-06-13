@@ -9,3 +9,6 @@ tests/fixtures/*.json
 .DS_Store
 .superpowers/
 .worktrees/
+
+# Local decrypted personal saves (never commit)
+dev-fixtures/
