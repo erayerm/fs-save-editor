@@ -1,8 +1,10 @@
 import type { Dweller, Special } from '../types/save';
 import type { PetMeta } from '../types/pets';
+import type { SpriteIndex } from '../types/pieces';
 import { SPECIAL_ORDER } from '../types/save';
 import type { Rgb } from './dwellerRender';
 import { encodeArgb } from './colors';
+import { hairValidForGender, outfitValidForGender, defaultHairFor } from './spriteIndex';
 
 export interface DwellerCustomization {
   hair?: string;
@@ -187,7 +189,37 @@ export function setWeapon(d: Dweller, weaponId: string): Dweller {
   return { ...d, equipedWeapon: { ...cur, id: weaponId, type: 'Weapon' } } as Dweller;
 }
 
-/** Set a dweller's gender (1 = female, 2 = male). Any non-2 value becomes female. */
-export function setGender(d: Dweller, gender: number): Dweller {
-  return { ...d, gender: gender === 2 ? 2 : 1 };
+/**
+ * Set a dweller's gender (1 = female, 2 = male). Any non-2 value becomes female.
+ *
+ * Hair and outfits carry separate male/female art, and many pieces are
+ * gender-specific (e.g. the Action Wedding Dress is female-only). When `idx` is
+ * supplied, any gender-specific item the dweller is wearing that has no art for
+ * the new gender is reset to its default — hair to the gender's default piece,
+ * outfit to the vault jumpsuit. Facial hair is a male-only feature, so it is
+ * cleared when switching to female. Without `idx`, only the gender flag changes.
+ */
+export function setGender(d: Dweller, gender: number, idx?: SpriteIndex): Dweller {
+  const g = gender === 2 ? 2 : 1;
+  const next = { ...(d as Record<string, unknown>), gender: g } as Record<string, unknown>;
+  if (!idx) return next as unknown as Dweller;
+
+  const gName: 'male' | 'female' = g === 2 ? 'male' : 'female';
+
+  const hair = next.hair;
+  if (typeof hair === 'string' && !hairValidForGender(idx, hair, gName)) {
+    next.hair = defaultHairFor(idx, gName);
+  }
+
+  const outfit = next.equipedOutfit as Record<string, unknown> | undefined;
+  if (outfit && typeof outfit.id === 'string' && !outfitValidForGender(idx, outfit.id, gName)) {
+    next.equipedOutfit = { ...outfit, id: 'jumpsuit' };
+  }
+
+  // Facial hair (faceMask) is male-only; drop it when the dweller becomes female.
+  if (g === 1 && next.faceMask != null) {
+    next.faceMask = null;
+  }
+
+  return next as unknown as Dweller;
 }

@@ -115,6 +115,40 @@ export function facialHairPieces(idx: SpriteIndex): PieceRef[] {
   return list.filter((p) => (p.gender === 'male' || p.gender === 'any') && isFacialHairPiece(p.name));
 }
 
+/**
+ * Whether a hair piece named `name` has art for `gender`. Hair assets are split
+ * per gender (a male and a female piece can share a name), so a piece counts only
+ * if it's tagged for that gender or 'any'. Used when changing a dweller's gender:
+ * hair with no art for the new gender must fall back to a default.
+ */
+export function hairValidForGender(idx: SpriteIndex, name: string, gender: 'male' | 'female'): boolean {
+  const list = idx.byType.hair ?? [];
+  return list.some((p) => p.name === name && (p.gender === gender || p.gender === 'any'));
+}
+
+/**
+ * Whether the equipped outfit `id` has a visual piece for `gender`. Premium/unique
+ * outfits are often gender-specific (Action Wedding Dress is female-only, Ninja
+ * Outfit is male-only), so switching gender can leave a dweller wearing an outfit
+ * with no art for them — in which case it must fall back to the vault jumpsuit.
+ */
+export function outfitValidForGender(idx: SpriteIndex, id: string, gender: 'male' | 'female'): boolean {
+  const item = outfitItemById(idx, id);
+  if (item) return !!(gender === 'male' ? item.pieceMale : item.pieceFemale);
+  // Legacy/base outfits whose item id coincides with the piece name.
+  const list = idx.byType.outfit ?? [];
+  return list.some((p) => p.name === id && (p.gender === gender || p.gender === 'any'));
+}
+
+/** Default hair piece name for a gender (the first default hair, or '1' if none). */
+export function defaultHairFor(idx: SpriteIndex, gender: 'male' | 'female'): string {
+  const list = idx.byType.hair ?? [];
+  const hit = list.find(
+    (p) => (p.gender === gender || p.gender === 'any') && p.flags.isUsedByDefault !== false,
+  );
+  return hit?.name ?? '1';
+}
+
 export function piecesOfType(
   idx: SpriteIndex,
   type: PieceType,

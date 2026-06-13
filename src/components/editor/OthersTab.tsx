@@ -6,13 +6,16 @@ import { ConfirmModal } from '../ConfirmModal';
 import { SKIN_PRESETS } from '../../lib/colorPresets';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
+import type { SpriteIndex } from '../../types/pieces';
 
 export function OthersTab({
   dweller,
   onChange,
+  index,
 }: {
   dweller: RenderableDweller;
   onChange: (patch: DwellerCustomization) => void;
+  index: SpriteIndex | null;
 }) {
   const sel = useSaveStore((s) => s.getSelectedDweller());
   const updateRaw = useSaveStore((s) => s.updateSelectedDwellerRaw);
@@ -76,7 +79,7 @@ export function OthersTab({
               type="button"
               disabled={disabled}
               aria-pressed={dweller.gender === v}
-              onClick={() => updateRaw((d) => setGender(d, v))}
+              onClick={() => updateRaw((d) => setGender(d, v, index ?? undefined))}
               className={[
                 'px-3 py-1.5 rounded text-sm font-medium disabled:opacity-50',
                 dweller.gender === v ? 'bg-green-600 text-white' : 'bg-zinc-700 text-zinc-200 hover:bg-zinc-600',
