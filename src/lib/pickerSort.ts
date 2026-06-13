@@ -6,6 +6,10 @@ interface HasSpecial { special?: Partial<Record<SpecialKey, number>>; }
 
 const avg = (w: HasDamage) => (w.damageMin + w.damageMax) / 2;
 
+/** Sum of all SPECIAL bonuses an outfit grants (0 when it grants none). */
+const specialTotal = (o: HasSpecial) =>
+  Object.values(o.special ?? {}).reduce((sum, v) => sum + (v ?? 0), 0);
+
 /** Sort a copy of weapons by average damage. `default` keeps the original order. */
 export function sortByDamage<T extends HasDamage>(items: T[], dir: SortDir): T[] {
   if (dir === 'default') return [...items];
@@ -24,6 +28,17 @@ export function filterAndSortOutfits<T extends HasSpecial>(items: T[], stat: Spe
   if (dir === 'default') return filtered;
   const sign = dir === 'asc' ? 1 : -1;
   return filtered.sort((a, b) => sign * ((a.special?.[stat] ?? 0) - (b.special?.[stat] ?? 0)));
+}
+
+/**
+ * Sort a copy of outfits by the SUM of all their SPECIAL bonuses. Used when no
+ * single stat is selected but a sort direction is. `default` keeps the original
+ * order.
+ */
+export function sortBySpecialTotal<T extends HasSpecial>(items: T[], dir: SortDir): T[] {
+  if (dir === 'default') return [...items];
+  const sign = dir === 'asc' ? 1 : -1;
+  return [...items].sort((a, b) => sign * (specialTotal(a) - specialTotal(b)));
 }
 
 /**

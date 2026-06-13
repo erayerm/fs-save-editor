@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { sortByDamage, filterAndSortOutfits, filterByText, type SpecialKey } from './pickerSort';
+import { sortByDamage, filterAndSortOutfits, sortBySpecialTotal, filterByText, type SpecialKey } from './pickerSort';
 
 describe('sortByDamage', () => {
   const w = (id: string, damageMin: number, damageMax: number) => ({ id, damageMin, damageMax });
@@ -31,6 +31,23 @@ describe('filterAndSortOutfits', () => {
   });
   it('returns all items unchanged when stat is null', () => {
     expect(filterAndSortOutfits(items, null, 'desc').map((i) => i.id)).toEqual(['x', 'y', 'z']);
+  });
+});
+
+describe('sortBySpecialTotal', () => {
+  const o = (id: string, special: Partial<Record<SpecialKey, number>>) => ({ id, special });
+  // totals: x=3, y=3, z=5, none=0
+  const items = [o('x', { S: 3 }), o('y', { S: 1, E: 2 }), o('z', { E: 5 }), { id: 'none' }];
+  it('sorts desc by the sum of all SPECIAL bonuses', () => {
+    expect(sortBySpecialTotal(items, 'desc').map((i) => i.id)).toEqual(['z', 'x', 'y', 'none']);
+  });
+  it('sorts asc by the sum of all SPECIAL bonuses', () => {
+    expect(sortBySpecialTotal(items, 'asc').map((i) => i.id)).toEqual(['none', 'x', 'y', 'z']);
+  });
+  it('returns original order (copy) when dir is default', () => {
+    const out = sortBySpecialTotal(items, 'default');
+    expect(out.map((i) => i.id)).toEqual(['x', 'y', 'z', 'none']);
+    expect(out).not.toBe(items);
   });
 });
 

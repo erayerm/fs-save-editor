@@ -12,7 +12,7 @@ import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
 import { SortFilterBar } from './SortFilterBar';
-import { filterAndSortOutfits, filterByText, type SortDir, type SpecialKey } from '../../lib/pickerSort';
+import { filterAndSortOutfits, sortBySpecialTotal, filterByText, type SortDir, type SpecialKey } from '../../lib/pickerSort';
 
 const THUMB_SIZE = 340; // offscreen WebGL canvas — 2× cell width (170px) for crisp display
 
@@ -175,7 +175,11 @@ export function OutfitTab({
 
   const base = visibleOutfits(index, gender);
   const searched = filterByText(base, query, (o) => o.name);
-  const ordered = stat ? filterAndSortOutfits(searched, stat, dir) : searched;
+  // With a SPECIAL stat: filter+sort by that stat. Without one but with a sort
+  // direction: sort by the sum of all SPECIAL bonuses. Otherwise: default order.
+  const ordered = stat
+    ? filterAndSortOutfits(searched, stat, dir)
+    : sortBySpecialTotal(searched, dir);
   const options = ordered.map((o) => {
     const thumbnailUrl = thumbnails.get(o.id);
     return {
