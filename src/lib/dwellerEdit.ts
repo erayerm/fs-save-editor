@@ -9,7 +9,7 @@ import { hairValidForGender, outfitValidForGender, defaultHairFor, faceMaskValid
 export interface DwellerCustomization {
   hair?: string;
   outfitId?: string;
-  /** Male facial-hair piece name, written to the save's `faceMask` key. `null` clears it. */
+  /** faceMask piece name (facial hair, glasses, wrinkles, etc.), written to the save's `faceMask` key. `null` clears it. */
   facialHair?: string | null;
   skinColor?: Rgb;
   hairColor?: Rgb;
