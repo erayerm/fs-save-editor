@@ -1,15 +1,15 @@
 import { useSaveStore } from '../store/saveStore';
 import { DwellerEditor } from './DwellerEditor';
-import { isChildDweller, type RenderableDweller } from '../lib/dwellerRender';
+import { isChildDweller, childDwellerIds, type RenderableDweller } from '../lib/dwellerRender';
 import type { Dweller } from '../types/save';
 import { decodeArgb } from '../lib/colors';
 import { randomDwellerInput } from '../lib/dwellerEdit';
 
-function toRenderable(d: Dweller): RenderableDweller {
+function toRenderable(d: Dweller, childIds: Set<number>): RenderableDweller {
   const raw = d as unknown as Record<string, any>;
   return {
     gender: d.gender,
-    isChild: isChildDweller(raw as { experience?: { currentLevel?: number } }),
+    isChild: isChildDweller(raw as { experience?: { currentLevel?: number } }) || childIds.has(d.serializeId),
     hairName: typeof raw.hair === 'string' ? raw.hair : undefined,
     facialHair: typeof raw.faceMask === 'string' ? raw.faceMask : undefined,
     outfitName: typeof raw.equipedOutfit?.id === 'string' ? raw.equipedOutfit.id : undefined,
@@ -22,6 +22,7 @@ function toRenderable(d: Dweller): RenderableDweller {
 
 export function DwellerDetailPanel() {
   const dweller = useSaveStore((s) => s.getSelectedDweller());
+  const save = useSaveStore((s) => s.save);
   const addDweller = useSaveStore((s) => s.addDweller);
   if (!dweller) {
     return (
@@ -38,7 +39,7 @@ export function DwellerDetailPanel() {
       </div>
     );
   }
-  const renderable = toRenderable(dweller);
+  const renderable = toRenderable(dweller, childDwellerIds(save));
   const name = `${dweller.name} ${dweller.lastName ?? ''}`.trim();
   return (
     <div className="h-full min-h-0">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { DwellerCanvas } from './DwellerCanvas';
+import { ChildAvatar } from './editor/ChildAvatar';
 import { EditorTabBar, type EditorTab } from './editor/EditorTabBar';
 import { HairTab } from './editor/HairTab';
 import { FacialHairTab } from './editor/FacialHairTab';
@@ -27,35 +28,29 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
 
   const onChange = (patch: DwellerCustomization) => update(patch);
 
-  if (dweller.isChild) {
-    return (
-      <div className="flex gap-6 h-full min-h-0">
-        <div className="flex-shrink-0 flex flex-col min-h-0">
-          {name && <div className="text-lg font-medium mb-2 truncate">{name}</div>}
-          <div className="flex-1 min-h-0 flex">
-            <div className="h-full" style={{ aspectRatio: '170 / 221' }}>
-              <DwellerCanvas dweller={dweller} fill />
-            </div>
-          </div>
-        </div>
-        <div className="text-zinc-400 italic self-center">
-          Child dwellers cannot be customized.
-        </div>
-      </div>
-    );
-  }
-
-  // Facial hair is male-only (and never for children, who are excluded above).
+  const isChild = !!dweller.isChild;
   const isMale = dweller.gender === 2;
-  const tabs: EditorTab[] = [
-    { id: 'hair', label: 'Hair' },
-    ...(isMale ? [{ id: 'facialHair', label: 'Facial Hair' }] : []),
-    { id: 'outfit', label: 'Outfit' },
-    { id: 'weapon', label: 'Weapon' },
-    { id: 'pet', label: 'Pet' },
-    { id: 'stats', label: 'SPECIAL' },
-    { id: 'others', label: 'Others' },
-  ];
+
+  // Children get only SPECIAL and a reduced Others tab; everything that needs a
+  // rendered model (hair/outfit/weapon/pet/facial hair) is hidden.
+  const tabs: EditorTab[] = isChild
+    ? [
+        { id: 'stats', label: 'SPECIAL' },
+        { id: 'others', label: 'Others' },
+      ]
+    : [
+        { id: 'hair', label: 'Hair' },
+        ...(isMale ? [{ id: 'facialHair', label: 'Facial Hair' }] : []),
+        { id: 'outfit', label: 'Outfit' },
+        { id: 'weapon', label: 'Weapon' },
+        { id: 'pet', label: 'Pet' },
+        { id: 'stats', label: 'SPECIAL' },
+        { id: 'others', label: 'Others' },
+      ];
+
+  // Fall back to the first available tab when the current one isn't offered (e.g.
+  // the default 'hair' for a child, or switching between a child and an adult).
+  const activeTab = tabs.some((t) => t.id === active) ? active : tabs[0].id;
 
   return (
     <div className="flex gap-6 h-full min-h-0">
@@ -64,9 +59,15 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
         {name && <div className="text-lg font-medium mb-2 truncate">{name}</div>}
         <div className="flex-1 min-h-0 flex">
           <div className="h-full relative" style={{ aspectRatio: '170 / 221' }}>
-            <DwellerCanvas dweller={dweller} fill />
-            <OutfitBadge dweller={dweller} />
-            <WeaponBadge />
+            {isChild ? (
+              <ChildAvatar />
+            ) : (
+              <>
+                <DwellerCanvas dweller={dweller} fill />
+                <OutfitBadge dweller={dweller} />
+                <WeaponBadge />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -75,7 +76,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
       <div className="flex flex-col flex-1 min-w-0 min-h-0">
         <div className="flex items-end gap-2">
           <div className="flex-1 min-w-0 overflow-x-auto">
-            <EditorTabBar tabs={tabs} active={active} onSelect={setActive} />
+            <EditorTabBar tabs={tabs} active={activeTab} onSelect={setActive} />
           </div>
           <button
             type="button"
@@ -90,13 +91,13 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
         </div>
         <div className="flex-1 min-w-0 min-h-0 overflow-y-auto">
           {error && <div className="text-red-400 text-sm">Could not load pieces: {error}</div>}
-          {index && active === 'hair' && <HairTab index={index} dweller={dweller} onChange={onChange} />}
-          {index && active === 'facialHair' && isMale && <FacialHairTab index={index} dweller={dweller} onChange={onChange} />}
-          {index && active === 'outfit' && <OutfitTab index={index} dweller={dweller} onChange={onChange} />}
-          {active === 'weapon' && <WeaponTab dweller={dweller} />}
-          {active === 'pet' && <PetTab dweller={dweller} />}
-          {active === 'stats' && <StatsTab dweller={dweller} />}
-          {active === 'others' && <OthersTab dweller={dweller} onChange={onChange} index={index} />}
+          {index && activeTab === 'hair' && <HairTab index={index} dweller={dweller} onChange={onChange} />}
+          {index && activeTab === 'facialHair' && isMale && <FacialHairTab index={index} dweller={dweller} onChange={onChange} />}
+          {index && activeTab === 'outfit' && <OutfitTab index={index} dweller={dweller} onChange={onChange} />}
+          {activeTab === 'weapon' && <WeaponTab dweller={dweller} />}
+          {activeTab === 'pet' && <PetTab dweller={dweller} />}
+          {activeTab === 'stats' && <StatsTab dweller={dweller} />}
+          {activeTab === 'others' && <OthersTab dweller={dweller} onChange={onChange} index={index} />}
         </div>
       </div>
     </div>

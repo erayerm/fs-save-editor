@@ -1,17 +1,17 @@
 import { useSaveStore } from '../store/saveStore';
 import { SpecialIcon } from './SpecialIcon';
 import { useDwellerThumbnail } from '../lib/useDwellerThumbnail';
-import { isChildDweller, type RenderableDweller } from '../lib/dwellerRender';
+import { isChildDweller, childDwellerIds, type RenderableDweller } from '../lib/dwellerRender';
 import { decodeArgb } from '../lib/colors';
 import type { Dweller } from '../types/save';
 
 const SPECIAL_LABELS = ['S', 'P', 'E', 'C', 'I', 'A', 'L'] as const;
 
-function toRenderable(d: Dweller): RenderableDweller {
+function toRenderable(d: Dweller, childIds: Set<number>): RenderableDweller {
   const raw = d as unknown as Record<string, any>;
   return {
     gender: d.gender,
-    isChild: isChildDweller(raw as { experience?: { currentLevel?: number } }),
+    isChild: isChildDweller(raw as { experience?: { currentLevel?: number } }) || childIds.has(d.serializeId),
     hairName: typeof raw.hair === 'string' ? raw.hair : undefined,
     facialHair: typeof raw.faceMask === 'string' ? raw.faceMask : undefined,
     outfitName: typeof raw.equipedOutfit?.id === 'string' ? raw.equipedOutfit.id : undefined,
@@ -39,8 +39,9 @@ interface Props {
 export function CharacterCard({ dweller }: Props) {
   const selectedId = useSaveStore((s) => s.selectedDwellerId);
   const selectDweller = useSaveStore((s) => s.selectDweller);
+  const save = useSaveStore((s) => s.save);
   const isSelected = selectedId === dweller.serializeId;
-  const renderable = toRenderable(dweller);
+  const renderable = toRenderable(dweller, childDwellerIds(save));
   const thumb = useDwellerThumbnail(renderable);
 
   const stats = dweller.stats?.stats;

@@ -24,3 +24,13 @@ it('does not include name editing (moved to the Others tab)', () => {
   render(<StatsTab dweller={maleDweller} />);
   expect(screen.queryByLabelText(/first name/i)).toBeNull();
 });
+
+const childDweller: any = { serializeId: 1, gender: 1, isChild: true };
+
+it('allows editing SPECIAL for child dwellers', () => {
+  render(<StatsTab dweller={childDweller} />);
+  const s = screen.getByLabelText('S') as HTMLInputElement;
+  expect(s.disabled).toBe(false);
+  fireEvent.change(s, { target: { value: '7' } });
+  expect(useSaveStore.getState().getSelectedDweller()!.stats!.stats[1].value).toBe(7);
+});

@@ -24,3 +24,19 @@ it('edits the dweller last name', () => {
   fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: 'Smith' } });
   expect(useSaveStore.getState().getSelectedDweller()!.lastName).toBe('Smith');
 });
+
+const childDweller: any = { serializeId: 1, gender: 1, isChild: true };
+
+it('shows only Name and Danger Zone for child dwellers', () => {
+  render(<OthersTab dweller={childDweller} onChange={() => {}} index={null} />);
+  // Name is present and editable
+  const fn = screen.getByLabelText(/first name/i) as HTMLInputElement;
+  expect(fn.disabled).toBe(false);
+  // Danger Zone is present
+  expect(screen.getByRole('button', { name: /evict dweller/i })).toBeTruthy();
+  // Adult-only sections are hidden
+  expect(screen.queryByText('Gender')).toBeNull();
+  expect(screen.queryByText('Level')).toBeNull();
+  expect(screen.queryByText(/skin color/i)).toBeNull();
+  expect(screen.queryByText('Pregnancy')).toBeNull();
+});
