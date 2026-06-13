@@ -115,6 +115,56 @@ export function facialHairPieces(idx: SpriteIndex): PieceRef[] {
   return list.filter((p) => (p.gender === 'male' || p.gender === 'any') && isFacialHairPiece(p.name));
 }
 
+export type FaceMaskCategory = 'facialHair' | 'glasses' | 'makeup' | 'scars' | 'other';
+
+// Classify a faceMask piece by name pattern. First match wins, in this order, so a
+// name that matches several patterns (e.g. "glasses2_withBeard") resolves to the
+// earliest category (facialHair).
+export function faceMaskCategory(name: string): FaceMaskCategory {
+  if (isFacialHairPiece(name)) return 'facialHair';
+  const n = name.toLowerCase();
+  if (/glasses|sunglasses|monocle|spectacles|gogg|eyepatch/.test(n)) return 'glasses';
+  if (n.includes('makeup') || n.includes('face_paint')) return 'makeup';
+  if (n.includes('scar')) return 'scars';
+  return 'other';
+}
+
+// All faceMask pieces available for a gender (gender-specific plus 'any').
+export function faceMaskPieces(idx: SpriteIndex, gender: 'male' | 'female'): PieceRef[] {
+  const list = idx.byType.faceMask;
+  if (!list) return [];
+  return list.filter((p) => p.gender === gender || p.gender === 'any');
+}
+
+export interface FaceMaskGroup {
+  category: FaceMaskCategory;
+  pieces: PieceRef[];
+}
+
+// faceMask pieces for a gender, grouped by category in display order. Empty
+// categories are omitted.
+export function faceMaskPiecesByCategory(
+  idx: SpriteIndex,
+  gender: 'male' | 'female',
+): FaceMaskGroup[] {
+  const order: FaceMaskCategory[] = ['facialHair', 'glasses', 'makeup', 'scars', 'other'];
+  const all = faceMaskPieces(idx, gender);
+  return order
+    .map((category) => ({ category, pieces: all.filter((p) => faceMaskCategory(p.name) === category) }))
+    .filter((g) => g.pieces.length > 0);
+}
+
+// Whether a faceMask piece named `name` has art for `gender` (or is gender 'any').
+// Used on gender change to decide whether to keep the dweller's current faceMask.
+export function faceMaskValidForGender(
+  idx: SpriteIndex,
+  name: string,
+  gender: 'male' | 'female',
+): boolean {
+  const list = idx.byType.faceMask ?? [];
+  return list.some((p) => p.name === name && (p.gender === gender || p.gender === 'any'));
+}
+
 /**
  * Whether a hair piece named `name` has art for `gender`. Hair assets are split
  * per gender (a male and a female piece can share a name), so a piece counts only
