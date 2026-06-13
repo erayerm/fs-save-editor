@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { SortDir, SpecialKey } from '../../lib/pickerSort';
+import { RARITIES, RARITY_DOT, type Rarity } from '../../lib/petRarity';
 
 const SPECIALS: SpecialKey[] = ['S', 'P', 'E', 'C', 'I', 'A', 'L'];
 
@@ -207,13 +208,71 @@ function SortMenu({ mode, dir, onChange }: { mode: 'weapon' | 'outfit'; dir: Sor
   );
 }
 
+function Dot({ color }: { color: string }) {
+  return <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} aria-hidden="true" />;
+}
+
+/** Custom rarity filter dropdown (pet mode). `null` rarity means "All". */
+function RarityMenu({ rarity, onChange }: { rarity: Rarity | null; onChange: (r: Rarity | null) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useClickAway<HTMLDivElement>(open, () => setOpen(false));
+
+  return (
+    <div ref={ref} className="relative shrink-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        title="Filter by rarity"
+        className="h-8 pl-2 pr-2 rounded-md border border-zinc-700 bg-zinc-800 text-zinc-100 hover:bg-zinc-700 flex items-center gap-1.5 text-sm transition-colors"
+      >
+        {rarity ? <Dot color={RARITY_DOT[rarity]} /> : null}
+        <span className="whitespace-nowrap">{rarity ?? 'All rarities'}</span>
+        <ChevronDown className="w-4 h-4 text-zinc-400 shrink-0" />
+      </button>
+      {open && (
+        <div
+          role="listbox"
+          className="absolute right-0 mt-2 z-20 py-1 rounded-lg border border-zinc-700 bg-zinc-800 shadow-xl"
+          style={{ minWidth: 170 }}
+        >
+          {([null, ...RARITIES] as (Rarity | null)[]).map((r) => {
+            const isSel = r === rarity;
+            return (
+              <button
+                key={r ?? 'all'}
+                type="button"
+                role="option"
+                aria-selected={isSel}
+                onClick={() => { onChange(r); setOpen(false); }}
+                className={[
+                  'w-full text-left px-2.5 py-1.5 text-sm flex items-center gap-2 transition-colors',
+                  isSel ? 'bg-green-950/50 text-green-300' : 'text-zinc-200 hover:bg-zinc-700',
+                ].join(' ')}
+              >
+                <span className="w-4 shrink-0 flex justify-center">
+                  {isSel && <CheckIcon className="w-3.5 h-3.5" />}
+                </span>
+                {r ? <Dot color={RARITY_DOT[r]} /> : <span className="w-2.5" />}
+                <span className="whitespace-nowrap">{r ?? 'All rarities'}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /**
  * Sticky control bar above a picker grid. Search applies to every mode; the
- * weapon/outfit modes add a sort menu (with a Default/no-sort option), and the
- * outfit mode adds a SPECIAL filter popover. A Reset clears everything.
+ * weapon/outfit modes add a sort menu (with a Default/no-sort option), the
+ * outfit mode adds a SPECIAL filter popover, and the pet mode adds a rarity
+ * filter. A Reset clears everything.
  */
 export function SortFilterBar({
-  mode, query, onQueryChange, onReset, dir, onDirChange, stat, onStatChange,
+  mode, query, onQueryChange, onReset, dir, onDirChange, stat, onStatChange, rarity, onRarityChange,
 }: {
   mode: 'weapon' | 'outfit' | 'pet';
   query: string;
@@ -225,6 +284,9 @@ export function SortFilterBar({
   /** outfit mode only */
   stat?: SpecialKey | null;
   onStatChange?: (s: SpecialKey | null) => void;
+  /** pet mode only */
+  rarity?: Rarity | null;
+  onRarityChange?: (r: Rarity | null) => void;
 }) {
   return (
     <div className="sticky top-0 z-10 flex items-center gap-2 px-2 py-2 mb-2 bg-zinc-900 border-b border-zinc-700">
@@ -247,6 +309,10 @@ export function SortFilterBar({
 
       {(mode === 'weapon' || mode === 'outfit') && onDirChange && (
         <SortMenu mode={mode} dir={dir ?? 'default'} onChange={onDirChange} />
+      )}
+
+      {mode === 'pet' && onRarityChange && (
+        <RarityMenu rarity={rarity ?? null} onChange={onRarityChange} />
       )}
 
       {/* Reset: classic restart icon */}

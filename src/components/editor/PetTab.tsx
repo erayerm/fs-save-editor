@@ -7,6 +7,7 @@ import type { PetIndex, PetMeta } from '../../types/pets';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import { SortFilterBar } from './SortFilterBar';
 import { filterByText } from '../../lib/pickerSort';
+import { type Rarity } from '../../lib/petRarity';
 
 const RARITY_ORDER: Record<string, number> = { Normal: 0, Rare: 1, Legendary: 2 };
 
@@ -20,6 +21,7 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
   });
 
   const [query, setQuery] = useState('');
+  const [rarity, setRarity] = useState<Rarity | null>(null);
 
   useEffect(() => {
     unmounted.current = false;
@@ -36,11 +38,19 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
       (RARITY_ORDER[a.rarity] ?? 0) - (RARITY_ORDER[b.rarity] ?? 0),
   );
 
-  const visible = filterByText(pets, query, (p) => `${p.name} ${p.bonus} ${p.rarity}`);
+  const byRarity = rarity ? pets.filter((p) => p.rarity === rarity) : pets;
+  const visible = filterByText(byRarity, query, (p) => `${p.name} ${p.bonus} ${p.bonusLabel} ${p.rarity}`);
 
   return (
     <div>
-      <SortFilterBar mode="pet" query={query} onQueryChange={setQuery} onReset={() => setQuery('')} />
+      <SortFilterBar
+        mode="pet"
+        query={query}
+        onQueryChange={setQuery}
+        onReset={() => { setQuery(''); setRarity(null); }}
+        rarity={rarity}
+        onRarityChange={setRarity}
+      />
       <div className="grid gap-1.5 p-1 justify-between" style={{ gridTemplateColumns: 'repeat(auto-fill, 170px)' }}>
         {/* None card — clears the pet (pinned to the front). */}
         <button
@@ -76,7 +86,8 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
               </div>
               <div className="w-full px-1 pb-1 text-center leading-tight">
                 <div className="text-xs font-medium text-zinc-100 truncate">{pet.name}</div>
-                <div className="text-[11px] text-zinc-400">{pet.rarity} · {pet.bonusLabel}</div>
+                <div className="text-[11px] text-zinc-400">{pet.rarity}</div>
+                <div className="text-[11px] text-zinc-400 truncate" title={pet.bonusLabel}>{pet.bonusLabel}</div>
               </div>
             </button>
           );
