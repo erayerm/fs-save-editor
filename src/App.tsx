@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { useSaveStore } from './store/saveStore';
 import { ImportLanding } from './components/ImportLanding';
 import { Header } from './components/Header';
@@ -19,6 +20,7 @@ export default function App() {
         {page === 'vault' ? <VaultSettings /> : <DwellerDetailPanel />}
       </main>
       {page === 'dweller' && <CharacterFooter />}
+      <Analytics />
     </div>
   );
 }
