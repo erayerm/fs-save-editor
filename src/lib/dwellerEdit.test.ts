@@ -92,6 +92,12 @@ describe('setGender', () => {
         { name: 'f1', gender: 'female', flags: {} },
       ],
       outfit: [],
+      faceMask: [
+        { name: 'f_hair_11', gender: 'male', flags: {} },
+        { name: 'wrinkles', gender: 'male', flags: {} },
+        { name: 'wrinkles', gender: 'female', flags: {} },
+        { name: 'monocle', gender: 'female', flags: {} },
+      ],
     },
     outfitItems: [
       { id: 'jumpsuit', name: 'Vault Suit', category: 3, pieceMale: 'jumpsuit', pieceFemale: 'jumpsuit' },
@@ -124,14 +130,19 @@ describe('setGender', () => {
     expect((setGender(d, 1, IDX) as any).equipedOutfit.id).toBe('battlearmor');
   });
 
-  it('clears facial hair when switching to female', () => {
+  it('clears a male-only faceMask (beard) when switching to female', () => {
     const d = { ...mkDweller(), gender: 2, faceMask: 'f_hair_11' } as any;
     expect((setGender(d, 1, IDX) as any).faceMask).toBeNull();
   });
 
-  it('keeps facial hair when staying/switching male', () => {
-    const d = { ...mkDweller(), gender: 1, faceMask: 'f_hair_11' } as any;
-    expect((setGender(d, 2, IDX) as any).faceMask).toBe('f_hair_11');
+  it('keeps a faceMask that has art for the new gender', () => {
+    const d = { ...mkDweller(), gender: 2, faceMask: 'wrinkles' } as any;
+    expect((setGender(d, 1, IDX) as any).faceMask).toBe('wrinkles');
+  });
+
+  it('clears a faceMask with no art for the new gender', () => {
+    const d = { ...mkDweller(), gender: 1, faceMask: 'monocle' } as any;
+    expect((setGender(d, 2, IDX) as any).faceMask).toBeNull();
   });
 
   it('leaves items untouched when no index is provided', () => {

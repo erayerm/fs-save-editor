@@ -4,7 +4,7 @@ import type { SpriteIndex } from '../types/pieces';
 import { SPECIAL_ORDER } from '../types/save';
 import type { Rgb } from './dwellerRender';
 import { encodeArgb } from './colors';
-import { hairValidForGender, outfitValidForGender, defaultHairFor } from './spriteIndex';
+import { hairValidForGender, outfitValidForGender, defaultHairFor, faceMaskValidForGender } from './spriteIndex';
 
 export interface DwellerCustomization {
   hair?: string;
@@ -196,8 +196,9 @@ export function setWeapon(d: Dweller, weaponId: string): Dweller {
  * gender-specific (e.g. the Action Wedding Dress is female-only). When `idx` is
  * supplied, any gender-specific item the dweller is wearing that has no art for
  * the new gender is reset to its default — hair to the gender's default piece,
- * outfit to the vault jumpsuit. Facial hair is a male-only feature, so it is
- * cleared when switching to female. Without `idx`, only the gender flag changes.
+ * outfit to the vault jumpsuit. A faceMask piece (facial hair, glasses, etc.) is
+ * kept only if it has art for the new gender, and cleared otherwise. Without
+ * `idx`, only the gender flag changes.
  */
 export function setGender(d: Dweller, gender: number, idx?: SpriteIndex): Dweller {
   const g = gender === 2 ? 2 : 1;
@@ -216,8 +217,11 @@ export function setGender(d: Dweller, gender: number, idx?: SpriteIndex): Dwelle
     next.equipedOutfit = { ...outfit, id: 'jumpsuit' };
   }
 
-  // Facial hair (faceMask) is male-only; drop it when the dweller becomes female.
-  if (g === 1 && next.faceMask != null) {
+  // faceMask (facial hair / glasses / wrinkles / etc.) is a single gendered slot.
+  // Keep it only if a piece with that name exists for the new gender; otherwise
+  // clear it (e.g. a male-only beard on a dweller switched to female).
+  const fm = next.faceMask;
+  if (typeof fm === 'string' && !faceMaskValidForGender(idx, fm, gName)) {
     next.faceMask = null;
   }
 
