@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSaveStore } from '../../store/saveStore';
-import { setName, setPregnancy, setLevel, MIN_LEVEL, MAX_LEVEL } from '../../lib/dwellerEdit';
+import { setName, setPregnancy, setLevel, setGender, MIN_LEVEL, MAX_LEVEL } from '../../lib/dwellerEdit';
 import { ColorPalette } from './ColorPalette';
 import { ConfirmModal } from '../ConfirmModal';
 import { SKIN_PRESETS } from '../../lib/colorPresets';
@@ -64,6 +64,32 @@ export function OthersTab({
             />
           </div>
         </div>
+      </div>
+
+      {/* Gender */}
+      <div className="space-y-3">
+        <h3 className="text-zinc-300 text-sm font-semibold uppercase tracking-wide">Gender</h3>
+        <div className="flex gap-2">
+          {[{ v: 1, label: 'Female' }, { v: 2, label: 'Male' }].map(({ v, label }) => (
+            <button
+              key={v}
+              type="button"
+              disabled={disabled}
+              aria-pressed={dweller.gender === v}
+              onClick={() => updateRaw((d) => setGender(d, v))}
+              className={[
+                'px-3 py-1.5 rounded text-sm font-medium disabled:opacity-50',
+                dweller.gender === v ? 'bg-green-600 text-white' : 'bg-zinc-700 text-zinc-200 hover:bg-zinc-600',
+              ].join(' ')}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <p className="text-zinc-500 text-xs">
+          Changing gender re-derives gender-specific visuals. Outfits or hair with no art for the
+          new gender fall back to the default.
+        </p>
       </div>
 
       {/* Level (1..50) */}

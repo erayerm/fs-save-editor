@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { applyCustomization, type DwellerCustomization } from './dwellerEdit';
+import { applyCustomization, type DwellerCustomization, setPet, clearPet, setGender } from './dwellerEdit';
+import type { PetMeta } from '../types/pets';
 import { decodeArgb } from './colors';
 import type { Dweller } from '../types/save';
 
@@ -34,5 +35,47 @@ describe('applyCustomization', () => {
   it('ignores undefined fields in the patch', () => {
     const next = applyCustomization(mkDweller(), {}) as any;
     expect(next.hair).toBe('5');
+  });
+});
+
+const PET: PetMeta = {
+  id: 'germanshepherd_l', name: 'German Shepherd', type: 'Dog', breed: 'German Shepherd',
+  rarity: 'Legendary', bonus: 'ObjectiveMultiplier', bonusValue: 3,
+  bonusLabel: 'ObjectiveMultiplier +3', uniqueName: 'Dogmeat', icon: null,
+};
+
+describe('setPet / clearPet', () => {
+  it('writes equippedPet with extraData', () => {
+    const next = setPet(mkDweller(), PET) as any;
+    expect(next.equippedPet).toEqual({
+      id: 'germanshepherd_l', type: 'Pet',
+      hasBeenAssigned: false, hasRandonWeaponBeenAssigned: false,
+      extraData: { uniqueName: 'Dogmeat', bonus: 'ObjectiveMultiplier', bonusValue: 3 },
+    });
+  });
+  it('clearPet removes equippedPet', () => {
+    const withPet = setPet(mkDweller(), PET);
+    const cleared = clearPet(withPet) as any;
+    expect(cleared.equippedPet).toBeUndefined();
+  });
+  it('does not mutate the input', () => {
+    const d = mkDweller();
+    setPet(d, PET);
+    expect((d as any).equippedPet).toBeUndefined();
+  });
+});
+
+describe('setGender', () => {
+  it('sets gender to male (2) / female (1)', () => {
+    expect((setGender(mkDweller(), 2) as any).gender).toBe(2);
+    expect((setGender(mkDweller(), 1) as any).gender).toBe(1);
+  });
+  it('coerces any non-2 value to female (1)', () => {
+    expect((setGender(mkDweller(), 9) as any).gender).toBe(1);
+  });
+  it('does not mutate the input', () => {
+    const d = mkDweller();
+    setGender(d, 2);
+    expect(d.gender).toBe(1);
   });
 });

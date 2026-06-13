@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
-    "build:index": "node scripts/build-sprite-index.mjs"
+    "build:index": "node scripts/build-sprite-index.mjs",
+    "build:petdata": "node scripts/build-pet-data.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

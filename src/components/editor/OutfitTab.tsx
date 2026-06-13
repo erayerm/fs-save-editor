@@ -11,6 +11,8 @@ import type { SpriteIndex, OutfitItem, Gender } from '../../types/pieces';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
+import { SortFilterBar } from './SortFilterBar';
+import { filterAndSortOutfits, sortBySpecialTotal, filterByText, type SortDir, type SpecialKey } from '../../lib/pickerSort';
 
 const THUMB_SIZE = 340; // offscreen WebGL canvas — 2× cell width (170px) for crisp display
 
@@ -166,9 +168,19 @@ export function OutfitTab({
   useEffect(() => { loadMeshSet().then(setMeshSet); }, []);
 
   const gender: Gender = dweller.gender === 2 ? 'male' : 'female';
+  const [dir, setDir] = useState<SortDir>('default');
+  const [query, setQuery] = useState('');
+  const [stat, setStat] = useState<SpecialKey | null>(null);
   const thumbnails = useOutfitThumbnails(index, meshSet, dweller);
 
-  const options = visibleOutfits(index, gender).map((o) => {
+  const base = visibleOutfits(index, gender);
+  const searched = filterByText(base, query, (o) => o.name);
+  // With a SPECIAL stat: filter+sort by that stat. Without one but with a sort
+  // direction: sort by the sum of all SPECIAL bonuses. Otherwise: default order.
+  const ordered = stat
+    ? filterAndSortOutfits(searched, stat, dir)
+    : sortBySpecialTotal(searched, dir);
+  const options = ordered.map((o) => {
     const thumbnailUrl = thumbnails.get(o.id);
     return {
       value: o.id,
@@ -181,7 +193,17 @@ export function OutfitTab({
   });
 
   return (
-    <div className="pt-4">
+    <div>
+      <SortFilterBar
+        mode="outfit"
+        query={query}
+        onQueryChange={setQuery}
+        onReset={() => { setQuery(''); setDir('default'); setStat(null); }}
+        dir={dir}
+        onDirChange={setDir}
+        stat={stat}
+        onStatChange={setStat}
+      />
       <OptionGrid
         options={options}
         selected={dweller.outfitName ?? null}

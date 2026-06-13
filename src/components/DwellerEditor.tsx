@@ -5,6 +5,7 @@ import { HairTab } from './editor/HairTab';
 import { FacialHairTab } from './editor/FacialHairTab';
 import { OutfitTab } from './editor/OutfitTab';
 import { WeaponTab } from './editor/WeaponTab';
+import { PetTab } from './editor/PetTab';
 import { WeaponBadge } from './WeaponBadge';
 import { OutfitBadge } from './OutfitBadge';
 import { StatsTab } from './editor/StatsTab';
@@ -51,6 +52,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
     ...(isMale ? [{ id: 'facialHair', label: 'Facial Hair' }] : []),
     { id: 'outfit', label: 'Outfit' },
     { id: 'weapon', label: 'Weapon' },
+    { id: 'pet', label: 'Pet' },
     { id: 'stats', label: 'SPECIAL' },
     { id: 'others', label: 'Others' },
   ];
@@ -92,6 +94,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
           {index && active === 'facialHair' && isMale && <FacialHairTab index={index} dweller={dweller} onChange={onChange} />}
           {index && active === 'outfit' && <OutfitTab index={index} dweller={dweller} onChange={onChange} />}
           {active === 'weapon' && <WeaponTab dweller={dweller} />}
+          {active === 'pet' && <PetTab dweller={dweller} />}
           {active === 'stats' && <StatsTab dweller={dweller} />}
           {active === 'others' && <OthersTab dweller={dweller} onChange={onChange} />}
         </div>
