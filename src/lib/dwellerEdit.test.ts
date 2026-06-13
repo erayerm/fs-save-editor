@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { applyCustomization, type DwellerCustomization, setPet, clearPet } from './dwellerEdit';
+import { applyCustomization, type DwellerCustomization, setPet, clearPet, setGender } from './dwellerEdit';
 import type { PetMeta } from '../types/pets';
 import { decodeArgb } from './colors';
 import type { Dweller } from '../types/save';
@@ -62,5 +62,20 @@ describe('setPet / clearPet', () => {
     const d = mkDweller();
     setPet(d, PET);
     expect((d as any).equippedPet).toBeUndefined();
+  });
+});
+
+describe('setGender', () => {
+  it('sets gender to male (2) / female (1)', () => {
+    expect((setGender(mkDweller(), 2) as any).gender).toBe(2);
+    expect((setGender(mkDweller(), 1) as any).gender).toBe(1);
+  });
+  it('coerces any non-2 value to female (1)', () => {
+    expect((setGender(mkDweller(), 9) as any).gender).toBe(1);
+  });
+  it('does not mutate the input', () => {
+    const d = mkDweller();
+    setGender(d, 2);
+    expect(d.gender).toBe(1);
   });
 });

@@ -186,3 +186,8 @@ export function setWeapon(d: Dweller, weaponId: string): Dweller {
   const cur = (d.equipedWeapon ?? { type: 'Weapon' }) as Record<string, unknown>;
   return { ...d, equipedWeapon: { ...cur, id: weaponId, type: 'Weapon' } } as Dweller;
 }
+
+/** Set a dweller's gender (1 = female, 2 = male). Any non-2 value becomes female. */
+export function setGender(d: Dweller, gender: number): Dweller {
+  return { ...d, gender: gender === 2 ? 2 : 1 };
+}
