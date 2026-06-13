@@ -47,6 +47,29 @@ function ChevronDown({ className }: IconProps) {
   );
 }
 
+function CheckIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}
+      strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
+/** Close `onClose` when a mousedown lands outside the returned ref while `open`. */
+function useClickAway<T extends HTMLElement>(open: boolean, onClose: () => void) {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) onClose();
+    };
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [open, onClose]);
+  return ref;
+}
+
 /** A single SPECIAL stat as a circular toggle (green-filled when selected). */
 function StatCircle({ letter, selected, onClick }: { letter: SpecialKey; selected: boolean; onClick: () => void }) {
   return (
@@ -70,16 +93,7 @@ function StatCircle({ letter, selected, onClick }: { letter: SpecialKey; selecte
 /** SPECIAL stat filter: a button that opens a popover of the 7 circular stat icons. */
 function SpecialFilter({ stat, onChange }: { stat: SpecialKey | null; onChange: (s: SpecialKey | null) => void }) {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onDown = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener('mousedown', onDown);
-    return () => document.removeEventListener('mousedown', onDown);
-  }, [open]);
+  const ref = useClickAway<HTMLDivElement>(open, () => setOpen(false));
 
   return (
     <div ref={ref} className="relative shrink-0">
@@ -134,10 +148,69 @@ function SpecialFilter({ stat, onChange }: { stat: SpecialKey | null; onChange: 
   );
 }
 
+/** Custom (theme-styled) sort dropdown — replaces the native <select> options menu. */
+function SortMenu({ mode, dir, onChange }: { mode: 'weapon' | 'outfit'; dir: SortDir; onChange: (d: SortDir) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useClickAway<HTMLDivElement>(open, () => setOpen(false));
+
+  const options: { value: SortDir; label: string }[] = [
+    { value: 'default', label: 'Default' },
+    { value: 'desc', label: mode === 'weapon' ? 'Damage: high to low' : 'High to low' },
+    { value: 'asc', label: mode === 'weapon' ? 'Damage: low to high' : 'Low to high' },
+  ];
+  const current = options.find((o) => o.value === dir) ?? options[0];
+
+  return (
+    <div ref={ref} className="relative shrink-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        title="Sort"
+        className="h-8 pl-2 pr-2 rounded-md border border-zinc-700 bg-zinc-800 text-zinc-100 hover:bg-zinc-700 flex items-center gap-1.5 text-sm transition-colors"
+      >
+        <SortIcon className="w-4 h-4 text-zinc-400 shrink-0" />
+        <span className="whitespace-nowrap">{current.label}</span>
+        <ChevronDown className="w-4 h-4 text-zinc-400 shrink-0" />
+      </button>
+      {open && (
+        <div
+          role="listbox"
+          className="absolute right-0 mt-2 z-20 py-1 rounded-lg border border-zinc-700 bg-zinc-800 shadow-xl"
+          style={{ minWidth: 180 }}
+        >
+          {options.map((o) => {
+            const isSel = o.value === dir;
+            return (
+              <button
+                key={o.value}
+                type="button"
+                role="option"
+                aria-selected={isSel}
+                onClick={() => { onChange(o.value); setOpen(false); }}
+                className={[
+                  'w-full text-left px-2.5 py-1.5 text-sm flex items-center gap-2 transition-colors',
+                  isSel ? 'bg-green-950/50 text-green-300' : 'text-zinc-200 hover:bg-zinc-700',
+                ].join(' ')}
+              >
+                <span className="w-4 shrink-0 flex justify-center">
+                  {isSel && <CheckIcon className="w-3.5 h-3.5" />}
+                </span>
+                <span className="whitespace-nowrap">{o.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /**
  * Sticky control bar above a picker grid. Search applies to every mode; the
- * weapon/outfit modes add a sort selector (with a Default/no-sort option), and
- * the outfit mode adds a SPECIAL filter popover. A Reset clears everything.
+ * weapon/outfit modes add a sort menu (with a Default/no-sort option), and the
+ * outfit mode adds a SPECIAL filter popover. A Reset clears everything.
  */
 export function SortFilterBar({
   mode, query, onQueryChange, onReset, dir, onDirChange, stat, onStatChange,
@@ -173,19 +246,7 @@ export function SortFilterBar({
       )}
 
       {(mode === 'weapon' || mode === 'outfit') && onDirChange && (
-        <div className="shrink-0 h-8 flex items-center gap-1 pl-2 pr-1 rounded-md border border-zinc-700 bg-zinc-800">
-          <SortIcon className="w-4 h-4 text-zinc-400 shrink-0" />
-          <select
-            value={dir ?? 'default'}
-            onChange={(e) => onDirChange(e.target.value as SortDir)}
-            aria-label="Sort"
-            className="bg-transparent text-zinc-100 text-sm pr-1 focus:outline-none cursor-pointer"
-          >
-            <option value="default">Default</option>
-            <option value="desc">{mode === 'weapon' ? 'Damage: high to low' : 'High to low'}</option>
-            <option value="asc">{mode === 'weapon' ? 'Damage: low to high' : 'Low to high'}</option>
-          </select>
-        </div>
+        <SortMenu mode={mode} dir={dir ?? 'default'} onChange={onDirChange} />
       )}
 
       {/* Reset: classic restart icon */}
