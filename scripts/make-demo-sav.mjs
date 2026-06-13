@@ -2,6 +2,11 @@
 // One-time generator: trims public/Vault1.sav to 7 dwellers, randomizes
 // their names, and writes the result to public/demo.sav.
 // Usage: node scripts/make-demo-sav.mjs
+//
+// NOTE: public/demo.sav is now hand-curated (face/appearance edits showcasing the
+// Face tab, plus a named "Eray Erm" dweller). Re-running this script will OVERWRITE
+// those edits with a fresh randomized cut of Vault1.sav. Don't run it unless you
+// intend to regenerate the demo from scratch.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { MALE_FIRST, FEMALE_FIRST, LAST_NAMES } from './lib/demoNames.mjs';
 

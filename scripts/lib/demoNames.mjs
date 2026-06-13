@@ -4,6 +4,7 @@
 
 export const MALE_FIRST = [
   'Walter', 'Eugene', 'Hank', 'Clarence', 'Roy', 'Vernon', 'Earl', 'Stanley',
+  'Eray',
 ];
 
 export const FEMALE_FIRST = [
@@ -12,4 +13,5 @@ export const FEMALE_FIRST = [
 
 export const LAST_NAMES = [
   'Garvey', 'Holloway', 'Pemberton', 'Whitmore', 'Caldwell', 'Murdock', 'Abernathy', 'Finch',
+  'Erm',
 ];
