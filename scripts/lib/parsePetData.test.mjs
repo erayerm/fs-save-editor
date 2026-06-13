@@ -39,9 +39,12 @@ describe('parsePetData', () => {
       bonusEffect: 67108864, minValue: 6, maxValue: 10,
     });
   });
-  it('captures the legendary base name', () => {
+  it('parses the legendary entry fully', () => {
     const pets = parsePetData(SAMPLE);
-    expect(pets[1].baseName).toBe('Old Yeller');
-    expect(pets[1].rarity).toBe(4);
+    expect(pets[1]).toEqual({
+      id: 'blacklab_l', baseName: 'Old Yeller', rarity: 4, type: 0, breed: 0,
+      headSprite: 'BlackLabrador_Head', fullBodySprite: 'BlackLabrador_FullBody',
+      bonusEffect: 134217728, minValue: 3, maxValue: 3,
+    });
   });
 });

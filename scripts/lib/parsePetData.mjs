@@ -24,7 +24,7 @@ export function parsePetData(text) {
       type: Number(grab(chunk, /m_type:\s*(\d+)/) ?? 0),
       breed: Number(grab(chunk, /m_breed:\s*(\d+)/) ?? 0),
       headSprite: grab(chunk, /m_HeadSprite:\s*(\S+)/) ?? '',
-      fullBodySprite: grab(chunk, /m_Sprite:\s*(\S+)/) ?? '',
+      fullBodySprite: grab(chunk, /^\s*m_Sprite:\s*(\S+)/m) ?? '',
       bonusEffect: bonus ? Number(bonus[1]) : 0,
       minValue: bonus ? Number(bonus[2]) : 0,
       maxValue: bonus ? Number(bonus[3]) : 0,
