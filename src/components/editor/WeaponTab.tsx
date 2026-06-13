@@ -7,6 +7,8 @@ import type { WeaponIndex } from '../../types/weapons';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import { SortFilterBar } from './SortFilterBar';
 import { sortByDamage, filterByText, type SortDir } from '../../lib/pickerSort';
+import { UnknownItemCard } from './UnknownItemCard';
+import { useUnknownItemGuard } from './UnknownItemModal';
 
 export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
   const [weaponIndex, setWeaponIndex] = useState<WeaponIndex | null>(null);
@@ -27,6 +29,13 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
     });
     return () => { unmounted.current = true; };
   }, []);
+
+  // The equipped weapon is unknown when its id isn't in our catalog (content
+  // added to the game after this editor's last update). Hooks must run before
+  // any early return, so this is computed unconditionally (known when the index
+  // hasn't loaded yet, so no card flashes during loading).
+  const known = !weaponIndex || !equippedId || equippedId in weaponIndex.weapons;
+  const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(equippedId, known);
 
   if (!weaponIndex) {
     return <div className="text-zinc-400 text-sm">Loading weapons…</div>;
@@ -53,6 +62,9 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
         className="grid gap-1.5 p-1 justify-between"
         style={{ gridTemplateColumns: 'repeat(auto-fill, 170px)' }}
       >
+        {isUnknown && equippedId && (
+          <UnknownItemCard id={equippedId} onWarn={openInfo} />
+        )}
         {entries.map(([id, meta]) => {
           const isEquipped = id === equippedId;
           return (
@@ -60,7 +72,7 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
               key={id}
               title={meta.name}
               aria-pressed={isEquipped}
-              onClick={() => useSaveStore.getState().updateSelectedDwellerRaw((d) => setWeapon(d, id))}
+              onClick={() => guardSelect(() => useSaveStore.getState().updateSelectedDwellerRaw((d) => setWeapon(d, id)))}
               className={[
                 'rounded border flex flex-col items-center overflow-hidden transition-colors',
                 isEquipped
@@ -82,6 +94,7 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
           );
         })}
       </div>
+      {modal}
     </div>
   );
 }

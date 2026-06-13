@@ -19,11 +19,13 @@ export interface GridOption {
 }
 
 export function OptionGrid({
-  options, selected, onSelect, cellW, cellH, showLabel = false,
+  options, selected, onSelect, cellW, cellH, showLabel = false, leading,
 }: {
   options: GridOption[];
   selected: string | null;
   onSelect: (value: string) => void;
+  /** Optional node pinned as the first cell of the grid (e.g. an unknown-item card). */
+  leading?: React.ReactNode;
   /** Override cell width (px). Default: 170 for thumbnailUrl, 80 for sprite layers. */
   cellW?: number;
   /** Override cell height (px). Default: 221 for thumbnailUrl, 80 for sprite layers. */
@@ -36,7 +38,7 @@ export function OptionGrid({
    */
   showLabel?: boolean;
 }) {
-  if (options.length === 0) {
+  if (options.length === 0 && !leading) {
     return <div className="text-zinc-500 italic text-sm p-2">No options available.</div>;
   }
 
@@ -66,6 +68,7 @@ export function OptionGrid({
       className="grid gap-1.5 p-1 justify-between"
       style={{ gridTemplateColumns: `repeat(auto-fill, ${colW}px)` }}
     >
+      {leading}
       {options.map((o) => (
         <button
           key={o.value}

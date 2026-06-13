@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { SpecialBadges } from './SpecialBadges';
-import { equippableOutfits } from '../../lib/spriteIndex';
+import { equippableOutfits, outfitItemById } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
@@ -13,6 +13,8 @@ import type { DwellerCustomization } from '../../lib/dwellerEdit';
 import type { DwellerMeshSet } from '../../types/mesh';
 import { SortFilterBar } from './SortFilterBar';
 import { filterAndSortOutfits, sortBySpecialTotal, filterByText, type SortDir, type SpecialKey } from '../../lib/pickerSort';
+import { UnknownItemCard } from './UnknownItemCard';
+import { useUnknownItemGuard } from './UnknownItemModal';
 
 const THUMB_SIZE = 340; // offscreen WebGL canvas — 2× cell width (170px) for crisp display
 
@@ -192,6 +194,12 @@ export function OutfitTab({
     };
   });
 
+  // The equipped outfit is unknown when its id isn't a known outfit item
+  // (content added to the game after this editor's last update).
+  const outfitName = dweller.outfitName;
+  const known = !outfitName || outfitItemById(index, outfitName) != null;
+  const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(outfitName, known);
+
   return (
     <div>
       <SortFilterBar
@@ -207,9 +215,13 @@ export function OutfitTab({
       <OptionGrid
         options={options}
         selected={dweller.outfitName ?? null}
-        onSelect={(v) => onChange({ outfitId: v })}
+        onSelect={(v) => guardSelect(() => onChange({ outfitId: v }))}
         showLabel
+        leading={isUnknown && outfitName
+          ? <UnknownItemCard id={outfitName} width={170} height={268} onWarn={openInfo} />
+          : undefined}
       />
+      {modal}
     </div>
   );
 }
