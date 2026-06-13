@@ -27,9 +27,9 @@ export function UnknownItemCard({
         role="img"
         aria-label="Unsupported item, more info"
         onClick={(e) => { e.stopPropagation(); onWarn(); }}
-        className="absolute top-1.5 right-1.5 z-10 flex items-center justify-center w-5 h-5 rounded-full bg-amber-400 text-zinc-900 shadow"
+        className="absolute top-1.5 right-1.5 z-10 flex items-center justify-center w-[30px] h-[30px] rounded-full bg-amber-400 text-zinc-900 shadow"
       >
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor"
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
           strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
           <line x1="12" y1="9" x2="12" y2="13" />
@@ -44,7 +44,6 @@ export function UnknownItemCard({
 
       <div className="w-full px-1 pb-1 text-center leading-tight">
         <div className="text-[11px] text-zinc-200 truncate" title={id}>{id}</div>
-        <div className="text-[10px] font-medium text-amber-400">Unsupported</div>
       </div>
     </button>
   );

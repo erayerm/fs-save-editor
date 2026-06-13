@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { FALLOUT_GREEN } from '../SpecialIcon';
 
 /**
  * Centered modal warning the user about an equipped item the editor's catalog
@@ -43,7 +44,7 @@ export function UnknownItemModal({
           <h2 className="text-lg font-semibold text-zinc-100">Unsupported item</h2>
         </div>
         <p className="text-sm text-zinc-300 mb-5 leading-relaxed">
-          This character has the item <span className="font-semibold text-amber-300 break-all">{itemId}</span>,
+          This character has the item <span className="font-semibold break-all" style={{ color: FALLOUT_GREEN }}>{itemId}</span>,
           which this editor doesn't recognize. It was probably added to the game in an update newer than this
           editor, or it comes from a mod. Either way we can't display it correctly, and if you replace it you
           won't be able to set it back to this item. Make sure you want to do this before continuing.
@@ -53,17 +54,18 @@ export function UnknownItemModal({
             <>
               <button
                 type="button"
-                onClick={onCancel}
+                onClick={onConfirm}
                 className="px-3 py-1.5 rounded text-sm font-medium bg-zinc-700 hover:bg-zinc-600 text-zinc-200"
               >
-                Cancel
+                Replace anyway
               </button>
               <button
                 type="button"
-                onClick={onConfirm}
-                className="px-3 py-1.5 rounded text-sm font-medium text-zinc-900 bg-amber-400 hover:bg-amber-300"
+                onClick={onCancel}
+                className="px-3 py-1.5 rounded text-sm font-medium text-zinc-900 hover:opacity-90"
+                style={{ backgroundColor: FALLOUT_GREEN }}
               >
-                Replace anyway
+                Cancel
               </button>
             </>
           ) : (
