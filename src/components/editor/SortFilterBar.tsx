@@ -85,7 +85,7 @@ export function SortFilterBar({
   onStatChange?: (s: SpecialKey | null) => void;
 }) {
   return (
-    <div className="sticky top-0 z-10 flex items-center gap-2 px-1 py-2 mb-1 bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-700 text-sm">
+    <div className="sticky top-0 z-10 flex items-center gap-2 px-1 py-2 mb-1 bg-zinc-900 border-b border-zinc-700 text-sm">
       <input
         type="text"
         value={query}
@@ -101,7 +101,7 @@ export function SortFilterBar({
         <label className="flex items-center gap-1 text-zinc-400 shrink-0">
           <span>Sort</span>
           <select
-            value={dir}
+            value={dir ?? 'default'}
             onChange={(e) => onDirChange(e.target.value as SortDir)}
             className="bg-zinc-700 text-zinc-100 rounded px-2 py-1"
           >
