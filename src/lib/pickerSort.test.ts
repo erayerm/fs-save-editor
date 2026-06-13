@@ -41,7 +41,7 @@ describe('filterByText', () => {
     expect(filterByText(items, '   ', get)).toBe(items);
   });
   it('matches case-insensitive substring', () => {
-    expect(filterByText(items, 'sh', get).map((i) => i.id)).toEqual(['a', 'c']);
+    expect(filterByText(items, 'h', get).map((i) => i.id)).toEqual(['a', 'c']);
   });
   it('returns empty when nothing matches', () => {
     expect(filterByText(items, 'zzz', get)).toEqual([]);
