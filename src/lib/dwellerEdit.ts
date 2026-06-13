@@ -1,4 +1,5 @@
 import type { Dweller, Special } from '../types/save';
+import type { PetMeta } from '../types/pets';
 import { SPECIAL_ORDER } from '../types/save';
 import type { Rgb } from './dwellerRender';
 import { encodeArgb } from './colors';
@@ -154,6 +155,31 @@ export function createDwellerAtDoor(input: NewDwellerInput, existingIds: number[
     rarity: 'Normal',
     deathTime: -1,
   } as unknown as Dweller;
+}
+
+/**
+ * Equip a pet. Pets live on `equippedPet` (note the double-p key, distinct from
+ * the single-p `equipedWeapon` / `equipedOutfit`). `extraData` carries the
+ * pet's unique name and its single bonus effect + value.
+ */
+export function setPet(d: Dweller, pet: PetMeta): Dweller {
+  return {
+    ...d,
+    equippedPet: {
+      id: pet.id,
+      type: 'Pet',
+      hasBeenAssigned: false,
+      hasRandonWeaponBeenAssigned: false,
+      extraData: { uniqueName: pet.uniqueName, bonus: pet.bonus, bonusValue: pet.bonusValue },
+    },
+  } as unknown as Dweller;
+}
+
+/** Remove a dweller's pet. */
+export function clearPet(d: Dweller): Dweller {
+  const next = { ...(d as Record<string, unknown>) };
+  delete next.equippedPet;
+  return next as unknown as Dweller;
 }
 
 export function setWeapon(d: Dweller, weaponId: string): Dweller {
