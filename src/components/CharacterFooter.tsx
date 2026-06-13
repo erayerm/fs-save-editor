@@ -41,7 +41,6 @@ export function CharacterFooter() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
-  const [focused, setFocused] = useState(false);
   const [query, setQuery] = useState('');
 
   // Focus the field as it expands.
@@ -57,66 +56,53 @@ export function CharacterFooter() {
 
   return (
     <div className="shrink-0 relative">
-      {/* Filter control stuck to the top-right edge of the bar (above it). The
-          green funnel toggles a search field that grows to the left. */}
-      <div className="absolute right-3 -top-8 z-20 flex items-stretch h-8">
-        {/* Expanding search field */}
+      {/* Filter control: one solid fallout-green bar attached above the dweller
+          bar. The funnel toggles a search field that grows to the left; the
+          field and button share the same continuous green background. */}
+      <div
+        className="absolute right-3 -top-8 z-20 flex items-stretch h-8 rounded-t-md overflow-hidden"
+        style={{ backgroundColor: FALLOUT_GREEN }}
+      >
+        {/* Expanding search field (grows to the left) */}
         <div
           className={[
-            'overflow-hidden transition-all duration-200 ease-out',
-            open ? 'w-56 mr-1.5 opacity-100' : 'w-0 mr-0 opacity-0',
+            'flex items-center transition-all duration-200 ease-out',
+            open ? 'w-56' : 'w-0',
           ].join(' ')}
         >
-          <div className="relative h-8 w-56">
-            <SearchIcon className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Filter by name…"
-              aria-label="Filter dwellers by name"
-              tabIndex={open ? 0 : -1}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              className="w-full h-8 bg-zinc-900/90 backdrop-blur border rounded-lg pl-8 pr-7 text-sm text-zinc-100 placeholder-zinc-500 shadow-lg transition-colors focus:outline-none"
-              style={{
-                borderColor: focused ? FALLOUT_GREEN : 'rgba(21,255,93,0.35)',
-                boxShadow: focused ? '0 0 0 2px rgba(21,255,93,0.22)' : undefined,
-              }}
-            />
-            {query && (
-              <button
-                type="button"
-                onClick={() => setQuery('')}
-                aria-label="Clear text"
-                className="absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center justify-center w-5 h-5 rounded text-zinc-500 hover:text-zinc-100"
-              >
-                <CloseIcon className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
+          <SearchIcon className="w-4 h-4 ml-2.5 shrink-0 text-zinc-800" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Filter by name…"
+            aria-label="Filter dwellers by name"
+            tabIndex={open ? 0 : -1}
+            className="flex-1 min-w-0 h-8 bg-transparent px-2 text-sm text-zinc-900 placeholder-zinc-700 focus:outline-none"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery('')}
+              aria-label="Clear text"
+              className="shrink-0 mr-1 flex items-center justify-center w-5 h-5 rounded text-zinc-800 hover:bg-black/10"
+            >
+              <CloseIcon className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
 
-        {/* Green funnel handle */}
+        {/* Funnel handle (dark icon on the green background) */}
         <button
           type="button"
           onClick={() => { if (open) { setQuery(''); setOpen(false); } else setOpen(true); }}
           title={open ? 'Close filter' : 'Filter dwellers'}
           aria-label={open ? 'Close filter' : 'Filter dwellers'}
           aria-pressed={open}
-          className={[
-            'flex items-center justify-center w-9 rounded-t-lg border border-b-0 transition-all duration-200',
-            open ? 'bg-zinc-800' : 'bg-zinc-900 hover:bg-zinc-800',
-          ].join(' ')}
-          style={{
-            borderColor: open ? 'rgba(21,255,93,0.5)' : undefined,
-            boxShadow: open ? '0 -3px 14px -3px rgba(21,255,93,0.55)' : undefined,
-          }}
+          className="shrink-0 flex items-center justify-center w-9 text-zinc-900 hover:bg-black/10 transition-colors"
         >
-          <span style={{ color: FALLOUT_GREEN }} className="flex">
-            <FilterIcon className="w-4 h-4" />
-          </span>
+          <FilterIcon className="w-4 h-4" />
         </button>
       </div>
 
