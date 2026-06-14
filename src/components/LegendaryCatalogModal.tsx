@@ -43,12 +43,27 @@ function LegendaryCard({ entry, selected, onSelect }: {
 }
 
 export function LegendaryCatalogModal({ onAdd, onClose }: {
-  onAdd: (entry: LegendaryMeta) => void; onClose: () => void;
+  onAdd: (entries: LegendaryMeta[]) => void; onClose: () => void;
 }) {
   const [list, setList] = useState<LegendaryMeta[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [selected, setSelected] = useState<LegendaryMeta | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const dialogRef = useRef<HTMLDivElement>(null);
+
+  const toggle = (uniqueData: string) =>
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(uniqueData)) next.delete(uniqueData);
+      else next.add(uniqueData);
+      return next;
+    });
+
+  const count = selectedIds.size;
+  const addLabel = count === 0 ? 'Add' : `Add ${count} Dweller${count === 1 ? '' : 's'}`;
+  const onAddClick = () => {
+    if (!list || count === 0) return;
+    onAdd(list.filter((e) => selectedIds.has(e.uniqueData)));
+  };
 
   useEffect(() => { dialogRef.current?.focus(); }, []);
 
@@ -73,7 +88,10 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
         className="flex flex-col w-[min(900px,90vw)] h-[min(700px,85vh)] bg-zinc-900 rounded-lg shadow-xl border border-zinc-700 outline-none"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-4 py-3 border-b border-zinc-700 text-zinc-100 font-medium">Add Legendary Dweller</div>
+        <div className="px-4 py-3 border-b border-zinc-700">
+          <div className="text-zinc-100 font-medium">Add Legendary Dwellers</div>
+          <div className="text-xs text-zinc-400 mt-0.5">Select one or more to add to your vault.</div>
+        </div>
         <div className="flex-1 min-h-0 overflow-y-auto p-3">
           {error && <div className="text-red-400 text-sm">Could not load legendaries: {error}</div>}
           {!list && !error && <div className="text-zinc-400 text-sm">Loading...</div>}
@@ -83,8 +101,8 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
                 <LegendaryCard
                   key={e.uniqueData}
                   entry={e}
-                  selected={selected?.uniqueData === e.uniqueData}
-                  onSelect={() => setSelected(e)}
+                  selected={selectedIds.has(e.uniqueData)}
+                  onSelect={() => toggle(e.uniqueData)}
                 />
               ))}
             </div>
@@ -93,10 +111,10 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
         <div className="flex justify-end gap-2 px-4 py-3 border-t border-zinc-700">
           <button type="button" onClick={onClose}
             className="px-3 h-8 rounded text-sm bg-zinc-700 hover:bg-zinc-600 text-white">Cancel</button>
-          <button type="button" disabled={!selected}
-            onClick={() => selected && onAdd(selected)}
+          <button type="button" disabled={count === 0}
+            onClick={onAddClick}
             className="px-3 h-8 rounded text-sm font-medium bg-green-600 hover:bg-green-500 disabled:opacity-40 disabled:cursor-not-allowed text-white">
-            Add
+            {addLabel}
           </button>
         </div>
       </div>

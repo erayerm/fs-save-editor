@@ -63,4 +63,14 @@ describe('reconcileLegendaryGuide', () => {
     const save = mkSave([{ serializeId: 1, rarity: 'Rare', uniqueData: 'TheMayorMale' }], []);
     expect(reconcileLegendaryGuide(save)).toBe(save);
   });
+
+  it('registers every legendary when several are added at once (multi-select)', () => {
+    const save = mkSave([
+      { serializeId: 1, rarity: 'Legendary', uniqueData: 'L_Jericho' },
+      { serializeId: 2, rarity: 'Legendary', uniqueData: 'L_Preston' },
+      { serializeId: 3, rarity: 'Legendary', uniqueData: 'L_Moira Brown' },
+    ], []);
+    expect((reconcileLegendaryGuide(save).survivalW as any).dwellers)
+      .toEqual(['NL_Jericho', 'NL_Preston', 'NL_Moira Brown']);
+  });
 });

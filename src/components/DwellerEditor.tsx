@@ -121,7 +121,7 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
       </div>
       {showLegendary && (
         <LegendaryCatalogModal
-          onAdd={(entry) => { addLegendary(entry); setShowLegendary(false); }}
+          onAdd={(entries) => { entries.forEach((e) => addLegendary(e)); setShowLegendary(false); }}
           onClose={() => setShowLegendary(false)}
         />
       )}
