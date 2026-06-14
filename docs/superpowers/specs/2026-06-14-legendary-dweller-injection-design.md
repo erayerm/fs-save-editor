@@ -84,11 +84,43 @@ Output is committed (like `pets.json`) so the app needs no game files at runtime
   `hasRandonWeaponBeenAssigned: false` so the game assigns its default.
 - Add `rarity` and `uniqueData` to the `Dweller` type in `src/types/save.ts`
   (currently only reachable via the `[k: string]: unknown` index signature).
-- UI: a "Add Legendary" picker (placement: alongside the existing add-dweller
-  affordance in the dweller list). Shows the roster, marks which `uniqueData`
-  the vault **already has** (so the user adds only new ones — the achievement
-  cares about distinct characters), and visually separates `hidden` quest
-  legendaries with a note that their achievement behavior is unverified.
+- `saveStore`: new `addLegendaryDweller(entry)` mirroring `addDweller` —
+  appends `createLegendaryDweller(entry, existingIds)`, selects it, navigates to
+  the dweller page.
+#### UI: split the Add Dweller control into two buttons
+
+Today there is a single green **Add New Dweller** button in the editor header
+([DwellerEditor.tsx:80](src/components/DwellerEditor.tsx:80)). Replace it with two
+buttons:
+
+- **Custom** — keeps the current behavior exactly:
+  `addDweller(randomDwellerInput())` (a random level-1 dweller at the door).
+- **Legendary** — opens a modal catalog (does not add anything until confirmed).
+
+#### Legendary catalog modal
+
+A new `LegendaryCatalogModal` component (portal + dimmed backdrop, Escape/backdrop
+to close, following the `ConfirmModal` pattern):
+
+- Lists **all** legendary roster entries in a scrollable grid, each shown as an
+  **avatar** + name. Avatars are produced by building a `RenderableDweller` from
+  the roster entry (via `createLegendaryDweller`) and rendering through the shared
+  `useDwellerThumbnail` (same offscreen renderer the rest of the app uses). With
+  ~57 entries, render avatars lazily / on-scroll (e.g. `IntersectionObserver` or a
+  small virtualized grid) so we don't kick off 57 renders at once.
+- **Single selection**: clicking a card selects it (highlighted frame). Entries
+  whose `uniqueData` the vault **already has** are badged "Owned" — still
+  selectable (duplicates are allowed) but the badge nudges the user toward new
+  characters, since the achievement counts distinct `uniqueData`. `hidden` quest
+  legendaries are grouped/labeled separately with a note that their achievement
+  behavior is unverified.
+- **Add button** anchored bottom-right, disabled until a selection exists.
+  Clicking it injects the chosen legendary (`addLegendaryDweller(entry)` on the
+  store, which calls `createLegendaryDweller`), selects the new dweller, closes
+  the modal, and navigates to it — mirroring the current `addDweller` flow.
+
+Optional follow-up (out of scope for v1 unless trivial): multi-select to add
+several at once. v1 is single selection + Add.
 
 ## Testing
 
