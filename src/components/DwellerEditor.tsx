@@ -16,6 +16,7 @@ import { useSaveStore } from '../store/saveStore';
 import type { SpriteIndex } from '../types/pieces';
 import type { RenderableDweller } from '../lib/dwellerRender';
 import { randomDwellerInput, type DwellerCustomization } from '../lib/dwellerEdit';
+import { LegendaryCatalogModal } from './LegendaryCatalogModal';
 
 export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; name?: string }) {
   const [active, setActive] = useState('hair');
@@ -23,6 +24,8 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
   const [error, setError] = useState<string | null>(null);
   const update = useSaveStore((s) => s.updateSelectedDweller);
   const addDweller = useSaveStore((s) => s.addDweller);
+  const addLegendary = useSaveStore((s) => s.addLegendaryDweller);
+  const [showLegendary, setShowLegendary] = useState(false);
 
   useEffect(() => { loadSpriteIndex().then(setIndex).catch((e) => setError(e.message)); }, []);
 
@@ -79,13 +82,23 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
           </div>
           <button
             type="button"
-            aria-label="Add a new dweller"
-            title="Add a new dweller"
+            aria-label="Add a new custom dweller"
+            title="Add a new custom dweller"
             onClick={() => addDweller(randomDwellerInput())}
             className="shrink-0 flex items-center gap-1.5 px-3 h-8 rounded text-sm font-medium bg-green-600 hover:bg-green-500 text-white whitespace-nowrap"
           >
             <span aria-hidden="true">+</span>
-            Add New Dweller
+            Custom
+          </button>
+          <button
+            type="button"
+            aria-label="Add a legendary dweller"
+            title="Add a legendary dweller"
+            onClick={() => setShowLegendary(true)}
+            className="shrink-0 flex items-center gap-1.5 px-3 h-8 rounded text-sm font-medium bg-amber-500 hover:bg-amber-400 text-black whitespace-nowrap"
+          >
+            <span aria-hidden="true">★</span>
+            Legendary
           </button>
         </div>
         <div className="flex-1 min-w-0 min-h-0 overflow-y-auto">
@@ -99,6 +112,12 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
           {activeTab === 'others' && <OthersTab dweller={dweller} onChange={onChange} index={index} />}
         </div>
       </div>
+      {showLegendary && (
+        <LegendaryCatalogModal
+          onAdd={(entry) => { addLegendary(entry); setShowLegendary(false); }}
+          onClose={() => setShowLegendary(false)}
+        />
+      )}
     </div>
   );
 }
