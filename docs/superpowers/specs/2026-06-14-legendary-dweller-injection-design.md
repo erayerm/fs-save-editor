@@ -40,16 +40,13 @@ The full roster lives as 57 `L_*.asset` MonoBehaviour files. Each defines:
 | `m_isHiddenDweller` | quest/special, not in normal lunchbox pool | gates UI (see below) |
 | `m_canOnlyAppearInLunchbox` | informational | — |
 
-### Important caveat: the Steam achievement is NOT in the save
+### Note on the achievement
 
-The save only stores in-game objectives (`vault.Achievements` = daily/weekly
-tasks); there is no legendary-collection counter anywhere in the save, and the
-Steam achievement state lives on Steam's side. We therefore cannot set the
-achievement directly. The working assumption (per the user) is that the game
-re-evaluates its in-game legendary counter on load and that counter drives the
-Steam achievement. **This must be verified in-game before we promise it works.**
-The injection itself (a structurally valid legendary appearing correctly in the
-vault) is fully within our control; the achievement trigger is the open risk.
+The feature's job is simply to add real legendary dwellers to the vault. The
+"Blast from the Past" Steam achievement is not stored in the save and is out of
+our control; whether adding legendaries advances it is the game's business, not a
+goal we engineer for. We just produce structurally correct legendaries that the
+game accepts and displays as legendaries.
 
 ## Approach
 
@@ -78,10 +75,18 @@ Output is committed (like `pets.json`) so the app needs no game files at runtime
 - `src/lib/legendaryIndex.ts`: load + type the roster JSON.
 - `src/lib/dwellerEdit.ts`: new `createLegendaryDweller(entry, existingIds)`,
   modeled on `createDwellerAtDoor` — same "at the vault door"
-  (`savedRoom: -1`, `assigned: false`) level-1 dweller, but with
+  (`savedRoom: -1`, `assigned: false`) dweller, but with
   `rarity: 'Legendary'`, `uniqueData`, roster SPECIAL/outfit/weapon/colors/hair/
   faceMask. Empty `weaponId` falls back to `Fist` with
   `hasRandonWeaponBeenAssigned: false` so the game assigns its default.
+  **Level**: legendaries from a lunchbox arrive at a random level in **[20, 45]**
+  (game source: `DwellerManager.SetupDweller` → `GetRandomDwellerLevel` →
+  `GameParameters.prefab m_legendaryDwellerInitialLevel { minLevel: 20,
+  maxLevel: 45 }`; confirmed by the real save — the two Abrahams were level 31 and
+  42). We mirror this: pick a random level in that range and set it via the
+  existing `setLevel` (which the game reads directly on load). SPECIAL base values
+  come from the roster; equipment mods and max health are recomputed by the game
+  on load.
 - Add `rarity` and `uniqueData` to the `Dweller` type in `src/types/save.ts`
   (currently only reachable via the `[k: string]: unknown` index signature).
 - `saveStore`: new `addLegendaryDweller(entry)` mirroring `addDweller` —
@@ -108,12 +113,10 @@ to close, following the `ConfirmModal` pattern):
   `useDwellerThumbnail` (same offscreen renderer the rest of the app uses). With
   ~57 entries, render avatars lazily / on-scroll (e.g. `IntersectionObserver` or a
   small virtualized grid) so we don't kick off 57 renders at once.
-- **Single selection**: clicking a card selects it (highlighted frame). Entries
-  whose `uniqueData` the vault **already has** are badged "Owned" — still
-  selectable (duplicates are allowed) but the badge nudges the user toward new
-  characters, since the achievement counts distinct `uniqueData`. `hidden` quest
-  legendaries are grouped/labeled separately with a note that their achievement
-  behavior is unverified.
+- **Single selection**: clicking a card selects it (highlighted frame). All
+  legendaries — including `hidden` quest characters (Cait, Nick Valentine, etc.) —
+  are listed together with no special treatment; they behave identically for our
+  purposes.
 - **Add button** anchored bottom-right, disabled until a selection exists.
   Clicking it injects the chosen legendary (`addLegendaryDweller(entry)` on the
   store, which calls `createLegendaryDweller`), selects the new dweller, closes
@@ -129,15 +132,13 @@ several at once. v1 is single selection + Add.
   follow `dwellerEdit.test.ts`.
 - Build-script parse test against a couple of known assets (Jericho, Moira =
   female, Mr. Burque) — follow `parsePetData.test.mjs`.
-- Manual in-game verification (the decisive test): inject one or more legendaries
-  with `uniqueData` the vault lacks into `Vault3.sav`, load the game, confirm
-  (a) they render as legendaries (gold frame, correct name/SPECIAL/outfit) and
-  (b) the in-game legendary counter advances. Only after (b) do we tell the
-  Reddit user it works.
+- Manual in-game verification: inject a legendary into `Vault3.sav`, load the
+  game, confirm it renders as a legendary (gold frame, correct
+  name/SPECIAL/outfit/weapon) and sits at a level in [20, 45].
 
 ## Out of scope
 
-- Setting the Steam achievement directly (impossible via save edit).
-- Editing existing dwellers' rarity to legendary (no `uniqueData` identity → no
-  achievement value; the picker is the supported path).
+- Anything about the Steam achievement (not in the save, not our concern).
+- Editing an existing dweller's rarity to legendary; the catalog picker is the
+  supported path.
 - `L_SnipSnip` and other non-standard records, beyond not crashing on them.
