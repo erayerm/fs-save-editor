@@ -30,7 +30,8 @@ const legendaries = [];
 for (const f of files) {
   if (!f.startsWith('L_') || !f.endsWith('.asset')) continue;
   const entry = parseLegendaryAsset(readFileSync(join(MB_DIR, f), 'utf8'), resolve);
-  if (entry) legendaries.push(entry);
+  if (!entry) { console.warn(`Skipped ${f} (no SPECIAL / missing required fields)`); continue; }
+  legendaries.push(entry);
 }
 legendaries.sort((a, b) => a.name.localeCompare(b.name));
 
