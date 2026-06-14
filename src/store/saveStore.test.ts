@@ -53,6 +53,36 @@ describe('addLegendaryDweller', () => {
     expect(s.page).toBe('dweller');
   });
 
+  it('registers the legendary in the Survival Guide collection (survivalW.dwellers)', () => {
+    useSaveStore.setState({
+      save: { dwellers: { dwellers: [] }, survivalW: { dwellers: ['NL_Preston'] } } as any,
+      selectedDwellerId: null,
+    });
+    useSaveStore.getState().addLegendaryDweller(LEG_ENTRY);
+    const sw = (useSaveStore.getState().save as any).survivalW.dwellers;
+    expect(sw).toEqual(['NL_Preston', 'NL_Jericho']);
+  });
+
+  it('does not duplicate an already-collected legendary in the guide', () => {
+    useSaveStore.setState({
+      save: { dwellers: { dwellers: [] }, survivalW: { dwellers: ['OL_Jericho'] } } as any,
+      selectedDwellerId: null,
+    });
+    useSaveStore.getState().addLegendaryDweller(LEG_ENTRY);
+    const sw = (useSaveStore.getState().save as any).survivalW.dwellers;
+    expect(sw).toEqual(['OL_Jericho']);
+  });
+
+  it('initializes survivalW.dwellers when the save has none', () => {
+    useSaveStore.setState({
+      save: { dwellers: { dwellers: [] } } as any,
+      selectedDwellerId: null,
+    });
+    useSaveStore.getState().addLegendaryDweller(LEG_ENTRY);
+    const sw = (useSaveStore.getState().save as any).survivalW.dwellers;
+    expect(sw).toEqual(['NL_Jericho']);
+  });
+
   it('returns null when there is no save', () => {
     useSaveStore.setState({ save: null, selectedDwellerId: null });
     expect(useSaveStore.getState().addLegendaryDweller(LEG_ENTRY)).toBeNull();

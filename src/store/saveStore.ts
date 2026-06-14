@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import type { SaveJson, Dweller } from '../types/save';
 import { applyCustomization, createDwellerAtDoor, createLegendaryDweller, type DwellerCustomization, type NewDwellerInput } from '../lib/dwellerEdit';
 import type { LegendaryMeta } from '../types/legendary';
+import { registerLegendaryDiscovery } from '../lib/survivalGuide';
 
 export type Page = 'vault' | 'dweller';
 
@@ -84,8 +85,16 @@ export const useSaveStore = create<SaveState>((set, get) => ({
     if (!save) return null;
     const existing = save.dwellers.dwellers;
     const dweller = createLegendaryDweller(entry, existing.map((d) => d.serializeId));
+    // Also register the legendary in the Survival Guide collection (the in-game
+    // "x/58" counter), which the game otherwise only populates on creation.
+    const survivalW = (save.survivalW ?? {}) as Record<string, unknown>;
+    const guideDwellers = Array.isArray(survivalW.dwellers) ? (survivalW.dwellers as string[]) : [];
     set({
-      save: { ...save, dwellers: { ...save.dwellers, dwellers: [...existing, dweller] } },
+      save: {
+        ...save,
+        dwellers: { ...save.dwellers, dwellers: [...existing, dweller] },
+        survivalW: { ...survivalW, dwellers: registerLegendaryDiscovery(guideDwellers, entry.uniqueData) },
+      },
       selectedDwellerId: dweller.serializeId,
       page: 'dweller',
     });
