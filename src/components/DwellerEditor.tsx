@@ -80,26 +80,33 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
           <div className="flex-1 min-w-0 overflow-x-auto">
             <EditorTabBar tabs={tabs} active={activeTab} onSelect={setActive} />
           </div>
-          <button
-            type="button"
-            aria-label="Add a new custom dweller"
-            title="Add a new custom dweller"
-            onClick={() => addDweller(randomDwellerInput())}
-            className="shrink-0 flex items-center gap-1.5 px-3 h-8 rounded text-sm font-medium bg-green-600 hover:bg-green-500 text-white whitespace-nowrap"
-          >
-            <span aria-hidden="true">+</span>
-            Custom
-          </button>
-          <button
-            type="button"
-            aria-label="Add a legendary dweller"
-            title="Add a legendary dweller"
-            onClick={() => setShowLegendary(true)}
-            className="shrink-0 flex items-center gap-1.5 px-3 h-8 rounded text-sm font-medium bg-amber-500 hover:bg-amber-400 text-black whitespace-nowrap"
-          >
-            <span aria-hidden="true">★</span>
-            Legendary
-          </button>
+          <div className="shrink-0 flex items-stretch rounded-lg border border-zinc-700 bg-zinc-800/50 overflow-hidden">
+            <span className="flex items-center px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-400 bg-zinc-800/80 border-r border-zinc-700 whitespace-nowrap">
+              Add a Dweller
+            </span>
+            <div className="flex items-center gap-1.5 p-1.5">
+              <button
+                type="button"
+                aria-label="Add a new custom dweller"
+                title="Add a new custom dweller"
+                onClick={() => addDweller(randomDwellerInput())}
+                className="flex items-center gap-1.5 px-3 h-8 rounded-md text-sm font-medium bg-green-600 hover:bg-green-500 text-white whitespace-nowrap transition-colors"
+              >
+                <span aria-hidden="true" className="text-base leading-none">+</span>
+                Custom
+              </button>
+              <button
+                type="button"
+                aria-label="Add a legendary dweller"
+                title="Add a legendary dweller"
+                onClick={() => setShowLegendary(true)}
+                className="flex items-center gap-1.5 px-3 h-8 rounded-md text-sm font-semibold bg-gradient-to-b from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 text-amber-950 whitespace-nowrap shadow-sm transition-colors"
+              >
+                <span aria-hidden="true" className="text-base leading-none">+</span>
+                Legendary
+              </button>
+            </div>
+          </div>
         </div>
         <div className="flex-1 min-w-0 min-h-0 overflow-y-auto">
           {error && <div className="text-red-400 text-sm">Could not load pieces: {error}</div>}
