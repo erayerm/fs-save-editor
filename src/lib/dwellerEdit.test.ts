@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { applyCustomization, type DwellerCustomization, setPet, clearPet, setGender } from './dwellerEdit';
+import { applyCustomization, type DwellerCustomization, setPet, clearPet, setGender, createLegendaryDweller, LEGENDARY_MIN_LEVEL, LEGENDARY_MAX_LEVEL } from './dwellerEdit';
 import type { PetMeta } from '../types/pets';
 import { decodeArgb } from './colors';
 import type { Dweller } from '../types/save';
+import type { LegendaryMeta } from '../types/legendary';
 
 function mkDweller(): Dweller {
   return {
@@ -152,9 +153,6 @@ describe('setGender', () => {
     expect(next.equipedOutfit.id).toBe('ninja');
   });
 });
-
-import { createLegendaryDweller, LEGENDARY_MIN_LEVEL, LEGENDARY_MAX_LEVEL } from './dwellerEdit';
-import type { LegendaryMeta } from '../types/legendary';
 
 const JERICHO: LegendaryMeta = {
   uniqueData: 'L_Jericho', name: 'Jericho', lastName: '', gender: 2,

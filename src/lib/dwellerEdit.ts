@@ -40,6 +40,14 @@ export const MAX_LEVEL = 50;
 
 const clampLevel = (n: number) => Math.max(MIN_LEVEL, Math.min(MAX_LEVEL, Math.round(n)));
 
+/** Smallest positive integer not present in `existingIds`. */
+function nextFreeId(existingIds: number[]): number {
+  const used = new Set(existingIds);
+  let id = 1;
+  while (used.has(id)) id += 1;
+  return id;
+}
+
 /**
  * Set a dweller's level (1..50). The game's DwellerExperience reads `currentLevel`
  * directly on load (it does not recompute level from XP), so we set it explicitly
@@ -122,9 +130,7 @@ export function randomDwellerInput(): NewDwellerInput {
  * used by `existingIds`.
  */
 export function createDwellerAtDoor(input: NewDwellerInput, existingIds: number[]): Dweller {
-  let id = 1;
-  const used = new Set(existingIds);
-  while (used.has(id)) id += 1;
+  const id = nextFreeId(existingIds);
 
   const stat = () => ({ value: 1, mod: 0, exp: 0 });
   return {
@@ -199,10 +205,11 @@ export function createLegendaryDweller(
   existingIds: number[],
   level?: number,
 ): Dweller {
-  let id = 1;
-  const used = new Set(existingIds);
-  while (used.has(id)) id += 1;
+  if (entry.special.length !== 7) {
+    throw new Error(`${entry.uniqueData}: expected 7 SPECIAL values, got ${entry.special.length}`);
+  }
 
+  const id = nextFreeId(existingIds);
   const lvl = clampLevel(level ?? randomLegendaryLevel());
   const maxHealth = 105 + (lvl - 1) * 6;
 
@@ -213,7 +220,7 @@ export function createLegendaryDweller(
 
   const d: Record<string, unknown> = {
     serializeId: id,
-    name: entry.name || 'Legendary',
+    name: entry.name.trim() || entry.uniqueData,
     lastName: entry.lastName,
     happiness: { happinessValue: 75 },
     health: { healthValue: maxHealth, radiationValue: 0, permaDeath: false, lastLevelUpdated: lvl, maxHealth },
@@ -234,7 +241,6 @@ export function createLegendaryDweller(
     outfitColor: 4294967295,
     pendingExperienceReward: 0,
     uniqueData: entry.uniqueData,
-    faceMask: entry.faceMask,
     equipedOutfit: { id: entry.outfitId, type: 'Outfit', hasBeenAssigned: false, hasRandonWeaponBeenAssigned: false },
     equipedWeapon: { id: entry.weaponId || 'Fist', type: 'Weapon', hasBeenAssigned: false, hasRandonWeaponBeenAssigned: false },
     savedRoom: -1,
@@ -243,7 +249,8 @@ export function createLegendaryDweller(
     rarity: 'Legendary',
     deathTime: -1,
   };
-  if (entry.hair) d.hair = entry.hair;
+  if (entry.hair !== null) d.hair = entry.hair;
+  if (entry.faceMask !== null) d.faceMask = entry.faceMask;
 
   return d as unknown as Dweller;
 }
