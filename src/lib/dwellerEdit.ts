@@ -1,4 +1,5 @@
 import type { Dweller, Special } from '../types/save';
+import type { LegendaryMeta } from '../types/legendary';
 import type { PetMeta } from '../types/pets';
 import type { SpriteIndex } from '../types/pieces';
 import { SPECIAL_ORDER } from '../types/save';
@@ -175,6 +176,76 @@ export function setPet(d: Dweller, pet: PetMeta): Dweller {
       extraData: { uniqueName: pet.uniqueName, bonus: pet.bonus, bonusValue: pet.bonusValue },
     },
   } as unknown as Dweller;
+}
+
+/** Game's legendary lunchbox level range (GameParameters m_legendaryDwellerInitialLevel). */
+export const LEGENDARY_MIN_LEVEL = 20;
+export const LEGENDARY_MAX_LEVEL = 45;
+
+const randomLegendaryLevel = () =>
+  LEGENDARY_MIN_LEVEL + Math.floor(Math.random() * (LEGENDARY_MAX_LEVEL - LEGENDARY_MIN_LEVEL + 1));
+
+/**
+ * Build a save-shaped legendary dweller from a roster entry, positioned at the
+ * vault door (`savedRoom: -1`, `assigned: false`) like a fresh arrival. Level
+ * defaults to a random value in [LEGENDARY_MIN_LEVEL, LEGENDARY_MAX_LEVEL]
+ * (matching the game's lunchbox behavior); pass `level` to force one (tests).
+ * Health mirrors the game's observed `105 + (level-1)*6`; the game recomputes it
+ * on the next level-up regardless. SPECIAL base values come from the roster with
+ * mod 0 (equipment mods are recalculated by the game on load).
+ */
+export function createLegendaryDweller(
+  entry: LegendaryMeta,
+  existingIds: number[],
+  level?: number,
+): Dweller {
+  let id = 1;
+  const used = new Set(existingIds);
+  while (used.has(id)) id += 1;
+
+  const lvl = clampLevel(level ?? randomLegendaryLevel());
+  const maxHealth = 105 + (lvl - 1) * 6;
+
+  const stats = [
+    { value: 1, mod: 0, exp: 0 }, // slot 0 placeholder (mirrors createDwellerAtDoor)
+    ...entry.special.map((value) => ({ value, mod: 0, exp: 0 })),
+  ];
+
+  const d: Record<string, unknown> = {
+    serializeId: id,
+    name: entry.name || 'Legendary',
+    lastName: entry.lastName,
+    happiness: { happinessValue: 75 },
+    health: { healthValue: maxHealth, radiationValue: 0, permaDeath: false, lastLevelUpdated: lvl, maxHealth },
+    deathSource: 0,
+    experience: { experienceValue: 0, currentLevel: lvl, storage: 0, accum: 0, needLvUp: false, wastelandExperience: 0 },
+    relations: { relations: [], partner: -1, lastPartner: -1, ascendants: [-1, -1, -1, -1, -1, -1] },
+    gender: entry.gender === 2 ? 2 : 1,
+    stats: { stats },
+    pregnant: false,
+    babyReady: false,
+    assigned: false,
+    sawIncident: false,
+    WillGoToWasteland: false,
+    WillBeEvicted: false,
+    IsEvictedWaitingForFollowers: false,
+    skinColor: entry.skinColor,
+    hairColor: entry.hairColor,
+    outfitColor: 4294967295,
+    pendingExperienceReward: 0,
+    uniqueData: entry.uniqueData,
+    faceMask: entry.faceMask,
+    equipedOutfit: { id: entry.outfitId, type: 'Outfit', hasBeenAssigned: false, hasRandonWeaponBeenAssigned: false },
+    equipedWeapon: { id: entry.weaponId || 'Fist', type: 'Weapon', hasBeenAssigned: false, hasRandonWeaponBeenAssigned: false },
+    savedRoom: -1,
+    wasTemporarilyAssigned: false,
+    lastChildBorn: -1,
+    rarity: 'Legendary',
+    deathTime: -1,
+  };
+  if (entry.hair) d.hair = entry.hair;
+
+  return d as unknown as Dweller;
 }
 
 /** Remove a dweller's pet. */
