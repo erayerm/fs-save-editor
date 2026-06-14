@@ -36,7 +36,14 @@ export const useSaveStore = create<SaveState>((set, get) => ({
   page: 'vault',
   isDemo: false,
   setSave: (save, fileName, opts) =>
-    set({ save, fileName, selectedDwellerId: null, page: 'vault', isDemo: opts?.isDemo ?? false }),
+    set({
+      save,
+      fileName,
+      // Open on the Dweller Settings tab with the first dweller selected.
+      selectedDwellerId: save.dwellers.dwellers[0]?.serializeId ?? null,
+      page: 'dweller',
+      isDemo: opts?.isDemo ?? false,
+    }),
   setPage: (page) => set((state) => {
     if (page === 'dweller' && state.selectedDwellerId === null) {
       const first = state.save?.dwellers.dwellers[0]?.serializeId ?? null;

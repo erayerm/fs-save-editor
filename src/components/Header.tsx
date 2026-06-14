@@ -44,13 +44,13 @@ export function Header() {
           style={{ background: 'linear-gradient(to bottom, transparent 0%, #71717a 20%, #71717a 80%, transparent 100%)' }}
         />
         <nav className="flex items-center gap-6 mt-1">
-          <button onClick={() => setPage('vault')} className={navClass(page === 'vault')}>
-            Vault Settings
-            {page === 'vault' && <Underline />}
-          </button>
           <button onClick={() => setPage('dweller')} className={navClass(page === 'dweller')}>
             Dweller Settings
             {page === 'dweller' && <Underline />}
+          </button>
+          <button onClick={() => setPage('vault')} className={navClass(page === 'vault')}>
+            Vault Settings
+            {page === 'vault' && <Underline />}
           </button>
         </nav>
       </div>
