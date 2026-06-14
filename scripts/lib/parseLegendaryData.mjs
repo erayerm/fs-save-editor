@@ -11,7 +11,7 @@ function grab(text, re) {
 
 // "{fileID: 0}" -> null ; "{fileID: 11400000, guid: abc, type: 2}" -> "abc"
 function pieceGuid(text, field) {
-  const block = grab(text, new RegExp(`${field}:\\s*\\{([^}]*)\\}`));
+  const block = grab(text, new RegExp(`(?:^|\\n)\\s*${field}:\\s*\\{([^}]*)\\}`));
   if (block == null) return null;
   const fileId = block.match(/fileID:\s*(\d+)/)?.[1];
   if (!fileId || fileId === '0') return null;
@@ -19,7 +19,7 @@ function pieceGuid(text, field) {
 }
 
 function colorInt(text, field) {
-  const block = grab(text, new RegExp(`${field}:\\s*\\{([^}]*)\\}`));
+  const block = grab(text, new RegExp(`(?:^|\\n)\\s*${field}:\\s*\\{([^}]*)\\}`));
   if (block == null) return 0xffffffff;
   const num = (ch) => Number(block.match(new RegExp(`${ch}:\\s*([\\d.]+)`))?.[1] ?? 1);
   const to255 = (v) => Math.max(0, Math.min(255, Math.round(v * 255)));
@@ -32,8 +32,9 @@ export function parseLegendaryAsset(text, resolveGuid) {
   if (!STAT_KEYS.every((k) => new RegExp(`${k}:\\s*\\d+`).test(text))) return null;
 
   const uniqueData = grab(text, /^\s*m_Name:\s*(.+?)\s*$/m);
-  const assetGender = Number(grab(text, /m_gender:\s*(\d+)/));
-  if (!uniqueData || !assetGender) return null;
+  const rawGender = grab(text, /m_gender:\s*(\d+)/);
+  if (!uniqueData || rawGender == null) return null;
+  const assetGender = Number(rawGender);
 
   const hairGuid = pieceGuid(text, 'm_hairPiece');
   const faceGuid = pieceGuid(text, 'm_facemask');

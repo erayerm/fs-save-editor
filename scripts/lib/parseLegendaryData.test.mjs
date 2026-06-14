@@ -77,6 +77,8 @@ describe('parseLegendaryAsset', () => {
     expect(e.faceMask).toBeNull();
     expect(e.weaponId).toBe('');
     expect(e.special).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(e.skinColor).toBe(0xffffffff);
+    expect(e.hairColor).toBe(0xff000000);
   });
 
   it('returns null for records without SPECIAL stats', () => {
