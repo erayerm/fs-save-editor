@@ -65,6 +65,10 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
     onAdd(list.filter((e) => selectedIds.has(e.uniqueData)));
   };
 
+  const allSelected = !!list && list.length > 0 && count === list.length;
+  const toggleAll = () =>
+    setSelectedIds(allSelected || !list ? new Set() : new Set(list.map((e) => e.uniqueData)));
+
   useEffect(() => { dialogRef.current?.focus(); }, []);
 
   useEffect(() => {
@@ -88,9 +92,19 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
         className="flex flex-col w-[min(900px,90vw)] h-[min(700px,85vh)] bg-zinc-900 rounded-lg shadow-xl border border-zinc-700 outline-none"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-4 py-3 border-b border-zinc-700">
-          <div className="text-zinc-100 font-medium">Add Legendary Dwellers</div>
-          <div className="text-xs text-zinc-400 mt-0.5">Select one or more to add to your vault.</div>
+        <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-zinc-700">
+          <div>
+            <div className="text-zinc-100 font-medium">Add Legendary Dwellers</div>
+            <div className="text-xs text-zinc-400 mt-0.5">Select one or more to add to your vault.</div>
+          </div>
+          <button
+            type="button"
+            onClick={toggleAll}
+            disabled={!list}
+            className="shrink-0 px-3 h-8 rounded text-sm bg-zinc-700 hover:bg-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed text-white"
+          >
+            {allSelected ? 'Deselect All' : 'Select All'}
+          </button>
         </div>
         <div className="flex-1 min-h-0 overflow-y-auto p-3">
           {error && <div className="text-red-400 text-sm">Could not load legendaries: {error}</div>}
