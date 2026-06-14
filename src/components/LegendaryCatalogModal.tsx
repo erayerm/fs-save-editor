@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { loadLegendaryIndex } from '../lib/legendaryIndex';
 import { useDwellerThumbnail } from '../lib/useDwellerThumbnail';
@@ -48,6 +48,9 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
   const [list, setList] = useState<LegendaryMeta[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<LegendaryMeta | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { dialogRef.current?.focus(); }, []);
 
   useEffect(() => {
     loadLegendaryIndex().then((idx) => setList(idx.legendaries)).catch((e) => setError(e.message));
@@ -62,7 +65,12 @@ export function LegendaryCatalogModal({ onAdd, onClose }: {
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={onClose}>
       <div
-        className="flex flex-col w-[min(900px,90vw)] h-[min(700px,85vh)] bg-zinc-900 rounded-lg shadow-xl border border-zinc-700"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Add Legendary Dweller"
+        tabIndex={-1}
+        className="flex flex-col w-[min(900px,90vw)] h-[min(700px,85vh)] bg-zinc-900 rounded-lg shadow-xl border border-zinc-700 outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="px-4 py-3 border-b border-zinc-700 text-zinc-100 font-medium">Add Legendary Dweller</div>
