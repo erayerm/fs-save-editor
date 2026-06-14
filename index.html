@@ -2,12 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fs-save-editor</title>
+
+    <title>Fallout Shelter Save Editor: Edit Your Vault.sav Online</title>
+    <meta
+      name="description"
+      content="Free online Fallout Shelter save editor. Load your Vault.sav to edit dwellers, SPECIAL stats, outfits, weapons, pets, caps and lunchboxes, and add legendary dwellers. Runs entirely in your browser, no download required."
+    />
+    <meta
+      name="keywords"
+      content="fallout shelter save editor, vault.sav editor, fallout shelter dweller editor, fallout shelter legendary dwellers, fallout shelter caps editor, fallout shelter lunchboxes"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#18181b" />
+    <link rel="canonical" href="https://fs-save-editor.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fallout Shelter Save Editor" />
+    <meta property="og:title" content="Fallout Shelter Save Editor: Edit Your Vault.sav Online" />
+    <meta
+      property="og:description"
+      content="Edit dwellers, SPECIAL stats, outfits, weapons, pets, caps and lunchboxes, and add legendary dwellers. A free, in-browser Fallout Shelter save editor."
+    />
+    <meta property="og:url" content="https://fs-save-editor.vercel.app/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Fallout Shelter Save Editor: Edit Your Vault.sav Online" />
+    <meta
+      name="twitter:description"
+      content="Edit dwellers, SPECIAL stats, outfits, weapons, pets, caps and lunchboxes, and add legendary dwellers. A free, in-browser Fallout Shelter save editor."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fallout Shelter Save Editor",
+        "url": "https://fs-save-editor.vercel.app/",
+        "description": "Free online Fallout Shelter save editor. Load your Vault.sav to edit dwellers, SPECIAL stats, outfits, weapons, pets, caps and lunchboxes, and add legendary dwellers. Runs entirely in your browser.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any (web browser)",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Fallout Shelter Save Editor</h1>
+      <p>
+        A free, in-browser editor for Fallout Shelter save files (Vault.sav). Load
+        your save to edit dwellers, SPECIAL stats, outfits, weapons, pets, caps and
+        lunchboxes, and add legendary dwellers. This app requires JavaScript to run.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
