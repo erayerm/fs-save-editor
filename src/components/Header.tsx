@@ -36,7 +36,7 @@ export function Header() {
   return (
     <header className="flex items-center justify-between px-6 py-3 bg-zinc-800 border-b border-zinc-700 shrink-0">
       <div className="flex items-center gap-5">
-        <h1 className="text-xl font-bold tracking-tight">FS Save Editor</h1>
+        <h1 className="text-xl font-bold tracking-tight">Fallout Shelter Save Editor</h1>
         {/* Vertical separator: solid through the middle, fading out over the outer 20%. */}
         <div
           className="h-6 w-px"

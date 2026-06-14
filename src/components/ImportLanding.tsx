@@ -77,7 +77,7 @@ export function ImportLanding() {
       onDrop={onDrop}
     >
       <div className="flex flex-col items-center gap-6 p-10 bg-zinc-800 rounded-xl shadow-xl">
-        <h1 className="text-3xl font-bold tracking-tight">FS Save Editor</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Fallout Shelter Save Editor</h1>
         <p className="text-zinc-400 text-sm">
           Load a Fallout Shelter .sav file to get started, or try the demo. Click below or drop the file anywhere.
         </p>

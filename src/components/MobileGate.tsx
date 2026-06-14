@@ -29,7 +29,7 @@ export function MobileGate() {
   return (
     <div className="h-screen flex items-center justify-center bg-zinc-900 text-zinc-100 p-6">
       <div className="flex flex-col items-center gap-4 p-8 bg-zinc-800 rounded-xl shadow-xl text-center max-w-sm">
-        <h1 className="text-2xl font-bold tracking-tight">FS Save Editor</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Fallout Shelter Save Editor</h1>
         <p className="text-sm text-zinc-400">
           This app is not usable on mobile devices yet. Please open it on a
           desktop browser.
