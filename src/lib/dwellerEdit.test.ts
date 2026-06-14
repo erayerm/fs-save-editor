@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { applyCustomization, type DwellerCustomization, setPet, clearPet, setGender } from './dwellerEdit';
+import { applyCustomization, type DwellerCustomization, setPet, clearPet, setGender, createLegendaryDweller, LEGENDARY_MIN_LEVEL, LEGENDARY_MAX_LEVEL } from './dwellerEdit';
 import type { PetMeta } from '../types/pets';
 import { decodeArgb } from './colors';
 import type { Dweller } from '../types/save';
+import type { LegendaryMeta } from '../types/legendary';
 
 function mkDweller(): Dweller {
   return {
@@ -150,5 +151,63 @@ describe('setGender', () => {
     const next = setGender(d, 1) as any;
     expect(next.hair).toBe('m1');
     expect(next.equipedOutfit.id).toBe('ninja');
+  });
+});
+
+const JERICHO: LegendaryMeta = {
+  uniqueData: 'L_Jericho', name: 'Jericho', lastName: '', gender: 2,
+  special: [8, 6, 8, 2, 3, 7, 6], outfitId: 'WandererArmor_Heavy',
+  weaponId: 'AssaultRifle_Infiltrator', skinColor: 0xffe9d4b4, hairColor: 0xff695949,
+  hair: null, faceMask: 'f_hair_11',
+};
+const MOIRA: LegendaryMeta = {
+  uniqueData: 'L_Moira Brown', name: 'Moira', lastName: 'Brown', gender: 1,
+  special: [1, 2, 3, 4, 5, 6, 7], outfitId: 'HandymanJumpsuit_Expert',
+  weaponId: '', skinColor: 0xffffffff, hairColor: 0xff000000, hair: '22', faceMask: null,
+};
+
+describe('createLegendaryDweller', () => {
+  it('writes rarity, uniqueData, name, gender, outfit and faceMask', () => {
+    const d = createLegendaryDweller(JERICHO, [], 30) as any;
+    expect(d.rarity).toBe('Legendary');
+    expect(d.uniqueData).toBe('L_Jericho');
+    expect(d.name).toBe('Jericho');
+    expect(d.gender).toBe(2);
+    expect(d.equipedOutfit.id).toBe('WandererArmor_Heavy');
+    expect(d.equipedWeapon.id).toBe('AssaultRifle_Infiltrator');
+    expect(d.faceMask).toBe('f_hair_11');
+  });
+
+  it('maps SPECIAL into the 8-slot stats array (slot 0 is a placeholder)', () => {
+    const d = createLegendaryDweller(JERICHO, [], 30) as any;
+    expect(d.stats.stats).toHaveLength(8);
+    expect(d.stats.stats.slice(1).map((s: any) => s.value)).toEqual([8, 6, 8, 2, 3, 7, 6]);
+  });
+
+  it('sets the requested level and matching health (105 + (level-1)*6)', () => {
+    const d = createLegendaryDweller(JERICHO, [], 31) as any;
+    expect(d.experience.currentLevel).toBe(31);
+    expect(d.health.maxHealth).toBe(285);
+    expect(d.health.healthValue).toBe(285);
+  });
+
+  it('falls back to Fist when the roster weapon is empty', () => {
+    const d = createLegendaryDweller(MOIRA, [], 20) as any;
+    expect(d.equipedWeapon.id).toBe('Fist');
+  });
+
+  it('omits hair when the roster entry has none, sets it otherwise', () => {
+    expect((createLegendaryDweller(JERICHO, [], 20) as any).hair).toBeUndefined();
+    expect((createLegendaryDweller(MOIRA, [], 20) as any).hair).toBe('22');
+  });
+
+  it('picks the smallest free serializeId', () => {
+    expect((createLegendaryDweller(JERICHO, [1, 2, 4], 20) as any).serializeId).toBe(3);
+  });
+
+  it('defaults to a random level within [MIN, MAX] when none is given', () => {
+    const lvl = (createLegendaryDweller(JERICHO, []) as any).experience.currentLevel;
+    expect(lvl).toBeGreaterThanOrEqual(LEGENDARY_MIN_LEVEL);
+    expect(lvl).toBeLessThanOrEqual(LEGENDARY_MAX_LEVEL);
   });
 });

@@ -16,6 +16,7 @@ import { useSaveStore } from '../store/saveStore';
 import type { SpriteIndex } from '../types/pieces';
 import type { RenderableDweller } from '../lib/dwellerRender';
 import { randomDwellerInput, type DwellerCustomization } from '../lib/dwellerEdit';
+import { LegendaryCatalogModal } from './LegendaryCatalogModal';
 
 export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; name?: string }) {
   const [active, setActive] = useState('hair');
@@ -23,6 +24,8 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
   const [error, setError] = useState<string | null>(null);
   const update = useSaveStore((s) => s.updateSelectedDweller);
   const addDweller = useSaveStore((s) => s.addDweller);
+  const addLegendary = useSaveStore((s) => s.addLegendaryDweller);
+  const [showLegendary, setShowLegendary] = useState(false);
 
   useEffect(() => { loadSpriteIndex().then(setIndex).catch((e) => setError(e.message)); }, []);
 
@@ -73,20 +76,37 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
 
       {/* Right: Chrome-style tab strip (with close button) above scrollable content */}
       <div className="flex flex-col flex-1 min-w-0 min-h-0">
-        <div className="flex items-end gap-2">
-          <div className="flex-1 min-w-0 overflow-x-auto">
+        <div className="flex items-end gap-2 border-b border-zinc-700">
+          <div className="flex-1 min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <EditorTabBar tabs={tabs} active={activeTab} onSelect={setActive} />
           </div>
-          <button
-            type="button"
-            aria-label="Add a new dweller"
-            title="Add a new dweller"
-            onClick={() => addDweller(randomDwellerInput())}
-            className="shrink-0 flex items-center gap-1.5 px-3 h-8 rounded text-sm font-medium bg-green-600 hover:bg-green-500 text-white whitespace-nowrap"
-          >
-            <span aria-hidden="true">+</span>
-            Add New Dweller
-          </button>
+          <div className="shrink-0 flex items-center gap-2.5 pb-1.5">
+            <span className="text-xs font-semibold text-zinc-400 whitespace-nowrap">
+              Add a Dweller
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                aria-label="Add a new custom dweller"
+                title="Add a new custom dweller"
+                onClick={() => addDweller(randomDwellerInput())}
+                className="flex items-center gap-1.5 px-3 h-8 rounded-md text-sm font-medium bg-green-600 hover:bg-green-500 text-white whitespace-nowrap transition-colors"
+              >
+                <span aria-hidden="true" className="text-base leading-none">+</span>
+                Custom
+              </button>
+              <button
+                type="button"
+                aria-label="Add a legendary dweller"
+                title="Add a legendary dweller"
+                onClick={() => setShowLegendary(true)}
+                className="flex items-center gap-1.5 px-3 h-8 rounded-md text-sm font-medium bg-green-600 hover:bg-green-500 text-white whitespace-nowrap transition-colors"
+              >
+                <span aria-hidden="true" className="text-base leading-none">+</span>
+                Legendary
+              </button>
+            </div>
+          </div>
         </div>
         <div className="flex-1 min-w-0 min-h-0 overflow-y-auto">
           {error && <div className="text-red-400 text-sm">Could not load pieces: {error}</div>}
@@ -99,6 +119,12 @@ export function DwellerEditor({ dweller, name }: { dweller: RenderableDweller; n
           {activeTab === 'others' && <OthersTab dweller={dweller} onChange={onChange} index={index} />}
         </div>
       </div>
+      {showLegendary && (
+        <LegendaryCatalogModal
+          onAdd={(entries) => { entries.forEach((e) => addLegendary(e)); setShowLegendary(false); }}
+          onClose={() => setShowLegendary(false)}
+        />
+      )}
     </div>
   );
 }

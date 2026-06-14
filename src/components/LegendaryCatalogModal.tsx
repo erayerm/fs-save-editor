@@ -1,0 +1,138 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { loadLegendaryIndex } from '../lib/legendaryIndex';
+import { useDwellerThumbnail } from '../lib/useDwellerThumbnail';
+import { decodeArgb } from '../lib/colors';
+import type { RenderableDweller } from '../lib/dwellerRender';
+import type { LegendaryMeta } from '../types/legendary';
+
+function toRenderable(e: LegendaryMeta): RenderableDweller {
+  return {
+    gender: e.gender,
+    hairName: e.hair ?? undefined,
+    facialHair: e.faceMask ?? undefined,
+    outfitName: e.outfitId,
+    happinessValue: 75,
+    skinColor: decodeArgb(e.skinColor),
+    hairColor: decodeArgb(e.hairColor),
+    outfitColor: decodeArgb(0xffffffff),
+  };
+}
+
+function LegendaryCard({ entry, selected, onSelect }: {
+  entry: LegendaryMeta; selected: boolean; onSelect: () => void;
+}) {
+  const renderable = useMemo(() => toRenderable(entry), [entry]);
+  const thumb = useDwellerThumbnail(renderable);
+  const fullName = [entry.name, entry.lastName].filter(Boolean).join(' ');
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      title={fullName}
+      className={`flex flex-col items-center rounded p-1 transition-all ${
+        selected ? 'ring-2 ring-green-400 bg-green-950/40' : 'hover:bg-zinc-800'
+      }`}
+    >
+      <div className="w-[120px] bg-zinc-900/60 rounded" style={{ aspectRatio: '170 / 221' }}>
+        {thumb && <img src={thumb} alt={fullName} className="w-full h-full object-contain" />}
+      </div>
+      <div className="text-xs text-zinc-200 mt-1 text-center leading-tight">{fullName}</div>
+    </button>
+  );
+}
+
+export function LegendaryCatalogModal({ onAdd, onClose }: {
+  onAdd: (entries: LegendaryMeta[]) => void; onClose: () => void;
+}) {
+  const [list, setList] = useState<LegendaryMeta[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  const toggle = (uniqueData: string) =>
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(uniqueData)) next.delete(uniqueData);
+      else next.add(uniqueData);
+      return next;
+    });
+
+  const count = selectedIds.size;
+  const addLabel = count === 0 ? 'Add' : `Add ${count} Dweller${count === 1 ? '' : 's'}`;
+  const onAddClick = () => {
+    if (!list || count === 0) return;
+    onAdd(list.filter((e) => selectedIds.has(e.uniqueData)));
+  };
+
+  const allSelected = !!list && list.length > 0 && count === list.length;
+  const toggleAll = () =>
+    setSelectedIds(allSelected || !list ? new Set() : new Set(list.map((e) => e.uniqueData)));
+
+  useEffect(() => { dialogRef.current?.focus(); }, []);
+
+  useEffect(() => {
+    loadLegendaryIndex().then((idx) => setList(idx.legendaries)).catch((e) => setError(e.message));
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={onClose}>
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Add Legendary Dweller"
+        tabIndex={-1}
+        className="flex flex-col w-[min(900px,90vw)] h-[min(700px,85vh)] bg-zinc-900 rounded-lg shadow-xl border border-zinc-700 outline-none"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-zinc-700">
+          <div>
+            <div className="text-zinc-100 font-medium">Add Legendary Dwellers</div>
+            <div className="text-xs text-zinc-400 mt-0.5">Select one or more to add to your vault.</div>
+          </div>
+          <button
+            type="button"
+            onClick={toggleAll}
+            disabled={!list}
+            className="shrink-0 px-3 h-8 rounded text-sm bg-zinc-700 hover:bg-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed text-white"
+          >
+            {allSelected ? 'Deselect All' : 'Select All'}
+          </button>
+        </div>
+        <div className="flex-1 min-h-0 overflow-y-auto p-3">
+          {error && <div className="text-red-400 text-sm">Could not load legendaries: {error}</div>}
+          {!list && !error && <div className="text-zinc-400 text-sm">Loading...</div>}
+          {list && (
+            <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(132px, 1fr))' }}>
+              {list.map((e) => (
+                <LegendaryCard
+                  key={e.uniqueData}
+                  entry={e}
+                  selected={selectedIds.has(e.uniqueData)}
+                  onSelect={() => toggle(e.uniqueData)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="flex justify-end gap-2 px-4 py-3 border-t border-zinc-700">
+          <button type="button" onClick={onClose}
+            className="px-3 h-8 rounded text-sm bg-zinc-700 hover:bg-zinc-600 text-white">Cancel</button>
+          <button type="button" disabled={count === 0}
+            onClick={onAddClick}
+            className="px-3 h-8 rounded text-sm font-medium bg-green-600 hover:bg-green-500 disabled:opacity-40 disabled:cursor-not-allowed text-white">
+            {addLabel}
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}

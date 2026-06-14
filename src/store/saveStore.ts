@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { SaveJson, Dweller } from '../types/save';
-import { applyCustomization, createDwellerAtDoor, type DwellerCustomization, type NewDwellerInput } from '../lib/dwellerEdit';
+import { applyCustomization, createDwellerAtDoor, createLegendaryDweller, type DwellerCustomization, type NewDwellerInput } from '../lib/dwellerEdit';
+import type { LegendaryMeta } from '../types/legendary';
 
 export type Page = 'vault' | 'dweller';
 
@@ -21,6 +22,8 @@ interface SaveState {
   setVault: (fn: (s: SaveJson) => SaveJson) => void;
   /** Add a fresh dweller at the vault door; returns the new dweller's id (or null if no save). */
   addDweller: (input: NewDwellerInput) => number | null;
+  /** Add a legendary dweller from a roster entry; returns the new id (or null if no save). */
+  addLegendaryDweller: (entry: LegendaryMeta) => number | null;
   /** Evict (permanently remove) a dweller. If it was selected, selection moves to the first remaining dweller. */
   removeDweller: (id: number) => void;
   clear: () => void;
@@ -69,6 +72,18 @@ export const useSaveStore = create<SaveState>((set, get) => ({
     if (!save) return null;
     const existing = save.dwellers.dwellers;
     const dweller = createDwellerAtDoor(input, existing.map((d) => d.serializeId));
+    set({
+      save: { ...save, dwellers: { ...save.dwellers, dwellers: [...existing, dweller] } },
+      selectedDwellerId: dweller.serializeId,
+      page: 'dweller',
+    });
+    return dweller.serializeId;
+  },
+  addLegendaryDweller: (entry) => {
+    const { save } = get();
+    if (!save) return null;
+    const existing = save.dwellers.dwellers;
+    const dweller = createLegendaryDweller(entry, existing.map((d) => d.serializeId));
     set({
       save: { ...save, dwellers: { ...save.dwellers, dwellers: [...existing, dweller] } },
       selectedDwellerId: dweller.serializeId,

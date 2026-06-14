@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { decodeSav, encodeSav } from '../lib/savFile';
+import { decodeSav } from '../lib/savFile';
+import { exportSave } from '../lib/exportSave';
 import { useSaveStore } from '../store/saveStore';
 
 export function FileBar() {
@@ -20,14 +21,7 @@ export function FileBar() {
 
   async function onExport() {
     if (!save) return;
-    const text = await encodeSav(save);
-    const blob = new Blob([text], { type: 'application/octet-stream' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName ?? 'Vault1.sav';
-    a.click();
-    URL.revokeObjectURL(url);
+    await exportSave(save, fileName);
   }
 
   return (

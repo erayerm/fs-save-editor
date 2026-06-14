@@ -11,7 +11,7 @@ export function EditorTabBar({
   onSelect: (id: string) => void;
 }) {
   return (
-    <div className="flex items-end gap-1 border-b border-zinc-700">
+    <div className="flex items-end gap-1">
       {tabs.map((t) => (
         <button
           key={t.id}
