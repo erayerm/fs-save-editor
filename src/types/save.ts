@@ -30,5 +30,7 @@ export interface Dweller {
   equipedWeapon?: EquipRef;
   equipedOutfit?: EquipRef;
   hair?: string;
+  rarity?: string;
+  uniqueData?: string;
   [k: string]: unknown;
 }
