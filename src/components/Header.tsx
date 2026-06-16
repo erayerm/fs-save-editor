@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useSaveStore } from '../store/saveStore';
 import { exportSave } from '../lib/exportSave';
 import { countExport } from '../lib/analytics';
-import { GITHUB_REPO_URL } from '../lib/constants';
+import { GITHUB_REPO_URL, TIP_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
+import { CoffeeIcon } from './CoffeeIcon';
 import { ExportSuccessModal } from './ExportSuccessModal';
 import { DisclaimerModal } from './DisclaimerModal';
 
@@ -61,6 +62,16 @@ export function Header() {
         >
           Disclaimer
         </button>
+        <a
+          href={TIP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Tip"
+          title="Tip"
+          className="flex items-center justify-center w-8 h-8 rounded bg-zinc-700 hover:bg-emerald-500 text-zinc-200 hover:text-white transition-colors"
+        >
+          <CoffeeIcon size={16} />
+        </a>
         <a
           href={GITHUB_REPO_URL}
           target="_blank"

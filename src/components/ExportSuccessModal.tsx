@@ -1,8 +1,9 @@
 // src/components/ExportSuccessModal.tsx
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { GITHUB_REPO_URL } from '../lib/constants';
+import { GITHUB_REPO_URL, TIP_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
+import { CoffeeIcon } from './CoffeeIcon';
 
 interface Props {
   open: boolean;
@@ -52,15 +53,26 @@ export function ExportSuccessModal({ open, isDemo, onClose }: Props) {
         <p className="text-sm text-zinc-400">
           This project is open source. Contributions, issues and feature requests are welcome.
         </p>
-        <a
-          href={GITHUB_REPO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-white text-zinc-900 rounded font-medium text-sm transition-colors"
-        >
-          <GitHubIcon size={16} />
-          GitHub
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href={TIP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-zinc-900 rounded font-medium text-sm transition-colors"
+          >
+            <CoffeeIcon size={16} />
+            Tip
+          </a>
+          <a
+            href={GITHUB_REPO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-white text-zinc-900 rounded font-medium text-sm transition-colors"
+          >
+            <GitHubIcon size={16} />
+            GitHub
+          </a>
+        </div>
       </div>
     </div>,
     document.body,
