@@ -4,12 +4,14 @@ import { useSaveStore } from '../store/saveStore';
 import { GITHUB_REPO_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
 import { DisclaimerModal } from './DisclaimerModal';
+import { FindSaveModal } from './FindSaveModal';
 
 export function ImportLanding() {
   const inputRef = useRef<HTMLInputElement>(null);
   const setSave = useSaveStore((s) => s.setSave);
   const [dragging, setDragging] = useState(false);
   const [disclaimerOpen, setDisclaimerOpen] = useState(false);
+  const [findOpen, setFindOpen] = useState(false);
   // Track nested drag enter/leave so child elements don't flicker the overlay.
   const dragDepth = useRef(0);
 
@@ -102,6 +104,15 @@ export function ImportLanding() {
             Try the demo
           </button>
         </div>
+        <button
+          onClick={() => setFindOpen(true)}
+          className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
+          </svg>
+          Where do I find my .sav file?
+        </button>
         <div className="flex items-center justify-center gap-5 w-full pt-4 border-t border-zinc-700 text-sm">
           <a
             href={GITHUB_REPO_URL}
@@ -122,6 +133,7 @@ export function ImportLanding() {
       </div>
 
       <DisclaimerModal open={disclaimerOpen} onClose={() => setDisclaimerOpen(false)} />
+      <FindSaveModal open={findOpen} onClose={() => setFindOpen(false)} />
 
       {dragging && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-zinc-900/80 border-4 border-dashed border-emerald-500 pointer-events-none">
