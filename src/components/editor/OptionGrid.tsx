@@ -1,5 +1,7 @@
 import React from 'react';
 import { SpriteCanvas, type SpriteLayer } from './SpriteCanvas';
+import { pinFavorites } from '../../lib/useFavorites';
+import { FavoriteToggle } from './FavoriteToggle';
 
 export interface GridOption {
   value: string;
@@ -19,7 +21,7 @@ export interface GridOption {
 }
 
 export function OptionGrid({
-  options, selected, onSelect, cellW, cellH, showLabel = false, leading,
+  options, selected, onSelect, cellW, cellH, showLabel = false, leading, favorites, onToggleFavorite,
 }: {
   options: GridOption[];
   selected: string | null;
@@ -37,6 +39,10 @@ export function OptionGrid({
    * ("01", "02") that shouldn't be shown.
    */
   showLabel?: boolean;
+  /** Ordered favorite ids for this picker's category. When provided with
+   *  onToggleFavorite, favorited cells show a Vault Boy marker and pin to the front. */
+  favorites?: string[];
+  onToggleFavorite?: (value: string) => void;
 }) {
   if (options.length === 0 && !leading) {
     return <div className="text-zinc-500 italic text-sm p-2">No options available.</div>;
@@ -50,7 +56,7 @@ export function OptionGrid({
   // Portrait cells stack the image and badge vertically (with a gap between them);
   // other cells just center their content.
   const cellClass =
-    'rounded border overflow-hidden ' +
+    'group rounded border overflow-hidden ' +
     (hasPortrait ? 'flex flex-col items-center ' : 'flex items-center justify-center ');
   const cellStyle = hasPortrait
     ? { width: cellW ?? 170, height: cellH ?? 268 }
@@ -63,13 +69,18 @@ export function OptionGrid({
   // This keeps every row (including the last) aligned to the same columns.
   const colW = hasPortrait ? cellW ?? 170 : (cellW ?? 80);
 
+  const favEnabled = !!favorites && !!onToggleFavorite;
+  const displayOptions = favEnabled
+    ? pinFavorites(options, (o) => o.value, favorites!)
+    : options;
+
   return (
     <div
       className="grid gap-1.5 p-1 justify-between"
       style={{ gridTemplateColumns: `repeat(auto-fill, ${colW}px)` }}
     >
       {leading}
-      {options.map((o) => (
+      {displayOptions.map((o) => (
         <button
           key={o.value}
           title={o.label}
@@ -83,6 +94,12 @@ export function OptionGrid({
           }
           style={{ ...cellStyle, position: 'relative' }}
         >
+          {favEnabled && (
+            <FavoriteToggle
+              active={favorites!.includes(o.value)}
+              onToggle={() => onToggleFavorite!(o.value)}
+            />
+          )}
           {o.thumbnailUrl || o.loading ? (
             // Portrait: image (or skeleton) fills the flexible top region. With
             // showLabel, the option name is shown right beneath the image and a
