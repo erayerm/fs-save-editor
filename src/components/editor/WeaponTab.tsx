@@ -9,6 +9,8 @@ import { SortFilterBar } from './SortFilterBar';
 import { sortByDamage, filterByText, type SortDir } from '../../lib/pickerSort';
 import { UnknownItemCard } from './UnknownItemCard';
 import { useUnknownItemGuard } from './UnknownItemModal';
+import { useFavorites, pinFavorites } from '../../lib/useFavorites';
+import { FavoriteToggle } from './FavoriteToggle';
 
 export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
   const [weaponIndex, setWeaponIndex] = useState<WeaponIndex | null>(null);
@@ -36,6 +38,7 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
   // hasn't loaded yet, so no card flashes during loading).
   const known = !weaponIndex || !equippedId || equippedId in weaponIndex.weapons;
   const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(equippedId, known);
+  const { favorites, toggle } = useFavorites('weapon');
 
   if (!weaponIndex) {
     return <div className="text-zinc-400 text-sm">Loading weapons…</div>;
@@ -46,7 +49,8 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
   const searched = filterByText(all, query, (w) => w.name);
   const def = searched.filter((w) => w.id === DEFAULT_WEAPON);
   const rest = sortByDamage(searched.filter((w) => w.id !== DEFAULT_WEAPON), dir);
-  const entries: [string, typeof all[number]][] = [...def, ...rest].map((w) => [w.id, w]);
+  const ordered = pinFavorites([...def, ...rest], (w) => w.id, favorites);
+  const entries: [string, typeof all[number]][] = ordered.map((w) => [w.id, w]);
 
   return (
     <div>
@@ -74,13 +78,17 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
               aria-pressed={isEquipped}
               onClick={() => guardSelect(() => useSaveStore.getState().updateSelectedDwellerRaw((d) => setWeapon(d, id)))}
               className={[
-                'rounded border flex flex-col items-center overflow-hidden transition-colors',
+                'group rounded border flex flex-col items-center overflow-hidden transition-colors',
                 isEquipped
                   ? 'border-green-400 bg-green-950/40 ring-1 ring-green-400'
                   : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500',
               ].join(' ')}
-              style={{ width: 170, height: 170 }}
+              style={{ width: 170, height: 170, position: 'relative' }}
             >
+              <FavoriteToggle
+                active={favorites.includes(id)}
+                onToggle={() => toggle(id)}
+              />
               <div className="flex-1 flex items-center justify-center w-full">
                 {meta.icon
                   ? <SpriteCrop rect={meta.icon} size={104} title={meta.name} />
