@@ -49,6 +49,9 @@ export function WeaponTab({ dweller: _dweller }: { dweller: RenderableDweller })
   const searched = filterByText(all, query, (w) => w.name);
   const def = searched.filter((w) => w.id === DEFAULT_WEAPON);
   const rest = sortByDamage(searched.filter((w) => w.id !== DEFAULT_WEAPON), dir);
+  // This custom grid mirrors OptionGrid's favorites pattern by hand: pin via
+  // pinFavorites here, and render <FavoriteToggle> inside each cell which must keep
+  // `position: relative` + the `group` class. Keep these in sync with OptionGrid.
   const ordered = pinFavorites([...def, ...rest], (w) => w.id, favorites);
   const entries: [string, typeof all[number]][] = ordered.map((w) => [w.id, w]);
 
