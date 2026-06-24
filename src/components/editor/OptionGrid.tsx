@@ -53,10 +53,16 @@ export function OptionGrid({
   const hasPortrait = options.some((o) => o.thumbnailUrl || o.loading);
   const hasSprite = options.some((o) => o.layers && o.layers.length > 0);
 
+  const favEnabled = !!favorites && !!onToggleFavorite;
+  const displayOptions = favEnabled
+    ? pinFavorites(options, (o) => o.value, favorites!)
+    : options;
+
   // Portrait cells stack the image and badge vertically (with a gap between them);
   // other cells just center their content.
   const cellClass =
-    'group rounded border overflow-hidden ' +
+    (favEnabled ? 'group ' : '') +
+    'rounded border overflow-hidden ' +
     (hasPortrait ? 'flex flex-col items-center ' : 'flex items-center justify-center ');
   const cellStyle = hasPortrait
     ? { width: cellW ?? 170, height: cellH ?? 268 }
@@ -68,11 +74,6 @@ export function OptionGrid({
   // columns as fit, with the remaining space distributed evenly between them.
   // This keeps every row (including the last) aligned to the same columns.
   const colW = hasPortrait ? cellW ?? 170 : (cellW ?? 80);
-
-  const favEnabled = !!favorites && !!onToggleFavorite;
-  const displayOptions = favEnabled
-    ? pinFavorites(options, (o) => o.value, favorites!)
-    : options;
 
   return (
     <div

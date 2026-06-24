@@ -35,7 +35,7 @@ describe('OptionGrid', () => {
       />,
     );
     const labels = screen.getAllByText(/Alpha|Beta|Gamma/).map((n) => n.textContent);
-    expect(labels[0]).toBe('Gamma');
+    expect(labels).toEqual(['Gamma', 'Alpha', 'Beta']);
 
     const marker = screen.getAllByRole('button', { name: /favorites/i })[0];
     fireEvent.click(marker);
