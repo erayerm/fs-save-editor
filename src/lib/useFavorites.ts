@@ -12,7 +12,8 @@ function readStore(): Store {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return emptyStore();
     const p = JSON.parse(raw);
-    const arr = (v: unknown) => (Array.isArray(v) ? (v as string[]) : []);
+    const arr = (v: unknown): string[] =>
+      Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : [];
     return {
       hair: arr(p?.hair), face: arr(p?.face), outfit: arr(p?.outfit),
       weapon: arr(p?.weapon), pet: arr(p?.pet),

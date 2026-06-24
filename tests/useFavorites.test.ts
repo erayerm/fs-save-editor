@@ -33,4 +33,19 @@ describe('pinFavorites', () => {
     const out = pinFavorites(items, (i) => i.id, ['c', 'a']);
     expect(out.map((i) => i.id)).toEqual(['c', 'a', 'b', 'd']);
   });
+
+  it('returns items unchanged when there are no favorites', () => {
+    const items = [{ id: 'a' }, { id: 'b' }];
+    expect(pinFavorites(items, (i) => i.id, []).map((i) => i.id)).toEqual(['a', 'b']);
+  });
+
+  it('ignores favorite ids not present in items', () => {
+    const items = [{ id: 'a' }, { id: 'b' }];
+    expect(pinFavorites(items, (i) => i.id, ['zzz', 'b']).map((i) => i.id)).toEqual(['b', 'a']);
+  });
+
+  it('handles all items favorited (pure reorder)', () => {
+    const items = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+    expect(pinFavorites(items, (i) => i.id, ['c', 'b', 'a']).map((i) => i.id)).toEqual(['c', 'b', 'a']);
+  });
 });
