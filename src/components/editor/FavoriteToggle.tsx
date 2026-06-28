@@ -1,4 +1,5 @@
 import React from 'react';
+import { FALLOUT_GREEN } from '../SpecialIcon';
 
 /**
  * Vault Boy favorite marker, rendered as an overlay inside an item cell.
@@ -29,9 +30,17 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
         (active ? 'opacity-100' : 'opacity-0 group-hover:opacity-70')
       }
     >
-      {/* Vault Boy fitted inside a green circular badge (light fill, darker ring).
-          Inactive shows a line-art silhouette; active shows the full-color figure. */}
-      <span className="block w-9 h-9 rounded-full overflow-hidden border-2 border-green-600 bg-green-100 shadow">
+      {/* Vault Boy fitted inside a small circular badge. Inactive: gray line-art
+          silhouette on a neutral badge. Active (favorited): full-color figure on a
+          dark-green fill with a bright Fallout-green ring (two green tones). */}
+      <span
+        className="block w-[18px] h-[18px] rounded-full overflow-hidden border-2 shadow"
+        style={
+          active
+            ? { borderColor: FALLOUT_GREEN, backgroundColor: '#0b3d21' }
+            : { borderColor: '#71717a', backgroundColor: '#27272a' }
+        }
+      >
         <img
           src={active ? '/vault-boy-fav.png' : '/vault-boy-fav-outline.png'}
           alt=""
