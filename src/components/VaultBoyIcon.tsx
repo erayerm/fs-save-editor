@@ -7,7 +7,6 @@ export function VaultBoyIcon({ size = 18, className }: { size?: number; classNam
   const url = "url('/vault-boy-silhouette.png')";
   return (
     <span
-      role="img"
       aria-hidden="true"
       className={className}
       style={{
