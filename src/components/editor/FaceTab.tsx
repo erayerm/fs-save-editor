@@ -10,6 +10,7 @@ import { buildLayers } from '../../lib/dwellerLayers';
 import { HAIR_PRESETS } from '../../lib/colorPresets';
 import { getCachedHeadThumbnail, renderHeadThumbnail } from '../../lib/headThumbnail';
 import { type ModelBounds } from '../../lib/dwellerWebGL';
+import { useFavorites } from '../../lib/useFavorites';
 import type { SpriteIndex } from '../../types/pieces';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
@@ -128,6 +129,7 @@ export function FaceTab({
   const facePiece = dweller.facialHair;
   const known = !facePiece || allPieces.some((p) => p.name === facePiece);
   const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(facePiece, known);
+  const { favorites, toggle } = useFavorites('face');
   const selected = dweller.facialHair ?? NONE;
 
   // The color palette tints hair-colored pieces (facial hair). It also drives the
@@ -165,6 +167,8 @@ export function FaceTab({
             onSelect={(v) => guardSelect(() => onChange({ facialHair: v === NONE ? null : v }))}
             cellW={CELL}
             cellH={CELL}
+            favorites={favorites}
+            onToggleFavorite={toggle}
             leading={gi === 0
               ? (
                 <>

@@ -22,4 +22,23 @@ describe('OptionGrid', () => {
     );
     expect(screen.getByText('Alpha').closest('button')).toHaveAttribute('aria-pressed', 'true');
   });
+
+  it('pins favorites to the front and toggles via the marker', () => {
+    const onToggleFavorite = vi.fn();
+    render(
+      <OptionGrid
+        options={[{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }, { value: 'c', label: 'Gamma' }]}
+        selected={null}
+        onSelect={() => {}}
+        favorites={['c']}
+        onToggleFavorite={onToggleFavorite}
+      />,
+    );
+    const labels = screen.getAllByText(/Alpha|Beta|Gamma/).map((n) => n.textContent);
+    expect(labels).toEqual(['Gamma', 'Alpha', 'Beta']);
+
+    const marker = screen.getAllByRole('button', { name: /favorites/i })[0];
+    fireEvent.click(marker);
+    expect(onToggleFavorite).toHaveBeenCalledWith('c');
+  });
 });

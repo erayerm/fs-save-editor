@@ -15,6 +15,7 @@ import { SortFilterBar } from './SortFilterBar';
 import { filterAndSortOutfits, sortBySpecialTotal, filterByText, type SortDir, type SpecialKey } from '../../lib/pickerSort';
 import { UnknownItemCard } from './UnknownItemCard';
 import { useUnknownItemGuard } from './UnknownItemModal';
+import { useFavorites } from '../../lib/useFavorites';
 
 const THUMB_SIZE = 340; // offscreen WebGL canvas — 2× cell width (170px) for crisp display
 
@@ -199,6 +200,7 @@ export function OutfitTab({
   const outfitName = dweller.outfitName;
   const known = !outfitName || outfitItemById(index, outfitName) != null;
   const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(outfitName, known);
+  const { favorites, toggle } = useFavorites('outfit');
 
   return (
     <div>
@@ -217,6 +219,8 @@ export function OutfitTab({
         selected={dweller.outfitName ?? null}
         onSelect={(v) => guardSelect(() => onChange({ outfitId: v }))}
         showLabel
+        favorites={favorites}
+        onToggleFavorite={toggle}
         leading={isUnknown && outfitName
           ? <UnknownItemCard id={outfitName} width={170} height={268} onWarn={openInfo} />
           : undefined}

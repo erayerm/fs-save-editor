@@ -4,7 +4,7 @@ import { exportSave } from '../lib/exportSave';
 import { countExport } from '../lib/analytics';
 import { GITHUB_REPO_URL, TIP_URL } from '../lib/constants';
 import { GitHubIcon } from './GitHubIcon';
-import { CoffeeIcon } from './CoffeeIcon';
+import { VaultBoyIcon } from './VaultBoyIcon';
 import { ExportSuccessModal } from './ExportSuccessModal';
 import { DisclaimerModal } from './DisclaimerModal';
 
@@ -70,7 +70,7 @@ export function Header() {
           title="Tip"
           className="flex items-center justify-center w-8 h-8 rounded bg-zinc-700 hover:bg-emerald-500 text-zinc-200 hover:text-white transition-colors"
         >
-          <CoffeeIcon size={16} />
+          <VaultBoyIcon size={18} />
         </a>
         <a
           href={GITHUB_REPO_URL}

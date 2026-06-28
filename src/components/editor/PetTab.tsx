@@ -10,6 +10,8 @@ import { filterByText } from '../../lib/pickerSort';
 import { type Rarity } from '../../lib/petRarity';
 import { UnknownItemCard } from './UnknownItemCard';
 import { useUnknownItemGuard } from './UnknownItemModal';
+import { useFavorites, pinFavorites } from '../../lib/useFavorites';
+import { FavoriteToggle } from './FavoriteToggle';
 
 const RARITY_ORDER: Record<string, number> = { Normal: 0, Rare: 1, Legendary: 2 };
 
@@ -35,6 +37,7 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
   // any early return so the hook order stays stable (known while loading).
   const known = !petIndex || !equippedId || equippedId in petIndex.pets;
   const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(equippedId, known);
+  const { favorites, toggle } = useFavorites('pet');
 
   if (!petIndex) return <div className="text-zinc-400 text-sm">Loading pets…</div>;
 
@@ -47,6 +50,9 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
 
   const byRarity = rarity ? pets.filter((p) => p.rarity === rarity) : pets;
   const visible = filterByText(byRarity, query, (p) => `${p.name} ${p.bonus} ${p.bonusLabel} ${p.rarity}`);
+  // Mirrors OptionGrid/WeaponTab's favorites pattern: pin favorites to front.
+  // Each cell must keep `relative` + `group` classes for the FavoriteToggle marker.
+  const ordered = pinFavorites(visible, (p) => p.id, favorites);
 
   return (
     <div>
@@ -78,7 +84,7 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
           <span className="text-sm text-zinc-300">None</span>
         </button>
 
-        {visible.map((pet) => {
+        {ordered.map((pet) => {
           const isEquipped = pet.id === equippedId;
           return (
             <button
@@ -87,11 +93,12 @@ export function PetTab({ dweller: _dweller }: { dweller: RenderableDweller }) {
               aria-pressed={isEquipped}
               onClick={() => guardSelect(() => useSaveStore.getState().updateSelectedDwellerRaw((d) => setPet(d, pet)))}
               className={[
-                'rounded border flex flex-col items-center overflow-hidden transition-colors',
+                'group relative rounded border flex flex-col items-center overflow-hidden transition-colors',
                 isEquipped ? 'border-green-400 bg-green-950/40 ring-1 ring-green-400' : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500',
               ].join(' ')}
               style={{ width: 170, height: 170 }}
             >
+              <FavoriteToggle active={favorites.includes(pet.id)} onToggle={() => toggle(pet.id)} />
               <div className="flex-1 flex items-center justify-center w-full">
                 {pet.icon ? <SpriteCrop rect={pet.icon} size={104} title={pet.name} /> : <div className="w-16 h-16" />}
               </div>

@@ -10,6 +10,7 @@ import { buildLayers } from '../../lib/dwellerLayers';
 import { HAIR_PRESETS } from '../../lib/colorPresets';
 import { getCachedHeadThumbnail, renderHeadThumbnail } from '../../lib/headThumbnail';
 import { type ModelBounds } from '../../lib/dwellerWebGL';
+import { useFavorites } from '../../lib/useFavorites';
 import type { SpriteIndex } from '../../types/pieces';
 import type { RenderableDweller } from '../../lib/dwellerRender';
 import type { DwellerCustomization } from '../../lib/dwellerEdit';
@@ -114,6 +115,7 @@ export function HairTab({
   const hairName = dweller.hairName;
   const known = !hairName || hairs.some((p) => p.name === hairName);
   const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(hairName, known);
+  const { favorites, toggle } = useFavorites('hair');
 
   return (
     <div>
@@ -134,6 +136,8 @@ export function HairTab({
         onSelect={(v) => guardSelect(() => onChange({ hair: v }))}
         cellW={CELL}
         cellH={CELL}
+        favorites={favorites}
+        onToggleFavorite={toggle}
         leading={isUnknown && hairName
           ? <UnknownItemCard id={hairName} width={CELL} height={CELL} onWarn={openInfo} />
           : undefined}
