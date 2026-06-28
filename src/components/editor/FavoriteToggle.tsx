@@ -1,11 +1,6 @@
-import React, { useId } from 'react';
+import React from 'react';
 
-// Classic "favorite" pink for the active heart: a bright fill with a darker outline.
-const PINK_FILL = '#ff4d8d';
-const PINK_STROKE = '#d6246e';
-
-// Classic heart silhouette (viewBox 0 0 24 24). Used as the favorite marker's outer
-// shape — a heart is the universal "favorite" symbol.
+// Classic heart silhouette (viewBox 0 0 24 24) — the universal "favorite" symbol.
 const HEART_PATH =
   'M12 21.35 L10.55 20.03 C5.4 15.36 2 12.28 2 8.5 C2 5.42 4.42 3 7.5 3 ' +
   'C9.24 3 10.91 3.81 12 5.09 C13.09 3.81 14.76 3 16.5 3 C19.58 3 22 5.42 22 8.5 ' +
@@ -13,32 +8,25 @@ const HEART_PATH =
 
 const SIZE = 30; // marker size in px
 
-// Squeeze the heart horizontally (around its center x=12) so it reads a touch slimmer.
-const HEART_NARROW = 'translate(12 0) scale(0.85 1) translate(-12 0)';
+// Muted (not neon) favorite pink for the filled, active heart.
+const PINK_FILL = '#d96a9a';
+const PINK_STROKE = '#b4517e';
 
 /**
- * Vault Boy favorite marker, rendered as an overlay inside an item cell.
+ * Favorite marker rendered as an overlay inside an item cell.
  *
  * Cells are <button>s, so this MUST NOT be a nested <button> (invalid HTML). It is a
  * role="button" span that stops propagation, so toggling a favorite never selects the
- * item. The marker is a heart holding Vault Boy: inactive shows a gray line-art
- * silhouette on a neutral heart and is hover-revealed; active (favorited) shows the
- * full-color figure on a dark-green heart with a bright Fallout-green outline.
- * Relies on the parent cell carrying the `group` class for hover reveal.
+ * item. Inactive shows a gray outline heart and is hover-revealed; active (favorited)
+ * shows a filled muted-pink heart. Relies on the parent cell carrying the `group`
+ * class for hover reveal.
  */
 export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle: () => void }) {
-  // Unique, selector-safe id so each cell's clipPath doesn't collide.
-  const clipId = `fav-heart-${useId().replace(/:/g, '')}`;
-
   const activate = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     e.preventDefault();
     onToggle();
   };
-
-  const fill = active ? PINK_FILL : '#27272a';
-  const stroke = active ? PINK_STROKE : '#71717a';
-  const img = active ? '/vault-boy-fav.png' : '/vault-boy-fav-outline.png';
 
   return (
     <span
@@ -56,25 +44,13 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
       }
     >
       <svg width={SIZE} height={SIZE} viewBox="0 0 24 24" className="block">
-        <defs>
-          <clipPath id={clipId}>
-            <path d={HEART_PATH} transform={HEART_NARROW} />
-          </clipPath>
-        </defs>
-        {/* Heart fill behind the figure (narrowed horizontally) */}
-        <path d={HEART_PATH} transform={HEART_NARROW} fill={fill} />
-        {/* Vault Boy clipped to the (narrowed) heart; the figure keeps its own aspect */}
-        <image
-          href={img}
-          x="3.5"
-          y="2"
-          width="17"
-          height="17"
-          preserveAspectRatio="xMidYMid meet"
-          clipPath={`url(#${clipId})`}
+        <path
+          d={HEART_PATH}
+          fill={active ? PINK_FILL : 'none'}
+          stroke={active ? PINK_STROKE : '#a1a1aa'}
+          strokeWidth={active ? 1.5 : 2}
+          strokeLinejoin="round"
         />
-        {/* Crisp heart outline on top */}
-        <path d={HEART_PATH} transform={HEART_NARROW} fill="none" stroke={stroke} strokeWidth={1.6} strokeLinejoin="round" />
       </svg>
     </span>
   );
