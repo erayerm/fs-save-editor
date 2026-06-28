@@ -23,11 +23,21 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
       onClick={activate}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') activate(e); }}
       className={
-        'absolute top-1 right-1 z-10 cursor-pointer transition-opacity ' +
+        // No z-index: the marker still paints above its (in-flow) cell image, but
+        // stays BELOW the sticky filter/color bars (which sit at z-10).
+        'absolute top-1 right-1 cursor-pointer transition-opacity ' +
         (active ? 'opacity-100' : 'opacity-0 grayscale group-hover:opacity-70')
       }
     >
-      <img src="/vault-boy-fav.png" alt="" width={28} height={28} draggable={false} />
+      {/* Vault Boy fitted inside a bordered circular badge (outer ring). */}
+      <span className="block w-9 h-9 rounded-full overflow-hidden border-2 border-amber-400 bg-amber-50 shadow">
+        <img
+          src="/vault-boy-fav.png"
+          alt=""
+          draggable={false}
+          className="w-full h-full object-contain"
+        />
+      </span>
     </span>
   );
 }
