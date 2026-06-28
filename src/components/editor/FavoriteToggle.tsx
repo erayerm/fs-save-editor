@@ -26,13 +26,14 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
         // No z-index: the marker still paints above its (in-flow) cell image, but
         // stays BELOW the sticky filter/color bars (which sit at z-10).
         'absolute top-1 right-1 cursor-pointer transition-opacity ' +
-        (active ? 'opacity-100' : 'opacity-0 grayscale group-hover:opacity-70')
+        (active ? 'opacity-100' : 'opacity-0 group-hover:opacity-70')
       }
     >
-      {/* Vault Boy fitted inside a bordered circular badge (outer ring). */}
-      <span className="block w-9 h-9 rounded-full overflow-hidden border-2 border-amber-400 bg-amber-50 shadow">
+      {/* Vault Boy fitted inside a green circular badge (light fill, darker ring).
+          Inactive shows a line-art silhouette; active shows the full-color figure. */}
+      <span className="block w-9 h-9 rounded-full overflow-hidden border-2 border-green-600 bg-green-100 shadow">
         <img
-          src="/vault-boy-fav.png"
+          src={active ? '/vault-boy-fav.png' : '/vault-boy-fav-outline.png'}
           alt=""
           draggable={false}
           className="w-full h-full object-contain"
