@@ -1,5 +1,8 @@
 import React, { useId } from 'react';
-import { FALLOUT_GREEN } from '../SpecialIcon';
+
+// Classic "favorite" pink for the active heart: a bright fill with a darker outline.
+const PINK_FILL = '#ff4d8d';
+const PINK_STROKE = '#d6246e';
 
 // Classic heart silhouette (viewBox 0 0 24 24). Used as the favorite marker's outer
 // shape — a heart is the universal "favorite" symbol.
@@ -9,6 +12,9 @@ const HEART_PATH =
   'C22 12.28 18.6 15.36 13.45 20.04 L12 21.35 Z';
 
 const SIZE = 30; // marker size in px
+
+// Squeeze the heart horizontally (around its center x=12) so it reads a touch slimmer.
+const HEART_NARROW = 'translate(12 0) scale(0.85 1) translate(-12 0)';
 
 /**
  * Vault Boy favorite marker, rendered as an overlay inside an item cell.
@@ -30,8 +36,8 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
     onToggle();
   };
 
-  const fill = active ? '#0b3d21' : '#27272a';
-  const stroke = active ? FALLOUT_GREEN : '#71717a';
+  const fill = active ? PINK_FILL : '#27272a';
+  const stroke = active ? PINK_STROKE : '#71717a';
   const img = active ? '/vault-boy-fav.png' : '/vault-boy-fav-outline.png';
 
   return (
@@ -52,12 +58,12 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
       <svg width={SIZE} height={SIZE} viewBox="0 0 24 24" className="block">
         <defs>
           <clipPath id={clipId}>
-            <path d={HEART_PATH} />
+            <path d={HEART_PATH} transform={HEART_NARROW} />
           </clipPath>
         </defs>
-        {/* Heart fill behind the figure */}
-        <path d={HEART_PATH} fill={fill} />
-        {/* Vault Boy fitted into the heart's upper region, clipped to the heart */}
+        {/* Heart fill behind the figure (narrowed horizontally) */}
+        <path d={HEART_PATH} transform={HEART_NARROW} fill={fill} />
+        {/* Vault Boy clipped to the (narrowed) heart; the figure keeps its own aspect */}
         <image
           href={img}
           x="3.5"
@@ -68,7 +74,7 @@ export function FavoriteToggle({ active, onToggle }: { active: boolean; onToggle
           clipPath={`url(#${clipId})`}
         />
         {/* Crisp heart outline on top */}
-        <path d={HEART_PATH} fill="none" stroke={stroke} strokeWidth={1.6} strokeLinejoin="round" />
+        <path d={HEART_PATH} transform={HEART_NARROW} fill="none" stroke={stroke} strokeWidth={1.6} strokeLinejoin="round" />
       </svg>
     </span>
   );
