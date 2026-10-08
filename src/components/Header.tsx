@@ -21,7 +21,7 @@ export function Header() {
   // Modern header navigation: borderless links with a tapered (fading-ends) green
   // underline marking the active page, rather than filled button chips.
   const navClass = (active: boolean) =>
-    'relative pb-1 text-sm font-medium transition-colors ' +
+    'relative pb-1 text-sm font-medium whitespace-nowrap transition-colors ' +
     (active ? 'text-white' : 'text-zinc-400 hover:text-zinc-100');
 
   // Thin (1px) underline, solid through the middle 60% and fading out over the
@@ -35,16 +35,19 @@ export function Header() {
   );
 
   return (
-    <header className="flex items-center justify-between px-6 py-3 bg-zinc-800 border-b border-zinc-700 shrink-0">
-      <div className="flex items-center gap-5">
-        <h1 className="text-xl font-bold tracking-tight">Fallout Shelter Save Editor</h1>
+    <header className="flex items-center justify-between gap-4 px-4 lg:px-6 py-3 bg-zinc-800 border-b border-zinc-700 shrink-0">
+      <div className="flex items-center gap-3 lg:gap-5 min-w-0">
+        <h1 className="text-lg xl:text-xl font-bold tracking-tight whitespace-nowrap" title="Fallout Shelter Save Editor">
+          <span className="hidden xl:inline">Fallout Shelter Save Editor</span>
+          <span className="xl:hidden">FS Save Editor</span>
+        </h1>
         {/* Vertical separator: solid through the middle, fading out over the outer 20%. */}
         <div
           className="h-6 w-px"
           aria-hidden="true"
           style={{ background: 'linear-gradient(to bottom, transparent 0%, #71717a 20%, #71717a 80%, transparent 100%)' }}
         />
-        <nav className="flex items-center gap-6 mt-1">
+        <nav className="flex items-center gap-4 lg:gap-6 mt-1">
           <button onClick={() => setPage('dweller')} className={navClass(page === 'dweller')}>
             Dweller Settings
             {page === 'dweller' && <Underline />}
@@ -55,10 +58,10 @@ export function Header() {
           </button>
         </nav>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 shrink-0">
         <button
           onClick={() => setDisclaimerOpen(true)}
-          className="px-2 text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
+          className="px-2 text-sm text-zinc-400 hover:text-zinc-100 whitespace-nowrap transition-colors"
         >
           Disclaimer
         </button>
@@ -93,9 +96,11 @@ export function Header() {
               alert(`Failed to export .sav: ${(err as Error).message}`);
             }
           }}
-          className="px-3 py-1.5 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium transition-colors"
+          aria-label="Export .sav file"
+          className="px-3 py-1.5 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium whitespace-nowrap transition-colors"
         >
-          Export .sav file
+          <span className="hidden lg:inline">Export .sav file</span>
+          <span className="lg:hidden">Export</span>
         </button>
         <button
           onClick={clear}

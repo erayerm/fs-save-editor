@@ -18,7 +18,7 @@ export function EditorTabBar({
           aria-pressed={t.id === active}
           onClick={() => onSelect(t.id)}
           className={
-            'px-4 py-2 text-sm rounded-t-lg border border-b-0 -mb-px ' +
+            'px-3 xl:px-4 py-2 text-sm whitespace-nowrap rounded-t-lg border border-b-0 -mb-px ' +
             (t.id === active
               ? 'bg-zinc-800 text-white border-zinc-600'
               : 'bg-zinc-900 text-zinc-400 border-zinc-700 hover:bg-zinc-800/60 hover:text-zinc-200')

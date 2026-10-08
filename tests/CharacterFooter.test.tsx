@@ -2,6 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { CharacterFooter } from '../src/components/CharacterFooter';
 import { useSaveStore } from '../src/store/saveStore';
+import { RoomBadge } from '../src/components/RoomBadge';
+import { buildRoomAssignments, ALL_ROOMS } from '../src/lib/rooms';
 
 // jsdom lacks ResizeObserver — provide a minimal stub
 global.ResizeObserver = class {
@@ -53,7 +55,7 @@ const dweller2 = {
 
 describe('CharacterFooter', () => {
   beforeEach(() => {
-    useSaveStore.setState({ save: null, selectedDwellerId: null, fileName: null });
+    useSaveStore.setState({ save: null, selectedDwellerId: null, fileName: null, roomFilter: ALL_ROOMS, roomQuery: '' });
   });
 
   it('renders nothing when no save is loaded', () => {
@@ -81,5 +83,50 @@ describe('CharacterFooter', () => {
     // Find the card element for Alice — it should have ring-2 ring-green-400
     const aliceCard = screen.getByText(/Alice Smith/i).closest('[class*="ring-green"]');
     expect(aliceCard).not.toBeNull();
+  });
+
+  it('room search narrows both the room badges and the dwellers', () => {
+    const save = {
+      ...makeSave([dweller1, dweller2]),
+      vault: {
+        rooms: [
+          { type: 'Geothermal', row: 1, col: 0, deserializeID: 10, dwellers: [1] },
+          { type: 'Cafeteria', row: 2, col: 0, deserializeID: 11, dwellers: [2] },
+        ],
+      },
+    };
+    useSaveStore.setState({ save });
+    render(<CharacterFooter />);
+    fireEvent.click(screen.getByRole('button', { name: 'Search rooms' }));
+    fireEvent.change(screen.getByLabelText('Search rooms', { selector: 'input' }), { target: { value: 'gen' } });
+
+    const toolbar = screen.getByRole('toolbar', { name: /filter dwellers by room/i });
+    expect(toolbar).toHaveTextContent('All matches');
+    expect(toolbar).toHaveTextContent('Power Generator');
+    expect(toolbar).not.toHaveTextContent('Diner');
+    expect(screen.getByText(/Alice Smith/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Bob Jones/i)).not.toBeInTheDocument();
+  });
+
+  it('clicking the portrait room badge filters the strip to that room', () => {
+    const save = {
+      ...makeSave([dweller1, dweller2]),
+      vault: {
+        rooms: [
+          { type: 'Geothermal', row: 1, col: 0, deserializeID: 10, dwellers: [1] },
+          { type: 'Cafeteria', row: 2, col: 0, deserializeID: 11, dwellers: [2] },
+        ],
+      },
+    };
+    useSaveStore.setState({ save, roomQuery: 'gen' });
+    render(<CharacterFooter />);
+    const diner = buildRoomAssignments(save).get(2)!;
+    render(<RoomBadge room={diner} />);
+
+    fireEvent.click(screen.getByTestId('dweller-room'));
+
+    expect(screen.getByRole('button', { name: /^Diner/ })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByText(/Bob Jones/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Alice Smith/i)).not.toBeInTheDocument();
   });
 });

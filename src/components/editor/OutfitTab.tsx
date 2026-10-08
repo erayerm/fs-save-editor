@@ -1,7 +1,14 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { OptionGrid } from './OptionGrid';
+import { OptionGrid, type GridOption } from './OptionGrid';
 import { SpecialBadges } from './SpecialBadges';
-import { equippableOutfits, outfitItemById } from '../../lib/spriteIndex';
+import { equippableOutfits, outfitItemById, outfitValidForGender } from '../../lib/spriteIndex';
+import { specialBonusFor } from '../../lib/outfitStats';
+import { DEFAULT_OUTFIT_ID } from '../../lib/stash';
+import { useGearSource, useStashGear } from '../../lib/useStashGear';
+import { useSaveStore } from '../../store/saveStore';
+import { humanizeId } from '../StashItemInfo';
+import { StashCornerChip } from './StashCornerChip';
+import { StashViewHeader } from './StashViewHeader';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
 import { loadMeshSet } from '../../lib/meshLoader';
 import { loadAtlas } from '../../lib/atlasLoader';
@@ -43,15 +50,17 @@ const rgbKey = (c?: { r: number; g: number; b: number }) =>
 const thumbKey = (gender: Gender, outfitId: string, skinKey: string, outfitKey: string) =>
   `${gender}|${outfitId}|${skinKey}|${outfitKey}`;
 
-/** Render outfit thumbnails via a single shared offscreen WebGL canvas. */
+/** Render thumbnails of outfit ids `ids` via a single shared offscreen WebGL canvas. */
 function useOutfitThumbnails(
   index: SpriteIndex,
   meshSet: DwellerMeshSet | null,
   dweller: RenderableDweller,
+  ids: string[],
 ): Map<string, string> {
   const gender: Gender = dweller.gender === 2 ? 'male' : 'female';
   const skinKey = rgbKey(dweller.skinColor);
   const outfitKey = rgbKey(dweller.outfitColor);
+  const idsKey = ids.join('\n');
 
   // Re-render whenever fresh thumbnails land in the cache.
   const [version, setVersion] = useState(0);
@@ -70,13 +79,13 @@ function useOutfitThumbnails(
   // appearance shows skeletons — and only until its thumbnails render in.
   const thumbnails = useMemo(() => {
     const m = new Map<string, string>();
-    for (const o of visibleOutfits(index, gender)) {
-      const hit = outfitThumbCache.get(thumbKey(gender, o.id, skinKey, outfitKey));
-      if (hit) m.set(o.id, hit);
+    for (const id of ids) {
+      const hit = outfitThumbCache.get(thumbKey(gender, id, skinKey, outfitKey));
+      if (hit) m.set(id, hit);
     }
     return m;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, gender, skinKey, outfitKey, version]);
+  }, [idsKey, gender, skinKey, outfitKey, version]);
 
   useEffect(() => {
     if (!meshSet) return;
@@ -85,15 +94,14 @@ function useOutfitThumbnails(
     (async () => {
       const mesh = meshSet[gender].adult;
       const offsets = meshSet[gender].offsets;
-      const outfits = visibleOutfits(index, gender);
       const sk = debouncedSkinKey;
       const ok = debouncedOutfitKey;
 
       let sinceYield = 0;
       let renderedAny = false;
-      for (const outfit of outfits) {
+      for (const outfitId of ids) {
         if (cancelled) break;
-        const key = thumbKey(gender, outfit.id, sk, ok);
+        const key = thumbKey(gender, outfitId, sk, ok);
         if (outfitThumbCache.has(key)) continue;
 
         // Create the offscreen canvas + renderer lazily — only when there's work,
@@ -109,7 +117,7 @@ function useOutfitThumbnails(
 
         const tempDweller: RenderableDweller = {
           ...dweller,
-          outfitName: outfit.id,
+          outfitName: outfitId,
           hairName: undefined,
           facialHair: undefined, // no beard/mustache on outfit thumbnails
           happinessValue: undefined, // no face expression
@@ -148,7 +156,7 @@ function useOutfitThumbnails(
 
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, meshSet, gender, debouncedSkinKey, debouncedOutfitKey]);
+  }, [index, meshSet, gender, idsKey, debouncedSkinKey, debouncedOutfitKey]);
 
   // Dispose renderer on unmount
   useEffect(() => () => {
@@ -174,26 +182,9 @@ export function OutfitTab({
   const [dir, setDir] = useState<SortDir>('default');
   const [query, setQuery] = useState('');
   const [stat, setStat] = useState<SpecialKey | null>(null);
-  const thumbnails = useOutfitThumbnails(index, meshSet, dweller);
-
-  const base = visibleOutfits(index, gender);
-  const searched = filterByText(base, query, (o) => o.name);
-  // With a SPECIAL stat: filter+sort by that stat. Without one but with a sort
-  // direction: sort by the sum of all SPECIAL bonuses. Otherwise: default order.
-  const ordered = stat
-    ? filterAndSortOutfits(searched, stat, dir)
-    : sortBySpecialTotal(searched, dir);
-  const options = ordered.map((o) => {
-    const thumbnailUrl = thumbnails.get(o.id);
-    return {
-      value: o.id,
-      label: o.name,
-      thumbnailUrl,
-      // Show a skeleton placeholder until the offscreen thumbnail finishes rendering.
-      loading: !thumbnailUrl,
-      badge: <SpecialBadges bonus={o.special ?? {}} />,
-    };
-  });
+  const [source, setSource] = useGearSource('outfit');
+  const stash = useStashGear('Outfit');
+  const equipFromStash = useSaveStore((s) => s.equipSelectedFromStash);
 
   // The equipped outfit is unknown when its id isn't a known outfit item
   // (content added to the game after this editor's last update).
@@ -201,6 +192,89 @@ export function OutfitTab({
   const known = !outfitName || outfitItemById(index, outfitName) != null;
   const { isUnknown, openInfo, guardSelect, modal } = useUnknownItemGuard(outfitName, known);
   const { favorites, toggle } = useFavorites('outfit');
+
+  // Stash outfits can be any rarity (not just the Premium ones the Global view
+  // lists), and some have no art for this dweller's gender.
+  const stashed = stash.groups.map((g) => {
+    const id = g.item.id;
+    const item = outfitItemById(index, id);
+    return {
+      group: g,
+      id,
+      name: item?.name ?? humanizeId(id),
+      special: item?.special ?? specialBonusFor(id),
+      renderable: outfitValidForGender(index, id, gender),
+      wrongGender: !!item && !outfitValidForGender(index, id, gender),
+    };
+  });
+
+  const global = source === 'global' ? visibleOutfits(index, gender) : [];
+  const thumbIds = useMemo(
+    () => source === 'global'
+      ? global.map((o) => o.id)
+      : [
+          ...(outfitName && known ? [outfitName] : []),
+          ...stashed.filter((s) => s.renderable).map((s) => s.id),
+        ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [source, index, gender, outfitName, known, stash.groups],
+  );
+  const thumbnails = useOutfitThumbnails(index, meshSet, dweller, thumbIds);
+
+  // With a SPECIAL stat: filter+sort by that stat. Without one but with a sort
+  // direction: sort by the sum of all SPECIAL bonuses. Otherwise: default order.
+  const filterAndSort = <T extends { name: string; special?: OutfitItem['special'] }>(items: T[]) => {
+    const searched = filterByText(items, query, (o) => o.name);
+    return stat ? filterAndSortOutfits(searched, stat, dir) : sortBySpecialTotal(searched, dir);
+  };
+
+  const portrait = (id: string) => {
+    const thumbnailUrl = thumbnails.get(id);
+    // Show a skeleton placeholder until the offscreen thumbnail finishes rendering.
+    return { thumbnailUrl, loading: !thumbnailUrl };
+  };
+
+  const globalOptions: GridOption[] = filterAndSort(global).map((o) => {
+    const inStash = stash.countById.get(o.id) ?? 0;
+    return {
+      value: o.id,
+      label: o.name,
+      ...portrait(o.id),
+      badge: <SpecialBadges bonus={o.special ?? {}} />,
+      corner: inStash > 0 ? <StashCornerChip>In stash ×{inStash}</StashCornerChip> : undefined,
+      title: inStash ? `${o.name} (${inStash} in stash; picking it here adds a new one)` : o.name,
+    };
+  });
+
+  const stashMatches = filterAndSort(stashed);
+  const stashOptions: GridOption[] = stashMatches.map((s) => ({
+    value: s.group.key,
+    label: s.name,
+    ...(s.renderable ? portrait(s.id) : {}),
+    badge: <SpecialBadges bonus={s.special} />,
+    corner: <StashCornerChip count={s.group.indices.length} />,
+    disabled: s.wrongGender,
+    note: s.wrongGender
+      ? `${gender === 'male' ? 'Female' : 'Male'} only`
+      : s.renderable ? undefined : 'No preview',
+    title: s.wrongGender
+      ? `${s.name} can't be worn by ${gender} dwellers`
+      : `Equip ${s.name} from the stash (swaps with the equipped outfit)`,
+  }));
+
+  const equipped = outfitName ?? DEFAULT_OUTFIT_ID;
+  const equippedItem = outfitItemById(index, equipped);
+  const equippedThumb = thumbnails.get(equipped);
+
+  const onSelect = (v: string) => {
+    if (source === 'global') return guardSelect(() => onChange({ outfitId: v }));
+    const s = stashed.find((x) => x.group.key === v);
+    if (s) equipFromStash(s.group.indices[0]);
+  };
+
+  const unknownCard = isUnknown && outfitName
+    ? <UnknownItemCard id={outfitName} width={170} height={268} onWarn={openInfo} />
+    : undefined;
 
   return (
     <div>
@@ -213,18 +287,42 @@ export function OutfitTab({
         onDirChange={setDir}
         stat={stat}
         onStatChange={setStat}
+        source={source}
+        onSourceChange={setSource}
+        stashCount={stash.count}
       />
-      <OptionGrid
-        options={options}
-        selected={dweller.outfitName ?? null}
-        onSelect={(v) => guardSelect(() => onChange({ outfitId: v }))}
-        showLabel
-        favorites={favorites}
-        onToggleFavorite={toggle}
-        leading={isUnknown && outfitName
-          ? <UnknownItemCard id={outfitName} width={170} height={268} onWarn={openInfo} />
-          : undefined}
-      />
+      {source === 'global' ? (
+        <OptionGrid
+          options={globalOptions}
+          selected={outfitName ?? null}
+          onSelect={onSelect}
+          showLabel
+          favorites={favorites}
+          onToggleFavorite={toggle}
+          leading={unknownCard}
+        />
+      ) : (
+        <>
+          <StashViewHeader
+            name={isUnknown ? equipped : equippedItem?.name ?? humanizeId(equipped)}
+            icon={equippedThumb
+              ? <img src={equippedThumb} alt="" className="max-w-full max-h-full object-contain" />
+              : !isUnknown && <div className="w-full h-full rounded bg-zinc-700/40 animate-pulse" />}
+            detail={<SpecialBadges bonus={equippedItem?.special ?? specialBonusFor(equipped)} inline />}
+            warning={isUnknown ? 'Not recognized by this editor' : undefined}
+            onUnequip={equipped !== DEFAULT_OUTFIT_ID
+              ? () => guardSelect(() => onChange({ outfitId: DEFAULT_OUTFIT_ID }))
+              : undefined}
+          />
+          {stashOptions.length === 0 ? (
+            <div className="px-2 py-2 text-sm text-zinc-500">
+              {stash.count === 0 ? 'No outfits in the stash.' : 'No stashed outfits match.'}
+            </div>
+          ) : (
+            <OptionGrid options={stashOptions} selected={null} onSelect={onSelect} showLabel />
+          )}
+        </>
+      )}
       {modal}
     </div>
   );

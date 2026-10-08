@@ -2,6 +2,7 @@ import React from 'react';
 import { SpriteCanvas, type SpriteLayer } from './SpriteCanvas';
 import { pinFavorites } from '../../lib/useFavorites';
 import { FavoriteToggle } from './FavoriteToggle';
+import { fluidGridStyle, fluidTileStyle } from './fluidGrid';
 
 export interface GridOption {
   value: string;
@@ -18,6 +19,14 @@ export interface GridOption {
    * flash key names or jump layout while offscreen rendering catches up.
    */
   loading?: boolean;
+  /** Top-left overlay, e.g. a stash count. */
+  corner?: React.ReactNode;
+  /** Shown but not selectable. */
+  disabled?: boolean;
+  /** Short line under the label on cells without a thumbnail (e.g. why it's disabled). */
+  note?: string;
+  /** Tooltip; defaults to the label. */
+  title?: string;
 }
 
 export function OptionGrid({
@@ -63,34 +72,36 @@ export function OptionGrid({
   const cellClass =
     (favEnabled ? 'group ' : '') +
     'rounded border overflow-hidden ' +
-    (hasPortrait ? 'flex flex-col items-center ' : 'flex items-center justify-center ');
+    (hasPortrait ? 'flex flex-col items-center justify-center ' : 'flex items-center justify-center ');
+  const colW = hasPortrait ? cellW ?? 170 : (cellW ?? 80);
   const cellStyle = hasPortrait
-    ? { width: cellW ?? 170, height: cellH ?? 268 }
+    ? fluidTileStyle(colW, cellH ?? 268)
     : hasSprite
-    ? { width: cellW ?? 80, height: cellH ?? 80 }
+    ? fluidTileStyle(colW, cellH ?? 80)
     : { minWidth: cellW ?? 80, minHeight: cellH ?? 48 };
 
-  // Column width drives an auto-filling responsive grid: as many fixed-width
-  // columns as fit, with the remaining space distributed evenly between them.
-  // This keeps every row (including the last) aligned to the same columns.
-  const colW = hasPortrait ? cellW ?? 170 : (cellW ?? 80);
-
+  // Columns stretch to fill the row. Sprite canvases are a fixed 72px, so
+  // sprite tiles never shrink below their design width.
   return (
     <div
-      className="grid gap-1.5 p-1 justify-between"
-      style={{ gridTemplateColumns: `repeat(auto-fill, ${colW}px)` }}
+      className="grid gap-1.5 p-1"
+      style={fluidGridStyle(colW, hasPortrait ? 0.8 : 1)}
     >
       {leading}
       {displayOptions.map((o) => (
         <button
           key={o.value}
-          title={o.label}
+          title={o.title ?? o.label}
           aria-pressed={o.value === selected}
+          data-selected={o.value === selected || undefined}
+          disabled={o.disabled}
           onClick={() => onSelect(o.value)}
           className={
             cellClass +
             (o.value === selected
               ? 'border-green-400 bg-green-950/40 ring-1 ring-green-400'
+              : o.disabled
+              ? 'border-zinc-800 bg-zinc-900 opacity-50 cursor-not-allowed'
               : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500')
           }
           style={{ ...cellStyle, position: 'relative' }}
@@ -101,6 +112,7 @@ export function OptionGrid({
               onToggle={() => onToggleFavorite!(o.value)}
             />
           )}
+          {o.corner}
           {o.thumbnailUrl || o.loading ? (
             // Portrait: image (or skeleton) fills the flexible top region. With
             // showLabel, the option name is shown right beneath the image and a
@@ -137,7 +149,10 @@ export function OptionGrid({
           ) : o.layers && o.layers.length > 0 ? (
             <SpriteCanvas layers={o.layers} size={72} />
           ) : (
-            <span className="text-xs text-zinc-300 text-center px-1 leading-tight">{o.label}</span>
+            <span className="text-xs text-zinc-300 text-center px-1 leading-tight">
+              {o.label}
+              {o.note && <span className="block mt-1 text-[11px] text-zinc-500">{o.note}</span>}
+            </span>
           )}
         </button>
       ))}

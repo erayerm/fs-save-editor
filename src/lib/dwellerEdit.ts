@@ -102,6 +102,93 @@ export function setPregnancy(
   return next as unknown as Dweller;
 }
 
+/**
+ * Highest max health a dweller can reach in-game: level 50 with 17 Endurance
+ * (10 base + 7 from an outfit) at every level-up.
+ */
+export const MAX_HEALTH = 644;
+export const MAX_HAPPINESS = 100;
+
+const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
+const round1 = (n: number) => Math.round(n * 10) / 10;
+const finite = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
+
+export interface DwellerHealth {
+  health: number;
+  maxHealth: number;
+  radiation: number;
+}
+
+export function getHealth(d: Dweller): DwellerHealth {
+  const h = (d.health ?? {}) as Record<string, unknown>;
+  const maxHealth = finite(h.maxHealth) ? h.maxHealth : 105;
+  return {
+    maxHealth,
+    health: finite(h.healthValue) ? h.healthValue : maxHealth,
+    radiation: finite(h.radiationValue) ? h.radiationValue : 0,
+  };
+}
+
+/**
+ * Set health, max health and/or radiation (`health.healthValue`, `maxHealth`,
+ * `radiationValue`). Radiation eats into max health, so health is kept at or
+ * below maxHealth − radiation, and never below 1 (0 means dead). Non-finite
+ * patch values are ignored. `lastLevelUpdated` is left alone so the game still
+ * adds health for any levels it hasn't processed yet.
+ */
+export function setHealth(d: Dweller, patch: Partial<DwellerHealth>): Dweller {
+  const cur = getHealth(d);
+  const maxHealth = round1(clamp(finite(patch.maxHealth) ? patch.maxHealth : cur.maxHealth, 1, MAX_HEALTH));
+  const radiation = round1(clamp(finite(patch.radiation) ? patch.radiation : cur.radiation, 0, maxHealth - 1));
+  const health = round1(clamp(finite(patch.health) ? patch.health : cur.health, 1, maxHealth - radiation));
+  return {
+    ...d,
+    health: {
+      ...((d.health ?? {}) as Record<string, unknown>),
+      healthValue: health,
+      maxHealth,
+      radiationValue: radiation,
+    },
+  } as Dweller;
+}
+
+/** Full health and no radiation. */
+export function healDweller(d: Dweller): Dweller {
+  const { maxHealth } = getHealth(d);
+  return setHealth(d, { radiation: 0, health: maxHealth });
+}
+
+export function getHappiness(d: Dweller): number {
+  const v = (d.happiness as { happinessValue?: unknown } | undefined)?.happinessValue;
+  return finite(v) ? v : MAX_HAPPINESS;
+}
+
+/** Set `happiness.happinessValue` (0..100). The game keeps adjusting it as the dweller lives. */
+export function setHappiness(d: Dweller, value: number): Dweller {
+  if (!finite(value)) return d;
+  return {
+    ...d,
+    happiness: {
+      ...((d.happiness ?? {}) as Record<string, unknown>),
+      happinessValue: clamp(Math.round(value), 0, MAX_HAPPINESS),
+    },
+  } as Dweller;
+}
+
+/** Rarity tiers a dweller can be set to. Real saves use both "Normal" and "Common" for common dwellers. */
+export const DWELLER_RARITIES = ['Common', 'Rare', 'Legendary'] as const;
+export type DwellerRarity = (typeof DWELLER_RARITIES)[number];
+
+export function getRarity(d: Dweller): DwellerRarity {
+  return d.rarity === 'Rare' || d.rarity === 'Legendary' ? d.rarity : 'Common';
+}
+
+/** Set the rarity tag. A "Normal" dweller set to Common keeps "Normal" (both mean common). */
+export function setRarity(d: Dweller, rarity: DwellerRarity): Dweller {
+  if (getRarity(d) === rarity) return d;
+  return { ...d, rarity };
+}
+
 export interface NewDwellerInput {
   name: string;
   lastName: string;

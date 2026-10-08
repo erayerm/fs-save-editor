@@ -11,7 +11,7 @@ import type { RenderableDweller } from '../lib/dwellerRender';
  * displaying the equipped outfit's name and SPECIAL buffs (text left) plus a
  * rendered thumbnail of the outfit (image right).
  */
-export function OutfitBadge({ dweller }: { dweller: RenderableDweller }) {
+export function OutfitBadge({ dweller, onSelect }: { dweller: RenderableDweller; onSelect?: () => void }) {
   const [index, setIndex] = useState<SpriteIndex | null>(null);
   const [thumb, setThumb] = useState<string | null>(null);
 
@@ -35,9 +35,14 @@ export function OutfitBadge({ dweller }: { dweller: RenderableDweller }) {
   const label = item?.name ?? dweller.outfitName;
 
   return (
-    <div className="absolute bottom-1.5 left-1.5 flex items-center gap-2 rounded bg-zinc-900/85 border border-zinc-700 px-2 py-1 leading-tight shadow-lg">
-      <div className="text-left">
-        <div className="text-green-400 font-medium" style={{ fontSize: 12 }}>{label}</div>
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-label={`Outfit: ${label}. Open outfit tab`}
+      className="max-w-full min-w-0 flex items-center gap-2 rounded bg-zinc-900/85 border border-zinc-700 px-2 py-1 leading-tight shadow-lg transition-colors hover:border-green-500 hover:bg-zinc-800/90 focus-visible:outline-none focus-visible:border-green-500"
+    >
+      <div className="text-left min-w-0">
+        <div className="text-green-400 font-medium truncate" style={{ fontSize: 12 }} title={label}>{label}</div>
         <div className="mt-0.5">
           <SpecialBadges bonus={bonus} inline />
         </div>
@@ -46,9 +51,10 @@ export function OutfitBadge({ dweller }: { dweller: RenderableDweller }) {
         <img
           src={thumb}
           alt={label}
+          className="shrink-0"
           style={{ width: 40, height: 40, objectFit: 'contain' }}
         />
       )}
-    </div>
+    </button>
   );
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { OptionGrid } from './OptionGrid';
 import { ColorPalette } from './ColorPalette';
 import { UnknownItemCard } from './UnknownItemCard';
+import { fluidTileStyle } from './fluidGrid';
 import { useUnknownItemGuard } from './UnknownItemModal';
 import { faceMaskPieces, faceMaskPiecesByCategory, isFacialHairPiece, type FaceMaskCategory } from '../../lib/spriteIndex';
 import { useDebouncedValue } from '../../lib/useDebouncedValue';
@@ -185,7 +186,7 @@ export function FaceTab({
                         ? 'border-green-400 bg-green-950/40 ring-1 ring-green-400'
                         : 'border-zinc-700 bg-zinc-900 hover:border-zinc-500')
                     }
-                    style={{ width: CELL, height: CELL, position: 'relative' }}
+                    style={{ ...fluidTileStyle(CELL, CELL), position: 'relative' }}
                   >
                     {thumbnails.get(NONE)
                       ? <img src={thumbnails.get(NONE)} alt="None" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />

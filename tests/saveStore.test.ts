@@ -63,4 +63,48 @@ describe('saveStore raw/vault actions', () => {
     expect(st.save!.dwellers.dwellers).toHaveLength(0);
     expect(st.selectedDwellerId).toBeNull();
   });
+
+  it('removeDweller also removes the dweller from its room', () => {
+    const store = useSaveStore.getState();
+    const s = { ...sampleSave(), vault: { rooms: [{ type: 'Cafeteria', dwellers: [1, 7] }] } };
+    store.setSave(s, 'x.sav');
+    store.removeDweller(1);
+    const rooms = (useSaveStore.getState().save!.vault as any).rooms;
+    expect(rooms[0].dwellers).toEqual([7]);
+  });
+
+  const geared = () => {
+    const s = sampleSave();
+    Object.assign(s.dwellers.dwellers[0], {
+      equipedWeapon: { id: 'Shotgun', type: 'Weapon' },
+      equipedOutfit: { id: 'jumpsuit', type: 'Outfit' },
+      equippedPet: { id: 'akita_l', type: 'Pet', extraData: { uniqueName: 'Kuma' } },
+    });
+    return s;
+  };
+  const stashIds = () =>
+    ((useSaveStore.getState().save!.vault as any).inventory?.items ?? []).map((it: any) => it.id);
+
+  it('removeDweller with stashGear moves non-default gear to the stash', () => {
+    useSaveStore.getState().setSave(geared(), 'x.sav');
+    useSaveStore.getState().removeDweller(1, { stashGear: true });
+    expect(useSaveStore.getState().save!.dwellers.dwellers).toHaveLength(0);
+    expect(stashIds()).toEqual(['Shotgun', 'akita_l']);
+  });
+
+  it('removeDweller without stashGear discards the gear', () => {
+    useSaveStore.getState().setSave(geared(), 'x.sav');
+    useSaveStore.getState().removeDweller(1);
+    expect(useSaveStore.getState().save!.dwellers.dwellers).toHaveLength(0);
+    expect(stashIds()).toEqual([]);
+  });
+
+  it('removeDweller with stashGear does nothing when the gear does not fit', () => {
+    const s = geared();
+    s.vault.inventory = { items: Array.from({ length: 9 }, () => ({ id: 'Junk1', type: 'Junk' })) };
+    useSaveStore.getState().setSave(s, 'x.sav');
+    useSaveStore.getState().removeDweller(1, { stashGear: true });
+    expect(useSaveStore.getState().save!.dwellers.dwellers).toHaveLength(1);
+    expect(stashIds()).toHaveLength(9);
+  });
 });

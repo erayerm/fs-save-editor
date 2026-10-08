@@ -50,6 +50,69 @@ it('reads and edits the vault mode', () => {
   expect(getVaultMode(useSaveStore.getState().save!)).toBe('Normal');
 });
 
+it('lists the stash grouped with counts and edits it', () => {
+  const item = (id: string, type: string) =>
+    ({ id, type, hasBeenAssigned: false, hasRandonWeaponBeenAssigned: false });
+  seed({ inventory: { items: [item('Shovel', 'Junk'), item('Shovel', 'Junk'), item('LabCoat', 'Outfit')] } });
+  render(<VaultSettings />);
+  expect(screen.getByRole('tab', { name: /all \(3\)/i })).toBeTruthy();
+  expect(screen.getByLabelText('2 in stash')).toBeTruthy();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Remove one Shovel' }));
+  let items = (useSaveStore.getState().save!.vault as any).inventory.items;
+  expect(items.map((i: any) => i.id)).toEqual(['Shovel', 'LabCoat']);
+
+  fireEvent.click(screen.getByRole('button', { name: 'Add one Shovel' }));
+  items = (useSaveStore.getState().save!.vault as any).inventory.items;
+  expect(items.map((i: any) => i.id)).toEqual(['Shovel', 'LabCoat', 'Shovel']);
+
+  fireEvent.click(screen.getByRole('tab', { name: /junk/i }));
+  expect(screen.queryByRole('button', { name: /LabCoat|Lab Coat/ })).toBeNull();
+});
+
+it('removes every copy of an item with the trash button', () => {
+  const item = (id: string, type: string) => ({ id, type });
+  seed({ inventory: { items: [item('Shovel', 'Junk'), item('Yarn', 'Junk'), item('Shovel', 'Junk')] } });
+  render(<VaultSettings />);
+  fireEvent.click(screen.getByRole('button', { name: 'Remove all Shovel' }));
+  const items = (useSaveStore.getState().save!.vault as any).inventory.items;
+  expect(items.map((i: any) => i.id)).toEqual(['Yarn']);
+});
+
+it('searches the stash by name', () => {
+  const item = (id: string, type: string) => ({ id, type });
+  seed({ inventory: { items: [item('Shovel', 'Junk'), item('DuctTape', 'Junk')] } });
+  render(<VaultSettings />);
+  fireEvent.change(screen.getByLabelText('Search'), { target: { value: 'duct' } });
+  expect(screen.getByText('Duct Tape')).toBeTruthy();
+  expect(screen.queryByText('Shovel')).toBeNull();
+});
+
+it('paginates the stash and returns to page 1 when searching', () => {
+  const items = Array.from({ length: 30 }, (_, i) => ({ id: `Item${String(i).padStart(2, '0')}`, type: 'Junk' }));
+  seed({ inventory: { items } });
+  render(<VaultSettings />);
+  expect(screen.getAllByRole('listitem')).toHaveLength(24);
+  expect(screen.getByText('1–24 of 30')).toBeTruthy();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Next page' }));
+  expect(screen.getAllByRole('listitem')).toHaveLength(6);
+  expect(screen.getByRole('button', { name: 'Page 2' }).getAttribute('aria-current')).toBe('page');
+
+  fireEvent.change(screen.getByLabelText('Search'), { target: { value: 'Item0' } });
+  expect(screen.getAllByRole('listitem')).toHaveLength(10);
+  expect(screen.queryByRole('navigation', { name: 'Stash pages' })).toBeNull();
+});
+
+it('shows capacity from storage rooms and disables adding when full', () => {
+  const items = Array.from({ length: 20 }, () => ({ id: 'Shovel', type: 'Junk' }));
+  seed({ rooms: [{ type: 'Storage', level: 1, mergeLevel: 1 }], inventory: { items } });
+  render(<VaultSettings />);
+  expect(screen.getByRole('meter', { name: 'Stash capacity' }).getAttribute('aria-valuemax')).toBe('20');
+  expect(screen.getByText('20 / 20')).toBeTruthy();
+  expect((screen.getByRole('button', { name: 'Add one Shovel' }) as HTMLButtonElement).disabled).toBe(true);
+});
+
 it('setBoxCount preserves other types', () => {
   const s = { vault: { LunchBoxesByType: [0, 2, 3] } } as any;
   const out = setBoxCount(s, BOX_TYPES.PetCarrier, 0);

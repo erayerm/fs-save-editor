@@ -21,7 +21,7 @@ export function SpecialBadges({ bonus, inline = false }: Props) {
       <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-white">
         {entries.map((s) => (
           <span key={s} className="flex items-center gap-0.5 leading-none">
-            <SpecialIcon letter={s} size={11} title={`${s} +${bonus[s]}`} />
+            <SpecialIcon letter={s} size={11} detail={`+${bonus[s]} while worn`} />
             <span style={{ fontSize: 11, fontWeight: 700 }}>{`+${bonus[s]}`}</span>
           </span>
         ))}
@@ -33,7 +33,7 @@ export function SpecialBadges({ bonus, inline = false }: Props) {
     <div className="flex flex-wrap gap-0.5 justify-center items-end">
       {entries.map((s) => (
         <span key={s} className="flex flex-col items-center leading-none text-white">
-          <SpecialIcon letter={s} size={26} title={`${s} +${bonus[s]}`} />
+          <SpecialIcon letter={s} size={26} detail={`+${bonus[s]} while worn`} />
           <span style={{ fontSize: 12, fontWeight: 700 }}>{`+${bonus[s]}`}</span>
         </span>
       ))}

@@ -11,11 +11,13 @@ const fromHex = (hex: string): Rgb => ({
 
 export function ColorPalette({
   label, value, swatches, onChange,
+  labelClassName = 'text-xs uppercase tracking-wide text-zinc-400',
 }: {
   label: string;
   value: Rgb;
   swatches: Rgb[];
   onChange: (c: Rgb) => void;
+  labelClassName?: string;
 }) {
   // The native color map fires onChange continuously while dragging. Committing
   // each tick to the store re-renders the whole editor + redraws the avatar (WebGL),
@@ -46,7 +48,7 @@ export function ColorPalette({
 
   return (
     <div className="space-y-2">
-      <div className="text-xs uppercase tracking-wide text-zinc-400">{label}</div>
+      <div className={labelClassName}>{label}</div>
       <div className="flex flex-wrap gap-1">
         {/* Custom color picker, pinned first: shows the current selection as its
             background with the standard eyedropper icon overlaid. Clicking opens
